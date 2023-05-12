@@ -19,7 +19,7 @@ namespace GXGame
                 self.UIHomeMainPanelView.Link(self);
                 List<string> temp = new List<string>();
                 temp.Add("Home/Home");
-                self.AddComponent<DependentResources, List<string>>(temp);
+                self.AddComponent<DependentUIResources, List<string>>(temp);
             }
         }
 

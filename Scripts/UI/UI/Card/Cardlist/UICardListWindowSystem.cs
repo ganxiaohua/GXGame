@@ -16,7 +16,7 @@ namespace GXGame
                 self.UICardListWindowView.Link(self);
                 List<string> temp = new List<string>();
                 temp.Add("Card/Card");
-                self.AddComponent<DependentResources, List<string>>(temp);
+                self.AddComponent<DependentUIResources, List<string>>(temp);
             }
         }
 
