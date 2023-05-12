@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: AssetGroupSettings
   m_EditorClassIdentifier: 
   data:
-  - groupName: Mode1
+  - groupName: PrefabTest
     searchPaths:
-    - Assets/GxGame/Model/TestModel
+    - Assets/GXGame/Prefab/Test1
     filter: t:Prefab
     simplifyAddressName: 1
     packByDir: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
     compression: 1
   - groupName: UI
     searchPaths:
-    - Assets/GxGame//UI
+    - Assets/GXGame//UI
     filter: 
     simplifyAddressName: 1
     packByDir: 1
