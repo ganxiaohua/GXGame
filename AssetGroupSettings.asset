@@ -33,7 +33,7 @@ MonoBehaviour:
     searchPaths:
     - Assets/GXGame/Config/ConfigData
     filter: 
-    simplifyAddressName: 1
+    simplifyAddressName: 0
     packByDir: 0
     bundleMode: 0
     compression: 1
