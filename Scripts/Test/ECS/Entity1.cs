@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using GameFrame;
 using GameFrame.Timer;
+using GXGame;
 using UnityEngine;
 using Entity = GameFrame.Entity;
 
@@ -66,9 +67,7 @@ public static class Entity1System
 public class Eniti1View : IView
 {
     private Entity Entity;
-    private GameObject Obj;
-    private Transform Trans;
-
+    private GameObjectObjectBase Go;
     public void Link(Entity entity, string path)
     {
         Entity = entity;
@@ -77,20 +76,18 @@ public class Eniti1View : IView
 
     public async UniTask Load(string path)
     {
-        var go = await AssetManager.Instance.LoadAsyncTask<GameObject>(path);
-        Obj = GameObject.Instantiate(go);
-        Trans = Obj.transform;
+        Go = ObjectPoolFactory.GetObject(path);
     }
 
     public void Position(Vector2 vector2)
     {
-        Trans.position = vector2;
+        Go.LocalPos = vector2;
     }
 
 
     public void Clear()
     {
-        GameObject.Destroy(Obj);
+        ObjectPoolFactory.RecycleObject(Go);
         Entity = null;
     }
 }

@@ -42,13 +42,14 @@ namespace GXGame
             base.DoHideAnimation();
         }
 
-        public void Update(float elapseSeconds, float realElapseSeconds)
+        public override void Update(float elapseSeconds, float realElapseSeconds)
         {
+            base.Update(elapseSeconds,realElapseSeconds);
         }
 
-        public void Clear()
+        public override void Clear()
         {
-            Dispose();
+            base.Clear();
         }
 
         public void OpenCardUI()

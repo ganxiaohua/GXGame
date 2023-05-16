@@ -217,127 +217,11 @@ public class Asset : IECSComponent
     }
 }
 
-//---------------------------------------------------------------------
-
-public class GameObjectObjectBase : ObjectBase
-{
-    private GameObject Obj;
-    private Transform Trans;
-    private Vector3 CurPos;
-    private Quaternion CurRot;
-    private string LoadPath;
-
-    public Vector3 Pos
-    {
-        get
-        {
-            if (Trans != null)
-            {
-                return Trans.position;
-            }
-
-            return Vector3.zero;
-        }
-        set
-        {
-            CurPos = value;
-            if (Trans != null)
-            {
-                Trans.position = value;
-            }
-        }
-    }
-
-    public Quaternion Rot
-    {
-        get
-        {
-            if (Trans != null)
-            {
-                return Trans.rotation;
-            }
-
-            return Quaternion.identity;
-        }
-        set
-        {
-            CurRot = value;
-            if (Trans != null)
-            {
-                Trans.rotation = value;
-            }
-        }
-    }
-
-
-    internal override void Initialize(object initObject)
-    {
-        base.Initialize(initObject);
-        Load(m_InitData as string);
-        Debug.Log("初始化");
-    }
-
-    private async UniTask Load(string path)
-    {
-        LoadPath = path;
-        var go = await AssetManager.Instance.LoadAsyncTask<GameObject>(path);
-        if (go == null)
-        {
-            return;
-        }
-
-        Obj = GameObject.Instantiate(go);
-        Trans = Obj.transform;
-        Pos = CurPos;
-        Rot = CurRot;
-    }
-
-    /// <summary>
-    /// 获取对象时的事件。
-    /// </summary>
-    internal override void OnSpawn()
-    {
-        if (Obj != null)
-        {
-            Obj.SetActive(true);
-        }
-
-        Debug.Log("创建");
-    }
-
-    /// <summary>
-    /// 回收对象时的事件。
-    /// </summary>
-    internal override void OnUnspawn()
-    {
-        CurPos = Vector3.zero;
-        CurRot = Quaternion.identity;
-        if (Obj != null)
-        {
-            Obj.SetActive(false);
-        }
-
-        Debug.Log("回收");
-    }
-
-    /// <summary>
-    /// 清理对象基类。
-    /// </summary>
-    public override void Clear()
-    {
-        CurPos = Vector3.zero;
-        CurRot = Quaternion.identity;
-        AssetManager.Instance.UnLoad(LoadPath);
-        GameObject.Destroy(Obj);
-        Debug.Log("清理");
-    }
-}
 
 public class GameObjectView : IEceView
 {
     private ECSEntity m_BindEntity;
     private string m_LoadPath;
-    private ObjectPool<GameObjectObjectBase> m_ObjectPool;
     private GameObjectObjectBase m_GameObject;
     private EntityComponentNumericalChange<Pos> m_PosDelegate;
     private EntityComponentNumericalChange<Rotate> m_RotDelegate;
@@ -351,12 +235,7 @@ public class GameObjectView : IEceView
 
     public void Init(string path)
     {
-        if (m_ObjectPool == null)
-        {
-            m_ObjectPool = ObjectPoolManager.Instance.CreateObjectPool<GameObjectObjectBase>("Gameobject", 10, path);
-        }
-
-        m_GameObject = m_ObjectPool.Spawn();
+        m_GameObject = ObjectPoolFactory.GetObject(path);
         m_LoadPath = path;
         Position(m_BindEntity.GetPos(), m_BindEntity);
         Rotate(m_BindEntity.GetRotate(), m_BindEntity);
@@ -372,24 +251,23 @@ public class GameObjectView : IEceView
     {
         if (m_BindEntity.ID != ecsEntity.ID)
             return;
-        m_GameObject.Pos = pos.vec;
+        m_GameObject.WorldPos = pos.vec;
     }
 
     private void Rotate(Rotate pos, ECSEntity ecsEntity)
     {
         if (m_BindEntity.ID != ecsEntity.ID)
             return;
-        m_GameObject.Rot = Quaternion.Euler(pos.vec);
+        m_GameObject.WorldRot = Quaternion.Euler(pos.vec);
     }
 
     public void Clear()
     {
+        ObjectPoolFactory.RecycleObject(m_GameObject);
         ViewBindEventClass.PosEntityComponentNumericalChange -= m_PosDelegate;
         ViewBindEventClass.RotateEntityComponentNumericalChange -= m_RotDelegate;
-        m_ObjectPool.UnSpawn(m_GameObject);
         m_PosDelegate = null;
         m_RotDelegate = null;
-        m_ObjectPool = null;
         m_BindEntity = null;
     }
 }
