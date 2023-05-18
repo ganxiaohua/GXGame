@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using GameFrame;
+using UnityEngine;
+
 namespace GXGame
 {
     public static class UICardListWindowSystem
@@ -17,6 +19,7 @@ namespace GXGame
                 List<string> temp = new List<string>();
                 temp.Add("Card/Card");
                 self.AddComponent<DependentUIResources, List<string>>(temp);
+                self.AddComponent<WaitComponent,Type>(typeof(IUIWait));
             }
         }
 
@@ -43,7 +46,11 @@ namespace GXGame
         {
             protected override void Update(UICardListWindow self,float elapseSeconds, float realElapseSeconds)
             {
-                
+                //测试等待
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    self.RemoveComponent<WaitComponent>();
+                }
             }
         }
 

@@ -14,7 +14,6 @@ namespace GXGame
         {
             protected override void Start(UIHomeMainPanel self)
             {
-
                 self.UIHomeMainPanelView = new UIHomeMainPanelView();
                 self.UIHomeMainPanelView.Link(self);
                 List<string> temp = new List<string>();
@@ -46,7 +45,6 @@ namespace GXGame
         {
             protected override void Update(UIHomeMainPanel self,float elapseSeconds, float realElapseSeconds)
             {
-                
             }
         }
 
