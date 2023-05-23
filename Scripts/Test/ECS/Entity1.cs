@@ -39,6 +39,7 @@ public static class Entity1System
             self.view = eniti1View;
         }
     }
+
     [SystemBind]
     public class Entity1UpdateSystem : UpdateSystem<Entity1>
     {
@@ -51,7 +52,7 @@ public static class Entity1System
         }
     }
 
-    
+
     [SystemBind]
     public class Entity1ClearSystem : ClearSystem<Entity1>
     {
@@ -68,6 +69,7 @@ public class Eniti1View : IView
 {
     private Entity Entity;
     private GameObjectObjectBase Go;
+
     public void Link(Entity entity, string path)
     {
         Entity = entity;
@@ -128,7 +130,7 @@ public class EventTest : IMessenger<int, int>
     public void Send(int p1, int p2)
     {
         List<CreateComponent> list = EnitityHouse.Instance.GetEntity<CreateComponent>();
-        CreateComponent createComponent = EnitityHouse.Instance.GetScene<GXGame.BattleGroudScene>().GetComponent<CreateComponent>();
+        CreateComponent createComponent = SceneFactory.GetPlayerScene().GetComponent<CreateComponent>();
         if (createComponent == null)
         {
             return;

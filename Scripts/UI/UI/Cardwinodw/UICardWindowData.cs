@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GameFrame;
 namespace GXGame
 {
-    public class UICardChoiceWindowData : Entity, IStart,IClear
+    public class UICardWindowData : Entity, IStart,IUpdate
     {
           
     }

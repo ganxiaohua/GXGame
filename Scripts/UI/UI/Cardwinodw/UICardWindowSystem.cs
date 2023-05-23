@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using GameFrame;
+using UnityEngine;
+
 namespace GXGame
 {
     public static class UICardWindowSystem
@@ -17,10 +19,20 @@ namespace GXGame
                 self.UICardWindowView.Link(self);
                 List<string> temp = new List<string>();
                 temp.Add("Card/Card");
+                self.AddComponent<UICardWindowData>();
                 self.AddComponent<DependentUIResources, List<string>>(temp);
             }
         }
 
+        [SystemBind]
+        public class UICardWindowPreShowSystem : PreShowSystem<UICardWindow>
+        {
+            protected override void PreShow(UICardWindow self,bool isFirstShow)
+            {
+                self.AddComponent<WaitComponent,Type>(typeof(IUIWait));
+                //这里可以处理通讯和其他资源加载,在完成之后在show这样可以保证不会出现闪烁出现
+            }
+        }
         [SystemBind]
         public class UICardWindowShowSystem : ShowSystem<UICardWindow>
         {
@@ -44,7 +56,10 @@ namespace GXGame
         {
             protected override void Update(UICardWindow self,float elapseSeconds, float realElapseSeconds)
             {
-                
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    self.RemoveComponent(typeof(WaitComponent));
+                }
             }
         }
 
@@ -56,8 +71,6 @@ namespace GXGame
                 self.UICardWindowView.Clear();
             }
         }
-        
-
 
     }
 }

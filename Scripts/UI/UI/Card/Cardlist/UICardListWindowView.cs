@@ -15,6 +15,7 @@ namespace GXGame
             contentPane = UIPackage.CreateObject("Card", "CardListWindow").asCom;
             m_UICardListWindow = (UICardListWindow)UIBase;
             FormBtn.onClick.Add(m_UICardListWindow.Back);
+            CardShareinfoItem01_AddBtn.onClick.Add(m_UICardListWindow.OpenCardWindow);
         }
 
         protected override void OnShown()

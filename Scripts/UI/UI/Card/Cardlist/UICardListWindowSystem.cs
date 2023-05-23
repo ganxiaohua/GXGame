@@ -19,7 +19,6 @@ namespace GXGame
                 List<string> temp = new List<string>();
                 temp.Add("Card/Card");
                 self.AddComponent<DependentUIResources, List<string>>(temp);
-                self.AddComponent<WaitComponent,Type>(typeof(IUIWait));
             }
         }
 
@@ -46,11 +45,11 @@ namespace GXGame
         {
             protected override void Update(UICardListWindow self,float elapseSeconds, float realElapseSeconds)
             {
-                //测试等待
-                if (Input.GetKeyDown(KeyCode.V))
-                {
-                    self.RemoveComponent<WaitComponent>();
-                }
+                // //测试等待
+                // if (Input.GetKeyDown(KeyCode.V))
+                // {
+                //     self.RemoveComponent<WaitComponent>();
+                // }
             }
         }
 
@@ -67,6 +66,11 @@ namespace GXGame
         public static void Back(this UICardListWindow self)
         {
             UIManager.Instance.Back();
+        }
+        
+        public static void OpenCardWindow(this UICardListWindow self)
+        {
+            UIManager.Instance.OpenUI(typeof(UICardWindow));
         }
 
     }

@@ -45,6 +45,7 @@ namespace GXGame
         {
             protected override void Update(UIHomeMainPanel self,float elapseSeconds, float realElapseSeconds)
             {
+                
             }
         }
 
