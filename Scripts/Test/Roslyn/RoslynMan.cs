@@ -14,7 +14,7 @@ public class RoslynMan
         // Compile and load code
         GXGameFrame.Instance.Start();
         // SceneEntityFactory.CreateScene<BattlegroundScene>(GXGameFrame.Instance.MainScene);
-        UIManager.Instance.OpenUI(typeof(UIHomeMainPanel));
+        // UIManager.Instance.OpenUI(typeof(UIHomeMainPanel));
     }
 
     public static void Update()

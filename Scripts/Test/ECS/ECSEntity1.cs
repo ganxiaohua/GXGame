@@ -11,7 +11,6 @@ public class Bttleground : Context
     public override void Initialize()
     {
         base.Initialize();
-        ObjectPoolManager.Instance.GetObjectPool<GameObjectObjectBase>("Gameobject");
         this.AddSystem<CreateMonsterSystem>();
         this.AddSystem<MoveSystem>();
         this.AddSystem<ViewSystem>();
@@ -22,7 +21,6 @@ public class Bttleground : Context
     public override void Clear()
     {
         base.Clear();
-        ObjectPoolManager.Instance.DeleteObjectPool<GameObjectObjectBase>("Gameobject");
     }
 }
 

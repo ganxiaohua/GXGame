@@ -12,7 +12,6 @@ public class GameMain : MonoBehaviour
     {
         await GXGameFrame.Instance.Start();
         SceneFactory.ChangePlayerScene<BattleGroudScene>();
-        UIManager.Instance.OpenUI(typeof(UIHomeMainPanel));
     }
 
     // Update is called once per frame
