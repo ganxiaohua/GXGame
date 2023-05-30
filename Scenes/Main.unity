@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 61062994}
   - component: {fileID: 61062993}
   - component: {fileID: 61062992}
+  - component: {fileID: 61062996}
   m_Layer: 0
   m_Name: Stage Camera
   m_TagString: Untagged
@@ -184,8 +185,8 @@ Camera:
   m_GameObject: {fileID: 61062991}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -203,7 +204,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: 1
+  m_Depth: 3
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 32
@@ -233,6 +234,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &61062996
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61062991}
+  m_Enabled: 1
 --- !u!1 &228881821
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1675738213}
+  - component: {fileID: 1675738214}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -332,3 +342,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675738214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675738211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f175a0dbd9750a40bd7b9c89607f990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

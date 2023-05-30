@@ -7,14 +7,12 @@ namespace GXGame
 {
     public class Main : MonoBehaviour
     {
-        // Start is called before the first frame update
         async void Start()
         {
+            DontDestroyOnLoad(this);
             await GXGameFrame.Instance.Start();
             SceneFactory.ChangePlayerScene<CubeScene>();
         }
-
-        // Update is called once per frame
         void Update()
         {
             GXGameFrame.Instance.Update();

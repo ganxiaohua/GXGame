@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using GameFrame;
-using UnityEngine.SceneManagement;
 
 namespace GXGame
 {
@@ -13,6 +12,7 @@ namespace GXGame
             protected override async void Start(CubeScene self)
             {
                 await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/CubeScene.unity");
+                self.AddComponent<CubeConText>();
             }
         }
 
@@ -21,6 +21,7 @@ namespace GXGame
         {
             protected override void Show(CubeScene self)
             {
+                
             }
         }
 
@@ -29,6 +30,7 @@ namespace GXGame
         {
             protected override void Hide(CubeScene self)
             {
+                
             }
         }
 
@@ -45,6 +47,7 @@ namespace GXGame
         {
             protected override void Clear(CubeScene self)
             {
+                AssetManager.Instance.UnLoad("Assets/GXGame/Scenes/CubeScene.unity");
             }
         }
     }
