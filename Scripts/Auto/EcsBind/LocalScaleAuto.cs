@@ -5,23 +5,23 @@
         
          public static void AddLocalScale(this ECSEntity ecsEntity)
          {
-              ecsEntity.AddComponent<GXGame.LocalScale>();
+              ecsEntity.AddComponent(Components.LocalScale);
          }
          
-         public static void AddLocalScale(this ECSEntity ecsEntity,Vector3 param)
+         public static void AddLocalScale(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
          {
-             var p  =  ecsEntity.AddComponent<GXGame.LocalScale>();
+             var p  =  (GXGame.LocalScale)ecsEntity.AddComponent(Components.LocalScale);
              p.Scale = param;
          }
          
          public static GXGame.LocalScale GetLocalScale(this ECSEntity ecsEntity)
          {
-              return ecsEntity.GetComponent<GXGame.LocalScale>();
+              return (GXGame.LocalScale)ecsEntity.GetComponent(Components.LocalScale);
          }
          
-         public static ECSEntity SetLocalScale(this ECSEntity ecsEntity,Vector3 param)
+         public static ECSEntity SetLocalScale(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
          {
-              var p = ecsEntity.GetComponent<GXGame.LocalScale>();
+              var p = (GXGame.LocalScale)ecsEntity.GetComponent(Components.LocalScale);
               p.Scale = param;
               ViewBindEventClass.LocalScaleEntityComponentNumericalChange?.Invoke(p,ecsEntity);
               return ecsEntity;

@@ -13,7 +13,7 @@ namespace GXGame
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, typeof(Destroy));
+        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.Destroy);
 
         protected override bool Filter(ECSEntity entity)
         {

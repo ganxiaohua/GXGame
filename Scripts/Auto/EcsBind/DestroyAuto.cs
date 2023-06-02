@@ -5,12 +5,12 @@
         
          public static void AddDestroy(this ECSEntity ecsEntity)
          {
-              ecsEntity.AddComponent<GameFrame.Destroy>();
+              ecsEntity.AddComponent(Components.Destroy);
          }
          
          public static GameFrame.Destroy GetDestroy(this ECSEntity ecsEntity)
          {
-              return ecsEntity.GetComponent<GameFrame.Destroy>();
+              return (GameFrame.Destroy)ecsEntity.GetComponent(Components.Destroy);
          }
               
    }

@@ -1,55 +1,52 @@
-﻿using GameFrame;
+﻿using System;
+using GameFrame;
 using UnityEngine;
 
 namespace GXGame
 {
     [ViewBind]
-    public class WorldPos : IECSComponent
+    public class WorldPos : ECSComponent
     {
         public Vector3 Pos;
-
-        public void Clear()
-        {
-        }
+    }
+    
+    [ViewBind]
+    public class WorldOffsetPos : ECSComponent
+    {
+        public Vector3 OffsetPos;
     }
 
     [ViewBind]
-    public class WorldRotate : IECSComponent
+    public class WorldRotate : ECSComponent
     {
         public Vector3 Rotate;
-
-        public void Clear()
-        {
-        }
     }
     
     [ViewBind]
-    public class LocalScale : IECSComponent
+    public class LocalScale : ECSComponent
     {
         public Vector3 Scale;
-
-        public void Clear()
-        {
-        }
     }
     
     [ViewBind]
-    public class MeshRendererColor : IECSComponent
+    public class MeshRendererColor : ECSComponent
     {
         public Color Color;
-        public void Clear()
-        {
-        }
+    }
+    
+    public class InputDirection : ECSComponent
+    {
+        public Vector3 InputDir;
+    }
+    
+    public class InputMoveSpeed : ECSComponent
+    {
+        public float MoveSpeed;
     }
 
 
-    public class AssetPath : IECSComponent
+    public class AssetPath : ECSComponent
     {
         public string Path;
-
-        public void Clear()
-        {
-            
-        }
     }
 }

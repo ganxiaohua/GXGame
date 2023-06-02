@@ -10,6 +10,8 @@ namespace GXGame
             this.AddSystem<CreateCubeSystem>();
             this.AddSystem<ViewSystem<CubeView>>();
             this.AddSystem<DestroySystem>();
+            this.AddSystem<InputSystem>();
+            this.AddSystem<InputWorldPosChangeSystem>();
         }
 
         public override void Clear()

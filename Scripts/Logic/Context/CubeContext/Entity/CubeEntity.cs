@@ -6,7 +6,7 @@ namespace GXGame
     {
         public override void Initialize()
         {
-            
+            base.Initialize();
         }
     }
 }

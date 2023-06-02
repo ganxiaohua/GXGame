@@ -5,23 +5,23 @@
         
          public static void AddWorldRotate(this ECSEntity ecsEntity)
          {
-              ecsEntity.AddComponent<GXGame.WorldRotate>();
+              ecsEntity.AddComponent(Components.WorldRotate);
          }
          
-         public static void AddWorldRotate(this ECSEntity ecsEntity,Vector3 param)
+         public static void AddWorldRotate(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
          {
-             var p  =  ecsEntity.AddComponent<GXGame.WorldRotate>();
+             var p  =  (GXGame.WorldRotate)ecsEntity.AddComponent(Components.WorldRotate);
              p.Rotate = param;
          }
          
          public static GXGame.WorldRotate GetWorldRotate(this ECSEntity ecsEntity)
          {
-              return ecsEntity.GetComponent<GXGame.WorldRotate>();
+              return (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
          }
          
-         public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,Vector3 param)
+         public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
          {
-              var p = ecsEntity.GetComponent<GXGame.WorldRotate>();
+              var p = (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
               p.Rotate = param;
               ViewBindEventClass.WorldRotateEntityComponentNumericalChange?.Invoke(p,ecsEntity);
               return ecsEntity;

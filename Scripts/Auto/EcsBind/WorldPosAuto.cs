@@ -5,23 +5,23 @@
         
          public static void AddWorldPos(this ECSEntity ecsEntity)
          {
-              ecsEntity.AddComponent<GXGame.WorldPos>();
+              ecsEntity.AddComponent(Components.WorldPos);
          }
          
-         public static void AddWorldPos(this ECSEntity ecsEntity,Vector3 param)
+         public static void AddWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
          {
-             var p  =  ecsEntity.AddComponent<GXGame.WorldPos>();
+             var p  =  (GXGame.WorldPos)ecsEntity.AddComponent(Components.WorldPos);
              p.Pos = param;
          }
          
          public static GXGame.WorldPos GetWorldPos(this ECSEntity ecsEntity)
          {
-              return ecsEntity.GetComponent<GXGame.WorldPos>();
+              return (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
          }
          
-         public static ECSEntity SetWorldPos(this ECSEntity ecsEntity,Vector3 param)
+         public static ECSEntity SetWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
          {
-              var p = ecsEntity.GetComponent<GXGame.WorldPos>();
+              var p = (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
               p.Pos = param;
               ViewBindEventClass.WorldPosEntityComponentNumericalChange?.Invoke(p,ecsEntity);
               return ecsEntity;

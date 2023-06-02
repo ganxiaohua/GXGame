@@ -13,6 +13,7 @@ namespace GXGame
         private EntityComponentNumericalChange<WorldPos> m_PosDelegate;
         private EntityComponentNumericalChange<WorldRotate> m_RotDelegate;
         private EntityComponentNumericalChange<LocalScale> m_LocalScale;
+        private EntityComponentNumericalChange<WorldOffsetPos> m_WorldOffsetPos;
 
         public void Link(ECSEntity ecsEntity)
         {
@@ -28,12 +29,15 @@ namespace GXGame
             m_PosDelegate = WolrdPosition;
             m_RotDelegate = WorldRotate;
             m_LocalScale = LocalScale;
+            m_WorldOffsetPos = WorldOffsetPos;
             ViewBindEventClass.WorldPosEntityComponentNumericalChange -= m_PosDelegate;
             ViewBindEventClass.WorldPosEntityComponentNumericalChange += m_PosDelegate;
             ViewBindEventClass.WorldRotateEntityComponentNumericalChange -= m_RotDelegate;
             ViewBindEventClass.WorldRotateEntityComponentNumericalChange += m_RotDelegate;
             ViewBindEventClass.LocalScaleEntityComponentNumericalChange -= m_LocalScale;
             ViewBindEventClass.LocalScaleEntityComponentNumericalChange += m_LocalScale;
+            ViewBindEventClass.WorldOffsetPosEntityComponentNumericalChange -= m_WorldOffsetPos;
+            ViewBindEventClass.WorldOffsetPosEntityComponentNumericalChange += m_WorldOffsetPos;
         }
 
         public void Clear()
@@ -42,6 +46,7 @@ namespace GXGame
             ViewBindEventClass.WorldPosEntityComponentNumericalChange -= m_PosDelegate;
             ViewBindEventClass.WorldRotateEntityComponentNumericalChange -= m_RotDelegate;
             ViewBindEventClass.LocalScaleEntityComponentNumericalChange -= m_LocalScale;
+            ViewBindEventClass.WorldOffsetPosEntityComponentNumericalChange -= m_WorldOffsetPos;
             m_PosDelegate = null;
             m_RotDelegate = null;
             m_LocalScale = null;
@@ -58,6 +63,13 @@ namespace GXGame
             if (m_BindEntity.ID != ecsEntity.ID)
                 return;
             m_GameObjectBase.WorldPos = worldPos.Pos;
+        }
+        
+        public void WorldOffsetPos(WorldOffsetPos worldOffsetPos, ECSEntity ecsEntity)
+        {
+            if (m_BindEntity.ID != ecsEntity.ID)
+                return;
+            m_GameObjectBase.WorldPos += worldOffsetPos.OffsetPos;
         }
 
         private void WorldRotate(WorldRotate worldRotate, ECSEntity ecsEntity)
