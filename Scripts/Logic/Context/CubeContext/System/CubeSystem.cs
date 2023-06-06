@@ -20,15 +20,15 @@ namespace GXGame
             cubeHero.AddWorldOffsetPos();
             cubeHero.AddAssetPath("Cube");
 
-            // for (int i = 0; i < 5; i++)
-            // {
-            //     var monster = entity.AddChild<Cube>();
-            //     monster.AddWorldPos(new Vector3(-6 + i, 0, -5));
-            //     monster.AddWorldRotate(Vector3.zero);
-            //     monster.AddLocalScale(Vector3.one);
-            //     monster.AddMeshRendererColor(Color.red);
-            //     monster.AddAssetPath("Cube");
-            // }
+            for (int i = 0; i < 5; i++)
+            {
+                var monster = entity.AddChild<Cube>();
+                monster.AddWorldPos(new Vector3(-6 + i, 0, -5));
+                monster.AddWorldRotate(Vector3.zero);
+                monster.AddLocalScale(Vector3.one);
+                monster.AddMeshRendererColor(Color.red);
+                monster.AddAssetPath("Cube");
+            }
         }
 
         public void Clear()

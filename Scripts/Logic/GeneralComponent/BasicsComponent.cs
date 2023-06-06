@@ -44,9 +44,14 @@ namespace GXGame
         public float MoveSpeed;
     }
 
-
     public class AssetPath : ECSComponent
     {
         public string Path;
+    }
+
+    [AssignBind(typeof(Cube))]
+    public class CubeTest : ECSComponent
+    {
+        public string testcube;
     }
 }
