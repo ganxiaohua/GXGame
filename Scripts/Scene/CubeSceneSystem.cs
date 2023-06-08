@@ -13,6 +13,7 @@ namespace GXGame
             {
                 await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/CubeScene.unity");
                 self.AddComponent<CubeConText>();
+                UIManager.Instance.OpenUI(typeof(UICardListWindow));
             }
         }
 

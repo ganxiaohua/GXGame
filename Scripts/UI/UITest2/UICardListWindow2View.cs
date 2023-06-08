@@ -6,14 +6,15 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public partial class UIHomeMainPanelView : UIViewBase
+    public partial class UICardListWindow2View : UIViewBase
     {
-        private UIHomeMainPanel m_UIHomeMainPanel;
+        private UICardListWindow2 m_UICardListWindow2;
         protected override void OnInit()
         {
             base.OnInit();
-            contentPane = UIPackage.CreateObject("Home", "HomeMainPanel").asCom;
-            m_UIHomeMainPanel = (UIHomeMainPanel)UIBase;
+            contentPane = UIPackage.CreateObject("Card", "CardListWindow2").asCom;
+            m_UICardListWindow2 = (UICardListWindow2)UIBase;
+            n43.onClick.Add(m_UICardListWindow2.Back);
         }
 
         protected override void OnShown()
