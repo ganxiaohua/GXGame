@@ -1,6 +1,5 @@
 using System.IO;
 using System.Threading.Tasks;
-using BansheeGz.BGDatabase;
 using Cysharp.Threading.Tasks;
 using GameFrame;
 using GXGame;
