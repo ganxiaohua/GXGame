@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameFrame;
@@ -16,6 +17,16 @@ namespace GXGame
         void Update()
         {
             GXGameFrame.Instance.Update();
+        }
+
+        private void LateUpdate()
+        {
+            GXGameFrame.Instance.LateUpdate();
+        }
+        
+        private void FixedUpdate()
+        {
+            GXGameFrame.Instance.FixedUpdate();
         }
     }
 }
