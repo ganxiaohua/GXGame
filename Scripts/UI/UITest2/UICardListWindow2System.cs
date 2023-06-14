@@ -15,7 +15,6 @@ namespace GXGame
                 self.UICardListWindow2View.Link(self);
                 List<string> temp = new List<string>();
                 temp.Add("TestUI/Card");
-                self.AddComponent<UICardListWindow2Data>();
                 self.AddComponent<DependentUIResources, List<string>>(temp);
             }
         }
@@ -25,6 +24,11 @@ namespace GXGame
         {
             protected override void PreShow(UICardListWindow2 self, bool isFirstShow)
             {
+                if (self.HasComponent<UICardListWindow2Data>())
+                {
+                    self.RemoveComponent(typeof(UICardListWindow2Data));   
+                }
+                self.AddComponent<UICardListWindow2Data>();
                 //这里可以处理通讯和其他资源加载,在完成之后在show这样可以保证不会出现闪烁出现//例子UI等待:加入self.AddComponent<WaitComponent,Type>(typeof(IUIWait));//当需求完成的时候RemoveComponent<WaitComponent>
             }
         }
