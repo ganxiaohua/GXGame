@@ -5,11 +5,8 @@ namespace GXGame
 {
     public class DestroySystem : ReactiveSystem
     {
-        private Context context;
-
         public override void Start(Context entity)
         {
-            context = entity;
             base.Start(entity);
         }
 
@@ -24,13 +21,13 @@ namespace GXGame
         {
             foreach (var item in entities)
             {
-                context.RemoveChild(item.ID);
+                Context.RemoveChild(item);
             }
         }
 
         public override void Clear()
         {
-            context = null;
+            Context = null;
         }
     }
 }

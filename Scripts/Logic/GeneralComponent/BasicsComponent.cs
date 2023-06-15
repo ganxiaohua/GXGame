@@ -49,9 +49,9 @@ namespace GXGame
         public string Path;
     }
 
-    [AssignBind(typeof(Cube))]
-    public class CubeTest : ECSComponent
-    {
-        public string testcube;
-    }
+    // [AssignBind(typeof(Cube))]
+    // public class CubeTest : ECSComponent
+    // {
+    //     public string testcube;
+    // }
 }

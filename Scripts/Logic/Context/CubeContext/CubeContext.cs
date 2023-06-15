@@ -12,6 +12,8 @@ namespace GXGame
             this.AddSystem<DestroySystem>();
             this.AddSystem<InputSystem>();
             this.AddSystem<InputWorldPosChangeSystem>();
+            
+            this.AddSystem<CreateSkillSystem>();
         }
 
         public override void Clear()
