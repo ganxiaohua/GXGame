@@ -26,9 +26,14 @@ namespace GXGame
         {
             foreach (var entity in entities)
             {
-                float speed = entity.GetInputMoveSpeed().MoveSpeed;
-                Vector3 inputDir = entity.GetInputDirection().InputDir*(speed*Time.deltaTime);
-                entity.SetWorldOffsetPos(inputDir);
+                var inputdir = entity.GetInputDirection().InputDir;
+                if (inputdir != Vector3.zero)
+                {
+                    float speed = entity.GetInputMoveSpeed().MoveSpeed;
+                    Vector3 inputDir = inputdir * (speed * Time.deltaTime);
+                    Vector3 pos = entity.GetWorldPos().Pos + inputDir;
+                    entity.SetWorldPos(pos);
+                }
             }
         }
 

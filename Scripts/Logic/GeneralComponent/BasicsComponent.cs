@@ -11,12 +11,6 @@ namespace GXGame
     }
     
     [ViewBind]
-    public class WorldOffsetPos : ECSComponent
-    {
-        public Vector3 OffsetPos;
-    }
-
-    [ViewBind]
     public class WorldRotate : ECSComponent
     {
         public Vector3 Rotate;
@@ -48,10 +42,19 @@ namespace GXGame
     {
         public string Path;
     }
+    
+    public class ViewType : ECSComponent
+    {
+        public Type Type;
+    }
 
-    // [AssignBind(typeof(Cube))]
-    // public class CubeTest : ECSComponent
-    // {
-    //     public string testcube;
-    // }
+    public class CampComponent : ECSComponent
+    {
+        public Camp Camp;
+    }
+    
+    public class UnitTypeComponent : ECSComponent
+    {
+        public UnitTypeEnum UnitTypeEnum;
+    }
 }

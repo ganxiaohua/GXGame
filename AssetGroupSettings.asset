@@ -45,3 +45,11 @@ MonoBehaviour:
     packByDir: 0
     bundleMode: 1
     compression: 1
+  - groupName: skilleffect
+    searchPaths:
+    - Assets/GXGame/Art/Effect/SkillEffect
+    filter: 
+    simplifyAddressName: 1
+    packByDir: 0
+    bundleMode: 1
+    compression: 1

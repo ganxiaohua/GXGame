@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using GameFrame;
+using Unity.VisualScripting;
 
 namespace GXGame
 {
-    public class ViewSystem<T> : ReactiveSystem where T : class, IEceView, new()
+    public class ViewSystem : ReactiveSystem
     {
-        private T ObjectView;
-
         public override void Start(Context entity)
         {
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.AssetPath);
+        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.AssetPath, Components.ViewType);
 
         protected override bool Filter(ECSEntity entity)
         {
@@ -32,18 +32,15 @@ namespace GXGame
 
         public async UniTask LoadAsset(ECSEntity ecsentity)
         {
-            ecsentity.AddView();
-            ObjectView = ReferencePool.Acquire<T>();
+            Type type = ecsentity.GetViewType().Type;
+            IEceView ObjectView = (IEceView)ReferencePool.Acquire(type);
             ObjectView.Link(ecsentity);
-            ecsentity.SetView(ObjectView);
+            ecsentity.AddView(ObjectView);
         }
 
         public override void Clear()
         {
-            if (ObjectView != null)
-            {
-                ReferencePool.Release(ObjectView);
-            }
+
         }
     }
 }

@@ -1,0 +1,30 @@
+   using GameFrame;
+   using UnityEngine;
+   public static class AutoSkillAbilityBehaviorComponent
+   {
+        
+         public static void AddSkillAbilityBehaviorComponent(this ECSEntity ecsEntity)
+         {
+              ecsEntity.AddComponent(Components.SkillAbilityBehaviorComponent);
+         }
+         
+         public static void AddSkillAbilityBehaviorComponent(this ECSEntity ecsEntity,GXGame.AbilityBehavior param)
+         {
+             var p  =  (GXGame.SkillAbilityBehaviorComponent)ecsEntity.AddComponent(Components.SkillAbilityBehaviorComponent);
+             p.AbilityBehavior = param;
+         }
+         
+         public static GXGame.SkillAbilityBehaviorComponent GetSkillAbilityBehaviorComponent(this ECSEntity ecsEntity)
+         {
+              return (GXGame.SkillAbilityBehaviorComponent)ecsEntity.GetComponent(Components.SkillAbilityBehaviorComponent);
+         }
+         
+         public static ECSEntity SetSkillAbilityBehaviorComponent(this ECSEntity ecsEntity,GXGame.AbilityBehavior param)
+         {
+              var p = (GXGame.SkillAbilityBehaviorComponent)ecsEntity.GetComponent(Components.SkillAbilityBehaviorComponent);
+              p.AbilityBehavior = param;
+              
+              return ecsEntity;
+         }
+              
+   }

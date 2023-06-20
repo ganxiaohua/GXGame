@@ -1,0 +1,30 @@
+   using GameFrame;
+   using UnityEngine;
+   public static class AutoSkillPlayModelPathComponent
+   {
+        
+         public static void AddSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity)
+         {
+              ecsEntity.AddComponent(Components.SkillPlayModelPathComponent);
+         }
+         
+         public static void AddSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity,System.String[] param)
+         {
+             var p  =  (GXGame.SkillPlayModelPathComponent)ecsEntity.AddComponent(Components.SkillPlayModelPathComponent);
+             p.AnimtionName = param;
+         }
+         
+         public static GXGame.SkillPlayModelPathComponent GetSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity)
+         {
+              return (GXGame.SkillPlayModelPathComponent)ecsEntity.GetComponent(Components.SkillPlayModelPathComponent);
+         }
+         
+         public static ECSEntity SetSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity,System.String[] param)
+         {
+              var p = (GXGame.SkillPlayModelPathComponent)ecsEntity.GetComponent(Components.SkillPlayModelPathComponent);
+              p.AnimtionName = param;
+              
+              return ecsEntity;
+         }
+              
+   }

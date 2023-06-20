@@ -1,0 +1,16 @@
+   using GameFrame;
+   using UnityEngine;
+   public static class AutoSkillComponent
+   {
+        
+         public static void AddSkillComponent(this GXGame.SkillEntity ecsEntity)
+         {
+              ecsEntity.AddComponent(Components.SkillComponent);
+         }
+         
+         public static GXGame.SkillComponent GetSkillComponent(this GXGame.SkillEntity ecsEntity)
+         {
+              return (GXGame.SkillComponent)ecsEntity.GetComponent(Components.SkillComponent);
+         }
+              
+   }
