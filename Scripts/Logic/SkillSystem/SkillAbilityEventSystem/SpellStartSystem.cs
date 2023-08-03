@@ -28,6 +28,7 @@ namespace GXGame
                     Entity.AddSkillEffectComponent(new string[]{"Skill1Effect"});
                     Entity.AddSkillEffectEnitiyComponent(false);
                     Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[]{SkillTargetEnum.CASTER});
+                    Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
                 }

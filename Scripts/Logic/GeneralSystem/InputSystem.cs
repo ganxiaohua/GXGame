@@ -15,11 +15,11 @@ namespace GXGame
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.InputDirection);
+        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.MoveDirection);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return true;
+            return entity.GetInputDirection() != null;
         }
 
         protected override void Update(List<ECSEntity> entities)
@@ -45,14 +45,12 @@ namespace GXGame
 
             foreach (var entity in entities)
             {
-                entity.GetInputDirection().InputDir = InputPos;
+                entity.GetMoveDirection().Dir = InputPos;
             }
         }
 
         public override void Clear()
         {
         }
-        
-        
     }
 }

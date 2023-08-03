@@ -18,7 +18,6 @@ namespace GXGame
             {
                 return true;
             }
-
             return false;
         }
 
@@ -31,13 +30,19 @@ namespace GXGame
                 skilleffect.AddWorldPos(cubeHero.GetWorldPos().Pos);
                 skilleffect.AddAssetPath("Skill1Effect");
                 skilleffect.AddViewType(typeof(GameObjectView));
+                skilleffect.AddMoveDirection(cubeHero.GetDirection().Dir);
+                skilleffect.AddMoveSpeed(10);
                 skilleffect.AddSkillOwnerComponent(item);
                 item.SetSkillEffectEnitiyComponent(true);
             }
         }
+        
+        
+        
 
         public override void Clear()
         {
+            
         }
     }
 }

@@ -17,6 +17,7 @@ namespace GXGame
                     SkillManagerEntity managerEntity = context.AddChild<SkillManagerEntity>();
                     managerEntity.AddSkillIDComponent(id);
                     managerEntity.AddSkillManagerStateComponent(SkillManagerState.None);
+                    managerEntity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     managerEntity.AddOnSpellStartComponent(KeyCode.K);
                     managerEntity.AddSkillOwnerComponent(entitie);
                     managerEntity.AddAbilityCooldownComponent(5);

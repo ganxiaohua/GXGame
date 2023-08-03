@@ -60,13 +60,13 @@ namespace GXGame
                 return;
             m_GameObjectBase.WorldPos = worldPos.Pos;
         }
-        
+
 
         private void WorldRotate(WorldRotate worldRotate, ECSEntity ecsEntity)
         {
             if (worldRotate == null || m_BindEntity.ID != ecsEntity.ID)
                 return;
-            m_GameObjectBase.WorldRot = Quaternion.Euler(worldRotate.Rotate);
+            m_GameObjectBase.WorldRot = worldRotate.Rotate;
         }
 
         private void LocalScale(LocalScale localScale, ECSEntity ecsEntity)

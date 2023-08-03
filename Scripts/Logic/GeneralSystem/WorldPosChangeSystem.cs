@@ -5,32 +5,30 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class InputWorldPosChangeSystem : ReactiveSystem
+    public class WorldPosChangeSystem : ReactiveSystem
     {
-        private Vector3 InputPos;
-
         public override void Start(Context entity)
         {
             base.Start(entity);
         }
 
         protected override Collector GetTrigger(Context context) =>
-            Collector.CreateCollector(context,Components.InputDirection,Components.WorldPos,Components.InputMoveSpeed);
+            Collector.CreateCollector(context,Components.MoveDirection,Components.WorldPos,Components.MoveSpeed);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return entity.GetInputMoveSpeed() != null;
+            return entity.GetMoveSpeed() != null;
         }
 
         protected override void Update(List<ECSEntity> entities)
         {
             foreach (var entity in entities)
             {
-                var inputdir = entity.GetInputDirection().InputDir;
-                if (inputdir != Vector3.zero)
+                var dir = entity.GetMoveDirection().Dir;
+                if (dir != Vector3.zero)
                 {
-                    float speed = entity.GetInputMoveSpeed().MoveSpeed;
-                    Vector3 inputDir = inputdir * (speed * Time.deltaTime);
+                    float speed = entity.GetMoveSpeed().Speed;
+                    Vector3 inputDir = dir * (speed * Time.deltaTime);
                     Vector3 pos = entity.GetWorldPos().Pos + inputDir;
                     entity.SetWorldPos(pos);
                 }

@@ -8,7 +8,7 @@
               ecsEntity.AddComponent(Components.WorldRotate);
          }
          
-         public static void AddWorldRotate(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
+         public static void AddWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
          {
              var p  =  (GXGame.WorldRotate)ecsEntity.AddComponent(Components.WorldRotate);
              p.Rotate = param;
@@ -19,7 +19,7 @@
               return (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
          }
          
-         public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
+         public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
          {
               var p = (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
               p.Rotate = param;

@@ -11,7 +11,8 @@ namespace GXGame
             this.AddSystem<ViewSystem>();
             this.AddSystem<DestroySystem>();
             this.AddSystem<InputSystem>();
-            this.AddSystem<InputWorldPosChangeSystem>();
+            this.AddSystem<WorldPosChangeSystem>();
+            this.AddSystem<WorldDirChangeSystem>();
             
             //技能相关
             this.AddSystem<CreateSkillManagerSystem>();

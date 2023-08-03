@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using GameFrame;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 namespace GXGame
@@ -10,14 +11,17 @@ namespace GXGame
         public void Start(Context entity)
         {
             var cubeHero = entity.AddChild<Cube>();
+            cubeHero.AddViewType(typeof(CubeView));
             cubeHero.AddWorldPos(new Vector3(-4, 0, -5));
-            cubeHero.AddWorldRotate(Vector3.zero);
+            cubeHero.AddWorldRotate(Quaternion.identity);
+            cubeHero.AddInputDirection();
             cubeHero.AddLocalScale(Vector3.one * 2);
             cubeHero.AddMeshRendererColor(Color.black);
-            cubeHero.AddInputDirection();
-            cubeHero.AddInputMoveSpeed(8);
+            cubeHero.AddMoveDirection();
+            cubeHero.AddMoveSpeed(8);
+            cubeHero.AddDirectionSpeed(180);
+            cubeHero.AddDirection(Vector3.forward);
             cubeHero.AddAssetPath("Cube");
-            cubeHero.AddViewType(typeof(CubeView));
             cubeHero.AddCampComponent(Camp.SELF);
             cubeHero.AddUnitTypeComponent(UnitTypeEnum.HERO);
             
@@ -29,7 +33,7 @@ namespace GXGame
                 // monster.AddInputMoveSpeed(5);
 
                 monster.AddWorldPos(new Vector3(-6 + i*1.5f, 0, -5));
-                monster.AddWorldRotate(Vector3.zero);
+                monster.AddWorldRotate(Quaternion.identity);
                 monster.AddLocalScale(Vector3.one);
                 monster.AddMeshRendererColor(Color.red);
                 monster.AddAssetPath("Cube");

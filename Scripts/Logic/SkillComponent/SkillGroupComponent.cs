@@ -11,7 +11,7 @@ namespace  GXGame
     public class SkillIDComponent : ECSComponent
     {
         public int ID;
-    }   
+    }
     
     [AssignBind(typeof(SkillManagerEntity))]
     public class SkillManagerStateComponent : ECSComponent

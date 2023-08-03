@@ -1,6 +1,7 @@
 ﻿using System;
 using GameFrame;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GXGame
 {
@@ -13,7 +14,7 @@ namespace GXGame
     [ViewBind]
     public class WorldRotate : ECSComponent
     {
-        public Vector3 Rotate;
+        public Quaternion Rotate;
     }
     
     [ViewBind]
@@ -27,15 +28,32 @@ namespace GXGame
     {
         public Color Color;
     }
-    
-    public class InputDirection : ECSComponent
+
+    [ViewBind]
+    public class Direction : ECSComponent
     {
-        public Vector3 InputDir;
+        public Vector3 Dir;
     }
     
-    public class InputMoveSpeed : ECSComponent
+    public class DirectionSpeed : ECSComponent
     {
-        public float MoveSpeed;
+        public float Speed;
+    }
+
+
+    public class InputDirection : ECSComponent
+    {
+    }
+    
+    
+    public class MoveDirection : ECSComponent
+    {
+        public Vector3 Dir;
+    }
+    
+    public class MoveSpeed : ECSComponent
+    {
+        public float Speed;
     }
 
     public class AssetPath : ECSComponent
