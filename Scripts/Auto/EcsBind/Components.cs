@@ -20,23 +20,26 @@ public static class Components {
     public const int SkillModelTargetComponent= 17;
     public const int SkillEffectComponent= 18;
     public const int SkillEffectEnitiyComponent= 19;
-    public const int SkillEffectTargetComponent= 20;
-    public const int AbilityCastPointComponent= 21;
-    public const int AbilityCastRangeComponent= 22;
-    public const int AbilityCooldownComponent= 23;
-    public const int AbilityCurCooldownComponent= 24;
-    public const int AbilityUnitTargetCampComponent= 25;
-    public const int AbilityUnitTypeComponent= 26;
-    public const int OnSpellStartComponent= 27;
-    public const int SkillAbilityBehaviorComponent= 28;
-    public const int SkillGroupComponent= 29;
-    public const int SkillIDComponent= 30;
-    public const int SkillManagerStateComponent= 31;
-    public const int SkillOwnerComponent= 32;
-    public const int Destroy= 33;
-    public const int View= 34;
+    public const int SkillIsEffectComponent= 20;
+    public const int SkillEffectTargetComponent= 21;
+    public const int AbilityCastPointComponent= 22;
+    public const int AbilityCastRangeComponent= 23;
+    public const int AbilityCooldownComponent= 24;
+    public const int AbilityCurCooldownComponent= 25;
+    public const int AbilityUnitTargetCampComponent= 26;
+    public const int AbilityUnitTypeComponent= 27;
+    public const int OnSpellStartComponent= 28;
+    public const int SkillAbilityBehaviorComponent= 29;
+    public const int SkillCollisionShapeComponent= 30;
+    public const int SkillCollisionRadiusComponent= 31;
+    public const int SkillGroupComponent= 32;
+    public const int SkillIDComponent= 33;
+    public const int SkillManagerStateComponent= 34;
+    public const int SkillOwnerComponent= 35;
+    public const int Destroy= 36;
+    public const int View= 37;
     
-    public const int TotalComponents = 35;
+    public const int TotalComponents = 38;
     
     
     public static readonly System.Type[] ComponentTypes = {
@@ -61,6 +64,7 @@ public static class Components {
         typeof(GXGame.SkillModelTargetComponent),
         typeof(GXGame.SkillEffectComponent),
         typeof(GXGame.SkillEffectEnitiyComponent),
+        typeof(GXGame.SkillIsEffectComponent),
         typeof(GXGame.SkillEffectTargetComponent),
         typeof(GXGame.AbilityCastPointComponent),
         typeof(GXGame.AbilityCastRangeComponent),
@@ -70,6 +74,8 @@ public static class Components {
         typeof(GXGame.AbilityUnitTypeComponent),
         typeof(GXGame.OnSpellStartComponent),
         typeof(GXGame.SkillAbilityBehaviorComponent),
+        typeof(GXGame.SkillCollisionShapeComponent),
+        typeof(GXGame.SkillCollisionRadiusComponent),
         typeof(GXGame.SkillGroupComponent),
         typeof(GXGame.SkillIDComponent),
         typeof(GXGame.SkillManagerStateComponent),

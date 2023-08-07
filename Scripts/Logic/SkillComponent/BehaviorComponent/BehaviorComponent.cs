@@ -44,6 +44,12 @@ namespace GXGame
     {
         public bool HasEffect;
     }
+    
+    [AssignBind(typeof(SkillEffectEntity))]
+    public class SkillIsEffectComponent : ECSComponent
+    {
+        
+    }
 
 
     [AssignBind(typeof(SkillEntity))]

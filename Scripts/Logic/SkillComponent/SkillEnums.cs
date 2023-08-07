@@ -25,4 +25,10 @@
         ATTACKER, //攻击者
         UNIT, //单位
     }
+
+    public enum CollisionShape
+    {
+        Box,
+        Sphere
+    }
 }

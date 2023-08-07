@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class SkillEffectCreateSystem : ReactiveSystem
+    public class SkillEffectMoveSystem : ReactiveSystem
     {
         protected override Collector GetTrigger(Context context)
         {
