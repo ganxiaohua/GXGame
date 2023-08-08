@@ -26,12 +26,10 @@ namespace GXGame
             foreach (SkillEntity item in entities)
             {
                 SkillEffectEntity skilleffect = Context.AddChild<SkillEffectEntity>();
-                var cubeHero = item.GetSkillOwnerComponent().Owner;
-                skilleffect.AddWorldPos(cubeHero.GetWorldPos().Pos);
+                skilleffect.AddWorldPos(item.GetWorldPos().Pos);
                 skilleffect.AddAssetPath("Skill1Effect");
                 skilleffect.AddViewType(typeof(GameObjectView));
-                // skilleffect.AddMoveDirection(cubeHero.GetDirection().Dir);
-                // skilleffect.AddMoveSpeed(10);
+                skilleffect.AddSkillIsEffectComponent();
                 skilleffect.AddSkillOwnerComponent(item);
                 item.SetSkillEffectEnitiyComponent(true);
             }

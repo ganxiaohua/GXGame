@@ -30,6 +30,7 @@ namespace GXGame
                     Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[]{SkillTargetEnum.CASTER});
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();
+                    Entity.AddWorldPos(skillentity.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
                     Entity.AddMoveDirection(item.GetSkillOwnerComponent().Owner.GetDirection().Dir);
                     Entity.AddMoveSpeed(10);
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
