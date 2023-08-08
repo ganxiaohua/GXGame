@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class SkillEffectMoveSystem : ReactiveSystem
+    public class SkillCollisionSystem : ReactiveSystem
     {
         protected override Collector GetTrigger(Context context)
         {
-            return Collector.CreateCollector(context, Components.SkillIsEffectComponent);
+            return Collector.CreateCollector(context, Components.SkillCollisionShapeComponent);
         }
 
         protected override bool Filter(ECSEntity entity)
@@ -18,15 +18,18 @@ namespace GXGame
 
         protected override void Update(List<ECSEntity> entities)
         {
-            foreach (SkillEntity item in entities)
+            foreach (SkillEffectEntity item in entities)
             {
-                item.SetWorldPos(item.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
+                Collider[] collider = Physics.OverlapSphere(item.GetSkillOwnerComponent().Owner.GetWorldPos().Pos, 1);
             }
         }
-
+        
+        
+        
 
         public override void Clear()
         {
+            
         }
     }
 }

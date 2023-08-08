@@ -8,7 +8,7 @@ namespace GXGame
     {
         protected override Collector GetTrigger(Context context)
         {
-            return Collector.CreateCollector(context, Components.SkillIDComponent,Components.OnSpellStartComponent);
+            return Collector.CreateCollector(context, Components.SkillIDComponent, Components.OnSpellStartComponent);
         }
 
         protected override bool Filter(ECSEntity entity)
@@ -21,19 +21,21 @@ namespace GXGame
             //更具配表给技能管理器添加上 配表的数据,比如播放声音,加上特效
             foreach (var item in entities)
             {
-                SkillManagerEntity skillentity = (SkillManagerEntity)item;
+                SkillManagerEntity skillentity = (SkillManagerEntity) item;
                 if (Input.GetKeyDown(skillentity.GetOnSpellStartComponent().KeyCode))
                 {
-                    SkillEntity Entity =  Context.AddChild<SkillEntity>();
-                    Entity.AddSkillEffectComponent(new string[]{"Skill1Effect"});
+                    SkillEntity Entity = Context.AddChild<SkillEntity>();
+                    Entity.AddSkillEffectComponent(new string[] {"Skill1Effect"});
                     Entity.AddSkillEffectEnitiyComponent(false);
-                    Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[]{SkillTargetEnum.CASTER});
+                    Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[] {SkillTargetEnum.CASTER});
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();
                     Entity.AddWorldPos(skillentity.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
                     Entity.AddMoveDirection(item.GetSkillOwnerComponent().Owner.GetDirection().Dir);
                     Entity.AddMoveSpeed(10);
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
+                    Entity.AddSkillCollisionShapeComponent(CollisionShape.Sphere);
+                    Entity.AddSkillCollisionRadiusComponent(5);
                     // Physics.OverlapSphere()
                 }
             }
@@ -41,7 +43,6 @@ namespace GXGame
 
         public override void Clear()
         {
-
         }
     }
 }
