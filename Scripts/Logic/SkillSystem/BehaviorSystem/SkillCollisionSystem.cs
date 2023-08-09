@@ -18,9 +18,13 @@ namespace GXGame
 
         protected override void Update(List<ECSEntity> entities)
         {
-            foreach (SkillEffectEntity item in entities)
+            foreach (SkillEntity item in entities)
             {
-                Collider[] collider = Physics.OverlapSphere(item.GetSkillOwnerComponent().Owner.GetWorldPos().Pos, 1);
+                Collider[] collider = Physics.OverlapSphere(item.GetWorldPos().Pos, 1);
+                foreach (var colliderItem in collider)
+                {
+                    Debug.Log(colliderItem.transform.name); 
+                }
             }
         }
         

@@ -18,7 +18,7 @@ namespace GXGame
 
         protected override void Update(List<ECSEntity> entities)
         {
-            foreach (SkillEntity item in entities)
+            foreach (SkillEffectEntity item in entities)
             {
                 item.SetWorldPos(item.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
             }

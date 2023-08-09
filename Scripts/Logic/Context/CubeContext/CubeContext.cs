@@ -19,6 +19,7 @@ namespace GXGame
             this.AddSystem<SpellStartSystem>();
             this.AddSystem<SkillEffectCreateSystem>();
             this.AddSystem<SkillEffectMoveSystem>();
+            this.AddSystem<SkillCollisionSystem>();
         }
 
         public override void Clear()
