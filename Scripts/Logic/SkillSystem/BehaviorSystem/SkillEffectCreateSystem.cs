@@ -14,7 +14,7 @@ namespace GXGame
         protected override bool Filter(ECSEntity entity)
         {
             var enitiy = (SkillEffectEnitiyComponent)entity.GetComponent(Components.SkillEffectEnitiyComponent);
-            if (entity.HasComponent(Components.SkillComponent) && enitiy!=null && enitiy.HasEffect == false)
+            if (entity.HasComponent(Components.SkillComponent) && enitiy==null)
             {
                 return true;
             }
@@ -31,7 +31,7 @@ namespace GXGame
                 skilleffect.AddViewType(typeof(GameObjectView));
                 skilleffect.AddSkillIsEffectComponent();
                 skilleffect.AddSkillOwnerComponent(item);
-                item.SetSkillEffectEnitiyComponent(true);
+                item.AddSkillEffectEnitiyComponent(skilleffect);
             }
         }
         

@@ -6,6 +6,8 @@ namespace GXGame
 {
     public class SkillCollisionSystem : ReactiveSystem
     {
+        private int m_Terrain = LayerMask.NameToLayer(nameof(Terrain));
+        Collider[] m_Collisins  = new Collider[8];
         protected override Collector GetTrigger(Context context)
         {
             return Collector.CreateCollector(context, Components.SkillCollisionShapeComponent);
@@ -18,22 +20,25 @@ namespace GXGame
 
         protected override void Update(List<ECSEntity> entities)
         {
-            foreach (SkillEntity item in entities)
+            foreach (var ecsEntity in entities)
             {
-                Collider[] collider = Physics.OverlapSphere(item.GetWorldPos().Pos, 1);
-                foreach (var colliderItem in collider)
+                var item = (SkillEntity) ecsEntity;
+                var size = Physics.OverlapSphereNonAlloc(item.GetWorldPos().Pos, item.GetSkillCollisionRadiusComponent().Radius,  m_Collisins);
+                for (int i = 0; i < size; i++)
                 {
-                    Debug.Log(colliderItem.transform.name); 
+                    if (m_Collisins[i].gameObject.layer == m_Terrain)
+                    {
+                        item.GetSkillEffectEnitiyComponent().Effect.AddDestroy();
+                        item.AddDestroy();
+                        return;
+                    }
                 }
             }
         }
-        
-        
-        
+
 
         public override void Clear()
         {
-            
         }
     }
 }

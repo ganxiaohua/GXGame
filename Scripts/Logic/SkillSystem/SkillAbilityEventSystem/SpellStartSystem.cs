@@ -26,16 +26,15 @@ namespace GXGame
                 {
                     SkillEntity Entity = Context.AddChild<SkillEntity>();
                     Entity.AddSkillEffectComponent(new string[] {"Skill1Effect"});
-                    Entity.AddSkillEffectEnitiyComponent(false);
                     Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[] {SkillTargetEnum.CASTER});
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();
                     Entity.AddWorldPos(skillentity.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
                     Entity.AddMoveDirection(item.GetSkillOwnerComponent().Owner.GetDirection().Dir);
-                    Entity.AddMoveSpeed(10);
+                    Entity.AddMoveSpeed(15);
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
                     Entity.AddSkillCollisionShapeComponent(CollisionShape.Sphere);
-                    Entity.AddSkillCollisionRadiusComponent(5);
+                    Entity.AddSkillCollisionRadiusComponent(1);
                     // Physics.OverlapSphere()
                 }
             }

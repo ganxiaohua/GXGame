@@ -19,7 +19,7 @@ namespace GXGame
             cubeHero.AddMeshRendererColor(Color.black);
             cubeHero.AddMoveDirection();
             cubeHero.AddMoveSpeed(8);
-            cubeHero.AddDirectionSpeed(180);
+            cubeHero.AddDirectionSpeed(360);
             cubeHero.AddDirection(Vector3.forward);
             cubeHero.AddAssetPath("Cube");
             cubeHero.AddCampComponent(Camp.SELF);
