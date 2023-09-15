@@ -12,7 +12,7 @@ namespace GXGame
         {
             var cubeHero = entity.AddChild<Cube>();
             cubeHero.AddViewType(typeof(CubeView));
-            cubeHero.AddWorldPos(new Vector3(-4, 0, -5));
+            cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
             cubeHero.AddWorldRotate(Quaternion.identity);
             cubeHero.AddInputDirection();
             cubeHero.AddLocalScale(Vector3.one * 1.5f);
@@ -29,10 +29,10 @@ namespace GXGame
             for (int i = 0; i < 5; i++)
             {
                 var monster = entity.AddChild<Cube>();
-                monster.AddInputDirection();
-                monster.AddMoveSpeed(5);
-                monster.AddMoveDirection();
-                monster.AddDirectionSpeed(180);
+                // monster.AddInputDirection();
+                // monster.AddMoveSpeed(5);
+                // monster.AddMoveDirection();
+                // monster.AddDirectionSpeed(180);
                 monster.AddDirection(Vector3.forward);
                 monster.AddSkillGroupComponent(new int[] {1});
                 
