@@ -1,4 +1,5 @@
-﻿using GameFrame;
+﻿using System.Collections.Generic;
+using GameFrame;
 
 namespace GXGame
 {
