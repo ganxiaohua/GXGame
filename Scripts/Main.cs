@@ -31,7 +31,7 @@ namespace GXGame
 
         private void OnDisable()
         {
-            GXGameFrame.Instance.OnDisable();
+            // GXGameFrame.Instance.OnDisable();
         }
     }
 }
