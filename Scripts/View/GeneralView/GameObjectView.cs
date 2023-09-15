@@ -25,6 +25,7 @@ namespace GXGame
             m_GameObjectBase = ObjectPoolFactory.GetObject(path);
             WolrdPosition(m_BindEntity.GetWorldPos(), m_BindEntity);
             WorldRotate(m_BindEntity.GetWorldRotate(), m_BindEntity);
+            LocalScale(m_BindEntity.GetLocalScale(), m_BindEntity);
             m_PosDelegate = WolrdPosition;
             m_RotDelegate = WorldRotate;
             m_LocalScale = LocalScale;
