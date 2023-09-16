@@ -32,7 +32,7 @@ namespace GXGame
                 // monster.AddInputDirection();
                 // monster.AddMoveSpeed(5);
                 // monster.AddMoveDirection();
-                // monster.AddDirectionSpeed(180);
+                monster.AddDirectionSpeed(180);
                 monster.AddDirection(Vector3.forward);
                 monster.AddSkillGroupComponent(new int[] {1});
                 
