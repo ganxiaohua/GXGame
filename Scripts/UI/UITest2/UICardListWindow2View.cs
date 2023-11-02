@@ -12,6 +12,7 @@ namespace GXGame
         protected override void OnInit()
         {
             base.OnInit();
+            ViewInit();
             contentPane = UIPackage.CreateObject("Card", "CardListWindow2").asCom;
             m_UICardListWindow2 = (UICardListWindow2)UIBase;
             n43.onClick.Add(m_UICardListWindow2.Back);

@@ -18,7 +18,7 @@ namespace GXGame
             cubeHero.AddLocalScale(Vector3.one * 1.5f);
             cubeHero.AddMeshRendererColor(Color.black);
             cubeHero.AddMoveDirection();
-            cubeHero.AddMoveSpeed(8);
+            cubeHero.AddMoveSpeed(10);
             cubeHero.AddDirectionSpeed(360);
             cubeHero.AddDirection(Vector3.forward);
             cubeHero.AddAssetPath("Cube");
@@ -29,9 +29,9 @@ namespace GXGame
             for (int i = 0; i < 5; i++)
             {
                 var monster = entity.AddChild<Cube>();
-                // monster.AddInputDirection();
-                // monster.AddMoveSpeed(5);
-                // monster.AddMoveDirection();
+                monster.AddInputDirection();
+                monster.AddMoveSpeed(5);
+                monster.AddMoveDirection();
                 monster.AddDirectionSpeed(180);
                 monster.AddDirection(Vector3.forward);
                 monster.AddSkillGroupComponent(new int[] {1});
