@@ -12,13 +12,14 @@ namespace GXGame
 			GImage n45_n0;
 			
             private void ViewInit()
-            { 
-	            n43 = contentPane[0]  as GButton;
-               n43_n0 = ((GComponent)(contentPane[0]))[0]  as GImage;
-               n44 = contentPane[1]  as GButton;
-               n44_n0 = ((GComponent)(contentPane[1]))[0]  as GImage;
-               n45 = contentPane[2]  as GButton;
-               n45_n0 = ((GComponent)(contentPane[2]))[0]  as GImage;
+            {
+                 
+               n43 = (GButton)(contentPane[0]);
+               n43_n0 = (GImage)(((GComponent)(contentPane[0]))[0]);
+               n44 = (GButton)(contentPane[1]);
+               n44_n0 = (GImage)(((GComponent)(contentPane[1]))[0]);
+               n45 = (GButton)(contentPane[2]);
+               n45_n0 = (GImage)(((GComponent)(contentPane[2]))[0]);
             }
            
     }
