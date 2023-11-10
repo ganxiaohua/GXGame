@@ -43,7 +43,6 @@ public static class Components {
     
     
     public static readonly System.Type[] ComponentTypes = {
-        
         typeof(GXGame.WorldPos),
         typeof(GXGame.WorldRotate),
         typeof(GXGame.LocalScale),
@@ -84,4 +83,8 @@ public static class Components {
         typeof(GameFrame.View),
     };
 
+    public static void SetComponent()
+    {
+        GXComponents.ComponentTypes = ComponentTypes;   
+    }
 }

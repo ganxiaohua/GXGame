@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using GameFrame;
 using UnityEngine;
 
@@ -8,9 +9,11 @@ namespace GXGame
 {
     public class Main : MonoBehaviour
     {
-        async void Start()
+        async UniTaskVoid Start()
         {
             DontDestroyOnLoad(this);
+            Components.SetComponent();
+            new AutoBindSystem().AddSystem();
             await GXGameFrame.Instance.Start();
             SceneFactory.ChangePlayerScene<CubeScene>();
         }

@@ -30,7 +30,7 @@ namespace GXGame
             }
         }
 
-        public async UniTask LoadAsset(ECSEntity ecsentity)
+        public void  LoadAsset(ECSEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Type;
             IEceView ObjectView = (IEceView)ReferencePool.Acquire(type);
