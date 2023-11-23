@@ -11,7 +11,7 @@ namespace GXGame
         {
             protected override async void Start(CubeScene self)
             {
-                await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/CubeScene.unity");
+                await AssetSystem.Instance.LoadSceneAsync("Assets/GXGame/Scenes/CubeScene.unity");
                 self.AddComponent<CubeConText>();
                 UIManager.Instance.OpenUI(typeof(UICardListWindow));
             }
@@ -48,7 +48,7 @@ namespace GXGame
         {
             protected override void Clear(CubeScene self)
             {
-                AssetManager.Instance.UnLoad("Assets/GXGame/Scenes/CubeScene.unity");
+                AssetSystem.Instance.DecrementReferenceCount("Assets/GXGame/Scenes/CubeScene.unity");
             }
         }
     }

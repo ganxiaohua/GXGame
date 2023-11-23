@@ -14,6 +14,7 @@ namespace GXGame
             DontDestroyOnLoad(this);
             Components.SetComponent();
             new AutoBindSystem().AddSystem();
+            AddPackNameForPath.Init();
             await GXGameFrame.Instance.Start();
             SceneFactory.ChangePlayerScene<CubeScene>();
         }

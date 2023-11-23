@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Common.Runtime;
+using Cysharp.Threading.Tasks;
 using GameFrame;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,8 +9,9 @@ namespace GXGame
     public class GameObjectView : IEceView
     {
         private ECSEntity m_BindEntity;
-        private GameObjectObjectBase m_GameObjectBase;
-        public GameObjectObjectBase GameObjectBase => m_GameObjectBase;
+        private GameObject3D m_GameObjectBase;
+        private UniTaskCompletionSource UniTaskCompletionSource;
+        public GameObject3D GameObjectBase => m_GameObjectBase;
         private EntityComponentNumericalChange<WorldPos> m_PosDelegate;
         private EntityComponentNumericalChange<WorldRotate> m_RotDelegate;
         private EntityComponentNumericalChange<LocalScale> m_LocalScale;
@@ -17,12 +19,15 @@ namespace GXGame
         public void Link(ECSEntity ecsEntity)
         {
             m_BindEntity = ecsEntity;
-            Init(m_BindEntity.GetAssetPath().Path);
+            Init(m_BindEntity.GetAssetPath().Path).Forget();
         }
 
-        public void Init(string path)
+        public async UniTaskVoid Init(string path)
         {
-            m_GameObjectBase = ObjectPoolFactory.GetObject(path);
+            m_GameObjectBase = new GameObject3D();
+            UniTaskCompletionSource = new UniTaskCompletionSource();
+            await m_GameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
+            UniTaskCompletionSource.TrySetResult();
             WolrdPosition(m_BindEntity.GetWorldPos(), m_BindEntity);
             WorldRotate(m_BindEntity.GetWorldRotate(), m_BindEntity);
             LocalScale(m_BindEntity.GetLocalScale(), m_BindEntity);
@@ -40,7 +45,11 @@ namespace GXGame
 
         public void Clear()
         {
-            ObjectPoolFactory.RecycleObject(m_GameObjectBase);
+            if (UniTaskCompletionSource != null)
+            {
+                UniTaskCompletionSource.TrySetCanceled();
+            }
+            m_GameObjectBase.Unbind(GameObjectPool.Instance);
             ViewBindEventClass.WorldPosEntityComponentNumericalChange -= m_PosDelegate;
             ViewBindEventClass.WorldRotateEntityComponentNumericalChange -= m_RotDelegate;
             ViewBindEventClass.LocalScaleEntityComponentNumericalChange -= m_LocalScale;
@@ -52,14 +61,15 @@ namespace GXGame
 
         public async UniTask WaitLoadOver()
         {
-            await m_GameObjectBase.LoadOver();
+            await UniTaskCompletionSource.Task;
+            UniTaskCompletionSource = null;
         }
 
         private void WolrdPosition(WorldPos worldPos, ECSEntity ecsEntity)
         {
             if (worldPos == null || m_BindEntity.ID != ecsEntity.ID)
                 return;
-            m_GameObjectBase.WorldPos = worldPos.Pos;
+            m_GameObjectBase.transform.position = worldPos.Pos;
         }
 
 
@@ -67,14 +77,14 @@ namespace GXGame
         {
             if (worldRotate == null || m_BindEntity.ID != ecsEntity.ID)
                 return;
-            m_GameObjectBase.WorldRot = worldRotate.Rotate;
+            m_GameObjectBase.transform.rotation = worldRotate.Rotate;
         }
 
         private void LocalScale(LocalScale localScale, ECSEntity ecsEntity)
         {
             if (localScale == null || m_BindEntity.ID != ecsEntity.ID)
                 return;
-            m_GameObjectBase.LocalScale = localScale.Scale;
+            m_GameObjectBase.transform.localScale = localScale.Scale;
         }
     }
 }

@@ -1,27 +1,21 @@
-using System;
 using System.Collections.Generic;
+using System;
+using System.Linq;
+#if !SYSTEMBIND
+using System.Reflection;
+#endif
 using GameFrame;
 using GXGame;
-public partial class AutoBindSystem
+
+public  class AutoBindSystem
 {
     public void AddSystem()
     {
-       var systemBind = BindSystem.Instance.SystemBind;
+#if !SYSTEMBIND
+        EditorLoadAssembly();
+#else
+        var systemBind =   BindSystem.Instance.SystemBind;
         
-        systemBind.Add(typeof(AssetInitComponent),typeof(IStartSystem),typeof(GameFrame.AssetInitComponentSystem.AssetInitComponentStartSystem));
-        systemBind.Add(typeof(AssetInitComponent),typeof(IUpdateSystem),typeof(GameFrame.AssetInitComponentSystem.AssetInitComponentUpdateSystem));
-        systemBind.Add(typeof(AssetInitComponent),typeof(IClearSystem),typeof(GameFrame.AssetInitComponentSystem.AssetInitComponentClearSystem));
-        systemBind.Add(typeof(MainScene),typeof(IStartSystem<Type>),typeof(GameFrame.SceneEntitySystem.SceneEntityStartSystem));
-        systemBind.Add(typeof(MainScene),typeof(IUpdateSystem),typeof(GameFrame.SceneEntitySystem.SceneEntityUpdateSystem));
-        systemBind.Add(typeof(MainScene),typeof(IClearSystem),typeof(GameFrame.SceneEntitySystem.SceneEntityClearSystem));
-        systemBind.Add(typeof(WaitComponent),typeof(IStartSystem<Type>),typeof(GameFrame.WaitComponentSystem.WaitComponentStartSystem));
-        systemBind.Add(typeof(WaitComponent),typeof(IClearSystem),typeof(GameFrame.WaitComponentSystem.WaitComponentClearSystem));
-        systemBind.Add(typeof(DependentResources),typeof(IStartSystem<String>),typeof(GameFrame.DependentResourcesSystem.DependentResourcesStartSystem));
-        systemBind.Add(typeof(DependentResources),typeof(IClearSystem),typeof(GameFrame.DependentResourcesSystem.DependentResourcesClearSystem));
-        systemBind.Add(typeof(DependentUIResources),typeof(IStartSystem<List<String>>),typeof(GameFrame.DependentUIResourcesSystem.DependentUIResourcesStartSystem));
-        systemBind.Add(typeof(DependentUIResources),typeof(IClearSystem),typeof(GameFrame.DependentUIResourcesSystem.DependentUIResourcesClearSystem));
-        systemBind.Add(typeof(GameObjectPoolComponent),typeof(IStartSystem),typeof(GameFrame.GameObjectPoolComponentSystem.GameObjectPoolComponentStartSystem));
-        systemBind.Add(typeof(GameObjectPoolComponent),typeof(IClearSystem),typeof(GameFrame.GameObjectPoolComponentSystem.GameObjectPoolComponentClearSystem));
         systemBind.Add(typeof(CubeScene),typeof(IStartSystem),typeof(GXGame.CubeSceneSystem.CubeSceneStartSystem));
         systemBind.Add(typeof(CubeScene),typeof(IShowSystem),typeof(GXGame.CubeSceneSystem.CubeSceneShowSystem));
         systemBind.Add(typeof(CubeScene),typeof(IHideSystem),typeof(GXGame.CubeSceneSystem.CubeSceneHideSystem));
@@ -43,6 +37,61 @@ public partial class AutoBindSystem
         systemBind.Add(typeof(UICardListWindow2),typeof(IHideSystem),typeof(GXGame.UICardListWindow2System.UICardListWindow2HideSystem));
         systemBind.Add(typeof(UICardListWindow2),typeof(IUpdateSystem),typeof(GXGame.UICardListWindow2System.UICardListWindow2UpdateSystem));
         systemBind.Add(typeof(UICardListWindow2),typeof(IClearSystem),typeof(GXGame.UICardListWindow2System.UICardListWindow2ClearSystem));
+        systemBind.Add(typeof(AssetInitComponent),typeof(IStartSystem),typeof(GameFrame.AssetInitComponentSystem.AssetInitComponentStartSystem));
+        systemBind.Add(typeof(AssetInitComponent),typeof(IUpdateSystem),typeof(GameFrame.AssetInitComponentSystem.AssetInitComponentUpdateSystem));
+        systemBind.Add(typeof(AssetInitComponent),typeof(IClearSystem),typeof(GameFrame.AssetInitComponentSystem.AssetInitComponentClearSystem));
+        systemBind.Add(typeof(MainScene),typeof(IStartSystem<Type>),typeof(GameFrame.SceneEntitySystem.SceneEntityStartSystem));
+        systemBind.Add(typeof(MainScene),typeof(IUpdateSystem),typeof(GameFrame.SceneEntitySystem.SceneEntityUpdateSystem));
+        systemBind.Add(typeof(MainScene),typeof(IClearSystem),typeof(GameFrame.SceneEntitySystem.SceneEntityClearSystem));
+        systemBind.Add(typeof(WaitComponent),typeof(IStartSystem),typeof(GameFrame.WaitComponentSystem.WaitComponentStartSystem));
+        systemBind.Add(typeof(WaitComponent),typeof(IClearSystem),typeof(GameFrame.WaitComponentSystem.WaitComponentClearSystem));
+        systemBind.Add(typeof(DependentResources),typeof(IStartSystem<String>),typeof(GameFrame.DependentResourcesSystem.DependentResourcesStartSystem));
+        systemBind.Add(typeof(DependentResources),typeof(IClearSystem),typeof(GameFrame.DependentResourcesSystem.DependentResourcesClearSystem));
+        systemBind.Add(typeof(DependentUIResources),typeof(IStartSystem<List<String>>),typeof(GameFrame.DependentUIResourcesSystem.DependentUIResourcesStartSystem));
+        systemBind.Add(typeof(DependentUIResources),typeof(IClearSystem),typeof(GameFrame.DependentUIResourcesSystem.DependentUIResourcesClearSystem));
+        systemBind.Add(typeof(GameObjectPoolComponent),typeof(IStartSystem),typeof(GameFrame.GameObjectPoolComponentSystem.GameObjectPoolComponentStartSystem));
+        systemBind.Add(typeof(GameObjectPoolComponent),typeof(IClearSystem),typeof(GameFrame.GameObjectPoolComponentSystem.GameObjectPoolComponentClearSystem));
+#endif
     }
+#if !SYSTEMBIND
+    public void EditorLoadAssembly()
+    {
+        var assembly = AppDomain.CurrentDomain.GetAssemblies();
+        foreach (var item in assembly)
+        {
+            if (item.GetName().Name == "GamePlay.Runtime" || item.GetName().Name == "GameFrame.Runtime")
+            {
+                FindEnitiyClass(item);
+            }
+        }
+    }
+
+    public static void FindEnitiyClass(Assembly assembly)
+    {
+        Type[] types = assembly.GetTypes();
+        foreach (var tp in types)
+        {
+            PushDic(assembly, tp);
+        }
+    }
+
+    private static void PushDic(Assembly assembly, Type type)
+    {
+        var vb = type.GetCustomAttribute<SystemBindAttribute>();
+        if (vb != null)
+        {
+            Type baseType = type.BaseType;
+            Type[] types = baseType.GenericTypeArguments;
+            var x = baseType.GetTypeInfo().ImplementedInterfaces;
+            foreach (var cla in x)
+            {
+                if (cla != typeof(IReference) && cla != typeof(ISystem))
+                {
+                    BindSystem.Instance.SystemBind.Add(types[0],cla,type);
+                }
+            }
+        }
+    }
+    #endif
 }
 
