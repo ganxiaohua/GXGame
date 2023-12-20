@@ -26,7 +26,7 @@ MonoBehaviour:
     - Assets/GXGame//UI
     filter: 
     simplifyAddressName: 1
-    packByDir: 1
+    packByDir: 0
     bundleMode: 1
     compression: 1
   - groupName: Config

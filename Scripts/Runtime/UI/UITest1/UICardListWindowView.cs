@@ -12,9 +12,8 @@ namespace GXGame
         protected override void OnInit()
         {
             base.OnInit();
-            contentPane = UIPackage.CreateObject("Card", "CardListWindow").asCom;
             m_UICardListWindow = (UICardListWindow)UIBase;
-            n43.onClick.Add(m_UICardListWindow.OpenCardList2);
+            n43.onClick.Add(() => { Debug.Log("打开卡牌列表");});
         }
 
         protected override void OnShown()

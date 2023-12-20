@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using GameFrame;
+using UnityEngine;
 
 namespace GXGame
 {
@@ -13,6 +14,7 @@ namespace GXGame
             {
                 await AssetSystem.Instance.LoadSceneAsync("Assets/GXGame/Scenes/CubeScene.unity");
                 self.AddComponent<CubeConText>();
+                self.AddComponent<CubeConText2>();
                 UIManager.Instance.OpenUI(typeof(UICardListWindow));
             }
         }
@@ -40,6 +42,10 @@ namespace GXGame
         {
             protected override void Update(CubeScene self, float elapseSeconds, float realElapseSeconds)
             {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    self.RemoveComponent<CubeConText>();
+                }
             }
         }
 

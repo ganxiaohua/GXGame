@@ -28,4 +28,20 @@ namespace GXGame
             base.Clear();
         }
     }
+    
+    public class CubeConText2 : Context
+    {
+        public override void Initialize()
+        {
+            base.Initialize();
+            this.AddSystem<InputSystem>();
+            this.AddSystem<WorldPosChangeSystem>();
+            this.AddSystem<WorldDirChangeSystem>();
+        }
+
+        public override void Clear()
+        {
+            base.Clear();
+        }
+    }
 }

@@ -7,9 +7,7 @@ namespace GameFrame
         /// </summary>
         public static void Init()
         {
-            
-          PackNameForPath.PackNameForPathDic.Add("Card","Assets/GXGame/UI/TestUI/Card_fui.bytes");
-
+            // PackNameForPath.PackNameForPathDic.Add("Card", "Card_fui.bytes");
         }
     }
 }

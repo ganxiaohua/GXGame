@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using GameFrame;
 
 namespace GXGame
@@ -11,11 +12,18 @@ namespace GXGame
         {
             protected override void Start(UICardListWindow self)
             {
+                Init(self).Forget();
+            }
+
+            private async UniTaskVoid Init(UICardListWindow self)
+            {
                 self.UICardListWindowView = new UICardListWindowView();
-                self.UICardListWindowView.Link(self);
-                List<string> temp = new List<string>();
-                temp.Add("Card");
-                self.AddComponent<DependentUIResources, List<string>>(temp);
+                DependentUIResources despen = self.AddComponent<DependentUIResources, string, string>(self.PackName, self.WindowName);
+                var succ = await despen.WaitLoad();
+                if (succ)
+                {
+                    self.UICardListWindowView.Link(self, despen.Window);
+                }
             }
         }
 
@@ -24,11 +32,6 @@ namespace GXGame
         {
             protected override void PreShow(UICardListWindow self, bool isFirstShow)
             {
-                if (self.HasComponent<UICardListWindowData>())
-                {
-                    self.RemoveComponent(typeof(UICardListWindowData));   
-                }
-                self.AddComponent<UICardListWindowData>();
                 //这里可以处理通讯和其他资源加载,在完成之后在show这样可以保证不会出现闪烁出现//例子UI等待:加入self.AddComponent<WaitComponent,Type>(typeof(IUIWait));//当需求完成的时候RemoveComponent<WaitComponent>
             }
         }
@@ -66,11 +69,6 @@ namespace GXGame
             {
                 self.UICardListWindowView.Clear();
             }
-        }
-
-        public static void OpenCardList2(this UICardListWindow cardListWindow)
-        {
-            UIManager.Instance.OpenUI(typeof(UICardListWindow2));
         }
     }
 }
