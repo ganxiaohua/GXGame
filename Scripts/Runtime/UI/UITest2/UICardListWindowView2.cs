@@ -1,15 +1,18 @@
+
+using System;
+using FairyGUI;
 using GameFrame;
 using UnityEngine;
 
 namespace GXGame
 {
-    public partial class UICardListWindowView : UIViewBase
+    public partial class UICardListWindowView2: UIViewBase
     {
-        private UICardListWindow m_UICardListWindow;
+        private UICardListWindow2 m_UICardListWindow2;
         public override void OnInit()
         {
             base.OnInit();
-            n43.onClick.Add(() => { Debug.Log("打开卡牌列表");});
+            m_UICardListWindow2 = (UICardListWindow2)UIBase;
         }
 
         public override void OnShow()

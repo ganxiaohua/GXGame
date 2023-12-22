@@ -18,12 +18,13 @@ namespace GXGame
             private async UniTaskVoid Init(UICardListWindow self)
             {
                 self.UICardListWindowView = new UICardListWindowView();
-                DependentUIResources despen = self.AddComponent<DependentUIResources, string, string>(self.PackName, self.WindowName);
+                DependentUI despen = self.AddComponent<DependentUI, string, string>(self.PackName, self.WindowName);
                 var succ = await despen.WaitLoad();
                 if (succ)
                 {
-                    self.UICardListWindowView.Link(self, despen.Window);
+                    self.UICardListWindowView.Link(self, despen.Window,true);
                 }
+                UIManager.Instance.AddChildUI(typeof(UICardListWindow2),despen.UINode,self.UICardListWindowView.n43).Forget();
             }
         }
 
@@ -41,7 +42,7 @@ namespace GXGame
         {
             protected override void Show(UICardListWindow self)
             {
-                self.UICardListWindowView.Show();
+                self.UICardListWindowView.OnShow();
             }
         }
 
@@ -50,7 +51,7 @@ namespace GXGame
         {
             protected override void Hide(UICardListWindow self)
             {
-                self.UICardListWindowView.Hide();
+                self.UICardListWindowView.DoHideAnimation();
             }
         }
 
@@ -59,6 +60,7 @@ namespace GXGame
         {
             protected override void Update(UICardListWindow self, float elapseSeconds, float realElapseSeconds)
             {
+                  self.UICardListWindowView.Update(elapseSeconds,realElapseSeconds);
             }
         }
 

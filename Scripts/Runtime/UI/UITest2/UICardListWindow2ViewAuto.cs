@@ -2,11 +2,11 @@ using FairyGUI;
 using GameFrame;
 namespace GXGame
 {
-    public partial class UICardListWindowView : UIViewBase
+    public partial class UICardListWindow2View : UIViewBase
     {
         
         private GButton m_n43;
-        public GButton n43
+        private GButton n43
         {
             get {
                 if (m_n43 == null)
