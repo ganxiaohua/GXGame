@@ -2,11 +2,11 @@
 
 namespace GXGame
 {
-    public class SkillManagerEntity : ECSEntity
+    public class SkillManagerEntity : ECSEntity,IStartSystem
     {
-        public override void Initialize()
+        public void Start()
         {
-            base.Initialize();
+            Initialize();
         }
     }
 }

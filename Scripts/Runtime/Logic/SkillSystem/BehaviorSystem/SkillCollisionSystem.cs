@@ -7,7 +7,8 @@ namespace GXGame
     public class SkillCollisionSystem : ReactiveSystem
     {
         private int m_Terrain = LayerMask.NameToLayer(nameof(Terrain));
-        Collider[] m_Collisins  = new Collider[8];
+        Collider[] m_Collisins = new Collider[8];
+
         protected override Collector GetTrigger(Context context)
         {
             return Collector.CreateCollector(context, Components.SkillCollisionShapeComponent);
@@ -23,7 +24,7 @@ namespace GXGame
             foreach (var ecsEntity in entities)
             {
                 var item = (SkillEntity) ecsEntity;
-                var size = Physics.OverlapSphereNonAlloc(item.GetWorldPos().Pos, item.GetSkillCollisionRadiusComponent().Radius,  m_Collisins);
+                var size = Physics.OverlapSphereNonAlloc(item.GetWorldPos().Pos, item.GetSkillCollisionRadiusComponent().Radius, m_Collisins);
                 for (int i = 0; i < size; i++)
                 {
                     if (m_Collisins[i].gameObject.layer == m_Terrain)

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameFrame;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 namespace GXGame
 {

@@ -3,24 +3,23 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class CubeConText : Context
+    public class CubeConText : Context, IStartSystem
     {
-        public override void Initialize()
+        public void Start()
         {
-            base.Initialize();
-            this.AddSystem<CreateCubeSystem>();
-            this.AddSystem<ViewSystem>();
-            this.AddSystem<DestroySystem>();
-            this.AddSystem<InputSystem>();
-            this.AddSystem<WorldPosChangeSystem>();
-            this.AddSystem<WorldDirChangeSystem>();
-            
+            this.AddEcsSystem<CreateCubeSystem>();
+            this.AddEcsSystem<ViewSystem>();
+            this.AddEcsSystem<DestroySystem>();
+            this.AddEcsSystem<InputSystem>();
+            this.AddEcsSystem<WorldPosChangeSystem>();
+            this.AddEcsSystem<WorldDirChangeSystem>();
+
             //技能相关
-            this.AddSystem<CreateSkillManagerSystem>();
-            this.AddSystem<SpellStartSystem>();
-            this.AddSystem<SkillEffectCreateSystem>();
-            this.AddSystem<SkillEffectMoveSystem>();
-            this.AddSystem<SkillCollisionSystem>();
+            this.AddEcsSystem<CreateSkillManagerSystem>();
+            this.AddEcsSystem<SpellStartSystem>();
+            this.AddEcsSystem<SkillEffectCreateSystem>();
+            this.AddEcsSystem<SkillEffectMoveSystem>();
+            this.AddEcsSystem<SkillCollisionSystem>();
         }
 
         public override void Clear()
@@ -28,15 +27,14 @@ namespace GXGame
             base.Clear();
         }
     }
-    
-    public class CubeConText2 : Context
+
+    public class CubeConText2 : Context, IStartSystem
     {
-        public override void Initialize()
+        public void Start()
         {
-            base.Initialize();
-            this.AddSystem<InputSystem>();
-            this.AddSystem<WorldPosChangeSystem>();
-            this.AddSystem<WorldDirChangeSystem>();
+            this.AddEcsSystem<InputSystem>();
+            this.AddEcsSystem<WorldPosChangeSystem>();
+            this.AddEcsSystem<WorldDirChangeSystem>();
         }
 
         public override void Clear()

@@ -6,7 +6,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace GXGame
 {
-    public class CreateCubeSystem : IECSStartSystem
+    public class CreateCubeSystem : IStartSystem<Context>
     {
         public void Start(Context entity)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class CreateSkillManagerSystem : IECSStartSystem
+    public class CreateSkillManagerSystem : IStartSystem<Context>
     {
         public void Start(Context context)
         {
