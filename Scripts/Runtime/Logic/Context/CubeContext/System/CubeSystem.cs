@@ -29,6 +29,8 @@ namespace GXGame
             for (int i = 0; i < 5; i++)
             {
                 var monster = entity.AddChild<Cube>();
+                monster.AddAssetPath("Cube");
+                monster.AddViewType(typeof(CubeView)); 
                 monster.AddInputDirection();
                 monster.AddMoveSpeed(5);
                 monster.AddMoveDirection();
@@ -40,8 +42,6 @@ namespace GXGame
                 monster.AddWorldRotate(Quaternion.identity);
                 monster.AddLocalScale(Vector3.one);
                 monster.AddMeshRendererColor(Color.red);
-                monster.AddAssetPath("Cube");
-                monster.AddViewType(typeof(CubeView)); 
                 monster.AddCampComponent(Camp.ENEMY);
                 monster.AddUnitTypeComponent(UnitTypeEnum.MONSER);
             }

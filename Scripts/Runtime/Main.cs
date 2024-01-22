@@ -6,14 +6,12 @@ namespace GXGame
 {
     public class Main : MonoBehaviour
     {
-        private IEntity hot;
-
         async UniTaskVoid Start()
         {
             DontDestroyOnLoad(this);
             Components.SetComponent();
-            await GXGameFrame.Instance.Start();
-            CubeScene x = SceneFactory.ChangePlayerScene<CubeScene>();
+            await GXGameFrame.Instance.Start(); 
+            SceneFactory.ChangePlayerScene<CubeScene>();
         }
 
         void Update()
