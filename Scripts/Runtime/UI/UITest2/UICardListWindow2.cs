@@ -1,9 +1,10 @@
 using Cysharp.Threading.Tasks;
+using Eden.Gameplay.Runtime;
 using GameFrame;
 
 namespace GXGame
 {
-    public class UICardListWindow2 : Entity, IStartSystem, IPreShowSystem, IShowSystem, IHideSystem, IUpdateSystem, IClearSystem
+    public class UICardListWindow2 : Entity, IStartSystem, IPreShowSystem, IShowSystem, IHideSystem, IUpdateSystem, IClearSystem,ITestEvent
     {
         public UICardListWindowView2 UICardListWindowView;
         public string PackName = "Card";
@@ -23,6 +24,7 @@ namespace GXGame
             {
                 UICardListWindowView.Link(this, despen.Window, false);
             }
+            EventSend.Instance.FireTestEvent();
         }
 
         public void PreShow(bool isFirstShow)
@@ -50,6 +52,11 @@ namespace GXGame
         {
             UICardListWindowView.Clear();
             base.Clear();
+        }
+
+        public void Test()
+        {
+            Debugger.Log("接收到消息");
         }
     }
 }

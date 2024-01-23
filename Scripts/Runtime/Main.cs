@@ -10,6 +10,7 @@ namespace GXGame
         {
             DontDestroyOnLoad(this);
             Components.SetComponent();
+            new AutoBindEvent().AddSystem();
             await GXGameFrame.Instance.Start(); 
             SceneFactory.ChangePlayerScene<CubeScene>();
         }
