@@ -4,18 +4,14 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class UICardListWindow2 : Entity, IStartSystem, IPreShowSystem, IShowSystem, IHideSystem, IUpdateSystem, IClearSystem,ITestEvent
+    public class UICardListWindow2 : UIEntity, ITestEvent
     {
-        public UICardListWindowView2 UICardListWindowView;
-        public string PackName = "Card";
-        public string WindowName = "CardListWindow2";
+        private UICardListWindowView2 UICardListWindowView;
+        public override string PackName => "Card";
+        public override string WindowName => "CardListWindow2";
+        
 
-        public void Start()
-        {
-            Init().Forget();
-        }
-
-        private async UniTaskVoid Init()
+        protected override async UniTaskVoid Initialize()
         {
             UICardListWindowView = new UICardListWindowView2();
             DependentUI despen = AddComponent<DependentUI, string, string>(PackName, WindowName);
@@ -27,28 +23,28 @@ namespace GXGame
             EventSend.Instance.FireTestEvent();
         }
 
-        public void PreShow(bool isFirstShow)
+        public override void PreShow(bool isFirstShow)
         {
             
         }
 
-        public void Show()
+        public override void Show()
         {
             UICardListWindowView.OnShow();
         }
 
 
-        public void Hide()
+        public override void Hide()
         {
             UICardListWindowView.OnHide();
         }
 
-        public void Update(float elapseSeconds, float realElapseSeconds)
+        public override void Update(float elapseSeconds, float realElapseSeconds)
         {
             UICardListWindowView.Update(elapseSeconds,realElapseSeconds);
         }
         
-        public override void Clear()
+        public  override void Clear()
         {
             UICardListWindowView.Clear();
             base.Clear();

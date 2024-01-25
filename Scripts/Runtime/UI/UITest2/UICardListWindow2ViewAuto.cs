@@ -4,9 +4,9 @@ namespace GXGame
 {
     public partial class UICardListWindow2View : UIViewBase
     {
-        
+           
         private GButton m_n43;
-        private GButton n43
+        public GButton n43
         {
             get {
                 if (m_n43 == null)
@@ -17,7 +17,7 @@ namespace GXGame
             }
         }
         private GImage m_n43_n0;
-        private GImage n43_n0
+        public GImage n43_n0
         {
             get {
                 if (m_n43_n0 == null)
@@ -28,7 +28,7 @@ namespace GXGame
             }
         }
         private GButton m_n44;
-        private GButton n44
+        public GButton n44
         {
             get {
                 if (m_n44 == null)
@@ -39,7 +39,7 @@ namespace GXGame
             }
         }
         private GImage m_n44_n0;
-        private GImage n44_n0
+        public GImage n44_n0
         {
             get {
                 if (m_n44_n0 == null)
@@ -50,7 +50,7 @@ namespace GXGame
             }
         }
         private GButton m_n45;
-        private GButton n45
+        public GButton n45
         {
             get {
                 if (m_n45 == null)
@@ -61,15 +61,6 @@ namespace GXGame
             }
         }
         private GImage m_n45_n0;
-        private GImage n45_n0
-        {
-            get {
-                if (m_n45_n0 == null)
-                {
-                    m_n45_n0 = Root.GetChildByPath("n45.n0") as GImage;
-                }
-                return m_n45_n0;
-            }
-        }
+        public GImage n45_n0 { get { return m_n45_n0 ??= Root.GetChildByPath("n45.n0") as GImage; } }     
     }
 }
