@@ -16,7 +16,7 @@ namespace GXGame
             return true;
         }
 
-        protected override void Update(List<ECSEntity> entities)
+        protected override void Execute(List<ECSEntity> entities)
         {
             foreach (SkillEffectEntity item in entities)
             {

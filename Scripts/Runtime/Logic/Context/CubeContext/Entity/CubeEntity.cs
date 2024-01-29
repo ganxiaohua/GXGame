@@ -2,11 +2,7 @@
 
 namespace GXGame
 {
-    public class Cube : ECSEntity,IStartSystem
+    public class Cube : ECSEntity
     {
-        public void Start()
-        {
-            Initialize();
-        }
     }
 }

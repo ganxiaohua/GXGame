@@ -4,27 +4,26 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class SpellStartSystem : ReactiveSystem
+    public class SpellStartSystem : IStartSystem<Context>, IUpdateSystem, IClearSystem
     {
-        protected override Collector GetTrigger(Context context)
+        private Group m_Group;
+        private Context m_Context;
+
+        public void Start(Context entity)
         {
-            return Collector.CreateCollector(context, Components.SkillIDComponent, Components.OnSpellStartComponent);
+            m_Context = entity;
+            Matcher matcher = Matcher.SetAllOfIndices(Components.SkillIDComponent);
+            m_Group = m_Context.GetGroup(matcher);
         }
 
-        protected override bool Filter(ECSEntity entity)
+        public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            return entity.HasComponent(Components.OnSpellStartComponent);
-        }
-
-        protected override void Update(List<ECSEntity> entities)
-        {
-            //更具配表或者其他的数据来源给技能管理器添加上,比如播放声音,加上特效
-            foreach (var item in entities)
+            foreach (var item in m_Group)
             {
                 SkillManagerEntity skillentity = (SkillManagerEntity) item;
                 if (Input.GetKeyDown(skillentity.GetOnSpellStartComponent().KeyCode))
                 {
-                    SkillEntity Entity = Context.AddChild<SkillEntity>();
+                    SkillEntity Entity = m_Context.AddChild<SkillEntity>();
                     Entity.AddSkillEffectComponent(new string[] {"Skill1Effect"});
                     Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[] {SkillTargetEnum.CASTER});
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
@@ -39,7 +38,7 @@ namespace GXGame
             }
         }
 
-        public override void Clear()
+        public void Clear()
         {
         }
     }

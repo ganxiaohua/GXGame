@@ -2,11 +2,7 @@
 
 namespace GXGame
 {
-    public class SkillEffectEntity : ECSEntity,IStartSystem
+    public class SkillEffectEntity : ECSEntity
     {
-        public void Start()
-        {
-            Initialize();
-        }
     }
 }

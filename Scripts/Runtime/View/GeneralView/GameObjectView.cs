@@ -16,7 +16,7 @@ namespace GXGame
         private EntityComponentNumericalChange<WorldRotate> m_RotDelegate;
         private EntityComponentNumericalChange<LocalScale> m_LocalScale;
 
-        public void Link(ECSEntity ecsEntity)
+        public virtual void Link(ECSEntity ecsEntity)
         {
             m_BindEntity = ecsEntity;
             Init(m_BindEntity.GetAssetPath().Path).Forget();
@@ -34,16 +34,12 @@ namespace GXGame
             m_PosDelegate = WolrdPosition;
             m_RotDelegate = WorldRotate;
             m_LocalScale = LocalScale;
-            // m_WorldOffsetPos = WorldOffsetPos;
-            ViewBindEventClass.WorldPosEntityComponentNumericalChange -= m_PosDelegate;
             ViewBindEventClass.WorldPosEntityComponentNumericalChange += m_PosDelegate;
-            ViewBindEventClass.WorldRotateEntityComponentNumericalChange -= m_RotDelegate;
             ViewBindEventClass.WorldRotateEntityComponentNumericalChange += m_RotDelegate;
-            ViewBindEventClass.LocalScaleEntityComponentNumericalChange -= m_LocalScale;
             ViewBindEventClass.LocalScaleEntityComponentNumericalChange += m_LocalScale;
         }
 
-        public void Clear()
+        public virtual void Clear()
         {
             if (UniTaskCompletionSource != null)
             {

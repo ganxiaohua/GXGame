@@ -6,22 +6,18 @@ namespace GXGame
 {
     public class SkillEffectCreateSystem : ReactiveSystem
     {
+        
         protected override Collector GetTrigger(Context context)
         {
-            return Collector.CreateCollector(context, Components.SkillComponent,Components.SkillEffectEnitiyComponent);
+            return Collector.CreateCollector(context, Components.SkillComponent);
         }
 
         protected override bool Filter(ECSEntity entity)
         {
-            var enitiy = (SkillEffectEnitiyComponent)entity.GetComponent(Components.SkillEffectEnitiyComponent);
-            if (entity.HasComponent(Components.SkillComponent) && enitiy==null)
-            {
-                return true;
-            }
-            return false;
+            return true;
         }
 
-        protected override void Update(List<ECSEntity> entities)
+        protected override void Execute(List<ECSEntity> entities)
         {
             foreach (SkillEntity item in entities)
             {

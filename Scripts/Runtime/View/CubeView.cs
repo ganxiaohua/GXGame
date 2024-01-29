@@ -3,25 +3,24 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class CubeView : IEceView
+    public class CubeView : GameObjectView
     {
         private ECSEntity m_BindEntity;
-        private GameObjectView m_GameObjectView;
         private MeshRendererView m_MeshRendererView;
 
-        public void Link(ECSEntity ecsEntity)
+        public override void Link(ECSEntity ecsEntity)
         {
+            base.Link(ecsEntity);
             m_BindEntity = ecsEntity;
-            m_GameObjectView = ReferencePool.Acquire<GameObjectView>();
-            m_GameObjectView.Link(m_BindEntity);
             m_MeshRendererView = ReferencePool.Acquire<MeshRendererView>();
-            m_MeshRendererView.Init(m_BindEntity,m_GameObjectView);
+            m_MeshRendererView.Init(m_BindEntity,this);
         }
 
-        public void Clear()
+        public override void Clear()
         {
+            base.Clear();
             ReferencePool.Release(m_MeshRendererView);
-            ReferencePool.Release(m_GameObjectView);
+            ReferencePool.Release(this);
         }
         
     }

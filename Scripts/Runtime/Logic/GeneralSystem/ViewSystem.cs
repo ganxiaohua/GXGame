@@ -20,7 +20,7 @@ namespace GXGame
             return false;
         }
 
-        protected override void Update(List<ECSEntity> entities)
+        protected override void Execute(List<ECSEntity> entities)
         {
             foreach (var entity in entities)
             {
@@ -28,7 +28,7 @@ namespace GXGame
             }
         }
 
-        public void  LoadAsset(ECSEntity ecsentity)
+        private void  LoadAsset(ECSEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Type;
             IEceView ObjectView = (IEceView)ReferencePool.Acquire(type);

@@ -12,8 +12,7 @@
              var p  =  (GXGame.MoveSpeed)ecsEntity.AddComponent(Components.MoveSpeed);
              p.Speed = param;
          }
-                 
-        
+         
         public static GXGame.MoveSpeed GetMoveSpeed(this ECSEntity ecsEntity)
         {
             return (GXGame.MoveSpeed)ecsEntity.GetComponent(Components.MoveSpeed);
@@ -23,7 +22,6 @@
         {
             var p = (GXGame.MoveSpeed)ecsEntity.GetComponent(Components.MoveSpeed);
             p.Speed = param;
-            
             ((Context)ecsEntity.Parent).Reactive(Components.MoveSpeed, ecsEntity);
             return ecsEntity;
          }     
