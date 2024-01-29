@@ -1,27 +1,20 @@
-﻿using System.Collections.Generic;
-using GameFrame;
-using Unity.VisualScripting;
+﻿using GameFrame;
 using UnityEngine;
 
 namespace GXGame
 {
-    public class InputSystem : ReactiveSystem
+    public class InputSystem : IStartSystem<Context>, IUpdateSystem, IClearSystem
     {
         private Vector3 InputPos;
+        private Group Group;
 
-        public override void Start(Context entity)
+        public void Start(Context entity)
         {
-            base.Start(entity);
+            Matcher matcher = Matcher.SetAllOfIndices(Components.MoveDirection);
+            Group = entity.GetGroup(matcher);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.MoveDirection);
-
-        protected override bool Filter(ECSEntity entity)
-        {
-            return entity.GetInputDirection() != null;
-        }
-
-        protected override void Update(List<ECSEntity> entities)
+        public void Update(float elapseSeconds, float realElapseSeconds)
         {
             InputPos.Set(0, 0, 0);
             if (Input.GetKey(KeyCode.W))
@@ -42,13 +35,15 @@ namespace GXGame
                 InputPos.x = -1;
             }
 
-            foreach (var entity in entities)
+            if (InputPos == Vector3.zero)
+                return;
+            foreach (var entity in Group)
             {
-                entity.GetMoveDirection().Dir = InputPos;
+                entity.SetMoveDirection(InputPos);
             }
         }
 
-        public override void Clear()
+        public void Clear()
         {
         }
     }

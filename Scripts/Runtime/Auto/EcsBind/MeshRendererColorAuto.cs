@@ -3,28 +3,28 @@
    public static class AutoMeshRendererColor
    {
         
-         public static void AddMeshRendererColor(this ECSEntity ecsEntity)
-         {
-              ecsEntity.AddComponent(Components.MeshRendererColor);
-         }
-         
+        public static void AddMeshRendererColor(this ECSEntity ecsEntity)
+        {
+            ecsEntity.AddComponent(Components.MeshRendererColor);
+        }
          public static void AddMeshRendererColor(this ECSEntity ecsEntity,UnityEngine.Color param)
          {
              var p  =  (GXGame.MeshRendererColor)ecsEntity.AddComponent(Components.MeshRendererColor);
              p.Color = param;
          }
-         
-         public static GXGame.MeshRendererColor GetMeshRendererColor(this ECSEntity ecsEntity)
-         {
-              return (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
-         }
-         
-         public static ECSEntity SetMeshRendererColor(this ECSEntity ecsEntity,UnityEngine.Color param)
-         {
-              var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
-              p.Color = param;
-              ViewBindEventClass.MeshRendererColorEntityComponentNumericalChange?.Invoke(p,ecsEntity);
-              return ecsEntity;
-         }
-              
+                 
+        
+        public static GXGame.MeshRendererColor GetMeshRendererColor(this ECSEntity ecsEntity)
+        {
+            return (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
+        }        
+        
+        public static ECSEntity SetMeshRendererColor(this ECSEntity ecsEntity,UnityEngine.Color param)
+        {
+            var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
+            p.Color = param;
+            ViewBindEventClass.MeshRendererColorEntityComponentNumericalChange?.Invoke(p,ecsEntity);
+            ((Context)ecsEntity.Parent).Reactive(Components.MeshRendererColor, ecsEntity);
+            return ecsEntity;
+         }     
    }

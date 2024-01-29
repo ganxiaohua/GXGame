@@ -3,10 +3,11 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class CubeConText : Context, IStartSystem
+    public class CubeConText : Context
     {
-        public void Start()
+        public override void Start()
         {
+            base.Start();
             this.AddEcsSystem<CreateCubeSystem>();
             this.AddEcsSystem<ViewSystem>();
             this.AddEcsSystem<DestroySystem>();
@@ -28,10 +29,11 @@ namespace GXGame
         }
     }
 
-    public class CubeConText2 : Context, IStartSystem
+    public class CubeConText2 : Context
     {
-        public void Start()
+        public override void Start()
         {
+            base.Start();
             this.AddEcsSystem<InputSystem>();
             this.AddEcsSystem<WorldPosChangeSystem>();
             this.AddEcsSystem<WorldDirChangeSystem>();
