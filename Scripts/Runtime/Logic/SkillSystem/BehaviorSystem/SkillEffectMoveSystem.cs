@@ -1,31 +1,27 @@
 ﻿using System.Collections.Generic;
 using GameFrame;
-using UnityEngine;
 
 namespace GXGame
 {
-    public class SkillEffectMoveSystem : ReactiveSystem
+    public class SkillEffectMoveSystem : IStartSystem<Context>, IUpdateSystem, IClearSystem
     {
-        protected override Collector GetTrigger(Context context)
+        private Group m_Group;
+
+        public void Start(Context context)
         {
-            return Collector.CreateCollector(context, Components.SkillIsEffectComponent);
+            Matcher matcher = Matcher.SetAll(Components.SkillComponent, Components.MoveDirection);
+            m_Group = context.GetGroup(matcher);
         }
 
-        protected override bool Filter(ECSEntity entity)
+        public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            return true;
-        }
-
-        protected override void Execute(List<ECSEntity> entities)
-        {
-            foreach (SkillEffectEntity item in entities)
+            foreach (var enitiy in m_Group)
             {
-                item.SetWorldPos(item.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
+                enitiy.SetMoveDirection(enitiy.GetMoveDirection().Dir);
             }
         }
 
-
-        public override void Clear()
+        public void Clear()
         {
         }
     }

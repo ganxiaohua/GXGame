@@ -6,9 +6,10 @@ namespace GXGame
 {
     public class CreateSkillManagerSystem : IStartSystem<Context>
     {
+        private Matcher matcher;
         public void Start(Context context)
         {
-            Matcher matcher = Matcher.SetAllOfIndices(Components.SkillGroupComponent);
+            Matcher matcher = Matcher.SetAll(Components.SkillGroupComponent);
             Group group = context.GetGroup(matcher);
             foreach (var entitie in group.EntitiesMap)
             {

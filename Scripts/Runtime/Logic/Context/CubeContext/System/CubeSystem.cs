@@ -36,7 +36,7 @@ namespace GXGame
                 monster.AddMoveDirection();
                 monster.AddDirectionSpeed(180);
                 monster.AddDirection(Vector3.forward);
-                monster.AddSkillGroupComponent(new int[] {1});
+                // monster.AddSkillGroupComponent(new int[] {1});
                 
                 monster.AddWorldPos(new Vector3(-6 + i*1.5f, 0, -5));
                 monster.AddWorldRotate(Quaternion.identity);

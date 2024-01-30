@@ -12,7 +12,7 @@ namespace GXGame
         public void Start(Context entity)
         {
             m_Context = entity;
-            Matcher matcher = Matcher.SetAllOfIndices(Components.SkillIDComponent);
+            Matcher matcher = Matcher.SetAll(Components.SkillIDComponent);
             m_Group = m_Context.GetGroup(matcher);
         }
 
@@ -24,7 +24,6 @@ namespace GXGame
                 if (Input.GetKeyDown(skillentity.GetOnSpellStartComponent().KeyCode))
                 {
                     SkillEntity Entity = m_Context.AddChild<SkillEntity>();
-                    Entity.AddSkillEffectComponent(new string[] {"Skill1Effect"});
                     Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[] {SkillTargetEnum.CASTER});
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();
@@ -34,6 +33,8 @@ namespace GXGame
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
                     Entity.AddSkillCollisionShapeComponent(CollisionShape.Sphere);
                     Entity.AddSkillCollisionRadiusComponent(1);
+                    Entity.AddAssetPath("Skill1Effect");
+                    Entity.AddViewType(typeof(GameObjectView));
                 }
             }
         }

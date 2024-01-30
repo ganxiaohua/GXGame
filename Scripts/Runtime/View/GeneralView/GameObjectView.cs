@@ -26,7 +26,11 @@ namespace GXGame
         {
             m_GameObjectBase = new GameObject3D();
             UniTaskCompletionSource = new UniTaskCompletionSource();
-            await m_GameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
+            bool success = await m_GameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
+            if (!success)
+            {
+                return;
+            }
             UniTaskCompletionSource.TrySetResult();
             WolrdPosition(m_BindEntity.GetWorldPos(), m_BindEntity);
             WorldRotate(m_BindEntity.GetWorldRotate(), m_BindEntity);
@@ -45,10 +49,12 @@ namespace GXGame
             {
                 UniTaskCompletionSource.TrySetCanceled();
             }
+
             m_GameObjectBase.Unbind(GameObjectPool.Instance);
             ViewBindEventClass.WorldPosEntityComponentNumericalChange -= m_PosDelegate;
             ViewBindEventClass.WorldRotateEntityComponentNumericalChange -= m_RotDelegate;
             ViewBindEventClass.LocalScaleEntityComponentNumericalChange -= m_LocalScale;
+            m_GameObjectBase = null;
             m_PosDelegate = null;
             m_RotDelegate = null;
             m_LocalScale = null;

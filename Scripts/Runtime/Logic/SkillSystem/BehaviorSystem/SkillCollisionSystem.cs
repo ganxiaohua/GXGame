@@ -11,12 +11,12 @@ namespace GXGame
 
         protected override Collector GetTrigger(Context context)
         {
-            return Collector.CreateCollector(context, Components.SkillCollisionShapeComponent);
+            return Collector.CreateCollector(context, Components.SkillCollisionShapeComponent,Components.WorldPos);
         }
 
         protected override bool Filter(ECSEntity entity)
         {
-            return true;
+            return entity.HasComponent((Components.SkillCollisionShapeComponent)) && entity.HasComponent(Components.WorldPos);
         }
 
         protected override void Execute(List<ECSEntity> entities)
@@ -29,7 +29,6 @@ namespace GXGame
                 {
                     if (m_Collisins[i].gameObject.layer == m_Terrain)
                     {
-                        item.GetSkillEffectEnitiyComponent().Effect.AddDestroy();
                         item.AddDestroy();
                         return;
                     }

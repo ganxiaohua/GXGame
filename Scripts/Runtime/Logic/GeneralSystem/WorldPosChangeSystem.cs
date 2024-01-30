@@ -7,25 +7,16 @@ namespace GXGame
 {
     public class WorldPosChangeSystem : ReactiveSystem
     {
-        private Group Group;
-
-        public override void Start(Context entity)
-        {
-            base.Start(entity);
-            Matcher matcher = Matcher.SetAllOfIndices(Components.WorldPos, Components.MoveSpeed);
-            Group = entity.GetGroup(matcher);
-        }
-
         protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.MoveDirection);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return true;
+            return entity.HasComponent(Components.WorldPos) && entity.HasComponent(Components.MoveSpeed);
         }
 
         protected override void Execute(List<ECSEntity> entities)
         {
-            foreach (var entity in Group)
+            foreach (var entity in entities)
             {
                 var dir = entity.GetMoveDirection().Dir;
                 if (dir != Vector3.zero)

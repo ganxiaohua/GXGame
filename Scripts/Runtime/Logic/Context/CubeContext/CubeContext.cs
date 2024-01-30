@@ -18,7 +18,6 @@ namespace GXGame
             //技能相关
             this.AddEcsSystem<CreateSkillManagerSystem>();
             this.AddEcsSystem<SpellStartSystem>();
-            this.AddEcsSystem<SkillEffectCreateSystem>();
             this.AddEcsSystem<SkillEffectMoveSystem>();
             this.AddEcsSystem<SkillCollisionSystem>();
         }

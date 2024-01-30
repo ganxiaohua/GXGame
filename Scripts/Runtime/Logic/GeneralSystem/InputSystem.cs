@@ -10,7 +10,7 @@ namespace GXGame
 
         public void Start(Context entity)
         {
-            Matcher matcher = Matcher.SetAllOfIndices(Components.MoveDirection);
+            Matcher matcher = Matcher.SetAll(Components.MoveDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);
         }
 
