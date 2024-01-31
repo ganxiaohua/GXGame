@@ -1,6 +1,8 @@
    using GameFrame;
+   using UnityEngine;
    public static class AutoAbilityCastPointComponent
    {
+        
         public static void AddAbilityCastPointComponent(this GXGame.SkillManagerEntity ecsEntity)
         {
             ecsEntity.AddComponent(Components.AbilityCastPointComponent);

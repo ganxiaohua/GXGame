@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using GameFrame;
-
 public static class Components {
     
     public const int Destroy= 0;
@@ -86,6 +83,7 @@ public static class Components {
         typeof(GXGame.SkillManagerStateComponent),
         typeof(GXGame.SkillOwnerComponent),
     };
+
     
     public static void SetComponent()
     {
