@@ -11,6 +11,7 @@ namespace GXGame
         public void Start(Context entity)
         {
             var cubeHero = entity.AddChild<Cube>();
+            cubeHero.Name = "Hero";
             cubeHero.AddViewType(typeof(CubeView));
             cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
             cubeHero.AddWorldRotate(Quaternion.identity);
