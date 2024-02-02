@@ -13,7 +13,7 @@ namespace GXGame
             Group group = context.GetGroup(matcher);
             foreach (var entitie in group.EntitiesMap)
             {
-                foreach (var id in entitie.GetSkillGroupComponent().IDs)
+                foreach (var id in entitie.GetSkillGroupComponent().SkillIds)
                 {
                     SkillManagerEntity managerEntity = context.AddChild<SkillManagerEntity>();
                     managerEntity.AddSkillIDComponent(id);

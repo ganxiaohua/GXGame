@@ -4,13 +4,13 @@ namespace  GXGame
 {
     public class SkillGroupComponent : ECSComponent
     {
-        public int[] IDs;
+        public int[] SkillIds;
     }   
     
     [AssignBind(typeof(SkillManagerEntity))]
     public class SkillIDComponent : ECSComponent
     {
-        public int ID;
+        public int SkillID;
     }
     
     [AssignBind(typeof(SkillManagerEntity))]

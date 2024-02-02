@@ -10,7 +10,7 @@
          public static void AddDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
          {
              var p  =  (GXGame.DirectionSpeed)ecsEntity.AddComponent(Components.DirectionSpeed);
-             p.Speed = param;
+             p.DirSpeed = param;
          }
                  
         
@@ -22,7 +22,7 @@
         public static ECSEntity SetDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
         {
             var p = (GXGame.DirectionSpeed)ecsEntity.GetComponent(Components.DirectionSpeed);
-            p.Speed = param;
+            p.DirSpeed = param;
             
             ((Context)ecsEntity.Parent).Reactive(Components.DirectionSpeed, ecsEntity);
             return ecsEntity;

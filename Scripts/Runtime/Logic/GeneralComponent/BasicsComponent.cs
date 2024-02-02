@@ -1,14 +1,17 @@
 ﻿using System;
 using GameFrame;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace GXGame
 {
     [ViewBind]
+    [Serializable]
     public class WorldPos : ECSComponent
     {
         public Vector3 Pos;
+        
     }
     
     [ViewBind]
@@ -37,7 +40,7 @@ namespace GXGame
     
     public class DirectionSpeed : ECSComponent
     {
-        public float Speed;
+        public float DirSpeed;
     }
 
 

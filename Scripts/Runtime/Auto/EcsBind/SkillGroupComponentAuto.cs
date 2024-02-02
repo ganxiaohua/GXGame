@@ -10,7 +10,7 @@
          public static void AddSkillGroupComponent(this ECSEntity ecsEntity,System.Int32[] param)
          {
              var p  =  (GXGame.SkillGroupComponent)ecsEntity.AddComponent(Components.SkillGroupComponent);
-             p.IDs = param;
+             p.SkillIds = param;
          }
                  
         
@@ -22,7 +22,7 @@
         public static ECSEntity SetSkillGroupComponent(this ECSEntity ecsEntity,System.Int32[] param)
         {
             var p = (GXGame.SkillGroupComponent)ecsEntity.GetComponent(Components.SkillGroupComponent);
-            p.IDs = param;
+            p.SkillIds = param;
             
             ((Context)ecsEntity.Parent).Reactive(Components.SkillGroupComponent, ecsEntity);
             return ecsEntity;

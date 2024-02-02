@@ -25,7 +25,7 @@ namespace GXGame
                 var dir = entity.GetMoveDirection().Dir;
                 if (dir != Vector3.zero)
                 {
-                    float speed = entity.GetDirectionSpeed().Speed;
+                    float speed = entity.GetDirectionSpeed().DirSpeed;
                     Vector3 nowDir = entity.GetDirection().Dir;
 
                     float angle = speed * Time.deltaTime;
