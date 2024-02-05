@@ -20,7 +20,6 @@ namespace GXGame
         {
             base.Clear();
             ReferencePool.Release(m_MeshRendererView);
-            ReferencePool.Release(this);
         }
         
     }
