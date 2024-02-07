@@ -27,7 +27,7 @@ namespace GXGame
             cubeHero.AddUnitTypeComponent(UnitTypeEnum.HERO);
             
             cubeHero.AddSkillGroupComponent(new int[] {1});
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 100; i++)
             {
                 var monster = entity.AddChild<Cube>();
                 monster.AddAssetPath("Cube");
@@ -39,7 +39,7 @@ namespace GXGame
                 monster.AddDirection(Vector3.forward);
                 // monster.AddSkillGroupComponent(new int[] {1});
                 
-                monster.AddWorldPos(new Vector3(-6 + i*1.5f, 0, -5));
+                monster.AddWorldPos(new Vector3(-6 + (i%10)*1.5f, 0, z: -5+i/10));
                 monster.AddWorldRotate(Quaternion.identity);
                 monster.AddLocalScale(Vector3.one);
                 monster.AddMeshRendererColor(Color.red);
