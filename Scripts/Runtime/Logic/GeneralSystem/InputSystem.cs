@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class InputSystem : IStartSystem<Context>, IUpdateSystem, IClearSystem
+    public class InputSystem : IStartSystem<Context>, IUpdateSystem
     {
         private Vector3 InputPos;
         private Group Group;

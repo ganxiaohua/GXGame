@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class SpellStartSystem : IStartSystem<Context>, IUpdateSystem, IClearSystem
+    public class SpellStartSystem : IStartSystem<Context>, IUpdateSystem
     {
         private Group m_Group;
         private Context m_Context;

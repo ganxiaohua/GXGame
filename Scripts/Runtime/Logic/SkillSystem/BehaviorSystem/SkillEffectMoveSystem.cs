@@ -3,7 +3,7 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class SkillEffectMoveSystem : IStartSystem<Context>, IUpdateSystem, IClearSystem
+    public class SkillEffectMoveSystem : IStartSystem<Context>, IUpdateSystem
     {
         private Group m_Group;
 
