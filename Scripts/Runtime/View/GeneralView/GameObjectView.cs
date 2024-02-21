@@ -6,15 +6,12 @@ using UnityEngine.UIElements;
 
 namespace GXGame
 {
-    public class GameObjectView : IEceView
+    public class GameObjectView : IEceView,IWolrdPosition,IWorldRotate,ILocalScale
     {
         private ECSEntity m_BindEntity;
         private GameObject3D m_GameObjectBase;
         private UniTaskCompletionSource UniTaskCompletionSource;
         public GameObject3D GameObjectBase => m_GameObjectBase;
-        private EntityComponentNumericalChange<WorldPos> m_PosDelegate;
-        private EntityComponentNumericalChange<WorldRotate> m_RotDelegate;
-        private EntityComponentNumericalChange<LocalScale> m_LocalScale;
 
         public virtual void Link(ECSEntity ecsEntity)
         {
@@ -32,15 +29,9 @@ namespace GXGame
                 return;
             }
             UniTaskCompletionSource.TrySetResult();
-            WolrdPosition(m_BindEntity.GetWorldPos(), m_BindEntity);
-            WorldRotate(m_BindEntity.GetWorldRotate(), m_BindEntity);
-            LocalScale(m_BindEntity.GetLocalScale(), m_BindEntity);
-            m_PosDelegate = WolrdPosition;
-            m_RotDelegate = WorldRotate;
-            m_LocalScale = LocalScale;
-            ViewBindEventClass.WorldPosEntityComponentNumericalChange += m_PosDelegate;
-            ViewBindEventClass.WorldRotateEntityComponentNumericalChange += m_RotDelegate;
-            ViewBindEventClass.LocalScaleEntityComponentNumericalChange += m_LocalScale;
+            WolrdPosition(m_BindEntity.GetWorldPos());
+            WorldRotate(m_BindEntity.GetWorldRotate());
+            LocalScale(m_BindEntity.GetLocalScale());
         }
 
         public virtual void Clear()
@@ -51,13 +42,7 @@ namespace GXGame
             }
 
             m_GameObjectBase.Unbind(GameObjectPool.Instance);
-            ViewBindEventClass.WorldPosEntityComponentNumericalChange -= m_PosDelegate;
-            ViewBindEventClass.WorldRotateEntityComponentNumericalChange -= m_RotDelegate;
-            ViewBindEventClass.LocalScaleEntityComponentNumericalChange -= m_LocalScale;
             m_GameObjectBase = null;
-            m_PosDelegate = null;
-            m_RotDelegate = null;
-            m_LocalScale = null;
             m_BindEntity = null;
         }
 
@@ -66,26 +51,20 @@ namespace GXGame
             await UniTaskCompletionSource.Task;
             UniTaskCompletionSource = null;
         }
+        
 
-        private void WolrdPosition(WorldPos worldPos, ECSEntity ecsEntity)
+        public void WolrdPosition(WorldPos worldPos)
         {
-            if (worldPos == null || m_BindEntity.ID != ecsEntity.ID)
-                return;
             m_GameObjectBase.transform.position = worldPos.Pos;
         }
 
-
-        private void WorldRotate(WorldRotate worldRotate, ECSEntity ecsEntity)
+        public void WorldRotate(WorldRotate worldRotate)
         {
-            if (worldRotate == null || m_BindEntity.ID != ecsEntity.ID)
-                return;
             m_GameObjectBase.transform.rotation = worldRotate.Rotate;
         }
 
-        private void LocalScale(LocalScale localScale, ECSEntity ecsEntity)
+        public void LocalScale(LocalScale localScale)
         {
-            if (localScale == null || m_BindEntity.ID != ecsEntity.ID)
-                return;
             m_GameObjectBase.transform.localScale = localScale.Scale;
         }
     }

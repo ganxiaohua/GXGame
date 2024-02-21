@@ -6,33 +6,31 @@ using UnityEngine.Serialization;
 
 namespace GXGame
 {
-    [ViewBind]
-    [Serializable]
+    [ViewBind(typeof(IWolrdPosition))]
     public class WorldPos : ECSComponent
     {
         public Vector3 Pos;
         
     }
     
-    [ViewBind]
+    [ViewBind(typeof(IWorldRotate))]
     public class WorldRotate : ECSComponent
     {
         public Quaternion Rotate;
     }
     
-    [ViewBind]
+    [ViewBind(typeof(ILocalScale))]
     public class LocalScale : ECSComponent
     {
         public Vector3 Scale;
     }
     
-    [ViewBind]
+    [ViewBind(typeof(IMeshRendererColor))]
     public class MeshRendererColor : ECSComponent
     {
         public Color Color;
     }
-
-    [ViewBind]
+    
     public class Direction : ECSComponent
     {
         public Vector3 Dir;

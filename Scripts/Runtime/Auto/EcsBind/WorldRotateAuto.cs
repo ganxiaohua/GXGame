@@ -23,7 +23,7 @@
         {
             var p = (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
             p.Rotate = param;
-            ViewBindEventClass.WorldRotateEntityComponentNumericalChange?.Invoke(p,ecsEntity);
+            ((GXGame.IWorldRotate) (ecsEntity.GetView().Value)).WorldRotate(p);
             ((Context)ecsEntity.Parent).Reactive(Components.WorldRotate, ecsEntity);
             return ecsEntity;
          }     

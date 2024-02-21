@@ -23,7 +23,7 @@
         {
             var p = (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
             p.Pos = param;
-            ViewBindEventClass.WorldPosEntityComponentNumericalChange?.Invoke(p,ecsEntity);
+            ((GXGame.IWolrdPosition) (ecsEntity.GetView().Value)).WolrdPosition(p);
             ((Context)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity);
             return ecsEntity;
          }     

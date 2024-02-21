@@ -23,7 +23,7 @@
         {
             var p = (GXGame.Direction)ecsEntity.GetComponent(Components.Direction);
             p.Dir = param;
-            ViewBindEventClass.DirectionEntityComponentNumericalChange?.Invoke(p,ecsEntity);
+            
             ((Context)ecsEntity.Parent).Reactive(Components.Direction, ecsEntity);
             return ecsEntity;
          }     

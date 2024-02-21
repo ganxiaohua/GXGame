@@ -23,7 +23,7 @@
         {
             var p = (GXGame.LocalScale)ecsEntity.GetComponent(Components.LocalScale);
             p.Scale = param;
-            ViewBindEventClass.LocalScaleEntityComponentNumericalChange?.Invoke(p,ecsEntity);
+            ((GXGame.ILocalScale) (ecsEntity.GetView().Value)).LocalScale(p);
             ((Context)ecsEntity.Parent).Reactive(Components.LocalScale, ecsEntity);
             return ecsEntity;
          }     

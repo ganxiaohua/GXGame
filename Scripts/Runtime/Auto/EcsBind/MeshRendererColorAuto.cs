@@ -23,7 +23,7 @@
         {
             var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
             p.Color = param;
-            ViewBindEventClass.MeshRendererColorEntityComponentNumericalChange?.Invoke(p,ecsEntity);
+            ((GXGame.IMeshRendererColor) (ecsEntity.GetView().Value)).MeshRendererColor(p);
             ((Context)ecsEntity.Parent).Reactive(Components.MeshRendererColor, ecsEntity);
             return ecsEntity;
          }     

@@ -27,10 +27,10 @@ namespace GXGame
                 {
                     float speed = entity.GetDirectionSpeed().DirSpeed;
                     Vector3 nowDir = entity.GetDirection().Dir;
-
+            
                     float angle = speed * Time.deltaTime;
                     Vector3 curNow = Vector3.RotateTowards(nowDir, dir, Mathf.Deg2Rad * angle, 0);
-
+            
                     entity.SetDirection(curNow);
                     entity.SetWorldRotate(Quaternion.LookRotation(curNow));
                 }
