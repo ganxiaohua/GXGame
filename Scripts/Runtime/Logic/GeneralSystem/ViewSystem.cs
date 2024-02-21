@@ -31,9 +31,9 @@ namespace GXGame
         private void  LoadAsset(ECSEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Type;
-            IEceView ObjectView = (IEceView)ReferencePool.Acquire(type);
-            ObjectView.Link(ecsentity);
-            ecsentity.AddView(ObjectView);
+            var objectView = View.Create(type);
+            objectView.Link(ecsentity);
+            ecsentity.AddView(objectView);
         }
 
         public override void Clear()
