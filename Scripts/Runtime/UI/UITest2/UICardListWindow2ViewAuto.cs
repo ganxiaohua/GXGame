@@ -2,7 +2,7 @@ using FairyGUI;
 using GameFrame;
 namespace GXGame
 {
-    public partial class UICardListWindow2View : UIViewBase
+    public partial class UICardListWindowView2 : UIViewBase
     {
            
         private GButton m_n43;

@@ -10,7 +10,6 @@ namespace GXGame
         public override string PackName => "Card";
         public override string WindowName => "CardListWindow2";
         
-
         protected override async UniTaskVoid Initialize()
         {
             UICardListWindowView = new UICardListWindowView2();
@@ -18,7 +17,7 @@ namespace GXGame
             var succ = await despen.WaitLoad();
             if (succ)
             {
-                UICardListWindowView.Link(this, despen.Window, false);
+                UICardListWindowView.Link(this, despen.Window, true);
             }
             EventSend.Instance.FireTestEvent();
         }

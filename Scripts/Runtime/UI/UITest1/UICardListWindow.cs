@@ -32,7 +32,7 @@ namespace GXGame
 
         public override void Hide()
         {
-            UICardListWindowView.DoHideAnimation();
+            UICardListWindowView.OnHide();
         }
 
         public override void Update(float elapseSeconds, float realElapseSeconds)

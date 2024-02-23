@@ -1,4 +1,3 @@
-
 using System;
 using FairyGUI;
 using GameFrame;
@@ -6,13 +5,18 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public partial class UICardListWindowView2: UIViewBase
+    public partial class UICardListWindowView2 : UIViewBase
     {
         private UICardListWindow2 m_UICardListWindow2;
+
         public override void OnInit()
         {
             base.OnInit();
-            m_UICardListWindow2 = (UICardListWindow2)UIBase;
+            m_UICardListWindow2 = (UICardListWindow2) UIBase;
+            n45.onClick.Add(() =>
+            {
+                UIManager.Instance.Back();
+            });
         }
 
         public override void OnShow()
@@ -24,19 +28,20 @@ namespace GXGame
         {
             base.OnHide();
         }
+
         protected override void DoShowAnimation()
         {
             base.DoShowAnimation();
         }
 
-        public override void DoHideAnimation()
+        protected override void DoHideAnimation()
         {
             base.DoHideAnimation();
         }
 
         public override void Update(float elapseSeconds, float realElapseSeconds)
         {
-            base.Update(elapseSeconds,realElapseSeconds);
+            base.Update(elapseSeconds, realElapseSeconds);
         }
 
         public override void Clear()
