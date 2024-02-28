@@ -27,7 +27,7 @@ namespace GXGame
             cubeHero.AddUnitTypeComponent(UnitTypeEnum.HERO);
             
             cubeHero.AddSkillGroupComponent(new int[] {1});
-            for (int i = 0; i < 350; i++)
+            for (int i = 0; i < 1; i++)
             {
                 var monster = entity.AddChild<Cube>();
                 monster.AddAssetPath("Cube");

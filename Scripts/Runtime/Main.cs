@@ -13,7 +13,6 @@ namespace GXGame
             new AutoBindEvent().AddSystem();
             await GXGameFrame.Instance.Start(); 
             SceneFactory.ChangePlayerScene<CubeScene>();
-            
         }
 
         void Update()
