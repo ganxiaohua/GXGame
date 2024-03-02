@@ -1,10 +1,26 @@
 ﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using GameFrame;
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace GXGame
 {
+    [BurstCompile]
+    struct WorldPosJob : IJobParallelFor
+    {
+        public NativeArray<float3> Dir;
+        public NativeArray<float> Speed;
+        public NativeArray<float3> CurPos;
+
+        public void Execute(int index)
+        {
+            CurPos[index] += Dir[index] * Speed[index];
+        }
+    }
+
     public class WorldPosChangeSystem : ReactiveSystem
     {
         protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.MoveDirection);
@@ -16,17 +32,35 @@ namespace GXGame
 
         protected override void Execute(List<ECSEntity> entities)
         {
+            NativeArray<float3> dir = new NativeArray<float3>(entities.Count, Allocator.TempJob);
+            NativeArray<float> speed = new NativeArray<float>(entities.Count, Allocator.TempJob);
+            NativeArray<float3> curpos = new NativeArray<float3>(entities.Count, Allocator.TempJob);
+            int index = 0;
             foreach (var entity in entities)
             {
-                var dir = entity.GetMoveDirection().Dir;
-                if (dir != Vector3.zero)
-                {
-                    float speed = entity.GetMoveSpeed().Speed;
-                    Vector3 inputDir = dir * (speed * Time.deltaTime);
-                    Vector3 pos = entity.GetWorldPos().Pos + inputDir;
-                    entity.SetWorldPos(pos);
-                }
+                dir[index] = entity.GetMoveDirection().Dir;
+                speed[index] = entity.GetMoveSpeed().Speed * Time.deltaTime;
+                curpos[index] = entity.GetWorldPos().Pos;
+                index++;
             }
+
+            WorldPosJob job = new WorldPosJob()
+            {
+                Dir = dir,
+                Speed = speed,
+                CurPos = curpos
+            };
+            var jobHandle = job.Schedule(entities.Count, 4);
+            jobHandle.Complete();
+            
+            for (int i = 0; i < entities.Count; i++)
+            {
+                entities[i].SetWorldPos(job.CurPos[i]);
+            }
+
+            dir.Dispose();
+            speed.Dispose();
+            curpos.Dispose();
         }
 
         public override void Clear()

@@ -13,6 +13,7 @@ namespace GXGame
             var cubeHero = entity.AddChild<Cube>();
             cubeHero.Name = "Hero";
             cubeHero.AddViewType(typeof(CubeView));
+            cubeHero.AddAssetPath("Cube");
             cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
             cubeHero.AddWorldRotate(Quaternion.identity);
             cubeHero.AddInputDirection();
@@ -22,7 +23,6 @@ namespace GXGame
             cubeHero.AddMoveSpeed(10);
             cubeHero.AddDirectionSpeed(360);
             cubeHero.AddDirection(Vector3.forward);
-            cubeHero.AddAssetPath("Cube");
             cubeHero.AddCampComponent(Camp.SELF);
             cubeHero.AddUnitTypeComponent(UnitTypeEnum.HERO);
             
