@@ -1,4 +1,5 @@
-﻿using GameFrame;
+﻿using Cysharp.Threading.Tasks;
+using GameFrame;
 using UnityEngine;
 
 namespace GXGame
@@ -16,7 +17,7 @@ namespace GXGame
         {
             m_GameObjectView = gameObjectView;
             m_BindEntity = ecsEntity;
-            WaitLoadOver();
+            WaitLoadOver().Forget();
         }
 
         public void Clear()
@@ -24,7 +25,7 @@ namespace GXGame
             m_BindEntity = null;
         }
 
-        private async void WaitLoadOver()
+        private async UniTaskVoid WaitLoadOver()
         {
             await m_GameObjectView.WaitLoadOver();
             SetColor(m_BindEntity.GetMeshRendererColor());

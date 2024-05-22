@@ -1,8 +1,7 @@
-﻿using Common.Runtime;
+﻿using System;
+using Common.Runtime;
 using Cysharp.Threading.Tasks;
 using GameFrame;
-using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace GXGame
 {
@@ -10,28 +9,33 @@ namespace GXGame
     {
         private ECSEntity m_BindEntity;
         private GameObject3D m_GameObjectBase;
-        private UniTaskCompletionSource UniTaskCompletionSource;
+        private UniTaskCompletionSource m_UniTaskCompletionSource;
         public GameObject3D GameObjectBase => m_GameObjectBase;
+        
         public bool LoadingOver { get; private set; }
 
         public virtual void Link(ECSEntity ecsEntity)
         {
             m_BindEntity = ecsEntity;
-            Init(m_BindEntity.GetAssetPath().Path).Forget();
+            Load(m_BindEntity.GetAssetPath().Path).Forget();
         }
 
-        public async UniTaskVoid Init(string path)
+        private async UniTaskVoid Load(string path)
         {
+            m_UniTaskCompletionSource?.TrySetCanceled();
             m_GameObjectBase = new GameObject3D();
-            UniTaskCompletionSource = new UniTaskCompletionSource();
+            m_UniTaskCompletionSource = new UniTaskCompletionSource();
+            LoadingOver = false;
             bool success = await m_GameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
             if (!success)
             {
+                m_UniTaskCompletionSource?.TrySetCanceled();
                 return;
             }
 
             LoadingOver = true;
-            UniTaskCompletionSource.TrySetResult();
+            m_UniTaskCompletionSource.TrySetResult();
+            m_UniTaskCompletionSource = null;
             WolrdPosition(m_BindEntity.GetWorldPos());
             WorldRotate(m_BindEntity.GetWorldRotate());
             LocalScale(m_BindEntity.GetLocalScale());
@@ -39,10 +43,8 @@ namespace GXGame
 
         public virtual void Clear()
         {
-            if (UniTaskCompletionSource != null)
-            {
-                UniTaskCompletionSource.TrySetCanceled();
-            }
+            m_UniTaskCompletionSource?.TrySetCanceled();
+            m_UniTaskCompletionSource = null;
 
             m_GameObjectBase.Unbind(GameObjectPool.Instance);
             m_GameObjectBase = null;
@@ -52,8 +54,7 @@ namespace GXGame
 
         public async UniTask WaitLoadOver()
         {
-            await UniTaskCompletionSource.Task;
-            UniTaskCompletionSource = null;
+            await m_UniTaskCompletionSource.Task;
         }
 
 
