@@ -40,7 +40,7 @@ namespace GXGame
     }
     
     [AssignBind(typeof(SkillEntity))]
-    public class SkillEffectEnitiyComponent : ECSComponent
+    public class SkillEffectEntityComponent : ECSComponent
     {
         public SkillEffectEntity Effect;
     }

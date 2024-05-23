@@ -25,7 +25,7 @@ public static class Components {
     public const int SkillPlayModelPathComponent= 18;
     public const int SkillModelTargetComponent= 19;
     public const int SkillEffectComponent= 20;
-    public const int SkillEffectEnitiyComponent= 21;
+    public const int SkillEffectEntityComponent= 21;
     public const int SkillIsEffectComponent= 22;
     public const int SkillEffectTargetComponent= 23;
     public const int AbilityCastPointComponent= 24;
@@ -69,7 +69,7 @@ public static class Components {
         typeof(GXGame.SkillPlayModelPathComponent),
         typeof(GXGame.SkillModelTargetComponent),
         typeof(GXGame.SkillEffectComponent),
-        typeof(GXGame.SkillEffectEnitiyComponent),
+        typeof(GXGame.SkillEffectEntityComponent),
         typeof(GXGame.SkillIsEffectComponent),
         typeof(GXGame.SkillEffectTargetComponent),
         typeof(GXGame.AbilityCastPointComponent),

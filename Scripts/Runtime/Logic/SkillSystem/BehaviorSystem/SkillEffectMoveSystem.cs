@@ -15,9 +15,9 @@ namespace GXGame
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            foreach (var enitiy in m_Group)
+            foreach (var entity in m_Group)
             {
-                enitiy.SetMoveDirection(enitiy.GetMoveDirection().Dir);
+                entity.SetMoveDirection(entity.GetMoveDirection().Dir);
             }
         }
 
