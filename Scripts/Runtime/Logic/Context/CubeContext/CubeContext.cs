@@ -9,8 +9,6 @@ namespace GXGame
         public override void Start()
         {
             base.Start();
-            this.AddEcsSystem<ViewSystem>();
-            this.AddEcsSystem<DestroySystem>();
             this.AddEcsSystem<InputSystem>();
             this.AddEcsSystem<WorldPosChangeSystem>();
             this.AddEcsSystem<WorldDirChangeSystem>();
@@ -20,6 +18,10 @@ namespace GXGame
             this.AddEcsSystem<SpellStartSystem>();
             this.AddEcsSystem<SkillEffectMoveSystem>();
             this.AddEcsSystem<SkillCollisionSystem>();
+            
+            //最后执行
+            this.AddEcsSystem<ViewSystem>();
+            this.AddEcsSystem<DestroySystem>();
 
             CreateEntity();
         }
