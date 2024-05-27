@@ -36,7 +36,11 @@ namespace GXGame
             if (!m_GameObjectView.LoadingOver) return;
             if (m_MeshRenderer == null)
                 m_MeshRenderer = m_GameObjectView.GameObjectBase.gameObject.GetComponent<MeshRenderer>();
-            if (m_MeshRenderer != null)
+            if (m_MeshRenderer == null) return;
+            var useShareMaterial = m_BindEntity.GetUseShareMaterial();
+            if (useShareMaterial != null)
+                m_MeshRenderer.sharedMaterial.color = param.Color;
+            else
             {
                 m_MeshRenderer.material.color = param.Color;
             }

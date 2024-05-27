@@ -11,18 +11,18 @@ public static class AutoDirectionSpeed
     {
         ecsEntity.AddComponent(Components.DirectionSpeed);
     }
+    
     public static void AddDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
     {
         var p  =  (GXGame.DirectionSpeed)ecsEntity.AddComponent(Components.DirectionSpeed);
         p.DirSpeed = param;
     }
-                 
-        
+          
     public static GXGame.DirectionSpeed GetDirectionSpeed(this ECSEntity ecsEntity)
     {
         return (GXGame.DirectionSpeed)ecsEntity.GetComponent(Components.DirectionSpeed);
-    }        
-        
+    }
+     
     public static ECSEntity SetDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
     {
         var p = (GXGame.DirectionSpeed)ecsEntity.GetComponent(Components.DirectionSpeed);
@@ -30,5 +30,6 @@ public static class AutoDirectionSpeed
         
         ((Context)ecsEntity.Parent).Reactive(Components.DirectionSpeed, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

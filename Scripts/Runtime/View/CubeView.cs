@@ -15,7 +15,6 @@ namespace GXGame
             m_MeshRendererView = ReferencePool.Acquire<MeshRendererView>();
             m_MeshRendererView.Init(m_BindEntity,this);
         }
-        
 
         public override void Clear()
         {

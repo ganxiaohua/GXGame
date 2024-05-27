@@ -11,18 +11,18 @@ public static class AutoSkillGroupComponent
     {
         ecsEntity.AddComponent(Components.SkillGroupComponent);
     }
+    
     public static void AddSkillGroupComponent(this ECSEntity ecsEntity,System.Int32[] param)
     {
         var p  =  (GXGame.SkillGroupComponent)ecsEntity.AddComponent(Components.SkillGroupComponent);
         p.SkillIds = param;
     }
-                 
-        
+          
     public static GXGame.SkillGroupComponent GetSkillGroupComponent(this ECSEntity ecsEntity)
     {
         return (GXGame.SkillGroupComponent)ecsEntity.GetComponent(Components.SkillGroupComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetSkillGroupComponent(this ECSEntity ecsEntity,System.Int32[] param)
     {
         var p = (GXGame.SkillGroupComponent)ecsEntity.GetComponent(Components.SkillGroupComponent);
@@ -30,5 +30,6 @@ public static class AutoSkillGroupComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.SkillGroupComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

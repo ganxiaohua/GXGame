@@ -11,18 +11,18 @@ public static class AutoSkillSoundPathComponent
     {
         ecsEntity.AddComponent(Components.SkillSoundPathComponent);
     }
+    
     public static void AddSkillSoundPathComponent(this GXGame.SkillEntity ecsEntity,System.String[] param)
     {
         var p  =  (GXGame.SkillSoundPathComponent)ecsEntity.AddComponent(Components.SkillSoundPathComponent);
         p.Path = param;
     }
-                 
-        
+          
     public static GXGame.SkillSoundPathComponent GetSkillSoundPathComponent(this GXGame.SkillEntity ecsEntity)
     {
         return (GXGame.SkillSoundPathComponent)ecsEntity.GetComponent(Components.SkillSoundPathComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetSkillSoundPathComponent(this GXGame.SkillEntity ecsEntity,System.String[] param)
     {
         var p = (GXGame.SkillSoundPathComponent)ecsEntity.GetComponent(Components.SkillSoundPathComponent);
@@ -30,5 +30,6 @@ public static class AutoSkillSoundPathComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.SkillSoundPathComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

@@ -11,18 +11,18 @@ public static class AutoUnitTypeComponent
     {
         ecsEntity.AddComponent(Components.UnitTypeComponent);
     }
+    
     public static void AddUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p  =  (GXGame.UnitTypeComponent)ecsEntity.AddComponent(Components.UnitTypeComponent);
         p.UnitTypeEnum = param;
     }
-                 
-        
+          
     public static GXGame.UnitTypeComponent GetUnitTypeComponent(this ECSEntity ecsEntity)
     {
         return (GXGame.UnitTypeComponent)ecsEntity.GetComponent(Components.UnitTypeComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p = (GXGame.UnitTypeComponent)ecsEntity.GetComponent(Components.UnitTypeComponent);
@@ -30,5 +30,6 @@ public static class AutoUnitTypeComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.UnitTypeComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

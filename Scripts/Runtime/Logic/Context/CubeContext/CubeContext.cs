@@ -55,7 +55,7 @@ namespace GXGame
                 monster.AddDirectionSpeed(180);
                 monster.AddDirection(Vector3.forward);
                 // monster.AddSkillGroupComponent(new int[] {1});
-
+                monster.AddUseShareMaterial();
                 monster.AddWorldPos(new Vector3(-6 + (i % 20) * 1.5f, 0, z: -5 + i / 20));
                 monster.AddWorldRotate(Quaternion.identity);
                 monster.AddLocalScale(Vector3.one);

@@ -11,18 +11,18 @@ public static class AutoAbilityCastRangeComponent
     {
         ecsEntity.AddComponent(Components.AbilityCastRangeComponent);
     }
+    
     public static void AddAbilityCastRangeComponent(this GXGame.SkillManagerEntity ecsEntity,System.Single param)
     {
         var p  =  (GXGame.AbilityCastRangeComponent)ecsEntity.AddComponent(Components.AbilityCastRangeComponent);
         p.AbilityCastRange = param;
     }
-                 
-        
+          
     public static GXGame.AbilityCastRangeComponent GetAbilityCastRangeComponent(this GXGame.SkillManagerEntity ecsEntity)
     {
         return (GXGame.AbilityCastRangeComponent)ecsEntity.GetComponent(Components.AbilityCastRangeComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetAbilityCastRangeComponent(this GXGame.SkillManagerEntity ecsEntity,System.Single param)
     {
         var p = (GXGame.AbilityCastRangeComponent)ecsEntity.GetComponent(Components.AbilityCastRangeComponent);
@@ -30,5 +30,6 @@ public static class AutoAbilityCastRangeComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.AbilityCastRangeComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

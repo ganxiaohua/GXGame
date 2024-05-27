@@ -11,18 +11,18 @@ public static class AutoSkillEffectEntityComponent
     {
         ecsEntity.AddComponent(Components.SkillEffectEntityComponent);
     }
+    
     public static void AddSkillEffectEntityComponent(this GXGame.SkillEntity ecsEntity,GXGame.SkillEffectEntity param)
     {
         var p  =  (GXGame.SkillEffectEntityComponent)ecsEntity.AddComponent(Components.SkillEffectEntityComponent);
         p.Effect = param;
     }
-                 
-        
+          
     public static GXGame.SkillEffectEntityComponent GetSkillEffectEntityComponent(this GXGame.SkillEntity ecsEntity)
     {
         return (GXGame.SkillEffectEntityComponent)ecsEntity.GetComponent(Components.SkillEffectEntityComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetSkillEffectEntityComponent(this GXGame.SkillEntity ecsEntity,GXGame.SkillEffectEntity param)
     {
         var p = (GXGame.SkillEffectEntityComponent)ecsEntity.GetComponent(Components.SkillEffectEntityComponent);
@@ -30,5 +30,6 @@ public static class AutoSkillEffectEntityComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.SkillEffectEntityComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

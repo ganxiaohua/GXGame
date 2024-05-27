@@ -22,12 +22,6 @@ namespace GXGame
         public Vector3 Scale;
     }
     
-    [ViewBind(typeof(IMeshRendererColor))]
-    public class MeshRendererColor : ECSComponent
-    {
-        public Color Color;
-    }
-    
     public class Direction : ECSComponent
     {
         public Vector3 Dir;
@@ -37,7 +31,16 @@ namespace GXGame
     {
         public float DirSpeed;
     }
-
+    
+    [ViewBind(typeof(IMeshRendererColor))]
+    public class MeshRendererColor : ECSComponent
+    {
+        public Color Color;
+    }
+    
+    public class UseShareMaterial : ECSComponent
+    {
+    }
 
     public class InputDirection : ECSComponent
     {

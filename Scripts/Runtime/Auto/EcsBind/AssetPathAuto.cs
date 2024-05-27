@@ -11,18 +11,18 @@ public static class AutoAssetPath
     {
         ecsEntity.AddComponent(Components.AssetPath);
     }
+    
     public static void AddAssetPath(this ECSEntity ecsEntity,System.String param)
     {
         var p  =  (GXGame.AssetPath)ecsEntity.AddComponent(Components.AssetPath);
         p.Path = param;
     }
-                 
-        
+          
     public static GXGame.AssetPath GetAssetPath(this ECSEntity ecsEntity)
     {
         return (GXGame.AssetPath)ecsEntity.GetComponent(Components.AssetPath);
-    }        
-        
+    }
+     
     public static ECSEntity SetAssetPath(this ECSEntity ecsEntity,System.String param)
     {
         var p = (GXGame.AssetPath)ecsEntity.GetComponent(Components.AssetPath);
@@ -30,5 +30,6 @@ public static class AutoAssetPath
         
         ((Context)ecsEntity.Parent).Reactive(Components.AssetPath, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

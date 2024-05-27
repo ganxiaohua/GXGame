@@ -11,18 +11,18 @@ public static class AutoView
     {
         ecsEntity.AddComponent(Components.View);
     }
+    
     public static void AddView(this ECSEntity ecsEntity,GameFrame.IEceView param)
     {
         var p  =  (GameFrame.View)ecsEntity.AddComponent(Components.View);
         p.Value = param;
     }
-                 
-        
+          
     public static GameFrame.View GetView(this ECSEntity ecsEntity)
     {
         return (GameFrame.View)ecsEntity.GetComponent(Components.View);
-    }        
-        
+    }
+     
     public static ECSEntity SetView(this ECSEntity ecsEntity,GameFrame.IEceView param)
     {
         var p = (GameFrame.View)ecsEntity.GetComponent(Components.View);
@@ -30,5 +30,6 @@ public static class AutoView
         
         ((Context)ecsEntity.Parent).Reactive(Components.View, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

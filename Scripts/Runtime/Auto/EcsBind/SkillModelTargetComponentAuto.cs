@@ -11,18 +11,18 @@ public static class AutoSkillModelTargetComponent
     {
         ecsEntity.AddComponent(Components.SkillModelTargetComponent);
     }
+    
     public static void AddSkillModelTargetComponent(this GXGame.SkillEntity ecsEntity,GXGame.SkillTargetEnum[] param)
     {
         var p  =  (GXGame.SkillModelTargetComponent)ecsEntity.AddComponent(Components.SkillModelTargetComponent);
         p.SkillTargetEnum = param;
     }
-                 
-        
+          
     public static GXGame.SkillModelTargetComponent GetSkillModelTargetComponent(this GXGame.SkillEntity ecsEntity)
     {
         return (GXGame.SkillModelTargetComponent)ecsEntity.GetComponent(Components.SkillModelTargetComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetSkillModelTargetComponent(this GXGame.SkillEntity ecsEntity,GXGame.SkillTargetEnum[] param)
     {
         var p = (GXGame.SkillModelTargetComponent)ecsEntity.GetComponent(Components.SkillModelTargetComponent);
@@ -30,5 +30,6 @@ public static class AutoSkillModelTargetComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.SkillModelTargetComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

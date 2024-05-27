@@ -11,18 +11,18 @@ public static class AutoSkillCollisionRadiusComponent
     {
         ecsEntity.AddComponent(Components.SkillCollisionRadiusComponent);
     }
+    
     public static void AddSkillCollisionRadiusComponent(this ECSEntity ecsEntity,System.Single param)
     {
         var p  =  (GXGame.SkillCollisionRadiusComponent)ecsEntity.AddComponent(Components.SkillCollisionRadiusComponent);
         p.Radius = param;
     }
-                 
-        
+          
     public static GXGame.SkillCollisionRadiusComponent GetSkillCollisionRadiusComponent(this ECSEntity ecsEntity)
     {
         return (GXGame.SkillCollisionRadiusComponent)ecsEntity.GetComponent(Components.SkillCollisionRadiusComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetSkillCollisionRadiusComponent(this ECSEntity ecsEntity,System.Single param)
     {
         var p = (GXGame.SkillCollisionRadiusComponent)ecsEntity.GetComponent(Components.SkillCollisionRadiusComponent);
@@ -30,5 +30,6 @@ public static class AutoSkillCollisionRadiusComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.SkillCollisionRadiusComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

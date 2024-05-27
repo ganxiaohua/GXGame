@@ -11,18 +11,18 @@ public static class AutoAbilityCastPointComponent
     {
         ecsEntity.AddComponent(Components.AbilityCastPointComponent);
     }
+    
     public static void AddAbilityCastPointComponent(this GXGame.SkillManagerEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p  =  (GXGame.AbilityCastPointComponent)ecsEntity.AddComponent(Components.AbilityCastPointComponent);
         p.AbilityCastPoint = param;
     }
-                 
-        
+          
     public static GXGame.AbilityCastPointComponent GetAbilityCastPointComponent(this GXGame.SkillManagerEntity ecsEntity)
     {
         return (GXGame.AbilityCastPointComponent)ecsEntity.GetComponent(Components.AbilityCastPointComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetAbilityCastPointComponent(this GXGame.SkillManagerEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.AbilityCastPointComponent)ecsEntity.GetComponent(Components.AbilityCastPointComponent);
@@ -30,5 +30,6 @@ public static class AutoAbilityCastPointComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.AbilityCastPointComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

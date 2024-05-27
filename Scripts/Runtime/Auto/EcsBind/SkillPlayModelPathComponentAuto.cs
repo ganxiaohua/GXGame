@@ -11,18 +11,18 @@ public static class AutoSkillPlayModelPathComponent
     {
         ecsEntity.AddComponent(Components.SkillPlayModelPathComponent);
     }
+    
     public static void AddSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity,System.String[] param)
     {
         var p  =  (GXGame.SkillPlayModelPathComponent)ecsEntity.AddComponent(Components.SkillPlayModelPathComponent);
         p.AnimtionName = param;
     }
-                 
-        
+          
     public static GXGame.SkillPlayModelPathComponent GetSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity)
     {
         return (GXGame.SkillPlayModelPathComponent)ecsEntity.GetComponent(Components.SkillPlayModelPathComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetSkillPlayModelPathComponent(this GXGame.SkillEntity ecsEntity,System.String[] param)
     {
         var p = (GXGame.SkillPlayModelPathComponent)ecsEntity.GetComponent(Components.SkillPlayModelPathComponent);
@@ -30,5 +30,6 @@ public static class AutoSkillPlayModelPathComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.SkillPlayModelPathComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

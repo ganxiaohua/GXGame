@@ -11,18 +11,18 @@ public static class AutoOnSpellStartComponent
     {
         ecsEntity.AddComponent(Components.OnSpellStartComponent);
     }
+    
     public static void AddOnSpellStartComponent(this GXGame.SkillManagerEntity ecsEntity,UnityEngine.KeyCode param)
     {
         var p  =  (GXGame.OnSpellStartComponent)ecsEntity.AddComponent(Components.OnSpellStartComponent);
         p.KeyCode = param;
     }
-                 
-        
+          
     public static GXGame.OnSpellStartComponent GetOnSpellStartComponent(this GXGame.SkillManagerEntity ecsEntity)
     {
         return (GXGame.OnSpellStartComponent)ecsEntity.GetComponent(Components.OnSpellStartComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetOnSpellStartComponent(this GXGame.SkillManagerEntity ecsEntity,UnityEngine.KeyCode param)
     {
         var p = (GXGame.OnSpellStartComponent)ecsEntity.GetComponent(Components.OnSpellStartComponent);
@@ -30,5 +30,6 @@ public static class AutoOnSpellStartComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.OnSpellStartComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

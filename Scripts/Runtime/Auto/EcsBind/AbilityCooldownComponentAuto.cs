@@ -11,18 +11,18 @@ public static class AutoAbilityCooldownComponent
     {
         ecsEntity.AddComponent(Components.AbilityCooldownComponent);
     }
+    
     public static void AddAbilityCooldownComponent(this GXGame.SkillManagerEntity ecsEntity,System.Single param)
     {
         var p  =  (GXGame.AbilityCooldownComponent)ecsEntity.AddComponent(Components.AbilityCooldownComponent);
         p.AbilityCooldown = param;
     }
-                 
-        
+          
     public static GXGame.AbilityCooldownComponent GetAbilityCooldownComponent(this GXGame.SkillManagerEntity ecsEntity)
     {
         return (GXGame.AbilityCooldownComponent)ecsEntity.GetComponent(Components.AbilityCooldownComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetAbilityCooldownComponent(this GXGame.SkillManagerEntity ecsEntity,System.Single param)
     {
         var p = (GXGame.AbilityCooldownComponent)ecsEntity.GetComponent(Components.AbilityCooldownComponent);
@@ -30,5 +30,6 @@ public static class AutoAbilityCooldownComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.AbilityCooldownComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

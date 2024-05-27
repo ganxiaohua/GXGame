@@ -11,18 +11,18 @@ public static class AutoWorldRotate
     {
         ecsEntity.AddComponent(Components.WorldRotate);
     }
+    
     public static void AddWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
         var p  =  (GXGame.WorldRotate)ecsEntity.AddComponent(Components.WorldRotate);
         p.Rotate = param;
     }
-                 
-        
+          
     public static GXGame.WorldRotate GetWorldRotate(this ECSEntity ecsEntity)
     {
         return (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
-    }        
-        
+    }
+     
     public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
         var p = (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
@@ -32,5 +32,6 @@ public static class AutoWorldRotate
         ((GXGame.IWorldRotate) (view.Value)).WorldRotate(p);
         ((Context)ecsEntity.Parent).Reactive(Components.WorldRotate, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }

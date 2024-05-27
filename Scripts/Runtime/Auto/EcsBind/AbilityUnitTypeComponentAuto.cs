@@ -11,18 +11,18 @@ public static class AutoAbilityUnitTypeComponent
     {
         ecsEntity.AddComponent(Components.AbilityUnitTypeComponent);
     }
+    
     public static void AddAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p  =  (GXGame.AbilityUnitTypeComponent)ecsEntity.AddComponent(Components.AbilityUnitTypeComponent);
         p.AbilityUnitTargetTeam = param;
     }
-                 
-        
+          
     public static GXGame.AbilityUnitTypeComponent GetAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity)
     {
         return (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
-    }        
-        
+    }
+     
     public static ECSEntity SetAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p = (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
@@ -30,5 +30,6 @@ public static class AutoAbilityUnitTypeComponent
         
         ((Context)ecsEntity.Parent).Reactive(Components.AbilityUnitTypeComponent, ecsEntity);
         return ecsEntity;
-    }     
+    }
+         
 }
