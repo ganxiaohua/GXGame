@@ -1,8 +1,6 @@
 ﻿using System;
 using GameFrame;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GXGame
 {
@@ -10,7 +8,6 @@ namespace GXGame
     public class WorldPos : ECSComponent
     {
         public Vector3 Pos;
-        
     }
     
     [ViewBind(typeof(IWorldRotate))]

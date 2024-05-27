@@ -50,7 +50,7 @@ namespace GXGame
                 {
                     float speed = entity.GetDirectionSpeed().DirSpeed;
                     Vector3 nowDir = entity.GetDirection().Dir;
-                    float angle = speed * Time.deltaTime;
+                    float angle = speed * Context.DeltaTime;
                     Vector3 curDir = Vector3.RotateTowards(nowDir, dir, Mathf.Deg2Rad * angle, 0);
                     entity.SetDirection(curDir);
                     entity.SetWorldRotate(Quaternion.LookRotation(curDir));
@@ -67,7 +67,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 movedir[index] = entity.GetMoveDirection().Dir;
-                speed[index] = entity.GetDirectionSpeed().DirSpeed * Time.deltaTime;
+                speed[index] = entity.GetDirectionSpeed().DirSpeed * Context.DeltaTime;
                 curdir[index] = entity.GetDirection().Dir;
                 index++;
             }

@@ -41,7 +41,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 var dir = entity.GetMoveDirection().Dir;
-                var speed = entity.GetMoveSpeed().Speed * Time.deltaTime;
+                var speed = entity.GetMoveSpeed().Speed * Context.DeltaTime;
                 var pos = entity.GetWorldPos().Pos;
                 entity.SetWorldPos(pos+speed*dir);
             }
@@ -55,7 +55,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 dir[index] = entity.GetMoveDirection().Dir;
-                speed[index] = entity.GetMoveSpeed().Speed * Time.deltaTime;
+                speed[index] = entity.GetMoveSpeed().Speed * Context.DeltaTime;
                 curpos[index] = entity.GetWorldPos().Pos;
                 index++;
             }
