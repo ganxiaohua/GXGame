@@ -3,14 +3,14 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class SkillEffectMoveSystem : IStartSystem<Context>, IUpdateSystem
+    public class SkillEffectMoveSystem : IStartSystem<World>, IUpdateSystem
     {
         private Group m_Group;
 
-        public void Start(Context context)
+        public void Start(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.SkillComponent, Components.MoveDirection);
-            m_Group = context.GetGroup(matcher);
+            m_Group = world.GetGroup(matcher);
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)

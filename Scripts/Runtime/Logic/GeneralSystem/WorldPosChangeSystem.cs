@@ -4,7 +4,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
-using UnityEngine;
 
 namespace GXGame
 {
@@ -24,7 +23,7 @@ namespace GXGame
 
     public class WorldPosChangeSystem : ReactiveSystem
     {
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.MoveDirection);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.MoveDirection);
 
         protected override bool Filter(ECSEntity entity)
         {
@@ -33,7 +32,7 @@ namespace GXGame
 
         protected override void Execute(List<ECSEntity> entities)
         {
-            Job(entities);
+            Common(entities);
         }
 
         private void Common(List<ECSEntity> entities)
@@ -41,7 +40,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 var dir = entity.GetMoveDirection().Dir;
-                var speed = entity.GetMoveSpeed().Speed * Context.DeltaTime;
+                var speed = entity.GetMoveSpeed().Speed * World.DeltaTime;
                 var pos = entity.GetWorldPos().Pos;
                 entity.SetWorldPos(pos+speed*dir);
             }
@@ -55,7 +54,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 dir[index] = entity.GetMoveDirection().Dir;
-                speed[index] = entity.GetMoveSpeed().Speed * Context.DeltaTime;
+                speed[index] = entity.GetMoveSpeed().Speed * World.DeltaTime;
                 curpos[index] = entity.GetWorldPos().Pos;
                 index++;
             }

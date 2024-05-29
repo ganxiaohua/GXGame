@@ -30,7 +30,7 @@ public static class AutoWorldRotate
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IWorldRotate) (view.Value)).WorldRotate(p);
-        ((Context)ecsEntity.Parent).Reactive(Components.WorldRotate, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.WorldRotate, ecsEntity);
         return ecsEntity;
     }
          

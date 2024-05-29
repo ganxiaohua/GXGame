@@ -9,9 +9,9 @@ namespace GXGame
         private int m_Terrain = LayerMask.NameToLayer(nameof(Terrain));
         Collider[] m_Collisins = new Collider[8];
 
-        protected override Collector GetTrigger(Context context)
+        protected override Collector GetTrigger(World world)
         {
-            return Collector.CreateCollector(context, Components.SkillCollisionShapeComponent,Components.WorldPos);
+            return Collector.CreateCollector(world, Components.SkillCollisionShapeComponent,Components.WorldPos);
         }
 
         protected override bool Filter(ECSEntity entity)

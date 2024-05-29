@@ -28,7 +28,7 @@ public static class AutoSkillManagerStateComponent
         var p = (GXGame.SkillManagerStateComponent)ecsEntity.GetComponent(Components.SkillManagerStateComponent);
         p.SkillManagerState = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.SkillManagerStateComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillManagerStateComponent, ecsEntity);
         return ecsEntity;
     }
          

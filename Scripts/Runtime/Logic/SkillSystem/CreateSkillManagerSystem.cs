@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class CreateSkillManagerSystem : IStartSystem<Context>
+    public class CreateSkillManagerSystem : IStartSystem<World>
     {
         private Matcher matcher;
-        public void Start(Context context)
+        public void Start(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.SkillGroupComponent);
-            Group group = context.GetGroup(matcher);
+            Group group = world.GetGroup(matcher);
             foreach (var entitie in group.EntitiesMap)
             {
                 foreach (var id in entitie.GetSkillGroupComponent().SkillIds)
                 {
-                    SkillManagerEntity managerEntity = context.AddChild<SkillManagerEntity>();
+                    SkillManagerEntity managerEntity = world.AddChild<SkillManagerEntity>();
                     managerEntity.AddSkillIDComponent(id);
                     managerEntity.AddSkillManagerStateComponent(SkillManagerState.None);
                     managerEntity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);

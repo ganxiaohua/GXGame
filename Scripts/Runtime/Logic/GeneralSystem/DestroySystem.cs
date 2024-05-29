@@ -5,12 +5,12 @@ namespace GXGame
 {
     public class DestroySystem : ReactiveSystem
     {
-        public override void Start(Context entity)
+        public override void Start(World entity)
         {
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.Destroy);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.Destroy);
 
         protected override bool Filter(ECSEntity entity)
         {
@@ -21,13 +21,13 @@ namespace GXGame
         {
             foreach (var item in entities)
             {
-                Context.RemoveChild(item);
+                World.RemoveChild(item);
             }
         }
 
         public override void Clear()
         {
-            Context = null;
+            World = null;
         }
     }
 }

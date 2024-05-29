@@ -28,7 +28,7 @@ public static class AutoAbilityCooldownComponent
         var p = (GXGame.AbilityCooldownComponent)ecsEntity.GetComponent(Components.AbilityCooldownComponent);
         p.AbilityCooldown = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.AbilityCooldownComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.AbilityCooldownComponent, ecsEntity);
         return ecsEntity;
     }
          

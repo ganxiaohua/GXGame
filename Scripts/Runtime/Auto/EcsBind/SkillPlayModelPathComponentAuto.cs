@@ -28,7 +28,7 @@ public static class AutoSkillPlayModelPathComponent
         var p = (GXGame.SkillPlayModelPathComponent)ecsEntity.GetComponent(Components.SkillPlayModelPathComponent);
         p.AnimtionName = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.SkillPlayModelPathComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillPlayModelPathComponent, ecsEntity);
         return ecsEntity;
     }
          

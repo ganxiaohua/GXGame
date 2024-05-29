@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class SpellStartSystem : IStartSystem<Context>, IUpdateSystem
+    public class SpellStartSystem : IStartSystem<World>, IUpdateSystem
     {
         private Group m_Group;
-        private Context m_Context;
+        private World mWorld;
 
-        public void Start(Context entity)
+        public void Start(World entity)
         {
-            m_Context = entity;
+            mWorld = entity;
             Matcher matcher = Matcher.SetAll(Components.SkillIDComponent);
-            m_Group = m_Context.GetGroup(matcher);
+            m_Group = mWorld.GetGroup(matcher);
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
@@ -23,7 +23,7 @@ namespace GXGame
                 SkillManagerEntity skillentity = (SkillManagerEntity) item;
                 if (Input.GetKeyDown(skillentity.GetOnSpellStartComponent().KeyCode))
                 {
-                    SkillEntity Entity = m_Context.AddChild<SkillEntity>();
+                    SkillEntity Entity = mWorld.AddChild<SkillEntity>();
                     Entity.AddSkillEffectTargetComponent(new SkillTargetEnum[] {SkillTargetEnum.CASTER});
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();

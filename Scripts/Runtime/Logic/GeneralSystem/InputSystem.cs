@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class InputSystem : IStartSystem<Context>, IUpdateSystem
+    public class InputSystem : IStartSystem<World>, IUpdateSystem
     {
         private Vector3 InputPos;
         private Group Group;
 
-        public void Start(Context entity)
+        public void Start(World entity)
         {
             Matcher matcher = Matcher.SetAll(Components.MoveDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);

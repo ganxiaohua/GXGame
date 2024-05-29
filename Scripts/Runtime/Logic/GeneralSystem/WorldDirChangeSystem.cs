@@ -24,12 +24,12 @@ namespace GXGame
 
     public class WorldDirChangeSystem : ReactiveSystem
     {
-        public override void Start(Context entity)
+        public override void Start(World entity)
         {
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.MoveDirection);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.MoveDirection);
 
         protected override bool Filter(ECSEntity entity)
         {
@@ -50,7 +50,7 @@ namespace GXGame
                 {
                     float speed = entity.GetDirectionSpeed().DirSpeed;
                     Vector3 nowDir = entity.GetDirection().Dir;
-                    float angle = speed * Context.DeltaTime;
+                    float angle = speed * World.DeltaTime;
                     Vector3 curDir = Vector3.RotateTowards(nowDir, dir, Mathf.Deg2Rad * angle, 0);
                     entity.SetDirection(curDir);
                     entity.SetWorldRotate(Quaternion.LookRotation(curDir));
@@ -67,7 +67,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 movedir[index] = entity.GetMoveDirection().Dir;
-                speed[index] = entity.GetDirectionSpeed().DirSpeed * Context.DeltaTime;
+                speed[index] = entity.GetDirectionSpeed().DirSpeed * World.DeltaTime;
                 curdir[index] = entity.GetDirection().Dir;
                 index++;
             }

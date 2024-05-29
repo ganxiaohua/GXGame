@@ -28,7 +28,7 @@ public static class AutoSkillOwnerComponent
         var p = (GXGame.SkillOwnerComponent)ecsEntity.GetComponent(Components.SkillOwnerComponent);
         p.Owner = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.SkillOwnerComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillOwnerComponent, ecsEntity);
         return ecsEntity;
     }
          

@@ -6,12 +6,12 @@ namespace GXGame
 {
     public class ViewSystem : ReactiveSystem
     {
-        public override void Start(Context entity)
+        public override void Start(World entity)
         {
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(Context context) => Collector.CreateCollector(context, Components.AssetPath, Components.ViewType);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.AssetPath, Components.ViewType);
 
         protected override bool Filter(ECSEntity entity)
         {

@@ -28,7 +28,7 @@ public static class AutoMoveDirection
         var p = (GXGame.MoveDirection)ecsEntity.GetComponent(Components.MoveDirection);
         p.Dir = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.MoveDirection, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.MoveDirection, ecsEntity);
         return ecsEntity;
     }
          

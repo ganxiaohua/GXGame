@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class CubeConText : Context
+    public class CubeConText : World
     {
         public override void Start()
         {
@@ -73,7 +73,7 @@ namespace GXGame
         }
     }
 
-    public class CubeConText2 : Context
+    public class CubeConText2 : World
     {
         public override void Start()
         {

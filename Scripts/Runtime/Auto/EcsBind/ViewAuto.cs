@@ -28,7 +28,7 @@ public static class AutoView
         var p = (GameFrame.View)ecsEntity.GetComponent(Components.View);
         p.Value = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.View, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.View, ecsEntity);
         return ecsEntity;
     }
          

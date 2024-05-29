@@ -30,7 +30,7 @@ public static class AutoLocalScale
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.ILocalScale) (view.Value)).LocalScale(p);
-        ((Context)ecsEntity.Parent).Reactive(Components.LocalScale, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.LocalScale, ecsEntity);
         return ecsEntity;
     }
          

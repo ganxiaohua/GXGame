@@ -28,7 +28,7 @@ public static class AutoSkillSoundPathComponent
         var p = (GXGame.SkillSoundPathComponent)ecsEntity.GetComponent(Components.SkillSoundPathComponent);
         p.Path = param;
         
-        ((Context)ecsEntity.Parent).Reactive(Components.SkillSoundPathComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillSoundPathComponent, ecsEntity);
         return ecsEntity;
     }
          
