@@ -16,6 +16,18 @@ namespace GXGame
         public Quaternion Rotate;
     }
     
+    [ViewBind(typeof(ILocalPosition))]
+    public class LocalPos : ECSComponent
+    {
+        public Vector3 Pos;
+    }
+    
+    [ViewBind(typeof(ILocalRotate))]
+    public class LocalRotate : ECSComponent
+    {
+        public Quaternion Rotate;
+    }
+    
     [ViewBind(typeof(ILocalScale))]
     public class LocalScale : ECSComponent
     {

@@ -4,12 +4,12 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale
+    public class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale,ILocalPosition,ILocalRotate
     {
         private ECSEntity m_BindEntity;
-        private GameObject3D m_GameObjectBase;
+        private GXGameObject mGxGameObjectBase;
         private UniTaskCompletionSource m_UniTaskCompletionSource;
-        public GameObject3D GameObjectBase => m_GameObjectBase;
+        public GXGameObject GxGameObjectBase => mGxGameObjectBase;
         
         public bool LoadingOver { get; private set; }
 
@@ -22,10 +22,10 @@ namespace GXGame
         private async UniTaskVoid Load(string path)
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
-            m_GameObjectBase = new GameObject3D();
+            mGxGameObjectBase = new GXGameObject();
             m_UniTaskCompletionSource = new UniTaskCompletionSource();
             LoadingOver = false;
-            bool success = await m_GameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
+            bool success = await mGxGameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
             if (!success)
             {
                 m_UniTaskCompletionSource?.TrySetCanceled();
@@ -35,9 +35,6 @@ namespace GXGame
             LoadingOver = true;
             m_UniTaskCompletionSource.TrySetResult();
             m_UniTaskCompletionSource = null;
-            WolrdPosition(m_BindEntity.GetWorldPos());
-            WorldRotate(m_BindEntity.GetWorldRotate());
-            LocalScale(m_BindEntity.GetLocalScale());
         }
 
         public virtual void Clear()
@@ -45,8 +42,8 @@ namespace GXGame
             m_UniTaskCompletionSource?.TrySetCanceled();
             m_UniTaskCompletionSource = null;
 
-            m_GameObjectBase.Unbind(GameObjectPool.Instance);
-            m_GameObjectBase = null;
+            mGxGameObjectBase.Unbind(GameObjectPool.Instance);
+            mGxGameObjectBase = null;
             m_BindEntity = null;
             LoadingOver = false;
         }
@@ -55,24 +52,30 @@ namespace GXGame
         {
             await m_UniTaskCompletionSource.Task;
         }
+        
+        public void LocalPosition(LocalPos localPos)
+        {
+            mGxGameObjectBase.localPosition = localPos.Pos;
+        }
 
-
+        public void LocalRotate(LocalRotate localRotate)
+        {
+            mGxGameObjectBase.localRotation = localRotate.Rotate;
+        }
+        
         public void WolrdPosition(WorldPos worldPos)
         {
-            if (!LoadingOver) return;
-            m_GameObjectBase.transform.position = worldPos.Pos;
+            mGxGameObjectBase.position = worldPos.Pos;
         }
 
         public void WorldRotate(WorldRotate worldRotate)
         {
-            if (!LoadingOver) return;
-            m_GameObjectBase.transform.rotation = worldRotate.Rotate;
+            mGxGameObjectBase.rotation = worldRotate.Rotate;
         }
 
         public void LocalScale(LocalScale localScale)
         {
-            if (!LoadingOver) return;
-            m_GameObjectBase.transform.localScale = localScale.Scale;
+            mGxGameObjectBase.scale = localScale.Scale;
         }
     }
 }

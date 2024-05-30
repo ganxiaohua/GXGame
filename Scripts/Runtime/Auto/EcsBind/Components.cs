@@ -8,43 +8,45 @@ public static class Components {
     public const int View= 1;
     public const int WorldPos= 2;
     public const int WorldRotate= 3;
-    public const int LocalScale= 4;
-    public const int Direction= 5;
-    public const int DirectionSpeed= 6;
-    public const int MeshRendererColor= 7;
-    public const int UseShareMaterial= 8;
-    public const int InputDirection= 9;
-    public const int MoveDirection= 10;
-    public const int MoveSpeed= 11;
-    public const int AssetPath= 12;
-    public const int ViewType= 13;
-    public const int CampComponent= 14;
-    public const int UnitTypeComponent= 15;
-    public const int SkillComponent= 16;
-    public const int SkillSoundPathComponent= 17;
-    public const int SkillSoundTargetComponent= 18;
-    public const int SkillPlayModelPathComponent= 19;
-    public const int SkillModelTargetComponent= 20;
-    public const int SkillEffectComponent= 21;
-    public const int SkillEffectEntityComponent= 22;
-    public const int SkillIsEffectComponent= 23;
-    public const int SkillEffectTargetComponent= 24;
-    public const int AbilityCastPointComponent= 25;
-    public const int AbilityCastRangeComponent= 26;
-    public const int AbilityCooldownComponent= 27;
-    public const int AbilityCurCooldownComponent= 28;
-    public const int AbilityUnitTargetCampComponent= 29;
-    public const int AbilityUnitTypeComponent= 30;
-    public const int OnSpellStartComponent= 31;
-    public const int SkillAbilityBehaviorComponent= 32;
-    public const int SkillCollisionShapeComponent= 33;
-    public const int SkillCollisionRadiusComponent= 34;
-    public const int SkillGroupComponent= 35;
-    public const int SkillIDComponent= 36;
-    public const int SkillManagerStateComponent= 37;
-    public const int SkillOwnerComponent= 38;
+    public const int LocalPos= 4;
+    public const int LocalRotate= 5;
+    public const int LocalScale= 6;
+    public const int Direction= 7;
+    public const int DirectionSpeed= 8;
+    public const int MeshRendererColor= 9;
+    public const int UseShareMaterial= 10;
+    public const int InputDirection= 11;
+    public const int MoveDirection= 12;
+    public const int MoveSpeed= 13;
+    public const int AssetPath= 14;
+    public const int ViewType= 15;
+    public const int CampComponent= 16;
+    public const int UnitTypeComponent= 17;
+    public const int SkillComponent= 18;
+    public const int SkillSoundPathComponent= 19;
+    public const int SkillSoundTargetComponent= 20;
+    public const int SkillPlayModelPathComponent= 21;
+    public const int SkillModelTargetComponent= 22;
+    public const int SkillEffectComponent= 23;
+    public const int SkillEffectEntityComponent= 24;
+    public const int SkillIsEffectComponent= 25;
+    public const int SkillEffectTargetComponent= 26;
+    public const int AbilityCastPointComponent= 27;
+    public const int AbilityCastRangeComponent= 28;
+    public const int AbilityCooldownComponent= 29;
+    public const int AbilityCurCooldownComponent= 30;
+    public const int AbilityUnitTargetCampComponent= 31;
+    public const int AbilityUnitTypeComponent= 32;
+    public const int OnSpellStartComponent= 33;
+    public const int SkillAbilityBehaviorComponent= 34;
+    public const int SkillCollisionShapeComponent= 35;
+    public const int SkillCollisionRadiusComponent= 36;
+    public const int SkillGroupComponent= 37;
+    public const int SkillIDComponent= 38;
+    public const int SkillManagerStateComponent= 39;
+    public const int SkillOwnerComponent= 40;
     
-    public const int TotalComponents = 39;
+    public const int TotalComponents = 41;
     
     
     public static readonly System.Type[] ComponentTypes = {
@@ -53,6 +55,8 @@ public static class Components {
         typeof(GameFrame.View),
         typeof(GXGame.WorldPos),
         typeof(GXGame.WorldRotate),
+        typeof(GXGame.LocalPos),
+        typeof(GXGame.LocalRotate),
         typeof(GXGame.LocalScale),
         typeof(GXGame.Direction),
         typeof(GXGame.DirectionSpeed),
