@@ -4,6 +4,7 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
+using UnityEngine.Tilemaps;
 
 namespace GXGame
 {
@@ -23,11 +24,11 @@ namespace GXGame
 
     public class WorldPosChangeSystem : ReactiveSystem
     {
-        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.MoveDirection);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate,Components.MoveDirection,Components.MoveSpeed,Components.WorldPos);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return entity.HasComponent(Components.WorldPos) && entity.HasComponent(Components.MoveSpeed);
+            return true;
         }
 
         protected override void Execute(List<ECSEntity> entities)

@@ -29,7 +29,7 @@ namespace GXGame
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.MoveDirection);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world,Collector.ChangeEventState.AddUpdate, Components.MoveDirection);
 
         protected override bool Filter(ECSEntity entity)
         {

@@ -9,6 +9,7 @@ namespace GXGame
         public override void Start()
         {
             base.Start();
+            this.AddEcsSystem<ViewSystem>();
             this.AddEcsSystem<InputSystem>();
             this.AddEcsSystem<WorldPosChangeSystem>();
             this.AddEcsSystem<WorldDirChangeSystem>();
@@ -20,7 +21,6 @@ namespace GXGame
             this.AddEcsSystem<SkillCollisionSystem>();
             
             //最后执行
-            this.AddEcsSystem<ViewSystem>();
             this.AddEcsSystem<DestroySystem>();
 
             CreateEntity();
@@ -46,25 +46,25 @@ namespace GXGame
             cubeHero.AddUnitTypeComponent(UnitTypeEnum.HERO);
 
             cubeHero.AddSkillGroupComponent(new int[] {1});
-            for (int i = 0; i < 1000; i++)
-            {
-                var monster = AddChild<Cube>();
-                monster.AddAssetPath("Cube");
-                monster.AddViewType(typeof(CubeView));
-                monster.AddInputDirection();
-                monster.AddMoveSpeed(5);
-                monster.AddMoveDirection();
-                monster.AddDirectionSpeed(180);
-                monster.AddDirection(Vector3.forward);
-                // monster.AddSkillGroupComponent(new int[] {1});
-                monster.AddUseShareMaterial();
-                monster.AddWorldPos(new Vector3(-6 + (i % 20) * 1.5f, 0, z: -5 + i / 20));
-                monster.AddWorldRotate(Quaternion.identity);
-                monster.AddLocalScale(Vector3.one);
-                monster.AddMeshRendererColor(Color.red);
-                monster.AddCampComponent(Camp.ENEMY);
-                monster.AddUnitTypeComponent(UnitTypeEnum.MONSER);
-            }
+            // for (int i = 0; i < 1000; i++)
+            // {
+            //     var monster = AddChild<Cube>();
+            //     monster.AddAssetPath("Cube");
+            //     monster.AddViewType(typeof(CubeView));
+            //     monster.AddInputDirection();
+            //     monster.AddMoveSpeed(5);
+            //     monster.AddMoveDirection();
+            //     monster.AddDirectionSpeed(180);
+            //     monster.AddDirection(Vector3.forward);
+            //     // monster.AddSkillGroupComponent(new int[] {1});
+            //     monster.AddUseShareMaterial();
+            //     monster.AddWorldPos(new Vector3(-6 + (i % 20) * 1.5f, 0, z: -5 + i / 20));
+            //     monster.AddWorldRotate(Quaternion.identity);
+            //     monster.AddLocalScale(Vector3.one);
+            //     monster.AddMeshRendererColor(Color.red);
+            //     monster.AddCampComponent(Camp.ENEMY);
+            //     monster.AddUnitTypeComponent(UnitTypeEnum.MONSER);
+            // }
         }
 
         public override void Clear()
