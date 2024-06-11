@@ -28,7 +28,7 @@ namespace GXGame
 
         protected override bool Filter(ECSEntity entity)
         {
-            return true;
+            return entity.HasComponent(Components.MoveDirection) &&  entity.HasComponent(Components.MoveSpeed) && entity.HasComponent(Components.WorldPos);
         }
 
         protected override void Execute(List<ECSEntity> entities)
