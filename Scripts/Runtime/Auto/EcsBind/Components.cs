@@ -18,35 +18,34 @@ public static class Components {
     public const int InputDirection= 11;
     public const int MoveDirection= 12;
     public const int MoveSpeed= 13;
-    public const int AssetPath= 14;
-    public const int ViewType= 15;
-    public const int CampComponent= 16;
-    public const int UnitTypeComponent= 17;
-    public const int SkillComponent= 18;
-    public const int SkillSoundPathComponent= 19;
-    public const int SkillSoundTargetComponent= 20;
-    public const int SkillPlayModelPathComponent= 21;
-    public const int SkillModelTargetComponent= 22;
-    public const int SkillEffectComponent= 23;
-    public const int SkillEffectEntityComponent= 24;
-    public const int SkillIsEffectComponent= 25;
-    public const int SkillEffectTargetComponent= 26;
-    public const int AbilityCastPointComponent= 27;
-    public const int AbilityCastRangeComponent= 28;
-    public const int AbilityCooldownComponent= 29;
-    public const int AbilityCurCooldownComponent= 30;
-    public const int AbilityUnitTargetCampComponent= 31;
-    public const int AbilityUnitTypeComponent= 32;
-    public const int OnSpellStartComponent= 33;
-    public const int SkillAbilityBehaviorComponent= 34;
-    public const int SkillCollisionShapeComponent= 35;
-    public const int SkillCollisionRadiusComponent= 36;
-    public const int SkillGroupComponent= 37;
-    public const int SkillIDComponent= 38;
-    public const int SkillManagerStateComponent= 39;
-    public const int SkillOwnerComponent= 40;
+    public const int ViewType= 14;
+    public const int CampComponent= 15;
+    public const int UnitTypeComponent= 16;
+    public const int SkillComponent= 17;
+    public const int SkillSoundPathComponent= 18;
+    public const int SkillSoundTargetComponent= 19;
+    public const int SkillPlayModelPathComponent= 20;
+    public const int SkillModelTargetComponent= 21;
+    public const int SkillEffectComponent= 22;
+    public const int SkillEffectEntityComponent= 23;
+    public const int SkillIsEffectComponent= 24;
+    public const int SkillEffectTargetComponent= 25;
+    public const int AbilityCastPointComponent= 26;
+    public const int AbilityCastRangeComponent= 27;
+    public const int AbilityCooldownComponent= 28;
+    public const int AbilityCurCooldownComponent= 29;
+    public const int AbilityUnitTargetCampComponent= 30;
+    public const int AbilityUnitTypeComponent= 31;
+    public const int OnSpellStartComponent= 32;
+    public const int SkillAbilityBehaviorComponent= 33;
+    public const int SkillCollisionShapeComponent= 34;
+    public const int SkillCollisionRadiusComponent= 35;
+    public const int SkillGroupComponent= 36;
+    public const int SkillIDComponent= 37;
+    public const int SkillManagerStateComponent= 38;
+    public const int SkillOwnerComponent= 39;
     
-    public const int TotalComponents = 41;
+    public const int TotalComponents = 40;
     
     
     public static readonly System.Type[] ComponentTypes = {
@@ -65,7 +64,6 @@ public static class Components {
         typeof(GXGame.InputDirection),
         typeof(GXGame.MoveDirection),
         typeof(GXGame.MoveSpeed),
-        typeof(GXGame.AssetPath),
         typeof(GXGame.ViewType),
         typeof(GXGame.CampComponent),
         typeof(GXGame.UnitTypeComponent),

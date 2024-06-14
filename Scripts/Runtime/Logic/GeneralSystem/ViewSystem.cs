@@ -11,7 +11,7 @@ namespace GXGame
             base.Start(entity);
         }
 
-        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate ,Components.AssetPath, Components.ViewType);
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate , Components.ViewType);
 
         protected override bool Filter(ECSEntity entity)
         {

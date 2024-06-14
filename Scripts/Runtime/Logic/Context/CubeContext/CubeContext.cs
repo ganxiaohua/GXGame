@@ -32,7 +32,6 @@ namespace GXGame
             var cubeHero = AddChild<Cube>();
             cubeHero.Name = "Hero";
             cubeHero.AddViewType(typeof(CubeView));
-            cubeHero.AddAssetPath("Cube");
             cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
             cubeHero.AddWorldRotate(Quaternion.identity);
             cubeHero.AddInputDirection();
@@ -50,7 +49,6 @@ namespace GXGame
             {
                 var monster = AddChild<Cube>();
                 monster.Name = "redCube";
-                monster.AddAssetPath("Cube");
                 monster.AddViewType(typeof(CubeView));
                 monster.AddInputDirection();
                 monster.AddMoveSpeed(5);

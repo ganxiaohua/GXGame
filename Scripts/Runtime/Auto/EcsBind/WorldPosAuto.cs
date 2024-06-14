@@ -22,6 +22,7 @@ public static class AutoWorldPos
     {
         return (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
     }
+     
     public static ECSEntity SetWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);

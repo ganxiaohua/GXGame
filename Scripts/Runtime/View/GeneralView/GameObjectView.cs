@@ -16,10 +16,9 @@ namespace GXGame
         public virtual void Link(ECSEntity ecsEntity)
         {
             m_BindEntity = ecsEntity;
-            Load(m_BindEntity.GetAssetPath().Path).Forget();
         }
 
-        private async UniTaskVoid Load(string path)
+        protected async UniTaskVoid Load(string path)
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
             mGxGameObjectBase = new GXGameObject();

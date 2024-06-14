@@ -68,11 +68,6 @@ namespace GXGame
     {
         public float Speed;
     }
-
-    public class AssetPath : ECSComponent
-    {
-        public string Path;
-    }
     
     public class ViewType : ECSComponent
     {
