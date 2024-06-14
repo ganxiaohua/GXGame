@@ -29,7 +29,7 @@ namespace GXGame
 
         public void CreateEntity()
         {
-            var cubeHero = AddChild<Cube>();
+            var cubeHero = AddChild();
             cubeHero.Name = "Hero";
             cubeHero.AddViewType(typeof(CubeView));
             cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
@@ -47,7 +47,7 @@ namespace GXGame
             cubeHero.AddSkillGroupComponent(new int[] {1});
             for (int i = 0; i < 1000; i++)
             {
-                var monster = AddChild<Cube>();
+                var monster = AddChild();
                 monster.Name = "redCube";
                 monster.AddViewType(typeof(CubeView));
                 monster.AddInputDirection();
