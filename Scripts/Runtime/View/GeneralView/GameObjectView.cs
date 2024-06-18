@@ -6,7 +6,7 @@ namespace GXGame
 {
     public class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale,ILocalPosition,ILocalRotate
     {
-        private ECSEntity m_BindEntity;
+        protected ECSEntity BindEntity;
         private GXGameObject mGxGameObjectBase;
         private UniTaskCompletionSource m_UniTaskCompletionSource;
         public GXGameObject GxGameObjectBase => mGxGameObjectBase;
@@ -15,7 +15,7 @@ namespace GXGame
 
         public virtual void Link(ECSEntity ecsEntity)
         {
-            m_BindEntity = ecsEntity;
+            BindEntity = ecsEntity;
         }
 
         protected async UniTaskVoid Load(string path)
@@ -32,7 +32,7 @@ namespace GXGame
             }
 
             LoadingOver = true;
-            m_UniTaskCompletionSource.TrySetResult();
+            m_UniTaskCompletionSource?.TrySetResult();
             m_UniTaskCompletionSource = null;
         }
 
@@ -43,7 +43,7 @@ namespace GXGame
 
             mGxGameObjectBase.Unbind(GameObjectPool.Instance);
             mGxGameObjectBase = null;
-            m_BindEntity = null;
+            BindEntity = null;
             LoadingOver = false;
         }
 

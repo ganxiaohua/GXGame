@@ -31,7 +31,7 @@ namespace GXGame
         {
             var cubeHero = AddChild();
             cubeHero.Name = "Hero";
-            cubeHero.AddViewType(typeof(CubeView));
+            cubeHero.AddViewType(typeof(GoMeshView));
             cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
             cubeHero.AddWorldRotate(Quaternion.identity);
             cubeHero.AddInputDirection();
@@ -49,7 +49,7 @@ namespace GXGame
             {
                 var monster = AddChild();
                 monster.Name = "redCube";
-                monster.AddViewType(typeof(CubeView));
+                monster.AddViewType(typeof(GoMeshView));
                 monster.AddInputDirection();
                 monster.AddMoveSpeed(5);
                 monster.AddMoveDirection();

@@ -3,18 +3,16 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class CubeView : GameObjectView,IMeshRendererColor
+    public class GoMeshView : GameObjectView,IMeshRendererColor
     {
-        private ECSEntity m_BindEntity;
         private MeshRendererView m_MeshRendererView;
 
         public override void Link(ECSEntity ecsEntity)
         {
             base.Link(ecsEntity);
             Load("Cube").Forget();
-            m_BindEntity = ecsEntity;
             m_MeshRendererView = ReferencePool.Acquire<MeshRendererView>();
-            m_MeshRendererView.Init(m_BindEntity,this);
+            m_MeshRendererView.Init(BindEntity,this);
         }
 
         public override void Clear()
