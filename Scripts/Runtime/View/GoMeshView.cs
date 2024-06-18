@@ -10,7 +10,7 @@ namespace GXGame
         public override void Link(ECSEntity ecsEntity)
         {
             base.Link(ecsEntity);
-            Load("Cube").Forget();
+            Load(ecsEntity.GetAssetPath().path).Forget();
             m_MeshRendererView = ReferencePool.Acquire<MeshRendererView>();
             m_MeshRendererView.Init(BindEntity,this);
         }

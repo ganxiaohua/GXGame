@@ -34,6 +34,11 @@ namespace GXGame
         public Vector3 Scale;
     }
     
+    public class AssetPath : ECSComponent
+    {
+        public string path;
+    }
+    
     public class Direction : ECSComponent
     {
         public Vector3 Dir;

@@ -2,13 +2,13 @@
 
 namespace GXGame
 {
-    public class ParticleView : GameObjectView
+    public class GoView : GameObjectView
     {
 
         public override void Link(ECSEntity ecsEntity)
         {
             base.Link(ecsEntity);
-            Load("Skill1Effect").Forget();
+            Load(ecsEntity.GetAssetPath().path).Forget();
         }
 
         public override void Clear()
