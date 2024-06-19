@@ -31,7 +31,7 @@ namespace GXGame
             SetColor(m_BindEntity.GetMeshRendererColor());
         }
 
-        public void SetColor(GXGame.MeshRendererColor param)
+        public void SetColor(MeshRendererColor param)
         {
             if (!m_GameObjectView.LoadingOver) return;
             if (m_MeshRenderer == null)

@@ -1,34 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameFrame;
+using UnityEngine;
 
 namespace GXGame
 {
-    public class ViewSystem : ReactiveSystem
+    public class ViewSystem : IStartSystem<World>, IUpdateSystem
     {
-        public override void Start(World entity)
+        private Group group;
+        private Camera camera;
+        public void Start(World world)
         {
-            base.Start(entity);
+            Matcher matcher = Matcher.SetAll(Components.ViewType);
+            group = world.GetGroup(matcher);
+
+            camera = Camera.main;
         }
 
-        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate , Components.ViewType);
-
-        protected override bool Filter(ECSEntity entity)
+        public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            if (entity.GetView() == null)
-                return true;
-            return false;
-        }
-
-        protected override void Execute(List<ECSEntity> entities)
-        {
-            foreach (var entity in entities)
+            foreach (var entity in group)
             {
-                LoadAsset(entity);
+                bool isInView = IsObjectInView(entity);
+                var view = entity.GetView();
+                if (isInView && view == null)
+                {
+                    LoadAsset(entity);
+                }
+                else if (view != null && !isInView)
+                {
+                    entity.RemoveComponent(Components.View);
+                }
             }
         }
 
-        private void  LoadAsset(ECSEntity ecsentity)
+        private void LoadAsset(ECSEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Type;
             var objectView = View.Create(type);
@@ -36,9 +42,20 @@ namespace GXGame
             ecsentity.AddView(objectView);
         }
 
-        public override void Clear()
+        private bool IsObjectInView(ECSEntity ecsentity)
         {
+            var pos = ecsentity.GetWorldPos();
+            Vector3 viewPos = camera.WorldToViewportPoint(pos.Pos);
 
+            bool isInView = viewPos.x > 0 && viewPos.x < 1 &&
+                            viewPos.y > 0 && viewPos.y < 1 &&
+                            viewPos.z > camera.nearClipPlane && viewPos.z < camera.farClipPlane;
+            return isInView;
+        }
+
+        public void Clear()
+        {
+            group = null;
         }
     }
 }

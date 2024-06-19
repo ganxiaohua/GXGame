@@ -1,6 +1,7 @@
 ﻿using Common.Runtime;
 using Cysharp.Threading.Tasks;
 using GameFrame;
+using UnityEngine;
 
 namespace GXGame
 {
