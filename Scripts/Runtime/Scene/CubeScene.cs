@@ -18,9 +18,6 @@ namespace GXGame
             await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/CubeScene.unity");
             AddComponent<CubeConText>();
             UIManager.Instance.OpenUI(typeof(UICardListWindow));
-            // var camera = GameObject.Find("Camera").GetComponent<Camera>();
-            // var cameraData = camera.GetUniversalAdditionalCameraData();
-            // cameraData.cameraStack.Add(StageCamera.main);
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
