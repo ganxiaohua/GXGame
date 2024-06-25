@@ -1,16 +1,20 @@
+using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using FairyGUI;
 using GameFrame;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace GXGame
 {
     public class CubeScene : Entity, IScene, IStartSystem, IUpdateSystem
     {
+        private BehaviorTest bt;
         public void Start()
         {
+            //ecs demo
             Init().Forget();
+            //行为机 demo
+            bt = new BehaviorTest();
+            bt.Init(this);
         }
 
         private async UniTaskVoid Init()
@@ -22,6 +26,7 @@ namespace GXGame
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
+            bt?.Update(elapseSeconds,realElapseSeconds);
         }
 
         public override void Clear()
