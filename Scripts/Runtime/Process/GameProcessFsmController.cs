@@ -2,7 +2,7 @@
 
 namespace GXGame
 {
-    public class GameProcessController : FsmController
+    public class GameProcessFsmController : FsmController
     {
         public override void Start()
         {

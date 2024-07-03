@@ -6,14 +6,14 @@ namespace GXGame
 {
     public class Main : MonoBehaviour
     {
-        private GameProcessController gameProcessController;
+        private GameProcessFsmController gameProcessFsmController;
         async UniTaskVoid Start()
         {
             DontDestroyOnLoad(this);
             Components.SetComponent();
             new AutoBindEvent().AddSystem();
             await GXGameFrame.Instance.Start();
-           GXGameFrame.Instance.MainScene.AddComponent<GameProcessController>();
+           GXGameFrame.Instance.MainScene.AddComponent<GameProcessFsmController>();
         }
 
         void Update()

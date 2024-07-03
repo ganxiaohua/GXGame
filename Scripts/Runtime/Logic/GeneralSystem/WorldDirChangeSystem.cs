@@ -38,7 +38,7 @@ namespace GXGame
 
         protected override void Execute(List<ECSEntity> entities)
         {
-            Job(entities);
+            Common(entities);
         }
 
         private void Common(List<ECSEntity> entities)
