@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39075f9a30384889aeb539750c1bc6d0, type: 3}
+  m_Name: AnimatorWith2D
+  m_EditorClassIdentifier: 
+  SequenceFrameAnimator:
+  - RooteTexture2D: {fileID: 2800000, guid: 4993971c0915db5499883f7ad56aa6e4, type: 3}
+    WhCountList:
+    - {x: 6, y: 6}
+    - {x: 4, y: 4}
+    AimationClipName:
+    - BelowIdle
+    - WalkIdle
+    - ForwardIdle
+    - BelowWalk
+    - Walk
+    - ForwardWalk
+    - ForWardAtk
+    - Atk
+    - BelowAtk
+    - Die
+    IsTransition: 1
+    IntervalCount: 3
+    LinkCount: 3
+  - RooteTexture2D: {fileID: 2800000, guid: cf263b75e09356f4cb68f6ad52964943, type: 3}
+    WhCountList:
+    - {x: 6, y: 6}
+    - {x: 4, y: 4}
+    AimationClipName:
+    - BelowIdle
+    - WalkIdle
+    - ForwardIdle
+    - BelowWalk
+    - Walk
+    - ForwardWalk
+    - Die
+    - ForWardAtk
+    - Atk
+    - BelowAtk
+    IsTransition: 1
+    IntervalCount: 3
+    LinkCount: 3
+  - RooteTexture2D: {fileID: 2800000, guid: e5e830e46b482f14c9851fb0bfd0fc80, type: 3}
+    WhCountList:
+    - {x: 4, y: 1}
+    - {x: 6, y: 1}
+    - {x: 4, y: 1}
+    AimationClipName:
+    - Run1
+    - Run2
+    - Run3
+    IsTransition: 1
+    IntervalCount: 0
+    LinkCount: 0

@@ -6,19 +6,30 @@ namespace GXGame
 {
     public class ViewSystem : IStartSystem<World>, IUpdateSystem
     {
-        private Group group;
+        private Group viewTypeGroup;
+        private Group viewGroup;
         private Camera camera;
+
         public void Start(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.ViewType);
-            group = world.GetGroup(matcher);
+            viewTypeGroup = world.GetGroup(matcher);
+
+            matcher = Matcher.SetAll(Components.View);
+            viewGroup = world.GetGroup(matcher);
 
             camera = Camera.main;
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            foreach (var entity in group)
+            ViewTypeControl();
+            ViewGroupUpdate(elapseSeconds,realElapseSeconds);
+        }
+
+        private void ViewTypeControl()
+        {
+            foreach (var entity in viewTypeGroup)
             {
                 bool isInView = IsObjectInView(entity);
                 var view = entity.GetView();
@@ -33,6 +44,14 @@ namespace GXGame
             }
         }
 
+        private void ViewGroupUpdate(float elapseSeconds, float realElapseSeconds)
+        {
+            foreach (var entity in viewGroup)
+            {
+                entity.GetView().Value.Update(elapseSeconds,realElapseSeconds);
+            }
+        }
+
         private void LoadAsset(ECSEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Type;
@@ -40,6 +59,7 @@ namespace GXGame
             objectView.Link(ecsentity);
             ecsentity.AddView(objectView);
         }
+
 
         private bool IsObjectInView(ECSEntity ecsentity)
         {
@@ -54,7 +74,7 @@ namespace GXGame
 
         public void Clear()
         {
-            group = null;
+            viewTypeGroup = null;
         }
     }
 }

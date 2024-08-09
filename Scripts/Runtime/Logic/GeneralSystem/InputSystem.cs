@@ -1,4 +1,6 @@
-﻿using GameFrame;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GameFrame;
 using UnityEngine;
 
 namespace GXGame
@@ -7,36 +9,38 @@ namespace GXGame
     {
         private Vector3 InputPos;
         private Group Group;
+        private Dictionary<KeyCode, int> keyCode;
 
         public void Start(World entity)
         {
-            Matcher matcher = Matcher.SetAll(Components.MoveDirection).NoneOf(Components.SkillComponent);
+            Matcher matcher = Matcher.SetAll(Components.MoveDirection,Components.InputDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);
+            keyCode = new();
+            keyCode.Add(KeyCode.A, -1);
+            keyCode.Add(KeyCode.D, 1);
+            keyCode.Add(KeyCode.W, 1);
+            keyCode.Add(KeyCode.S, -1);
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
             InputPos.Set(0, 0, 0);
-            if (Input.GetKey(KeyCode.W))
+            int index = 0;
+            foreach (var variable in keyCode)
             {
-                InputPos.z = 1;
+                if (Input.GetKey(variable.Key))
+                {
+                    if (index < 2)
+                    {
+                        InputPos.x = variable.Value;
+                    }
+                    else
+                    {
+                        InputPos.y = variable.Value;
+                    }
+                }
+                index++;
             }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                InputPos.z = -1;
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                InputPos.x = 1;
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                InputPos.x = -1;
-            }
-
-            if (InputPos == Vector3.zero)
-                return;
             foreach (var entity in Group)
             {
                 entity.SetMoveDirection(InputPos);

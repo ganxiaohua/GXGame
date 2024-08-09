@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale,ILocalPosition,ILocalRotate
+    public abstract class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale,ILocalPosition,ILocalRotate
     {
         protected ECSEntity BindEntity;
-        private GXGameObject mGxGameObjectBase;
+        private GXGameObject m_GXGO;
         private UniTaskCompletionSource m_UniTaskCompletionSource;
-        public GXGameObject GxGameObjectBase => mGxGameObjectBase;
+        public GXGameObject GXGO => m_GXGO;
         
         public bool LoadingOver { get; private set; }
 
@@ -22,10 +22,10 @@ namespace GXGame
         protected async UniTaskVoid Load(string path)
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
-            mGxGameObjectBase = new GXGameObject();
+            m_GXGO = new GXGameObject();
             m_UniTaskCompletionSource = new UniTaskCompletionSource();
             LoadingOver = false;
-            bool success = await mGxGameObjectBase.BindFromAssetAsync(GameObjectPool.Instance, path);
+            bool success = await m_GXGO.BindFromAssetAsync(GameObjectPool.Instance, path);
             if (!success)
             {
                 m_UniTaskCompletionSource?.TrySetCanceled();
@@ -36,46 +36,52 @@ namespace GXGame
             m_UniTaskCompletionSource?.TrySetResult();
             m_UniTaskCompletionSource = null;
         }
+        
+        public virtual void Update(float elapseSeconds, float realElapseSeconds)
+        {
+            
+        }
 
         public virtual void Clear()
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
             m_UniTaskCompletionSource = null;
 
-            mGxGameObjectBase.Unbind(GameObjectPool.Instance);
-            mGxGameObjectBase = null;
+            m_GXGO.Unbind(GameObjectPool.Instance);
+            m_GXGO = null;
             BindEntity = null;
             LoadingOver = false;
         }
+        
 
         public async UniTask WaitLoadOver()
         {
             await m_UniTaskCompletionSource.Task;
         }
         
-        public void LocalPosition(LocalPos localPos)
+        public virtual void LocalPosition(LocalPos localPos)
         {
-            mGxGameObjectBase.localPosition = localPos.Pos;
+            m_GXGO.localPosition = localPos.Pos;
         }
 
-        public void LocalRotate(LocalRotate localRotate)
+        public virtual void LocalRotate(LocalRotate localRotate)
         {
-            mGxGameObjectBase.localRotation = localRotate.Rotate;
+            m_GXGO.localRotation = localRotate.Rotate;
         }
         
-        public void WolrdPosition(WorldPos worldPos)
+        public virtual void WolrdPosition(WorldPos worldPos)
         {
-            mGxGameObjectBase.position = worldPos.Pos;
+            m_GXGO.position = worldPos.Pos;
         }
 
-        public void WorldRotate(WorldRotate worldRotate)
+        public virtual void WorldRotate(WorldRotate worldRotate)
         {
-            mGxGameObjectBase.rotation = worldRotate.Rotate;
+            m_GXGO.rotation = worldRotate.Rotate;
         }
 
-        public void LocalScale(LocalScale localScale)
+        public virtual void LocalScale(LocalScale localScale)
         {
-            mGxGameObjectBase.scale = localScale.Scale;
+            m_GXGO.scale = localScale.Scale;
         }
     }
 }

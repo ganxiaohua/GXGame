@@ -78,7 +78,7 @@ namespace GXGame
     {
         public Type Type;
     }
-
+    
     public class CampComponent : ECSComponent
     {
         public Camp Camp;

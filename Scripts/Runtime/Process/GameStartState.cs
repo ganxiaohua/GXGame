@@ -7,7 +7,7 @@ namespace GXGame
         public override void Enter(FsmController fsmController)
         {
             base.Enter(fsmController);
-            SceneFactory.ChangePlayerScene<CubeScene>(this);
+            SceneFactory.ChangePlayerScene<GameScene>(this);
         }
     }
 }

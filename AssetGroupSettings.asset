@@ -15,10 +15,18 @@ MonoBehaviour:
   data:
   - groupName: Role
     searchPaths:
-    - Assets/GXGame/Art
-    filter: t:Prefab
-    simplifyAddressName: 1
-    packByDir: 0
+    - Assets/GXGame/Art/Runtime/Role
+    filter: 
+    simplifyAddressName: 0
+    packByDir: 1
+    bundleMode: 1
+    compression: 1
+  - groupName: Textures
+    searchPaths:
+    - Assets/GXGame/Art/Runtime/Texture
+    filter: t:sprite
+    simplifyAddressName: 0
+    packByDir: 1
     bundleMode: 1
     compression: 1
   - groupName: UI
@@ -47,7 +55,15 @@ MonoBehaviour:
     compression: 1
   - groupName: skilleffect
     searchPaths:
-    - Assets/GXGame/Art/Effect/SkillEffect
+    - Assets/GXGame/Art/Runtime/Effect/SkillEffect
+    filter: 
+    simplifyAddressName: 1
+    packByDir: 0
+    bundleMode: 1
+    compression: 1
+  - groupName: TilesMap
+    searchPaths:
+    - Assets/GXGame/Art/Runtime/TilesMap
     filter: 
     simplifyAddressName: 1
     packByDir: 0

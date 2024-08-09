@@ -33,7 +33,7 @@ namespace GXGame
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
                     Entity.AddSkillCollisionShapeComponent(CollisionShape.Sphere);
                     Entity.AddSkillCollisionRadiusComponent(1);
-                    Entity.AddViewType(typeof(GoView));
+                    Entity.AddViewType(typeof(GoBaseView));
                     Entity.AddAssetPath("Skill1Effect");
                 }
             }
