@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Grass_Middle
+  m_Name: Cliff_Tile_4
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 02a45a1ef410d214c8b46ff06b44ff12, type: 3}
+  m_Sprite: {fileID: 219738158, guid: 70a237b3e98ba9a4aa4a2f7087cb1033, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
