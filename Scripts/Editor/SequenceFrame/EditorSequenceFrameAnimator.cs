@@ -116,13 +116,12 @@ namespace GXGame.Editor
             [FoldoutGroup("$GroupTitle", 8)]
             [LabelText("动画连接")]
             [ShowIf("IsTransition", true)]
-            private void AnimatorTransition()
+            public void AnimatorTransition()
             {
                 string assetPath = AssetDatabase.GetAssetPath(RooteTexture2D);
                 string textureName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
                 CreateAnimtorController($"{OutPutPath}/{textureName}/Animation/{textureName}.controller", $"{OutPutPath}/{textureName}/Animation");
-
-
+                
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
@@ -132,39 +131,49 @@ namespace GXGame.Editor
                 OpFile.CreateDiectory(path);
                 AssetDatabase.DeleteAsset(path);
                 AnimatorController animator = new AnimatorController();
-                animator.AddLayer("Layer_1");
+                AssetDatabase.CreateAsset(animator, path);
+                AnimatorControllerLayer layer = new AnimatorControllerLayer();
+                layer.blendingMode = AnimatorLayerBlendingMode.Override;
+                layer.name = "Base Layer";
+                layer.stateMachine = new AnimatorStateMachine();
+                layer.stateMachine.name = layer.name;
+                layer.stateMachine.hideFlags = HideFlags.HideInHierarchy;
+                animator.AddLayer(layer);
+                AssetDatabase.AddObjectToAsset(layer.stateMachine, animator);
                 var animatorControllerParameter = new AnimatorControllerParameter();
                 animatorControllerParameter.name = "Stop";
                 animatorControllerParameter.type = AnimatorControllerParameterType.Bool;
                 animator.AddParameter(animatorControllerParameter);
-
                 for (int i = 0; i < LinkCount; i++)
                 {
-                    LinkState(animator.layers[0].stateMachine, rolePath, i);
+                    var state = LinkState(animator,layer.stateMachine, rolePath, i);
                 }
 
-                for (int i = LinkCount*2; i < AimationClipName.Count; i++)
+                for (int i = LinkCount * 2; i < AimationClipName.Count; i++)
                 {
-                    AddState(animator.layers[0].stateMachine, rolePath, i);
+                    var state = AddState(animator,layer.stateMachine, rolePath, i);
                 }
                 
-                AssetDatabase.CreateAsset(animator, path);
+                EditorUtility.SetDirty(animator);
                 CreatePrefab(animator);
             }
 
-            private void LinkState(AnimatorStateMachine machine, string rolePath, int index)
+            private AnimatorState[] LinkState(AnimatorController controller,AnimatorStateMachine machine, string rolePath, int index)
             {
                 var clipHead = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{rolePath}/{AimationClipName[index + IntervalCount]}.anim");
                 var clipEnd = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{rolePath}/{AimationClipName[index]}.anim");
                 AnimatorState state1 = new AnimatorState();
+                state1.hideFlags = HideFlags.HideInHierarchy;
                 state1.motion = clipHead;
                 state1.name = clipHead.name;
 
                 AnimatorState state4 = new AnimatorState();
+                state4.hideFlags = HideFlags.HideInHierarchy;
                 state4.motion = clipEnd;
                 state4.name = clipEnd.name;
 
                 AnimatorStateTransition animatorStateTransition = state1.AddTransition(state4);
+                animatorStateTransition.hideFlags = HideFlags.HideInHierarchy;
                 animatorStateTransition.hasExitTime = false;
                 List<AnimatorCondition> animatorConditionlist = new();
                 AnimatorCondition animatorCondition = new AnimatorCondition();
@@ -172,18 +181,24 @@ namespace GXGame.Editor
                 animatorCondition.mode = AnimatorConditionMode.If;
                 animatorConditionlist.Add(animatorCondition);
                 animatorStateTransition.conditions = animatorConditionlist.ToArray();
-
+                AssetDatabase.AddObjectToAsset(animatorStateTransition, controller);
                 machine.AddState(state1, new Vector3(250, index * 100));
                 machine.AddState(state4, new Vector3(550, index * 100));
+                AssetDatabase.AddObjectToAsset(state1, controller);
+                AssetDatabase.AddObjectToAsset(state4, controller);
+                return new AnimatorState[] {state1, state4};
             }
 
-            private void AddState(AnimatorStateMachine machine, string rolePath, int index)
+            private AnimatorState AddState(AnimatorController controller,AnimatorStateMachine machine, string rolePath, int index)
             {
                 var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{rolePath}/{AimationClipName[index]}.anim");
-                AnimatorState state1 = new AnimatorState();
-                state1.motion = clip;
-                state1.name = clip.name;
-                machine.AddState(state1, new Vector3(250, (index-LinkCount) * 100));
+                AnimatorState state = new AnimatorState();
+                state.hideFlags = HideFlags.HideInHierarchy;
+                state.motion = clip;
+                state.name = clip.name;
+                AssetDatabase.AddObjectToAsset(state, controller);
+                machine.AddState(state, new Vector3(250, (index - LinkCount) * 100));
+                return state;
             }
 
             private void CreatePrefab(AnimatorController animatorController)
@@ -197,11 +212,22 @@ namespace GXGame.Editor
                 GameObject go = AssetDatabase.LoadAssetAtPath<GameObject>(targetPath);
                 go.GetComponent<Animator>().runtimeAnimatorController = animatorController;
                 EditorUtility.SetDirty(go);
-                AssetDatabase.SaveAssets();
             }
         }
 
         [ShowInInspector] [ListDrawerSettings(NumberOfItemsPerPage = 20)]
         public List<Data> SequenceFrameAnimator = new List<Data>();
+
+
+        [LabelText("输出全部")]
+        [Button]
+        public void OutputAll()
+        {
+            foreach (var data in SequenceFrameAnimator)
+            {
+                data.CuttingSprite();
+                data.AnimatorTransition();
+            }
+        }
     }
 }

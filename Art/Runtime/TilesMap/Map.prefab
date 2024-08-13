@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2517728770834018469}
   - component: {fileID: 6541611438214231389}
   - component: {fileID: 6805357951789111343}
-  - component: {fileID: 8907702588455796107}
-  - component: {fileID: 6086495592819549681}
+  - component: {fileID: 5567972080329939064}
+  - component: {fileID: 8815760777583493659}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -4545,7 +4545,7 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!50 &8907702588455796107
+--- !u!50 &5567972080329939064
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -4553,8 +4553,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3050304753364768550}
-  m_BodyType: 0
-  m_Simulated: 0
+  m_BodyType: 1
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -4572,7 +4572,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &6086495592819549681
+--- !u!66 &8815760777583493659
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

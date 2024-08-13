@@ -35,8 +35,7 @@ namespace GXGame
                 }
             }
         }
-
-
+        
         public override void Clear()
         {
         }

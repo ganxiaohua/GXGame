@@ -8,21 +8,22 @@ namespace GXGame
     {
         private AnimatorView animator;
         private SpriteRendererView spriterenderer;
+
         public override void Link(ECSEntity ecsEntity)
         {
             base.Link(ecsEntity);
             Load(ecsEntity.GetAssetPath().path).Forget();
             spriterenderer = ReferencePool.Acquire<SpriteRendererView>();
-            spriterenderer.Init(ecsEntity,this);
+            spriterenderer.Init(ecsEntity, this);
             animator = ReferencePool.Acquire<AnimatorView>();
-            animator.Init(ecsEntity,this);
+            animator.Init(ecsEntity, this);
         }
-        
-        
+
+
         public override void Update(float elapseSeconds, float realElapseSeconds)
         {
-            base.Update(elapseSeconds,realElapseSeconds);
-            if(animator==null)
+            base.Update(elapseSeconds, realElapseSeconds);
+            if (animator == null)
                 return;
             var dir = BindEntity.GetMoveDirection().Dir;
             if (dir.x > 0)
@@ -38,21 +39,22 @@ namespace GXGame
             else if (dir.y > 0)
             {
                 animator.Play("ForwardWalk");
-            }else if (dir.y < 0)
+            }
+            else if (dir.y < 0)
             {
                 animator.Play("BelowWalk");
             }
 
             if (dir != Vector3.zero)
             {
-                animator.SetBool("Stop",false);
+                animator.SetBool("Stop", false);
             }
             else if (dir == Vector3.zero)
             {
-                animator.SetBool("Stop",true);
+                animator.SetBool("Stop", true);
             }
         }
-        
+
         public override void Clear()
         {
             base.Clear();
