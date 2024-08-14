@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 
 namespace GXGame.Editor
 {
-    public class EditorSequenceFrameAnimator : ScriptableObject
+    public partial class EditorSequenceFrameAnimator : ScriptableObject
     {
         private static float Frame = 30;
         private static string OutPutPath = "Assets/GXGame/Art/Runtime/Role";
@@ -17,6 +17,20 @@ namespace GXGame.Editor
         [Serializable]
         public struct Data
         {
+            public enum AnimatorType
+            {
+                BelowWalk,
+                BelowIdle,
+                RightWalk,
+                RightIdle,
+                ForwardWalk,
+                ForwordIdle,
+                BelowAtk,
+                RightAtk,
+                ForwardAtk,
+                Die
+            }
+
             private string GroupTitle;
 
             [FoldoutGroup("$GroupTitle", 1)] [LabelText("目标图片")]
@@ -25,8 +39,8 @@ namespace GXGame.Editor
             [FoldoutGroup("$GroupTitle", 2)] [LabelText("图片单位格宽高")]
             public List<Vector2Int> WhCountList;
 
-            [FoldoutGroup("$GroupTitle", 3)] [LabelText("图片需要生成的Clip")]
-            public List<string> AimationClipName;
+            [FormerlySerializedAs("AimationClipName")] [FoldoutGroup("$GroupTitle", 3)] [LabelText("图片需要生成的Clip")]
+            public List<AnimatorType> AimationClipType;
 
             [Button]
             [FoldoutGroup("$GroupTitle", 4)]
@@ -39,7 +53,7 @@ namespace GXGame.Editor
                     allAnimationCount += whCount.y;
                 }
 
-                if (allAnimationCount != AimationClipName.Count)
+                if (allAnimationCount != AimationClipType.Count)
                 {
                     Debug.Log("名字列表的长度必须和WHCount的y值一样");
                     return;
@@ -49,6 +63,7 @@ namespace GXGame.Editor
                 string textureName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
                 OpFile.DeleteFilesInDirectory($"{OutPutPath}/{textureName}");
                 AssetDatabase.Refresh();
+                AssetDatabase.SaveAssets();
                 GroupTitle = textureName;
                 UnityEngine.Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath(assetPath);
                 List<Sprite> list = new List<Sprite>();
@@ -70,37 +85,12 @@ namespace GXGame.Editor
 
                         if (list.Count == 0)
                             return;
-                        CreateSpriteClip(list, $"{OutPutPath}/{textureName}/Animation/{AimationClipName[animIndex++]}.anim");
+                        CreateSpriteClip(list, $"{OutPutPath}/{textureName}/Animation/{AimationClipType[animIndex++].ToString()}.anim");
                     }
                 }
 
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-            }
-
-
-            private void CreateSpriteClip(List<Sprite> sprites, string path)
-            {
-                OpFile.CreateDiectory(path);
-                AnimationClip clip = new AnimationClip();
-                EditorCurveBinding curveBinding = new EditorCurveBinding();
-                curveBinding.type = typeof(SpriteRenderer);
-                curveBinding.path = "";
-                curveBinding.propertyName = "m_Sprite";
-                ObjectReferenceKeyframe[] keyframes = new ObjectReferenceKeyframe[sprites.Count];
-                for (int i = 0; i < sprites.Count; i++)
-                {
-                    keyframes[i] = new ObjectReferenceKeyframe();
-                    keyframes[i].time = i * 5 / Frame;
-                    keyframes[i].value = sprites[i];
-                }
-
-                clip.frameRate = Frame;
-                AnimationClipSettings clipSettings = AnimationUtility.GetAnimationClipSettings(clip);
-                clipSettings.loopTime = true;
-                AnimationUtility.SetAnimationClipSettings(clip, clipSettings);
-                AnimationUtility.SetObjectReferenceCurve(clip, curveBinding, keyframes);
-                AssetDatabase.CreateAsset(clip, path);
             }
 
             [FoldoutGroup("$GroupTitle", 5)] [LabelText("是否链接动画")]
@@ -120,85 +110,11 @@ namespace GXGame.Editor
             {
                 string assetPath = AssetDatabase.GetAssetPath(RooteTexture2D);
                 string textureName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
-                CreateAnimtorController($"{OutPutPath}/{textureName}/Animation/{textureName}.controller", $"{OutPutPath}/{textureName}/Animation");
-                
+                var animtorConllor = CreateAnimtorController(AimationClipType, $"{OutPutPath}/{textureName}/Animation/{textureName}.controller",
+                    $"{OutPutPath}/{textureName}/Animation");
+                CreatePrefab(animtorConllor);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-            }
-
-            private void CreateAnimtorController(string path, string rolePath)
-            {
-                OpFile.CreateDiectory(path);
-                AssetDatabase.DeleteAsset(path);
-                AnimatorController animator = new AnimatorController();
-                AssetDatabase.CreateAsset(animator, path);
-                AnimatorControllerLayer layer = new AnimatorControllerLayer();
-                layer.blendingMode = AnimatorLayerBlendingMode.Override;
-                layer.name = "Base Layer";
-                layer.stateMachine = new AnimatorStateMachine();
-                layer.stateMachine.name = layer.name;
-                layer.stateMachine.hideFlags = HideFlags.HideInHierarchy;
-                animator.AddLayer(layer);
-                AssetDatabase.AddObjectToAsset(layer.stateMachine, animator);
-                var animatorControllerParameter = new AnimatorControllerParameter();
-                animatorControllerParameter.name = "Stop";
-                animatorControllerParameter.type = AnimatorControllerParameterType.Bool;
-                animator.AddParameter(animatorControllerParameter);
-                for (int i = 0; i < LinkCount; i++)
-                {
-                    var state = LinkState(animator,layer.stateMachine, rolePath, i);
-                }
-
-                for (int i = LinkCount * 2; i < AimationClipName.Count; i++)
-                {
-                    var state = AddState(animator,layer.stateMachine, rolePath, i);
-                }
-                
-                EditorUtility.SetDirty(animator);
-                CreatePrefab(animator);
-            }
-
-            private AnimatorState[] LinkState(AnimatorController controller,AnimatorStateMachine machine, string rolePath, int index)
-            {
-                var clipHead = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{rolePath}/{AimationClipName[index + IntervalCount]}.anim");
-                var clipEnd = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{rolePath}/{AimationClipName[index]}.anim");
-                AnimatorState state1 = new AnimatorState();
-                state1.hideFlags = HideFlags.HideInHierarchy;
-                state1.motion = clipHead;
-                state1.name = clipHead.name;
-
-                AnimatorState state4 = new AnimatorState();
-                state4.hideFlags = HideFlags.HideInHierarchy;
-                state4.motion = clipEnd;
-                state4.name = clipEnd.name;
-
-                AnimatorStateTransition animatorStateTransition = state1.AddTransition(state4);
-                animatorStateTransition.hideFlags = HideFlags.HideInHierarchy;
-                animatorStateTransition.hasExitTime = false;
-                List<AnimatorCondition> animatorConditionlist = new();
-                AnimatorCondition animatorCondition = new AnimatorCondition();
-                animatorCondition.parameter = "Stop";
-                animatorCondition.mode = AnimatorConditionMode.If;
-                animatorConditionlist.Add(animatorCondition);
-                animatorStateTransition.conditions = animatorConditionlist.ToArray();
-                AssetDatabase.AddObjectToAsset(animatorStateTransition, controller);
-                machine.AddState(state1, new Vector3(250, index * 100));
-                machine.AddState(state4, new Vector3(550, index * 100));
-                AssetDatabase.AddObjectToAsset(state1, controller);
-                AssetDatabase.AddObjectToAsset(state4, controller);
-                return new AnimatorState[] {state1, state4};
-            }
-
-            private AnimatorState AddState(AnimatorController controller,AnimatorStateMachine machine, string rolePath, int index)
-            {
-                var clip = AssetDatabase.LoadAssetAtPath<AnimationClip>($"{rolePath}/{AimationClipName[index]}.anim");
-                AnimatorState state = new AnimatorState();
-                state.hideFlags = HideFlags.HideInHierarchy;
-                state.motion = clip;
-                state.name = clip.name;
-                AssetDatabase.AddObjectToAsset(state, controller);
-                machine.AddState(state, new Vector3(250, (index - LinkCount) * 100));
-                return state;
             }
 
             private void CreatePrefab(AnimatorController animatorController)

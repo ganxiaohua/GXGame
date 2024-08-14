@@ -24,7 +24,7 @@ namespace GXGame
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
             ViewTypeControl();
-            ViewGroupUpdate(elapseSeconds,realElapseSeconds);
+            ViewGroupUpdate(elapseSeconds, realElapseSeconds);
         }
 
         private void ViewTypeControl()
@@ -48,7 +48,9 @@ namespace GXGame
         {
             foreach (var entity in viewGroup)
             {
-                entity.GetView().Value.Update(elapseSeconds,realElapseSeconds);
+                var view = entity.GetView();
+                if (view != null)
+                    entity.GetView().Value.Update(elapseSeconds, realElapseSeconds);
             }
         }
 

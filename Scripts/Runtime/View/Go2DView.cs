@@ -26,30 +26,27 @@ namespace GXGame
             if (animator == null)
                 return;
             var dir = BindEntity.GetMoveDirection().Dir;
-            if (dir.x > 0)
-            {
-                GXGO.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                animator.Play("Walk");
-            }
-            else if (dir.x < 0)
-            {
-                GXGO.gameObject.transform.localScale = new Vector3(-1, 1, 1);
-                animator.Play("Walk");
-            }
-            else if (dir.y > 0)
-            {
-                animator.Play("ForwardWalk");
-            }
-            else if (dir.y < 0)
-            {
-                animator.Play("BelowWalk");
-            }
-
             if (dir != Vector3.zero)
             {
                 animator.SetBool("Stop", false);
+                animator.SetInteger("State", 1);
+                GXGO.scale = dir.x switch
+                {
+                    > 0 => new Vector3(1, 1, 1),
+                    < 0 => new Vector3(-1, 1, 1),
+                    _ => GXGO.scale
+                };
+                if (dir.y < 0)
+                    animator.SetInteger("Direction", 1);
+                else if (dir.y > 0)
+                    animator.SetInteger("Direction", 3);
+
+                if (dir.x > 0 || dir.x < 0)
+                {
+                    animator.SetInteger("Direction", 2);
+                }
             }
-            else if (dir == Vector3.zero)
+            else
             {
                 animator.SetBool("Stop", true);
             }
@@ -60,6 +57,8 @@ namespace GXGame
             base.Clear();
             ReferencePool.Release(spriterenderer);
             ReferencePool.Release(animator);
+            animator = null;
+            spriterenderer = null;
         }
     }
 }

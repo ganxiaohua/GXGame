@@ -46,9 +46,9 @@ namespace GXGame
                 var speed = entity.GetMoveSpeed().Speed * World.DeltaTime;
                 var pos = entity.GetWorldPos().Pos;
                 pos += speed * dir;
-                Collider2D hit = Physics2D.OverlapCapsule(pos, Vector2.one * 0.5f, CapsuleDirection2D.Vertical, 0);
-                if (hit != null)
-                    Debug.Log(hit.bounds.center);
+                // Collider2D hit = Physics2D.OverlapCapsule(pos, Vector2.one * 0.5f, CapsuleDirection2D.Vertical, 0);
+                // if (hit != null)
+                //     return;
                 entity.SetWorldPos(pos);
             }
         }

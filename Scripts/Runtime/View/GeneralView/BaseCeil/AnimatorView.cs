@@ -39,5 +39,12 @@ namespace GXGame
                 return;
             m_Animator.SetBool(name, b);
         }
+
+        public void SetInteger(string name, int b)
+        {
+            if (m_Animator == null)
+                return;
+            m_Animator.SetInteger(name, b);
+        }
     }
 }

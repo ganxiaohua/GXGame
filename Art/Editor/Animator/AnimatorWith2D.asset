@@ -17,17 +17,7 @@ MonoBehaviour:
     WhCountList:
     - {x: 6, y: 6}
     - {x: 4, y: 4}
-    AimationClipName:
-    - BelowIdle
-    - WalkIdle
-    - ForwardIdle
-    - BelowWalk
-    - Walk
-    - ForwardWalk
-    - ForWardAtk
-    - Atk
-    - BelowAtk
-    - Die
+    AimationClipType: 01000000030000000500000000000000020000000400000006000000070000000800000009000000
     IsTransition: 1
     IntervalCount: 3
     LinkCount: 3
@@ -35,17 +25,7 @@ MonoBehaviour:
     WhCountList:
     - {x: 6, y: 6}
     - {x: 4, y: 4}
-    AimationClipName:
-    - BelowIdle
-    - WalkIdle
-    - ForwardIdle
-    - BelowWalk
-    - Walk
-    - ForwardWalk
-    - Die
-    - ForWardAtk
-    - Atk
-    - BelowAtk
+    AimationClipType: 01000000030000000500000000000000020000000400000009000000060000000700000008000000
     IsTransition: 1
     IntervalCount: 3
     LinkCount: 3
@@ -54,10 +34,7 @@ MonoBehaviour:
     - {x: 4, y: 1}
     - {x: 6, y: 1}
     - {x: 4, y: 1}
-    AimationClipName:
-    - Run1
-    - Run2
-    - Run3
+    AimationClipType: 010000000000000009000000
     IsTransition: 1
     IntervalCount: 0
     LinkCount: 0
