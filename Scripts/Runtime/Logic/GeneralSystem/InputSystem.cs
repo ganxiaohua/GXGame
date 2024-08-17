@@ -13,7 +13,7 @@ namespace GXGame
 
         public void Start(World entity)
         {
-            Matcher matcher = Matcher.SetAll(Components.MoveDirection,Components.InputDirection).NoneOf(Components.SkillComponent);
+            Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.InputDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);
             keyCode = new();
             keyCode.Add(KeyCode.A, -1);
@@ -24,12 +24,19 @@ namespace GXGame
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            InputPos.Set(0, 0, 0);
+            bool set = false;
+            if (InputPos != Vector3.zero)
+            {
+                set = true;
+                InputPos.Set(0, 0, 0);
+            }
+
             int index = 0;
             foreach (var variable in keyCode)
             {
                 if (Input.GetKey(variable.Key))
                 {
+                    set = true;
                     if (index < 2)
                     {
                         InputPos.x = variable.Value;
@@ -39,8 +46,12 @@ namespace GXGame
                         InputPos.y = variable.Value;
                     }
                 }
+
                 index++;
             }
+
+            if (!set)
+                return;
             foreach (var entity in Group)
             {
                 entity.SetMoveDirection(InputPos);

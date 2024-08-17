@@ -5,7 +5,6 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace GXGame
 {
@@ -25,8 +24,10 @@ namespace GXGame
 
     public class WorldPosChangeSystem : ReactiveSystem
     {
-        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate, Components.MoveDirection,
-            Components.MoveSpeed, Components.WorldPos);
+        private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[4];
+
+        protected override Collector GetTrigger(World world) =>
+            Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate, Components.MoveDirection);
 
         protected override bool Filter(ECSEntity entity)
         {
@@ -45,11 +46,7 @@ namespace GXGame
                 var dir = entity.GetMoveDirection().Dir;
                 var speed = entity.GetMoveSpeed().Speed * World.DeltaTime;
                 var pos = entity.GetWorldPos().Pos;
-                pos += speed * dir;
-                // Collider2D hit = Physics2D.OverlapCapsule(pos, Vector2.one * 0.5f, CapsuleDirection2D.Vertical, 0);
-                // if (hit != null)
-                //     return;
-                entity.SetWorldPos(pos);
+                entity.SetWorldPos(CollisionSlide(pos, dir, speed));
             }
         }
 
@@ -79,15 +76,41 @@ namespace GXGame
 
             for (int i = 0; i < entities.Count; i++)
             {
-                Collider2D b = Physics2D.OverlapBox((Vector3) job.CurPos[i], Vector2.one * 0.5f, 0);
-                if (b != null)
-                    return;
-                entities[i].SetWorldPos(job.CurPos[i]);
+                var entitie = entities[i];
+                Vector2 cv = CollisionSlide(entitie.GetWorldPos().Pos, entitie.GetMoveDirection().Dir, entitie.GetMoveSpeed().Speed);
+                float3 com = new float3(cv.x, cv.y, 0);
+                entitie.SetWorldPos(job.CurPos[i] + com);
             }
 
             dir.Dispose();
             speed.Dispose();
             curpos.Dispose();
+        }
+
+        private Vector2 CollisionSlide(Vector2 pos, Vector2 dir, float speed)
+        {
+            dir = dir.normalized;
+            Vector2 nextPos = pos + dir * speed;
+            int count = Physics2D.BoxCast(nextPos, Vector2.one * 0.5f, 0, Vector2.zero, default, raycastHit2Ds);
+            if (count == 0) return nextPos;
+            RaycastHit2D targetRaycastHit2D = raycastHit2Ds[0];
+            Vector2 projection = Vector2.Dot(-dir, targetRaycastHit2D.normal) / dir.sqrMagnitude * targetRaycastHit2D.normal.normalized;
+            nextPos = pos + (dir + projection).normalized * speed;
+            //
+            for (int i = 0; i < 3; i++)
+            {
+                count = Physics2D.BoxCast(nextPos, Vector2.one * 0.5f, 0, Vector2.zero, default, raycastHit2Ds);
+                if (count !=0)
+                {
+                    targetRaycastHit2D = raycastHit2Ds[0];
+                    nextPos += targetRaycastHit2D.normal.normalized * speed;
+                }
+                else
+                {
+                    break;
+                }   
+            }
+            return count == 0 ? nextPos : pos;
         }
 
         public override void Clear()
