@@ -96,7 +96,6 @@ namespace GXGame
             RaycastHit2D targetRaycastHit2D = raycastHit2Ds[0];
             Vector2 projection = Vector2.Dot(-dir, targetRaycastHit2D.normal) / dir.sqrMagnitude * targetRaycastHit2D.normal.normalized;
             nextPos = pos + (dir + projection).normalized * speed;
-            //
             for (int i = 0; i < 3; i++)
             {
                 count = Physics2D.BoxCast(nextPos, Vector2.one * 0.5f, 0, Vector2.zero, default, raycastHit2Ds);

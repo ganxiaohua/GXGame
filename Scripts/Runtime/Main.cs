@@ -30,7 +30,7 @@ namespace GXGame
             GXGameFrame.Instance.FixedUpdate();
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             GXGameFrame.Instance.OnDisable();
         }

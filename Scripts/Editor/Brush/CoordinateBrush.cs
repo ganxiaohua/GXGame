@@ -37,7 +37,6 @@ namespace GXGame.Editor.Tilemaps
             {
                 labelText += " Size: " + position.size;
             }
-
             var fontSize = GUI.skin.label.fontSize;
             var fontStyle = GUI.skin.label.fontStyle;
             GUI.skin.label.fontSize = 20;
