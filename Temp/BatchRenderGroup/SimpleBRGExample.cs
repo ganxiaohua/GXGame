@@ -7,8 +7,6 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-// The PackedMatrix is a convenience type that converts matrices into
-// the format that Unity-provided SRP shaders expect.
 struct PackedMatrix
 {
     public float c0x;
@@ -57,7 +55,7 @@ struct PackedMatrix
     }
 }
 
-public class SimpleBRGExample : MonoBehaviour
+public partial class SimpleBRGExample : MonoBehaviour
 {
     public Mesh mesh;
 
@@ -76,12 +74,11 @@ public class SimpleBRGExample : MonoBehaviour
     private const int kSizeOfMatrix = sizeof(float) * 4 * 4;
     private const int kSizeOfPackedMatrix = sizeof(float) * 4 * 3;
     private const int kSizeOfFloat4 = sizeof(float) * 4;
-    private const int kBytesPerInstance = (kSizeOfPackedMatrix * 2) + kSizeOfFloat4;
-    private const int kExtraBytes = kSizeOfMatrix * 2;
+    private int kBytesPerInstance = (kSizeOfPackedMatrix * 2) + kSizeOfFloat4;
+    private int kExtraBytes = kSizeOfMatrix * 2;
 
     [SerializeField] private int kNumInstances = 20000;
-
-    private int truekNumInstances = 0;
+    
 
     // [SerializeField] private int m_RowCount = 200;
     private Matrix4x4[] matrices;
@@ -93,6 +90,8 @@ public class SimpleBRGExample : MonoBehaviour
 
     private void Start()
     {
+        AnimatorStart();
+        kBytesPerInstance += (kSizeOfMatrix * bones.Length);
         m_BRG = new BatchRendererGroup(this.OnPerformCulling, IntPtr.Zero);
         m_MeshID = m_BRG.RegisterMesh(mesh);
         m_MaterialID = m_BRG.RegisterMaterial(material);
@@ -141,7 +140,7 @@ public class SimpleBRGExample : MonoBehaviour
             matrices = tempMatrices,
             targetMovePoints = tempTargetPoints,
             random = random,
-            m_DeltaTime = Time.deltaTime * 4f,
+            deltaTime = Time.deltaTime*0.5f,
             radius = radius,
             obj2WorldArr = tempobjectToWorldArr,
             world2ObjArr = tempWorldToObjectArr,
@@ -153,32 +152,28 @@ public class SimpleBRGExample : MonoBehaviour
         matrices = moveJob.matrices.ToArray();
         m_TargetPoints = moveJob.targetMovePoints.ToArray();
 
-        
-        NativeArray<PackedMatrix> tempobjectToWorldArr2 = new NativeArray<PackedMatrix>(matrices.Length, Allocator.TempJob);
-        NativeArray<PackedMatrix> tempWorldToObjectArr2 = new NativeArray<PackedMatrix>(matrices.Length, Allocator.TempJob);
-        int index = 0;
-        int trueindex = 0;
-        foreach (var VARIABLE in moveJob.show)
-        {
-            if (VARIABLE)
-            {
-                tempobjectToWorldArr2[index] = tempobjectToWorldArr[trueindex];
-                tempWorldToObjectArr2[index] = tempWorldToObjectArr[trueindex];
-                index++;
-            }
-            trueindex++;
-        }
 
-        truekNumInstances = index;
-        m_InstanceData.SetData(tempobjectToWorldArr2, 0, (int) (byteAddressObjectToWorld / kSizeOfPackedMatrix), truekNumInstances);
-        m_InstanceData.SetData(tempWorldToObjectArr2, 0, (int) (byteAddressWorldToObject / kSizeOfPackedMatrix), truekNumInstances);
+        // NativeArray<PackedMatrix> tempobjectToWorldArr2 = new NativeArray<PackedMatrix>(matrices.Length, Allocator.TempJob);
+        // NativeArray<PackedMatrix> tempWorldToObjectArr2 = new NativeArray<PackedMatrix>(matrices.Length, Allocator.TempJob);
+        // int index = 0;
+        // int trueindex = 0;
+
+        byteAddressObjectToWorld = kSizeOfPackedMatrix * 2;
+        byteAddressWorldToObject = byteAddressObjectToWorld + kSizeOfPackedMatrix * (uint) kNumInstances;
+        byteAddressColor = byteAddressWorldToObject + kSizeOfPackedMatrix * (uint) kNumInstances;
+
+        m_InstanceData.SetData( moveJob.obj2WorldArr, 0, (int) (byteAddressObjectToWorld / kSizeOfPackedMatrix), kNumInstances); //0
+        m_InstanceData.SetData( moveJob.world2ObjArr, 0, (int) (byteAddressWorldToObject / kSizeOfPackedMatrix), kNumInstances); //truekNumInstances
+        m_InstanceData.SetData(colors, 0, (int) (byteAddressColor / kSizeOfFloat4), kNumInstances);
+        AnimationUpdate();
         tempMatrices.Dispose();
+        show.Dispose();
         tempTargetPoints.Dispose();
         tempobjectToWorldArr.Dispose();
         tempWorldToObjectArr.Dispose();
-        tempobjectToWorldArr2.Dispose();
-        tempWorldToObjectArr2.Dispose();
-        // workerCountText.text = $"JobWorkerCount:{JobsUtility.JobWorkerCount}";
+        // tempobjectToWorldArr2.Dispose();
+        // tempWorldToObjectArr2.Dispose();
+        targetMovePointsCarmeraPos.Dispose();
     }
 
     private void AllocateInstanceDateBuffer()
@@ -188,11 +183,6 @@ public class SimpleBRGExample : MonoBehaviour
             sizeof(int));
     }
 
-    private void RefreshData()
-    {
-        m_InstanceData.SetData(objectToWorld, 0, (int) (byteAddressObjectToWorld / kSizeOfPackedMatrix), objectToWorld.Length);
-        m_InstanceData.SetData(worldToObject, 0, (int) (byteAddressWorldToObject / kSizeOfPackedMatrix), worldToObject.Length);
-    }
 
     private void PopulateInstanceDataBuffer()
     {
@@ -207,7 +197,6 @@ public class SimpleBRGExample : MonoBehaviour
         worldToObject = new PackedMatrix[kNumInstances];
         // Make all instances have unique colors.
         colors = new Vector4[kNumInstances];
-
         // var offset = new Vector3(m_RowCount, 0, Mathf.CeilToInt(kNumInstances / (float) m_RowCount)) * 0.5f;
         for (int i = 0; i < kNumInstances; i++)
         {
@@ -232,12 +221,14 @@ public class SimpleBRGExample : MonoBehaviour
         byteAddressObjectToWorld = kSizeOfPackedMatrix * 2;
         byteAddressWorldToObject = byteAddressObjectToWorld + kSizeOfPackedMatrix * (uint) kNumInstances;
         byteAddressColor = byteAddressWorldToObject + kSizeOfPackedMatrix * (uint) kNumInstances;
+        uint byteSkinMartixs = ((uint) (byteAddressColor + kSizeOfFloat4 * (uint) kNumInstances) / kSizeOfMatrix) * kSizeOfMatrix;
 
         // Upload the instance data to the GraphicsBuffer so the shader can load them.
         m_InstanceData.SetData(zero, 0, 0, 1);
-        m_InstanceData.SetData(objectToWorld, 0, (int) (byteAddressObjectToWorld / kSizeOfPackedMatrix), objectToWorld.Length);
-        m_InstanceData.SetData(worldToObject, 0, (int) (byteAddressWorldToObject / kSizeOfPackedMatrix), worldToObject.Length);
-        m_InstanceData.SetData(colors, 0, (int) (byteAddressColor / kSizeOfFloat4), colors.Length);
+        // m_InstanceData.SetData(objectToWorld, 0, (int) (byteAddressObjectToWorld / kSizeOfPackedMatrix), objectToWorld.Length);
+        // m_InstanceData.SetData(worldToObject, 0, (int) (byteAddressWorldToObject / kSizeOfPackedMatrix), worldToObject.Length);
+        // m_InstanceData.SetData(colors, 0, (int) (byteAddressColor / kSizeOfFloat4), colors.Length);
+        // m_InstanceData.SetData(skinMartixs, 0, (int) (byteSkinMartixs / kSizeOfMatrix), kSizeOfMatrix * bones.Length);
 
         // Set up metadata values to point to the instance data. Set the most significant bit 0x80000000 in each
         // which instructs the shader that the data is an array with one value per instance, indexed by the instance index.
@@ -245,10 +236,17 @@ public class SimpleBRGExample : MonoBehaviour
         // UNITY_ACCESS_DOTS_INSTANCED_PROP (i.e. without a default), the shader interprets the
         // 0x00000000 metadata value and loads from the start of the buffer. The start of the buffer which is
         // is a zero matrix so this sort of load is guaranteed to return zero, which is a reasonable default value.
-        var metadata = new NativeArray<MetadataValue>(3, Allocator.Temp);
+        var metadata = new NativeArray<MetadataValue>(3+bones.Length, Allocator.Temp);
         metadata[0] = new MetadataValue {NameID = Shader.PropertyToID("unity_ObjectToWorld"), Value = 0x80000000 | byteAddressObjectToWorld,};
         metadata[1] = new MetadataValue {NameID = Shader.PropertyToID("unity_WorldToObject"), Value = 0x80000000 | byteAddressWorldToObject,};
         metadata[2] = new MetadataValue {NameID = Shader.PropertyToID("_BaseColor"), Value = 0x80000000 | byteAddressColor,};
+        metadata[3] = new MetadataValue {NameID = Shader.PropertyToID("_Bone1"), Value = 0x80000000 | byteSkinMartixs,};
+
+        for (int i = 4; i < bones.Length; i++)
+        {
+            byteSkinMartixs += (uint) kNumInstances * kSizeOfMatrix;
+            metadata[i] = new MetadataValue {NameID = Shader.PropertyToID("_Bone" + (i - 2)), Value = 0x80000000 | byteSkinMartixs,};
+        }
 
         // Finally, create a batch for the instances, and make the batch use the GraphicsBuffer with the
         // instance data, as well as the metadata values that specify where the properties are. 
@@ -270,6 +268,7 @@ public class SimpleBRGExample : MonoBehaviour
     private void OnDisable()
     {
         m_BRG.Dispose();
+        bindPose.Dispose();
     }
 
     [BurstCompile]
@@ -296,12 +295,12 @@ public class SimpleBRGExample : MonoBehaviour
         // You must always allocate the arrays using Allocator.TempJob.
         drawCommands->drawCommands = (BatchDrawCommand*) UnsafeUtility.Malloc(UnsafeUtility.SizeOf<BatchDrawCommand>(), alignment, Allocator.TempJob);
         drawCommands->drawRanges = (BatchDrawRange*) UnsafeUtility.Malloc(UnsafeUtility.SizeOf<BatchDrawRange>(), alignment, Allocator.TempJob);
-        drawCommands->visibleInstances = (int*) UnsafeUtility.Malloc(truekNumInstances * sizeof(int), alignment, Allocator.TempJob);
+        drawCommands->visibleInstances = (int*) UnsafeUtility.Malloc(kNumInstances * sizeof(int), alignment, Allocator.TempJob);
         drawCommands->drawCommandPickingInstanceIDs = null;
 
         drawCommands->drawCommandCount = 1;
         drawCommands->drawRangeCount = 1;
-        drawCommands->visibleInstanceCount = truekNumInstances;
+        drawCommands->visibleInstanceCount = kNumInstances;
 
         // This example doens't use depth sorting, so it leaves instanceSortingPositions as null.
         drawCommands->instanceSortingPositions = null;
@@ -311,7 +310,7 @@ public class SimpleBRGExample : MonoBehaviour
         // starting from offset 0 in the array, using the batch, material and mesh
         // IDs registered in the Start() method. It doesn't set any special flags.
         drawCommands->drawCommands[0].visibleOffset = 0;
-        drawCommands->drawCommands[0].visibleCount = (uint) truekNumInstances;
+        drawCommands->drawCommands[0].visibleCount = (uint) kNumInstances;
         drawCommands->drawCommands[0].batchID = m_BatchID;
         drawCommands->drawCommands[0].materialID = m_MaterialID;
         drawCommands->drawCommands[0].meshID = m_MeshID;
@@ -333,10 +332,9 @@ public class SimpleBRGExample : MonoBehaviour
         // Finally, write the actual visible instance indices to the array. In a more complicated
         // implementation, this output would depend on what is visible, but this example
         // assumes that everything is visible.
-        for (int i = 0; i < truekNumInstances; ++i)
+        for (int i = 0; i < kNumInstances; ++i)
         {
-            if (Show[i])
-                drawCommands->visibleInstances[i] = i;
+            drawCommands->visibleInstances[i] = i;
         }
 
         // This simple example doesn't use jobs, so it returns an empty JobHandle.
@@ -352,7 +350,7 @@ partial struct RandomMoveJob : IJobParallelFor
 {
     [ReadOnly] public Unity.Mathematics.Random random;
     [ReadOnly] public float radius;
-    [ReadOnly] public float m_DeltaTime;
+    [ReadOnly] public float deltaTime;
 
     public NativeArray<bool> show;
     public NativeArray<Matrix4x4> matrices;
@@ -365,14 +363,15 @@ partial struct RandomMoveJob : IJobParallelFor
     public void Execute(int index)
     {
         float3 curPos = matrices[index].GetPosition();
-        if (!IsObjectInView(targetMovePointsCarmeraPos[index]))
-        {
-            show[index] = false;
-        }
-        else
-        {
-            show[index] = true;
-        }
+        show[index] = true;
+        // if (!IsObjectInView(targetMovePointsCarmeraPos[index]))
+        // {
+        //     show[index] = false;
+        // }
+        // else
+        // {
+        //     show[index] = true;
+        // }
 
         float3 dir = targetMovePoints[index] - curPos;
         if (Unity.Mathematics.math.lengthsq(dir) < 0.4f)
@@ -384,10 +383,10 @@ partial struct RandomMoveJob : IJobParallelFor
         }
 
         dir = math.normalizesafe(targetMovePoints[index] - curPos, Vector3.forward);
-        curPos += dir * m_DeltaTime; // math.lerp(curPos, targetMovePoints[index], m_DeltaTime);
+        curPos += dir * deltaTime; // math.lerp(curPos, targetMovePoints[index], m_DeltaTime);
 
         var mat = matrices[index];
-        mat.SetTRS(curPos, Quaternion.LookRotation(dir), Vector3.one * random.NextFloat(1, 2));
+        mat.SetTRS(curPos, Quaternion.LookRotation(dir), Vector3.one);
         matrices[index] = mat;
         var item = obj2WorldArr[index];
         item.SetData(mat);
@@ -398,11 +397,11 @@ partial struct RandomMoveJob : IJobParallelFor
         world2ObjArr[index] = item;
     }
 
-    private bool IsObjectInView(float3 viewPos)
-    {
-        bool isInView = viewPos.x > 0 && viewPos.x < 1 &&
-                        viewPos.y > 0 && viewPos.y < 1 &&
-                        viewPos.z > 0.3 && viewPos.z < 1000;
-        return isInView;
-    }
+    // private bool IsObjectInView(float3 viewPos)
+    // {
+    //     bool isInView = viewPos.x > 0 && viewPos.x < 1 &&
+    //                     viewPos.y > 0 && viewPos.y < 1 &&
+    //                     viewPos.z > 0.3 && viewPos.z < 1000;
+    //     return isInView;
+    // }
 }

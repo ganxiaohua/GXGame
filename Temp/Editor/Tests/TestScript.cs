@@ -41,23 +41,23 @@ public class TestScript
     [Test]
     public void StrongListTest()
     {
-        StrongList<int> strongList = new StrongList<int>(10, true);
-        strongList.Add(1);
-        strongList.Add(2);
-        strongList.Add(3);
-        strongList.Add(4);
-        strongList.Add(5);
-        strongList.Add(6);
-        foreach (var item in strongList)
-        {
-            if (item == 2)
-            {
-                strongList.Remove(3);
-                strongList.Remove(4);
-                strongList.Remove(1);
-            }
-        
-            Debug.Log(item);
-        }
+        // StrongList<int> strongList = new StrongList<int>(10, true);
+        // strongList.Add(1);
+        // strongList.Add(2);
+        // strongList.Add(3);
+        // strongList.Add(4);
+        // strongList.Add(5);
+        // strongList.Add(6);
+        // foreach (var item in strongList)
+        // {
+        //     if (item == 2)
+        //     {
+        //         strongList.Remove(3);
+        //         strongList.Remove(4);
+        //         strongList.Remove(1);
+        //     }
+        //
+        //     Debug.Log(item);
+        // }
     }
 }

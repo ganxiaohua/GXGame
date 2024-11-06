@@ -1,14 +1,13 @@
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
+
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
-using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Profiling;
-using UnityEngine.UIElements;
+
+using Object = UnityEngine.Object;
 
 public class SkinRenderer : MonoBehaviour
 {
@@ -259,10 +258,8 @@ public class SkinRenderer : MonoBehaviour
 
     Matrix4x4 GetSkinMatrix(ref Matrix4x4 worldToRoot, Transform[] bones, int index)
     {
-        //因为骨骼的parent相同时会有重复的计算,不过为了思路清晰，暂时不作优化
         Transform bone = bones[index];
         //模型空间 ->(乘bindPose) T/A Pose骨骼空间  ->(乘骨骼的LocalToWorld) 动画计算后的世界空间 ->(乘Root的WorldToLocal) root空间
-        // return worldToRoot * GetLocalToWorld(bone) * bindPose[index];
         return worldToRoot * bone.localToWorldMatrix * bindPose[index];
     }
 
