@@ -13,7 +13,7 @@ namespace GXGame
             base.OnInit();
             n43.onClick.Add(() =>
             {
-                UIManager.Instance.OpenUI(typeof(UICardListWindow2));
+                // UIManager.Instance.OpenUI(typeof(UICardListWindow2));
             });
         }
 
@@ -42,9 +42,9 @@ namespace GXGame
             base.DoHideAnimation();
         }
 
-        public override void Update(float elapseSeconds, float realElapseSeconds)
+        public override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            base.Update(elapseSeconds, realElapseSeconds);
+            base.OnUpdate(elapseSeconds, realElapseSeconds);
         }
 
         public override void Clear()

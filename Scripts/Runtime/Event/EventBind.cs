@@ -10,7 +10,7 @@ public class AutoBindEvent
     {
         var  eventData =  EventData.Instance;
         
-        eventData.AddSourceDic(typeof(GXGame.UICardListWindow2),typeof(GXGame.ITestEvent));
+        // eventData.AddSourceDic(typeof(GXGame.UICardListWindow2),typeof(GXGame.ITestEvent));
     }
 }
 
