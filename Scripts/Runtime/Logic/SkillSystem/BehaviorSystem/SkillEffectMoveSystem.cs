@@ -21,7 +21,7 @@ namespace GXGame
             }
         }
 
-        public void Clear()
+        public void Dispose()
         {
         }
     }

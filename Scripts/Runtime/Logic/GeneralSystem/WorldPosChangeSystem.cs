@@ -112,7 +112,7 @@ namespace GXGame
             return count == 0 ? nextPos : pos;
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
         }
     }

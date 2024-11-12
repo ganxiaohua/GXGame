@@ -14,9 +14,9 @@ namespace GXGame
             m_MeshRendererView.Init(BindEntity,this);
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
             ReferencePool.Release(m_MeshRendererView);
         }
 

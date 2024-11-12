@@ -25,7 +25,7 @@ namespace GXGame
             }
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
             World = null;
         }

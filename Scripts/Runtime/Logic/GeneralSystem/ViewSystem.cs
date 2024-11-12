@@ -74,7 +74,7 @@ namespace GXGame
             return isInView;
         }
 
-        public void Clear()
+        public void Dispose()
         {
             viewTypeGroup = null;
         }

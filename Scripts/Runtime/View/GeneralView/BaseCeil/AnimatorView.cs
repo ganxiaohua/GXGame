@@ -20,9 +20,9 @@ namespace GXGame
         }
 
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
             m_Animator = null;
         }
 

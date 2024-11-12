@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameFrame;
 using UnityEngine;
 
 namespace GXGame.Runtime.SequenceFrame
 {
-    public class SequenceFrameControllerInput : IReference
+    public class SequenceFrameControllerInput : IDisposable
     {
         private SequenceFrameSO sequenceFrameSo;
         private AsyncLoadAsset<SequenceFrameSO> sequenceFrameSoLoader;
@@ -44,7 +45,7 @@ namespace GXGame.Runtime.SequenceFrame
             return walkWithBelow.Do();
         }
 
-        public void Clear()
+        public void Dispose()
         {
             sequenceFrameSoLoader.Clear();
             ReferencePool.Release(walkWithForward);

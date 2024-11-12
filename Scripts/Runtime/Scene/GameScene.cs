@@ -15,6 +15,7 @@ namespace GXGame
         {
             await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/Game.unity");
             AddComponent<GameWrold>();
+            UIManager.Instance.OpenUI(typeof(UICardListWindow2));
         }
 
         public void Update(float elapseSeconds, float realElapseSeconds)
@@ -22,10 +23,10 @@ namespace GXGame
         
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
             AssetManager.Instance.DecrementReferenceCount("Assets/GXGame/Scenes/Game.unity");
-            base.Clear();
+            base.Dispose();
         }
     }
 }

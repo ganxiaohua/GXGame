@@ -10,9 +10,9 @@ namespace GXGame
             Load(ecsEntity.GetAssetPath().path).Forget();
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
         }
     }
 }

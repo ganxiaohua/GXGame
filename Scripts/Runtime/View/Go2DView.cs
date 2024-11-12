@@ -52,9 +52,9 @@ namespace GXGame
             }
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
             ReferencePool.Release(spriterenderer);
             ReferencePool.Release(animator);
             animator = null;

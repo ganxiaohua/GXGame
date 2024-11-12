@@ -42,7 +42,7 @@ namespace GXGame
             
         }
 
-        public virtual void Clear()
+        public virtual void Dispose()
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
             m_UniTaskCompletionSource = null;

@@ -61,7 +61,7 @@ namespace GXGame
         public int Number;
 
         public string Str;
-        public void Clear()
+        public void Dispose()
         {
         }
     }

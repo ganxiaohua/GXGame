@@ -68,9 +68,9 @@ namespace GXGame
             }
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
         }
     }
 
@@ -84,9 +84,9 @@ namespace GXGame
             this.AddEcsSystem<WorldDirChangeSystem>();
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
         }
     }
 }

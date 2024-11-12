@@ -94,7 +94,7 @@ namespace GXGame
             curdir.Dispose();
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
         }
     }

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameFrame;
 using UnityEngine;
 
 namespace GXGame.Runtime.SequenceFrame
 {
-    public class SequenceFrame : IReference
+    public class SequenceFrame : IDisposable
     {
         private int spriteIndex = 0;
         private float interval = 0;
@@ -56,7 +57,7 @@ namespace GXGame.Runtime.SequenceFrame
             return spirte;
         }
 
-        public void Clear()
+        public void Dispose()
         {
             spriteIndex = 0;
             time = 0;

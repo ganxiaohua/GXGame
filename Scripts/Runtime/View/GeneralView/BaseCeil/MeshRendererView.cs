@@ -16,9 +16,9 @@ namespace GXGame
             base.Init(ecsEntity, gameObjectView);
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
-            base.Clear();
+            base.Dispose();
             m_MeshRenderer = null;
         }
 

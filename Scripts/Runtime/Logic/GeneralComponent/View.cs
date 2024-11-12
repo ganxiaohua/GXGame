@@ -11,7 +11,7 @@ namespace GameFrame
             return (IEceView)ReferencePool.Acquire(type);
         }
 
-        public override void Clear()
+        public override void Dispose()
         {
             ReferencePool.Release(Value);
         }

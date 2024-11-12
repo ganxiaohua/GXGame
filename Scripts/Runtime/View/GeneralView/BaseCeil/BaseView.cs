@@ -1,9 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using GameFrame;
 
 namespace GXGame
 {
-    public class BaseView : IReference
+    public class BaseView : IDisposable
     {
         protected ECSEntity BindEntity;
         protected GameObjectView GameObjectView;
@@ -21,7 +22,7 @@ namespace GXGame
         }
 
 
-        public virtual void Clear()
+        public virtual void Dispose()
         {
             BindEntity = null;
             GameObjectView = null;
