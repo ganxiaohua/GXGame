@@ -21,7 +21,7 @@ namespace GXGame
             camera = Camera.main;
         }
 
-        public void Update(float elapseSeconds, float realElapseSeconds)
+        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             ViewTypeControl();
             ViewGroupUpdate(elapseSeconds, realElapseSeconds);
@@ -50,7 +50,7 @@ namespace GXGame
             {
                 var view = entity.GetView();
                 if (view != null)
-                    entity.GetView().Value.Update(elapseSeconds, realElapseSeconds);
+                    entity.GetView().Value.OnUpdate(elapseSeconds, realElapseSeconds);
             }
         }
 

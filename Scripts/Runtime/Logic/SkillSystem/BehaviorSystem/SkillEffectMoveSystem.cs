@@ -13,7 +13,7 @@ namespace GXGame
             m_Group = world.GetGroup(matcher);
         }
 
-        public void Update(float elapseSeconds, float realElapseSeconds)
+        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             foreach (var entity in m_Group)
             {

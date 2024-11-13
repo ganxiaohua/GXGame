@@ -36,16 +36,7 @@ namespace GXGame.Logic
             palyer.AddMoveDirection();
             palyer.AddMoveSpeed(1);
             palyer.AddInputDirection();
-            //
-            //
-            // var monster = AddChild();
-            // monster.AddViewType(typeof(Go2DView));
-            // monster.AddAssetPath("Assets/GXGame/Art/Runtime/Role/Monster_001/Prefab/Monster_001.prefab");
-            // monster.AddWorldPos(new Vector3(3,0,-1));
-            // monster.AddMoveDirection();
-            // monster.AddMoveSpeed(2);
-            // monster.AddInputDirection();
-            //
+
             var monster = AddChild();
             monster.AddViewType(typeof(Go2DView));
             monster.AddAssetPath("Assets/GXGame/Art/Runtime/Role/Monster_002/Prefab/Monster_002.prefab");

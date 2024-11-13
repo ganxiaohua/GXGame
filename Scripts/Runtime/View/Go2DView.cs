@@ -20,9 +20,9 @@ namespace GXGame
         }
 
 
-        public override void Update(float elapseSeconds, float realElapseSeconds)
+        public override void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            base.Update(elapseSeconds, realElapseSeconds);
+            base.OnUpdate(elapseSeconds, realElapseSeconds);
             if (animator == null)
                 return;
             var dir = BindEntity.GetMoveDirection().Dir;

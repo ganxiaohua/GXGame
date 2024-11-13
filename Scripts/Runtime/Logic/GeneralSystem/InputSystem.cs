@@ -23,7 +23,7 @@ namespace GXGame
             keyCode.Add(KeyCode.S, -1);
         }
 
-        public void Update(float elapseSeconds, float realElapseSeconds)
+        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             bool set = false;
             if (InputPos != Vector3.zero)

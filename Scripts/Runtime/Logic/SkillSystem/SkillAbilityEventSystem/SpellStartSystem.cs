@@ -16,7 +16,7 @@ namespace GXGame
             m_Group = mWorld.GetGroup(matcher);
         }
 
-        public void Update(float elapseSeconds, float realElapseSeconds)
+        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             foreach (var item in m_Group)
             {

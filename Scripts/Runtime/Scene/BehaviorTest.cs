@@ -76,7 +76,7 @@ namespace GXGame
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            bwe.Update(elapseSeconds,realElapseSeconds);
+            bwe.OnUpdate(elapseSeconds,realElapseSeconds);
         }
     }
 }

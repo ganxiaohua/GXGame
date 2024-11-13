@@ -37,7 +37,7 @@ namespace GXGame
             m_UniTaskCompletionSource = null;
         }
         
-        public virtual void Update(float elapseSeconds, float realElapseSeconds)
+        public virtual void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             
         }
