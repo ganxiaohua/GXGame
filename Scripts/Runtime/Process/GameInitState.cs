@@ -4,9 +4,9 @@ namespace GXGame
 {
     public class GameInitState : FsmState
     {
-        public override void Enter(FsmController fsmController)
+        public override void OnEnter(FsmController fsmController)
         {
-            base.Enter(fsmController);
+            base.OnEnter(fsmController);
             // Config.Instance.LoadTable();
             //播放一个icon之类
             fsmController.SwitchState<GameStartState>();

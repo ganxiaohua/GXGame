@@ -24,9 +24,9 @@ namespace GXGame
 
     public class WorldDirChangeSystem : ReactiveSystem
     {
-        public override void Start(World entity)
+        public override void Initialize(World entity)
         {
-            base.Start(entity);
+            base.Initialize(entity);
         }
 
         protected override Collector GetTrigger(World world) => Collector.CreateCollector(world,Collector.ChangeEventState.AddUpdate, Components.MoveDirection);

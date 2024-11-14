@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class ViewSystem : IStartSystem<World>, IUpdateSystem
+    public class ViewSystem : IInitializeSystem<World>, IUpdateSystem
     {
         private Group viewTypeGroup;
         private Group viewGroup;
         private Camera camera;
 
-        public void Start(World world)
+        public void Initialize(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.ViewType);
             viewTypeGroup = world.GetGroup(matcher);

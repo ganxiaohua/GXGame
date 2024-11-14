@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class InputSystem : IStartSystem<World>, IUpdateSystem
+    public class InputSystem : IInitializeSystem<World>, IUpdateSystem
     {
         private Vector3 InputPos;
         private Group Group;
         private Dictionary<KeyCode, int> keyCode;
 
-        public void Start(World entity)
+        public void Initialize(World entity)
         {
             Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.InputDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);

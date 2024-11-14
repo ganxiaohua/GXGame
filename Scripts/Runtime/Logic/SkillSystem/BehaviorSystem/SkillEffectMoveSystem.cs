@@ -3,11 +3,11 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class SkillEffectMoveSystem : IStartSystem<World>, IUpdateSystem
+    public class SkillEffectMoveSystem : IInitializeSystem<World>, IUpdateSystem
     {
         private Group m_Group;
 
-        public void Start(World world)
+        public void Initialize(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.SkillComponent, Components.MoveDirection);
             m_Group = world.GetGroup(matcher);

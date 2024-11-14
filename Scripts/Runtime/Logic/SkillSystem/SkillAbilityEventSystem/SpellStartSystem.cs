@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class SpellStartSystem : IStartSystem<World>, IUpdateSystem
+    public class SpellInitializeSystem : IInitializeSystem<World>, IUpdateSystem
     {
         private Group m_Group;
         private World mWorld;
 
-        public void Start(World entity)
+        public void Initialize(World entity)
         {
             mWorld = entity;
             Matcher matcher = Matcher.SetAll(Components.SkillIDComponent);

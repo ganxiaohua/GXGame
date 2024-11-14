@@ -5,9 +5,9 @@ namespace GXGame.Logic
 {
     public class GameWrold : World
     {
-        public override void Start()
+        public override void Initialize()
         {
-            base.Start();
+            base.Initialize();
             this.AddEcsSystem<ViewSystem>();
             this.AddEcsSystem<InputSystem>();
             this.AddEcsSystem<WorldPosChangeSystem>();

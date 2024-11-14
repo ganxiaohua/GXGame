@@ -4,9 +4,9 @@ using GXGame.Logic;
 
 namespace GXGame
 {
-    public class GameScene : Entity, IScene, IStartSystem, IUpdateSystem
+    public class GameScene : Entity, IScene, IInitializeSystem, IUpdateSystem
     {
-        public void Start()
+        public void Initialize()
         {
             Init().Forget();
         }

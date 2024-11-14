@@ -6,9 +6,9 @@ namespace GXGame
 {
     public class TestWorld : World
     {
-        public override void Start()
+        public override void Initialize()
         {
-            base.Start();
+            base.Initialize();
             this.AddEcsSystem<ViewSystem>();
             this.AddEcsSystem<InputSystem>();
             this.AddEcsSystem<WorldPosChangeSystem>();
@@ -16,7 +16,7 @@ namespace GXGame
 
             //技能相关
             this.AddEcsSystem<CreateSkillManagerSystem>();
-            this.AddEcsSystem<SpellStartSystem>();
+            this.AddEcsSystem<SpellInitializeSystem>();
             this.AddEcsSystem<SkillEffectMoveSystem>();
             this.AddEcsSystem<SkillCollisionSystem>();
             
@@ -76,9 +76,9 @@ namespace GXGame
 
     public class CubeConText2 : World
     {
-        public override void Start()
+        public override void Initialize()
         {
-            base.Start();
+            base.Initialize();
             this.AddEcsSystem<InputSystem>();
             this.AddEcsSystem<WorldPosChangeSystem>();
             this.AddEcsSystem<WorldDirChangeSystem>();

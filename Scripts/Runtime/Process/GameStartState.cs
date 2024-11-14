@@ -4,9 +4,9 @@ namespace GXGame
 {
     public class GameStartState : FsmState
     {
-        public override void Enter(FsmController fsmController)
+        public override void OnEnter(FsmController fsmController)
         {
-            base.Enter(fsmController);
+            base.OnEnter(fsmController);
             SceneFactory.ChangePlayerScene<GameScene>(this);
         }
     }
