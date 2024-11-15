@@ -9,19 +9,19 @@ namespace GXGame
         public override void Initialize()
         {
             base.Initialize();
-            this.AddEcsSystem<ViewSystem>();
-            this.AddEcsSystem<InputSystem>();
-            this.AddEcsSystem<WorldPosChangeSystem>();
-            this.AddEcsSystem<WorldDirChangeSystem>();
+            this.AddSystem<ViewSystem>();
+            this.AddSystem<InputSystem>();
+            this.AddSystem<WorldPosChangeSystem>();
+            this.AddSystem<WorldDirChangeSystem>();
 
             //技能相关
-            this.AddEcsSystem<CreateSkillManagerSystem>();
-            this.AddEcsSystem<SpellInitializeSystem>();
-            this.AddEcsSystem<SkillEffectMoveSystem>();
-            this.AddEcsSystem<SkillCollisionSystem>();
+            this.AddSystem<CreateSkillManagerSystem>();
+            this.AddSystem<SpellInitializeSystem>();
+            this.AddSystem<SkillEffectMoveSystem>();
+            this.AddSystem<SkillCollisionSystem>();
             
             //最后执行
-            this.AddEcsSystem<DestroySystem>();
+            this.AddSystem<DestroySystem>();
 
             CreateEntity();
         }
@@ -79,9 +79,9 @@ namespace GXGame
         public override void Initialize()
         {
             base.Initialize();
-            this.AddEcsSystem<InputSystem>();
-            this.AddEcsSystem<WorldPosChangeSystem>();
-            this.AddEcsSystem<WorldDirChangeSystem>();
+            this.AddSystem<InputSystem>();
+            this.AddSystem<WorldPosChangeSystem>();
+            this.AddSystem<WorldDirChangeSystem>();
         }
 
         public override void Dispose()

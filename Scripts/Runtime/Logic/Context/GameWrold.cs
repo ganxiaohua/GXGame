@@ -8,13 +8,12 @@ namespace GXGame.Logic
         public override void Initialize()
         {
             base.Initialize();
-            this.AddEcsSystem<ViewSystem>();
-            this.AddEcsSystem<InputSystem>();
-            this.AddEcsSystem<WorldPosChangeSystem>();
-            this.AddEcsSystem<WorldDirChangeSystem>();
+            this.AddSystem<ViewSystem>();
+            this.AddSystem<InputSystem>();
+            this.AddSystem<WorldPosChangeSystem>();
+            this.AddSystem<WorldDirChangeSystem>();
             //最后执行
-            this.AddEcsSystem<DestroySystem>();
-
+            this.AddSystem<DestroySystem>();
             CreateMap();
             CreatePlayer();
         }

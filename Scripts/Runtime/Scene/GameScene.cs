@@ -15,7 +15,7 @@ namespace GXGame
         {
             await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/Game.unity");
             AddComponent<GameWrold>();
-            // UIManager.Instance.OpenUI(typeof(UICardListWindow2),"data");
+            // AddComponent<UIObjectData>().Data = "xxxxxxxxxxx";
         }
 
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
