@@ -16,6 +16,7 @@ namespace GXGame.Logic
             this.AddSystem<DestroySystem>();
             CreateMap();
             CreatePlayer();
+            UIManager.Instance.OpenUI(typeof(UICardListWindow),"input 数据");
         }
 
         private void CreateMap()
