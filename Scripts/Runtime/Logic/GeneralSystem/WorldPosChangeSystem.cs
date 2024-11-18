@@ -11,9 +11,9 @@ namespace GXGame
     [BurstCompile]
     struct WorldPosJob : IJobParallelFor
     {
-        public NativeArray<float3> Dir;
+        public NativeArray<Vector2> Dir;
         public NativeArray<float> Speed;
-        public NativeArray<float3> CurPos;
+        public NativeArray<Vector2> CurPos;
 
         [BurstCompile]
         public void Execute(int index)
@@ -52,39 +52,39 @@ namespace GXGame
 
         private void Job(List<ECSEntity> entities)
         {
-            NativeArray<float3> dir = new NativeArray<float3>(entities.Count, Allocator.TempJob);
-            NativeArray<float> speed = new NativeArray<float>(entities.Count, Allocator.TempJob);
-            NativeArray<float3> curpos = new NativeArray<float3>(entities.Count, Allocator.TempJob);
-            int index = 0;
-            foreach (var entity in entities)
-            {
-                dir[index] = entity.GetMoveDirection().Dir;
-                speed[index] = entity.GetMoveSpeed().Speed * World.DeltaTime;
-                curpos[index] = entity.GetWorldPos().Pos;
-                index++;
-            }
-
-            WorldPosJob job = new WorldPosJob()
-            {
-                Dir = dir,
-                Speed = speed,
-                CurPos = curpos
-            };
-            var jobHandle = job.Schedule(entities.Count, 4);
-            jobHandle.Complete();
-
-
-            for (int i = 0; i < entities.Count; i++)
-            {
-                var entitie = entities[i];
-                Vector2 cv = CollisionSlide(entitie.GetWorldPos().Pos, entitie.GetMoveDirection().Dir, entitie.GetMoveSpeed().Speed);
-                float3 com = new float3(cv.x, cv.y, 0);
-                entitie.SetWorldPos(job.CurPos[i] + com);
-            }
-
-            dir.Dispose();
-            speed.Dispose();
-            curpos.Dispose();
+            // NativeArray<Vector2> dir = new NativeArray<Vector2>(entities.Count, Allocator.TempJob);
+            // NativeArray<float> speed = new NativeArray<float>(entities.Count, Allocator.TempJob);
+            // NativeArray<Vector2> curpos = new NativeArray<Vector2>(entities.Count, Allocator.TempJob);
+            // int index = 0;
+            // foreach (var entity in entities)
+            // {
+            //     dir[index] = entity.GetMoveDirection().Dir;
+            //     speed[index] = entity.GetMoveSpeed().Speed * World.DeltaTime;
+            //     curpos[index] = entity.GetWorldPos().Pos;
+            //     index++;
+            // }
+            //
+            // WorldPosJob job = new WorldPosJob()
+            // {
+            //     Dir = dir,
+            //     Speed = speed,
+            //     CurPos = curpos
+            // };
+            // var jobHandle = job.Schedule(entities.Count, 4);
+            // jobHandle.Complete();
+            //
+            //
+            // for (int i = 0; i < entities.Count; i++)
+            // {
+            //     var entitie = entities[i];
+            //     Vector2 cv = CollisionSlide(curpos[i], dir[i], speed[i]);
+            //     Vector2 com = new Vector2(cv.x, cv.y);
+            //     entitie.SetWorldPos(job.CurPos[i] + com);
+            // }
+            //
+            // dir.Dispose();
+            // speed.Dispose();
+            // curpos.Dispose();
         }
 
         private Vector2 CollisionSlide(Vector2 pos, Vector2 dir, float speed)
