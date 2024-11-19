@@ -11,15 +11,9 @@ namespace GXGame
            
         private GButton _n43;
         public GButton n43 { get { return _n43 ??= (GButton)Root.GetChild("n43"); } }     
-        private GImage _n43_n0;
-        public GImage n43_n0 { get { return _n43_n0 ??= (GImage)n43.GetChild("n0"); } }     
         private GButton _n44;
         public GButton n44 { get { return _n44 ??= (GButton)Root.GetChild("n44"); } }     
-        private GImage _n44_n0;
-        public GImage n44_n0 { get { return _n44_n0 ??= (GImage)n44.GetChild("n0"); } }     
         private GButton _n45;
-        public GButton n45 { get { return _n45 ??= (GButton)Root.GetChild("n45"); } }     
-        private GImage _n45_n0;
-        public GImage n45_n0 { get { return _n45_n0 ??= (GImage)n45.GetChild("n0"); } }          
+        public GButton n45 { get { return _n45 ??= (GButton)Root.GetChild("n45"); } }          
     }
 }
