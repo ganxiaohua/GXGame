@@ -28,7 +28,7 @@ public static class AutoUnitTypeComponent
         var p = (GXGame.UnitTypeComponent)ecsEntity.GetComponent(Components.UnitTypeComponent);
         p.UnitTypeEnum = param;
         
-        ((World)ecsEntity.Parent).Reactive(Components.UnitTypeComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.UnitTypeComponent, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

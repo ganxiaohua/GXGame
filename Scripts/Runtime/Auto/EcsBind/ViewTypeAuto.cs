@@ -28,7 +28,7 @@ public static class AutoViewType
         var p = (GXGame.ViewType)ecsEntity.GetComponent(Components.ViewType);
         p.Type = param;
         
-        ((World)ecsEntity.Parent).Reactive(Components.ViewType, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.ViewType, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

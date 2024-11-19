@@ -28,7 +28,7 @@ public static class AutoSkillAbilityBehaviorComponent
         var p = (GXGame.SkillAbilityBehaviorComponent)ecsEntity.GetComponent(Components.SkillAbilityBehaviorComponent);
         p.AbilityBehavior = param;
         
-        ((World)ecsEntity.Parent).Reactive(Components.SkillAbilityBehaviorComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillAbilityBehaviorComponent, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

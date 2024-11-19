@@ -30,7 +30,7 @@ public static class AutoLocalPos
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.ILocalPosition) (view.Value)).LocalPosition(p);
-        ((World)ecsEntity.Parent).Reactive(Components.LocalPos, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.LocalPos, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

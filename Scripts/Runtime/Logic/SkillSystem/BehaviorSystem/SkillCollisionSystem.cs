@@ -11,7 +11,7 @@ namespace GXGame
 
         protected override Collector GetTrigger(World world)
         {
-            return Collector.CreateCollector(world, Collector.ChangeEventState.AddUpdate,Components.SkillCollisionShapeComponent);
+            return Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate,Components.SkillCollisionShapeComponent);
         }
 
         protected override bool Filter(ECSEntity entity)

@@ -28,7 +28,7 @@ public static class AutoSkillSoundTargetComponent
         var p = (GXGame.SkillSoundTargetComponent)ecsEntity.GetComponent(Components.SkillSoundTargetComponent);
         p.SkillTargetEnum = param;
         
-        ((World)ecsEntity.Parent).Reactive(Components.SkillSoundTargetComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillSoundTargetComponent, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

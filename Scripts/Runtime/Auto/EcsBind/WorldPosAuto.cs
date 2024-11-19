@@ -30,7 +30,7 @@ public static class AutoWorldPos
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IWolrdPosition) (view.Value)).WolrdPosition(p);
-        ((World)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

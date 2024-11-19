@@ -28,7 +28,7 @@ public static class AutoOnSpellStartComponent
         var p = (GXGame.OnSpellStartComponent)ecsEntity.GetComponent(Components.OnSpellStartComponent);
         p.KeyCode = param;
         
-        ((World)ecsEntity.Parent).Reactive(Components.OnSpellStartComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.OnSpellStartComponent, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

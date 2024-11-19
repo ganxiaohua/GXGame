@@ -19,7 +19,7 @@ namespace GXGame
 
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-        
+            
         }
 
         public override void Dispose()

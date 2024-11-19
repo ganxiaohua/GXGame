@@ -30,7 +30,7 @@ public static class AutoLocalRotate
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.ILocalRotate) (view.Value)).LocalRotate(p);
-        ((World)ecsEntity.Parent).Reactive(Components.LocalRotate, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(Components.LocalRotate, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          
