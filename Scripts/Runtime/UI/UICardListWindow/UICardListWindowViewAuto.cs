@@ -9,17 +9,17 @@ namespace GXGame
     public partial class UICardListWindowView : UIViewBase
     {
            
-        private GButton mn43;
-        public GButton n43 { get { return mn43 ??= Root.GetChildByPath("n43") as GButton; } }     
-        private GImage mn43_n0;
-        public GImage n43_n0 { get { return mn43_n0 ??= Root.GetChildByPath("n43.n0") as GImage; } }     
-        private GButton mn44;
-        public GButton n44 { get { return mn44 ??= Root.GetChildByPath("n44") as GButton; } }     
-        private GImage mn44_n0;
-        public GImage n44_n0 { get { return mn44_n0 ??= Root.GetChildByPath("n44.n0") as GImage; } }     
-        private GButton mn45;
-        public GButton n45 { get { return mn45 ??= Root.GetChildByPath("n45") as GButton; } }     
-        private GImage mn45_n0;
-        public GImage n45_n0 { get { return mn45_n0 ??= Root.GetChildByPath("n45.n0") as GImage; } }          
+        private GButton _n43;
+        public GButton n43 { get { return _n43 ??= Root.GetChildByPath("n43") as GButton; } }     
+        private GImage _n43_n0;
+        public GImage n43_n0 { get { return _n43_n0 ??= Root.GetChildByPath("n43.n0") as GImage; } }     
+        private GButton _n44;
+        public GButton n44 { get { return _n44 ??= Root.GetChildByPath("n44") as GButton; } }     
+        private GImage _n44_n0;
+        public GImage n44_n0 { get { return _n44_n0 ??= Root.GetChildByPath("n44.n0") as GImage; } }     
+        private GButton _n45;
+        public GButton n45 { get { return _n45 ??= Root.GetChildByPath("n45") as GButton; } }     
+        private GImage _n45_n0;
+        public GImage n45_n0 { get { return _n45_n0 ??= Root.GetChildByPath("n45.n0") as GImage; } }          
     }
 }
