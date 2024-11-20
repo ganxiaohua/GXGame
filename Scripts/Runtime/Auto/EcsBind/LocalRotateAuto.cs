@@ -27,10 +27,10 @@ public static class AutoLocalRotate
     {
         var p = (GXGame.LocalRotate)ecsEntity.GetComponent(Components.LocalRotate);
         p.Rotate = param;
+        ((World)ecsEntity.Parent).Reactive(Components.LocalRotate, ecsEntity,EcsChangeEventState.UpdateType);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.ILocalRotate) (view.Value)).LocalRotate(p);
-        ((World)ecsEntity.Parent).Reactive(Components.LocalRotate, ecsEntity,EcsChangeEventState.UpdateType);
         return ecsEntity;
     }
          

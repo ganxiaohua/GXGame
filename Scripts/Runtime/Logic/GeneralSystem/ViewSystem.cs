@@ -1,35 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using GameFrame;
 using UnityEngine;
 
 namespace GXGame
 {
-    public class ViewSystem : IInitializeSystem<World>, IUpdateSystem
+    public class ViewSystem : ReactiveSystem
     {
-        private Group viewTypeGroup;
-        private Group viewGroup;
         private Camera camera;
-
-        public void Initialize(World world)
+        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddRemoveUpdate,
+            Components.WorldPos, Components.ViewType);
+        protected override bool Filter(ECSEntity entity)
         {
-            Matcher matcher = Matcher.SetAll(Components.ViewType);
-            viewTypeGroup = world.GetGroup(matcher);
-
-            matcher = Matcher.SetAll(Components.View);
-            viewGroup = world.GetGroup(matcher);
-
-            camera = Camera.main;
+            return true;
         }
 
-        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
+        protected override void Execute(List<ECSEntity> entities)
         {
-            ViewTypeControl();
-            ViewGroupUpdate(elapseSeconds, realElapseSeconds);
+            ViewTypeControl(entities);
         }
 
-        private void ViewTypeControl()
+        public override void Dispose()
         {
-            foreach (var entity in viewTypeGroup)
+       
+        }
+
+        private void ViewTypeControl(List<ECSEntity> entities)
+        {
+            foreach (var entity in entities)
             {
                 bool isInView = IsObjectInView(entity);
                 var view = entity.GetView();
@@ -44,16 +42,6 @@ namespace GXGame
             }
         }
 
-        private void ViewGroupUpdate(float elapseSeconds, float realElapseSeconds)
-        {
-            foreach (var entity in viewGroup)
-            {
-                var view = entity.GetView();
-                if (view != null)
-                    entity.GetView().Value.OnUpdate(elapseSeconds, realElapseSeconds);
-            }
-        }
-
         private void LoadAsset(ECSEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Type;
@@ -61,22 +49,16 @@ namespace GXGame
             objectView.Link(ecsentity);
             ecsentity.AddView(objectView);
         }
-
-
+        
         private bool IsObjectInView(ECSEntity ecsentity)
         {
             var pos = ecsentity.GetWorldPos();
+            camera ??= Camera.main;
             Vector3 viewPos = camera.WorldToViewportPoint(pos.Pos);
-
             bool isInView = viewPos.x > 0 && viewPos.x < 1 &&
                             viewPos.y > 0 && viewPos.y < 1 &&
                             viewPos.z > camera.nearClipPlane && viewPos.z < camera.farClipPlane;
             return isInView;
-        }
-
-        public void Dispose()
-        {
-            viewTypeGroup = null;
         }
     }
 }

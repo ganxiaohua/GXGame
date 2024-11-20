@@ -27,8 +27,8 @@ public static class AutoSkillCollisionRadiusComponent
     {
         var p = (GXGame.SkillCollisionRadiusComponent)ecsEntity.GetComponent(Components.SkillCollisionRadiusComponent);
         p.Radius = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.SkillCollisionRadiusComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          

@@ -27,8 +27,8 @@ public static class AutoAbilityCurCooldownComponent
     {
         var p = (GXGame.AbilityCurCooldownComponent)ecsEntity.GetComponent(Components.AbilityCurCooldownComponent);
         p.AbilityCurCooldown = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.AbilityCurCooldownComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          

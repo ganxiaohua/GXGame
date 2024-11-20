@@ -27,8 +27,8 @@ public static class AutoSkillEffectTargetComponent
     {
         var p = (GXGame.SkillEffectTargetComponent)ecsEntity.GetComponent(Components.SkillEffectTargetComponent);
         p.SkillTargetEnum = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.SkillEffectTargetComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          

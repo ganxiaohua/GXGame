@@ -27,8 +27,8 @@ public static class AutoAbilityCastRangeComponent
     {
         var p = (GXGame.AbilityCastRangeComponent)ecsEntity.GetComponent(Components.AbilityCastRangeComponent);
         p.AbilityCastRange = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.AbilityCastRangeComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          

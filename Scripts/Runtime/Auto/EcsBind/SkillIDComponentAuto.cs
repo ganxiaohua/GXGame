@@ -27,8 +27,8 @@ public static class AutoSkillIDComponent
     {
         var p = (GXGame.SkillIDComponent)ecsEntity.GetComponent(Components.SkillIDComponent);
         p.SkillID = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.SkillIDComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          

@@ -27,8 +27,8 @@ public static class AutoAbilityCastPointComponent
     {
         var p = (GXGame.AbilityCastPointComponent)ecsEntity.GetComponent(Components.AbilityCastPointComponent);
         p.AbilityCastPoint = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.AbilityCastPointComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          

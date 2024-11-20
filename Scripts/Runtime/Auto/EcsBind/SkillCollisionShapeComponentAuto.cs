@@ -27,8 +27,8 @@ public static class AutoSkillCollisionShapeComponent
     {
         var p = (GXGame.SkillCollisionShapeComponent)ecsEntity.GetComponent(Components.SkillCollisionShapeComponent);
         p.CollisionShape = param;
-        
         ((World)ecsEntity.Parent).Reactive(Components.SkillCollisionShapeComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        
         return ecsEntity;
     }
          
