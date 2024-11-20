@@ -91,6 +91,7 @@ namespace GXGame
         {
             dir = dir.normalized;
             Vector2 nextPos = pos + dir * speed;
+            return nextPos;
             int count = Physics2D.BoxCast(nextPos, Vector2.one * 0.5f, 0, Vector2.zero, default, raycastHit2Ds);
             if (count == 0) return nextPos;
             RaycastHit2D targetRaycastHit2D = raycastHit2Ds[0];

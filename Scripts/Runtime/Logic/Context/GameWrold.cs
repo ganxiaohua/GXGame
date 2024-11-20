@@ -29,17 +29,18 @@ namespace GXGame.Logic
 
         private void CreatePlayer()
         {
-            for (int i = 0; i < 10000; i++)
-            {
+            // for (int i = 0; i < 10000; i++)
+            // {
                 var palyer = AddChild();
                 palyer.AddViewType(typeof(Go2DView));
                 palyer.AddAssetPath("Assets/GXGame/Art/Runtime/Role/Player/Prefab/Player.prefab");
-                palyer.AddWorldPos(new Vector3(-0.5f+i%50,i/50,0));
+                // palyer.AddWorldPos(new Vector3(-0.5f+i%50,i/50,0));
+                palyer.AddWorldPos(new Vector3(-0.5f,0,0));
                 palyer.AddLocalScale(Vector2.one*0.5f);
                 palyer.AddMoveDirection();
                 palyer.AddMoveSpeed(1);
                 palyer.AddInputDirection();
-            }
+            // }
 
             var monster = AddChild();
             monster.AddViewType(typeof(Go2DView));
