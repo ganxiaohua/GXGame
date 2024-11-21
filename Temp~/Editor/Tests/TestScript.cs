@@ -48,6 +48,7 @@ public class TestScript
         strongList.Add(4);
         strongList.Add(5);
         strongList.Add(6);
+        
         foreach (var item in strongList)
         {
             if (item == 2)
@@ -56,7 +57,6 @@ public class TestScript
                 strongList.Remove(4);
                 strongList.Remove(1);
             }
-        
             Debug.Log(item);
         }
     }
