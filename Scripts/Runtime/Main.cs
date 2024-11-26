@@ -12,7 +12,7 @@ namespace GXGame
             Components.SetComponent();
             new AutoBindEvent().AddSystem();
             await GXGameFrame.Instance.Start();
-            GXGameFrame.Instance.MainScene.AddComponent<GameProcessFsmController>();
+            GXGameFrame.Instance.RootEntity.AddComponent<GameProcess>();
         }
 
         void Update()

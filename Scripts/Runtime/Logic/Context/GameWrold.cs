@@ -20,7 +20,6 @@ namespace GXGame.Logic
             this.AddSystem<DestroySystem>();
             CreateMap();
             CreatePlayer();
-            UIManager.Instance.OpenUI(typeof(UICardListWindow), "input Data__");
         }
 
         private void CreateMap()
@@ -28,7 +27,7 @@ namespace GXGame.Logic
             var map = AddChild();
             map.Name = "Map";
             map.AddViewType(typeof(GoBaseView));
-            map.AddAssetPath("Map");
+            map.AddAssetPath("Map_BaseMap");
             map.AddWorldPos(Vector3.zero);
         }
 
@@ -39,7 +38,7 @@ namespace GXGame.Logic
                 var palyer = AddChild();
                 palyer.Name = $"角色{i}";
                 palyer.AddViewType(typeof(Go2DView));
-                palyer.AddAssetPath("Assets/GXGame/Art/Runtime/Role/Player/Prefab/Player.prefab");
+                palyer.AddAssetPath("Player/Prefab/Player");
                 palyer.AddWorldPos(new Vector3(-0.5f + i % 50, i / 50, 0));
                 palyer.AddLocalScale(Vector2.one * 0.5f);
                 palyer.AddMoveDirection();
@@ -50,7 +49,7 @@ namespace GXGame.Logic
             var monster = AddChild();
             monster.Name = "怪兽";
             monster.AddViewType(typeof(Go2DView));
-            monster.AddAssetPath("Assets/GXGame/Art/Runtime/Role/Monster_002/Prefab/Monster_002.prefab");
+            monster.AddAssetPath("Monster_002/Prefab/Monster_002");
             monster.AddWorldPos(new Vector3(5, 0, -1));
             monster.AddMoveDirection();
             monster.AddMoveSpeed(1);

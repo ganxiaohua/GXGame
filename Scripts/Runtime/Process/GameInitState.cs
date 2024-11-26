@@ -9,7 +9,7 @@ namespace GXGame
             base.OnEnter(fsmController);
             // Config.Instance.LoadTable();
             //播放一个icon之类
-            fsmController.SwitchState<GameStartState>();
+            fsmController.ChangeState<GameStartState>();
         }
     }
 }

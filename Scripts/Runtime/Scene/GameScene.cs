@@ -1,31 +1,29 @@
 using Cysharp.Threading.Tasks;
+using FairyGUI;
 using GameFrame;
 using GXGame.Logic;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace GXGame
 {
-    public class GameScene : Entity, IScene, IInitializeSystem, IUpdateSystem
+    public class GameScene : SceneBase
     {
-        public void Initialize()
-        {
-            Init().Forget();
-        }
+        protected override string SingleSceneName => "Scene_Game";
 
-        private async UniTaskVoid Init()
+        protected override void OnReady()
         {
-            await AssetManager.Instance.LoadSceneAsync("Assets/GXGame/Scenes/Game.unity");
+            CameraSet();
             AddComponent<GameWrold>();
         }
 
-        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
+        private void CameraSet()
         {
-            
-        }
-
-        public override void Dispose()
-        {
-            AssetManager.Instance.DecrementReferenceCount("Assets/GXGame/Scenes/Game.unity");
-            base.Dispose();
+            var uiCamera =  GameObject.Find("Stage Camera").GetComponent<Camera>();
+            uiCamera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;
+            var cameraData = Camera.main.GetUniversalAdditionalCameraData();
+            cameraData.cameraStack.Add(uiCamera);
+            UIManager.Instance.OpenUI(typeof(UICardListWindow), "input Data__");
         }
     }
 }
