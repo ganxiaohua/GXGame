@@ -14,7 +14,8 @@ namespace GXGame
         protected override void OnReady()
         {
             CameraSet();
-            AddComponent<GameWrold>();
+            AddComponent<GameWorld>();
+            UIManager.Instance.OpenUI(typeof(UICardListWindow), "input (自定义数据)");
         }
 
         private void CameraSet()
@@ -23,7 +24,6 @@ namespace GXGame
             uiCamera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;
             var cameraData = Camera.main.GetUniversalAdditionalCameraData();
             cameraData.cameraStack.Add(uiCamera);
-            UIManager.Instance.OpenUI(typeof(UICardListWindow), "input Data__");
         }
     }
 }

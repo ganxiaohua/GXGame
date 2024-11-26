@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace GXGame.Logic
 {
-    public class GameWrold : World
+    public class GameWorld : World
     {
         private int count = 10000;
 
         public override void Initialize()
         {
             base.Initialize();
-            EstimateChildsCount(count+2);
+            EstimateChildsCount(count + 2);
             this.AddSystem<ViewSystem>();
             this.AddSystem<ViewUpdateSystem>();
             this.AddSystem<InputSystem>();
@@ -38,7 +38,10 @@ namespace GXGame.Logic
                 var palyer = AddChild();
                 palyer.Name = $"角色{i}";
                 palyer.AddViewType(typeof(Go2DView));
-                palyer.AddAssetPath("Player/Prefab/Player");
+                if (i % 2 == 0)
+                    palyer.AddAssetPath("Player/Prefab/Player");
+                else
+                    palyer.AddAssetPath("Monster_001/Prefab/Monster_001");
                 palyer.AddWorldPos(new Vector3(-0.5f + i % 50, i / 50, 0));
                 palyer.AddLocalScale(Vector2.one * 0.5f);
                 palyer.AddMoveDirection();
