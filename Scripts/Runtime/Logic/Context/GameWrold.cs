@@ -9,8 +9,8 @@ namespace GXGame.Logic
 
         public override void Initialize()
         {
-            EstimateChildsCount(count + 2);
             base.Initialize();
+            EstimateChildsCount(count+2);
             this.AddSystem<ViewSystem>();
             this.AddSystem<ViewUpdateSystem>();
             this.AddSystem<InputSystem>();
