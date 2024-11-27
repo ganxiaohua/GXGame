@@ -1,5 +1,4 @@
-using Cysharp.Threading.Tasks;
-using FairyGUI;
+using Eden.Gameplay.Runtime;
 using GameFrame;
 using GXGame.Logic;
 using UnityEngine;
@@ -16,6 +15,7 @@ namespace GXGame
             CameraSet();
             AddComponent<GameWorld>();
             UIManager.Instance.OpenUI(typeof(UICardListWindow), "input (自定义数据)");
+            EventSend.Instance.FireTestEvent1("发送一个事件");
         }
 
         private void CameraSet()
