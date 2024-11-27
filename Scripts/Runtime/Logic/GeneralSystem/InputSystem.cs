@@ -12,7 +12,7 @@ namespace GXGame
         private Group Group;
         private Dictionary<KeyCode, int> keyCode;
 
-        public void Initialize(World entity)
+        public void OnInitialize(World entity)
         {
             Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.InputDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);

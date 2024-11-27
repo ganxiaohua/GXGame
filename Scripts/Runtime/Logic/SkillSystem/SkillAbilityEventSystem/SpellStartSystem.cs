@@ -9,7 +9,7 @@ namespace GXGame
         private Group m_Group;
         private World mWorld;
 
-        public void Initialize(World entity)
+        public void OnInitialize(World entity)
         {
             mWorld = entity;
             Matcher matcher = Matcher.SetAll(Components.SkillIDComponent);

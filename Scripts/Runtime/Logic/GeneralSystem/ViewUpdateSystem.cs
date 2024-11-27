@@ -7,7 +7,7 @@ namespace GXGame
     {
         private Group viewGroup;
 
-        public void Initialize(World world)
+        public void OnInitialize(World world)
         {
             var matcher = Matcher.SetAll(Components.View);
             viewGroup = world.GetGroup(matcher);

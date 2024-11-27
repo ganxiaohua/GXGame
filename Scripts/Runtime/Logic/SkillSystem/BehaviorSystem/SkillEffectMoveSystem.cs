@@ -7,7 +7,7 @@ namespace GXGame
     {
         private Group m_Group;
 
-        public void Initialize(World world)
+        public void OnInitialize(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.SkillComponent, Components.MoveDirection);
             m_Group = world.GetGroup(matcher);

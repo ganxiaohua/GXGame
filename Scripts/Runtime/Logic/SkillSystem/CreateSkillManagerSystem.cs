@@ -7,7 +7,7 @@ namespace GXGame
     public class CreateSkillManagerSystem : IInitializeSystem<World>
     {
         private Matcher matcher;
-        public void Initialize(World world)
+        public void OnInitialize(World world)
         {
             Matcher matcher = Matcher.SetAll(Components.SkillGroupComponent);
             Group group = world.GetGroup(matcher);

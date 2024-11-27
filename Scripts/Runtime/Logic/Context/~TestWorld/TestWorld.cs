@@ -6,9 +6,9 @@ namespace GXGame
 {
     public class TestWorld : World
     {
-        public override void Initialize()
+        public override void OnInitialize()
         {
-            base.Initialize();
+            base.OnInitialize();
             this.AddSystem<ViewSystem>();
             this.AddSystem<InputSystem>();
             this.AddSystem<WorldPosChangeSystem>();
@@ -76,9 +76,9 @@ namespace GXGame
 
     public class CubeConText2 : World
     {
-        public override void Initialize()
+        public override void OnInitialize()
         {
-            base.Initialize();
+            base.OnInitialize();
             this.AddSystem<InputSystem>();
             this.AddSystem<WorldPosChangeSystem>();
             this.AddSystem<WorldDirChangeSystem>();

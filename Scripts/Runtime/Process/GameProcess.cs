@@ -4,9 +4,9 @@ namespace GXGame
 {
     public class GameProcess : FsmController
     {
-        public override void Initialize()
+        public override void OnInitialize()
         {
-            base.Initialize();
+            base.OnInitialize();
             AddState<GameInitState>();
             AddState<GameStartState>();
             ChangeState<GameInitState>();

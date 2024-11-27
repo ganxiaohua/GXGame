@@ -7,9 +7,9 @@ namespace GXGame.Logic
     {
         private int count = 10000;
 
-        public override void Initialize()
+        public override void OnInitialize()
         {
-            base.Initialize();
+            base.OnInitialize();
             EstimateChildsCount(count + 2);
             this.AddSystem<ViewSystem>();
             this.AddSystem<ViewUpdateSystem>();

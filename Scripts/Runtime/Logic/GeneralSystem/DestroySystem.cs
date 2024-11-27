@@ -5,9 +5,9 @@ namespace GXGame
 {
     public class DestroySystem : ReactiveSystem
     {
-        public override void Initialize(World entity)
+        public override void OnInitialize(World entity)
         {
-            base.Initialize(entity);
+            base.OnInitialize(entity);
         }
 
         protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, Components.Destroy);
