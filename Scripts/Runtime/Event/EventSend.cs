@@ -19,7 +19,10 @@ namespace Eden.Gameplay.Runtime
             }
             foreach (var entity in allEntity)
             {
-                ((ITestEvent1) entity).Test(key);
+                if (entity.State == IEntity.EntityState.IsRunning)
+                {
+                    ((ITestEvent1) entity).Test(key);
+                }
             }
         }
         
