@@ -17,13 +17,15 @@ namespace GXGame
         {
             await base.WaitLoadOver();
             m_Animator = GameObjectView.GXGO.gameObject.GetComponent<Animator>();
+            m_Animator.enabled = true;
         }
 
 
         public override void Dispose()
         {
-            base.Dispose();
+            m_Animator.enabled = false;
             m_Animator = null;
+            base.Dispose();
         }
 
         public void Play(string animationName)

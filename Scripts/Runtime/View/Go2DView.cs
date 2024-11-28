@@ -54,11 +54,11 @@ namespace GXGame
 
         public override void Dispose()
         {
-            base.Dispose();
             ReferencePool.Release(spriterenderer);
             ReferencePool.Release(animator);
             animator = null;
             spriterenderer = null;
+            base.Dispose();
         }
     }
 }

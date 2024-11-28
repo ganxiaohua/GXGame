@@ -29,8 +29,9 @@ namespace GXGame
         {
             GXGameFrame.Instance.FixedUpdate();
         }
-
-        private void OnDisable()
+        
+        
+        private void OnApplicationQuit()
         {
             GXGameFrame.Instance.OnDisable();
         }
