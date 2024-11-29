@@ -1,14 +1,13 @@
 {
-    "name": "GamePlay.Runtime",
+    "name": "GamePlay.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:780046c9b7c57824d93edf84d597df8a",
+        "GUID:5124518f2dbf8ad4d842f9a5447bd39d",
+        "GUID:1b65f7a3fa38d8243bcba32b248375dc",
         "GUID:4ec328fd8ef7e3648910c19f2ae0c29f",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:15fc0a57446b3144c949da3e2b9737a9",
-        "GUID:d8b63aba1907145bea998dd612889d6b",
-        "GUID:2665a8d13d1b3f18800f46e256720795",
-        "GUID:4976459eb9045ba43983aa9204602e84"
+        "GUID:2cd4e9b765b2b5d4aa6f8209f3e8fdbf",
+        "GUID:3a9781db4804a9945b9883f3a7c46d45"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

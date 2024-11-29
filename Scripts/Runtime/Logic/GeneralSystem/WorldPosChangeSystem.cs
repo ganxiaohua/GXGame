@@ -44,7 +44,7 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 var dir = entity.GetMoveDirection().Dir;
-                var speed = entity.GetMoveSpeed().Speed * World.DeltaTime;
+                var speed = entity.GetMoveSpeed().Speed * 0.02f;
                 var pos = entity.GetWorldPos().Pos;
                 entity.SetWorldPos(CollisionSlide(pos, dir, speed));
             }
@@ -87,22 +87,22 @@ namespace GXGame
             // curpos.Dispose();
         }
 
-        private Vector2 CollisionSlide(Vector2 pos, Vector2 dir, float speed)
+        private Vector2 CollisionSlide(Vector2 pos, Vector2 dir, float distance)
         {
             dir = dir.normalized;
-            Vector2 nextPos = pos + dir * speed;
+            Vector2 nextPos = pos + dir * distance;
             int count = Physics2D.BoxCast(nextPos, Vector2.one * 0.5f, 0, Vector2.zero, default, raycastHit2Ds);
             if (count == 0) return nextPos;
             RaycastHit2D targetRaycastHit2D = raycastHit2Ds[0];
             Vector2 projection = Vector2.Dot(-dir, targetRaycastHit2D.normal) / dir.sqrMagnitude * targetRaycastHit2D.normal.normalized;
-            nextPos = pos + (dir + projection).normalized * speed;
+            nextPos = pos + (dir + projection).normalized * distance;
             for (int i = 0; i < 3; i++)
             {
                 count = Physics2D.BoxCast(nextPos, Vector2.one * 0.5f, 0, Vector2.zero, default, raycastHit2Ds);
                 if (count !=0)
                 {
                     targetRaycastHit2D = raycastHit2Ds[0];
-                    nextPos += targetRaycastHit2D.normal.normalized * speed;
+                    nextPos += targetRaycastHit2D.normal.normalized * distance;
                 }
                 else
                 {
