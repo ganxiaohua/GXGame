@@ -14,7 +14,7 @@ namespace GXGame
 
         public void OnInitialize(World entity)
         {
-            Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.InputDirection).NoneOf(Components.SkillComponent);
+            Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.GXInput, Components.FaceDirection).NoneOf(Components.SkillComponent);
             Group = entity.GetGroup(matcher);
             keyCode = new();
             keyCode.Add(KeyCode.A, -1);
@@ -55,6 +55,9 @@ namespace GXGame
                 return;
             foreach (var entity in Group)
             {
+                //inputDirecttion就是一開始給與的方向。
+                entity.SetFaceDirection(InputPos);
+                //movedirection在中途可能會發現修改。如碰撞
                 entity.SetMoveDirection(InputPos);
             }
         }

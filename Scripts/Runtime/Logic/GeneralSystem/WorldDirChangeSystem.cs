@@ -33,7 +33,7 @@ namespace GXGame
 
         protected override bool Filter(ECSEntity entity)
         {
-            return entity.HasComponent((Components.WorldRotate)) && entity.HasComponent(Components.Direction) && entity.HasComponent(Components.DirectionSpeed);
+            return entity.HasComponent((Components.WorldRotate)) && entity.HasComponent(Components.MoveDirection) && entity.HasComponent(Components.DirectionSpeed);
         }
 
         protected override void Execute(List<ECSEntity> entities)
@@ -49,10 +49,10 @@ namespace GXGame
                 if (dir != Vector3.zero)
                 {
                     float speed = entity.GetDirectionSpeed().DirSpeed;
-                    Vector3 nowDir = entity.GetDirection().Dir;
+                    Vector3 nowDir = entity.GetMoveDirection().Dir;
                     float angle = speed * World.DeltaTime;
                     Vector3 curDir = Vector3.RotateTowards(nowDir, dir, Mathf.Deg2Rad * angle, 0);
-                    entity.SetDirection(curDir);
+                    entity.GetMoveDirection();
                     entity.SetWorldRotate(Quaternion.LookRotation(curDir));
                 }
             }
@@ -68,7 +68,7 @@ namespace GXGame
             {
                 movedir[index] = entity.GetMoveDirection().Dir;
                 speed[index] = entity.GetDirectionSpeed().DirSpeed * World.DeltaTime;
-                curdir[index] = entity.GetDirection().Dir;
+                curdir[index] = entity.GetMoveDirection().Dir;
                 index++;
             }
 
@@ -84,7 +84,7 @@ namespace GXGame
             index = 0;
             foreach (var entity in entities)
             {
-                entity.SetDirection(job.NowDir[index]);
+                entity.SetMoveDirection(job.NowDir[index]);
                 entity.SetWorldRotate(Quaternion.LookRotation(job.NowDir[index]));
                 index++;
             }

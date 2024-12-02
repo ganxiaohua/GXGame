@@ -12,41 +12,44 @@ public static class Components {
     public const int LocalRotate= 5;
     public const int LocalScale= 6;
     public const int AssetPath= 7;
-    public const int Direction= 8;
-    public const int DirectionSpeed= 9;
-    public const int MeshRendererColor= 10;
-    public const int UseShareMaterial= 11;
-    public const int InputDirection= 12;
+    public const int DirectionSpeed= 8;
+    public const int MeshRendererColor= 9;
+    public const int UseShareMaterial= 10;
+    public const int FaceDirection= 11;
+    public const int GXInput= 12;
     public const int MoveDirection= 13;
     public const int MoveSpeed= 14;
     public const int ViewType= 15;
     public const int CampComponent= 16;
     public const int UnitTypeComponent= 17;
-    public const int SkillComponent= 18;
-    public const int SkillSoundPathComponent= 19;
-    public const int SkillSoundTargetComponent= 20;
-    public const int SkillPlayModelPathComponent= 21;
-    public const int SkillModelTargetComponent= 22;
-    public const int SkillEffectComponent= 23;
-    public const int SkillEffectEntityComponent= 24;
-    public const int SkillIsEffectComponent= 25;
-    public const int SkillEffectTargetComponent= 26;
-    public const int AbilityCastPointComponent= 27;
-    public const int AbilityCastRangeComponent= 28;
-    public const int AbilityCooldownComponent= 29;
-    public const int AbilityCurCooldownComponent= 30;
-    public const int AbilityUnitTargetCampComponent= 31;
-    public const int AbilityUnitTypeComponent= 32;
-    public const int OnSpellStartComponent= 33;
-    public const int SkillAbilityBehaviorComponent= 34;
-    public const int SkillCollisionShapeComponent= 35;
-    public const int SkillCollisionRadiusComponent= 36;
-    public const int SkillGroupComponent= 37;
-    public const int SkillIDComponent= 38;
-    public const int SkillManagerStateComponent= 39;
-    public const int SkillOwnerComponent= 40;
+    public const int CollisionBox= 18;
+    public const int RaycastHit= 19;
+    public const int CollisionGroundType= 20;
+    public const int SkillComponent= 21;
+    public const int SkillSoundPathComponent= 22;
+    public const int SkillSoundTargetComponent= 23;
+    public const int SkillPlayModelPathComponent= 24;
+    public const int SkillModelTargetComponent= 25;
+    public const int SkillEffectComponent= 26;
+    public const int SkillEffectEntityComponent= 27;
+    public const int SkillIsEffectComponent= 28;
+    public const int SkillEffectTargetComponent= 29;
+    public const int AbilityCastPointComponent= 30;
+    public const int AbilityCastRangeComponent= 31;
+    public const int AbilityCooldownComponent= 32;
+    public const int AbilityCurCooldownComponent= 33;
+    public const int AbilityUnitTargetCampComponent= 34;
+    public const int AbilityUnitTypeComponent= 35;
+    public const int OnSpellStartComponent= 36;
+    public const int SkillAbilityBehaviorComponent= 37;
+    public const int SkillCollisionShapeComponent= 38;
+    public const int SkillCollisionRadiusComponent= 39;
+    public const int SkillGroupComponent= 40;
+    public const int SkillIDComponent= 41;
+    public const int SkillManagerStateComponent= 42;
+    public const int SkillOwnerComponent= 43;
     
-    public const int TotalComponents = 41;
+    public const int TotalComponents = 44;
     
     
     public static readonly System.Type[] ComponentTypes = {
@@ -59,16 +62,19 @@ public static class Components {
         typeof(GXGame.LocalRotate),
         typeof(GXGame.LocalScale),
         typeof(GXGame.AssetPath),
-        typeof(GXGame.Direction),
         typeof(GXGame.DirectionSpeed),
         typeof(GXGame.MeshRendererColor),
         typeof(GXGame.UseShareMaterial),
-        typeof(GXGame.InputDirection),
+        typeof(GXGame.FaceDirection),
+        typeof(GXGame.GXInput),
         typeof(GXGame.MoveDirection),
         typeof(GXGame.MoveSpeed),
         typeof(GXGame.ViewType),
         typeof(GXGame.CampComponent),
         typeof(GXGame.UnitTypeComponent),
+        typeof(GXGame.CollisionBox),
+        typeof(GXGame.RaycastHit),
+        typeof(GXGame.CollisionGroundType),
         typeof(GXGame.SkillComponent),
         typeof(GXGame.SkillSoundPathComponent),
         typeof(GXGame.SkillSoundTargetComponent),

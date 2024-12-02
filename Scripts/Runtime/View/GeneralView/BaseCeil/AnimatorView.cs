@@ -6,7 +6,7 @@ namespace GXGame
 {
     public class AnimatorView : BaseView
     {
-        private Animator m_Animator;
+        private Animator mAnimator;
 
         public override void Init(ECSEntity ecsEntity, GameObjectView gameObjectView)
         {
@@ -16,37 +16,37 @@ namespace GXGame
         protected override async UniTask WaitLoadOver()
         {
             await base.WaitLoadOver();
-            m_Animator = GameObjectView.GXGO.gameObject.GetComponent<Animator>();
-            m_Animator.enabled = true;
+            mAnimator = GameObjectView.GXGO.gameObject.GetComponent<Animator>();
+            mAnimator.enabled = true;
         }
 
 
         public override void Dispose()
         {
-            m_Animator.enabled = false;
-            m_Animator = null;
+            mAnimator.enabled = false;
+            mAnimator = null;
             base.Dispose();
         }
 
         public void Play(string animationName)
         {
-            if (m_Animator == null)
+            if (mAnimator == null)
                 return;
-            m_Animator.Play(animationName);
+            mAnimator.Play(animationName);
         }
 
         public void SetBool(string name, bool b)
         {
-            if (m_Animator == null)
+            if (mAnimator == null)
                 return;
-            m_Animator.SetBool(name, b);
+            mAnimator.SetBool(name, b);
         }
 
         public void SetInteger(string name, int b)
         {
-            if (m_Animator == null)
+            if (mAnimator == null)
                 return;
-            m_Animator.SetInteger(name, b);
+            mAnimator.SetInteger(name, b);
         }
     }
 }

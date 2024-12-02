@@ -28,7 +28,7 @@ namespace GXGame
                     Entity.AddSkillAbilityBehaviorComponent(AbilityBehavior.BEHAVIOR_DIRECTIONAL);
                     Entity.AddSkillComponent();
                     Entity.AddWorldPos(skillentity.GetSkillOwnerComponent().Owner.GetWorldPos().Pos);
-                    Entity.AddMoveDirection(item.GetSkillOwnerComponent().Owner.GetDirection().Dir);
+                    Entity.AddMoveDirection(item.GetSkillOwnerComponent().Owner.GetMoveDirection().Dir);
                     Entity.AddMoveSpeed(15);
                     Entity.AddSkillOwnerComponent(item.GetSkillOwnerComponent().Owner);
                     Entity.AddSkillCollisionShapeComponent(CollisionShape.Sphere);

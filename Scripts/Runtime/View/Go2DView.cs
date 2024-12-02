@@ -25,7 +25,7 @@ namespace GXGame
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             if (animator == null)
                 return;
-            var dir = BindEntity.GetMoveDirection().Dir;
+            var dir = BindEntity.GetFaceDirection().Dir;
             if (dir != Vector3.zero)
             {
                 animator.SetBool("Stop", false);

@@ -6,9 +6,13 @@ namespace GXGame
 {
     public class Main : MonoBehaviour
     {
+        public static Transform ViewLayer;
+        public static Transform CollisionLayer;
         async UniTaskVoid Start()
         {
             DontDestroyOnLoad(this);
+            ViewLayer = transform.Find("ViewLayer");
+            CollisionLayer = transform.Find("CollisionLayer");
             Components.SetComponent();
             new AutoBindEvent().AddSystem();
             await GXGameFrame.Instance.Start();

@@ -35,13 +35,13 @@ namespace GXGame
             cubeHero.AddAssetPath("Cube");
             cubeHero.AddWorldPos(new Vector3(1.5f, 0, -5));
             cubeHero.AddWorldRotate(Quaternion.identity);
-            cubeHero.AddInputDirection();
+            cubeHero.AddFaceDirection();
             cubeHero.AddLocalScale(Vector3.one * 1.5f);
             cubeHero.AddMeshRendererColor(Color.black);
             cubeHero.AddMoveDirection();
             cubeHero.AddMoveSpeed(10);
             cubeHero.AddDirectionSpeed(360);
-            cubeHero.AddDirection(Vector3.forward);
+            // cubeHero.AddDirection(Vector3.forward);
             cubeHero.AddCampComponent(Camp.SELF);
             cubeHero.AddUnitTypeComponent(UnitTypeEnum.HERO);
 
@@ -52,11 +52,11 @@ namespace GXGame
                 monster.Name = "redCube";
                 monster.AddViewType(typeof(Go3DView));
                 monster.AddAssetPath("Cube");
-                monster.AddInputDirection();
+                monster.AddFaceDirection();
                 monster.AddMoveSpeed(5);
                 monster.AddMoveDirection();
                 monster.AddDirectionSpeed(180);
-                monster.AddDirection(Vector3.forward);
+                // monster.AddDirection(Vector3.forward);
                 // monster.AddSkillGroupComponent(new int[] {1});
                 monster.AddUseShareMaterial();
                 monster.AddWorldPos(new Vector3(-6 + (i % 20) * 1.5f, 0, z: -5 + i / 20));
