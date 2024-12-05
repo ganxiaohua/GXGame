@@ -31,10 +31,11 @@ namespace GXGame
                 var dir = entity.GetMoveDirection().Dir;
                 var distance = entity.GetMoveSpeed().Speed * World.DeltaTime;
                 var pos = entity.GetWorldPos().Pos;
-                Vector2 nextPos = pos + dir * distance;
-                entity.SetWorldPos(nextPos);
+                pos += (dir * distance);
+                entity.SetWorldPos(pos);
             }
         }
+
         public override void Dispose()
         {
         }

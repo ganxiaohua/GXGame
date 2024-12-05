@@ -8,11 +8,13 @@ namespace GXGame
     public class ViewSystem : ReactiveSystem
     {
         private Camera camera;
+
         protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddRemoveUpdate,
-            Components.WorldPos, Components.ViewType);
+            Components.WorldPos);
+
         protected override bool Filter(ECSEntity entity)
         {
-            return true;
+            return entity.HasComponent(Components.ViewType);
         }
 
         protected override void Execute(List<ECSEntity> entities)
@@ -22,7 +24,6 @@ namespace GXGame
 
         public override void Dispose()
         {
-       
         }
 
         private void ViewTypeControl(List<ECSEntity> entities)
@@ -49,7 +50,7 @@ namespace GXGame
             objectView.Link(ecsentity);
             ecsentity.AddView(objectView);
         }
-        
+
         private bool IsObjectInView(ECSEntity ecsentity)
         {
             var pos = ecsentity.GetWorldPos();

@@ -7,23 +7,23 @@ using UnityEngine;
 public static class AutoAbilityUnitTypeComponent
 {
     
-    public static void AddAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity)
+    public static void AddAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity)
     {
         ecsEntity.AddComponent(Components.AbilityUnitTypeComponent);
     }
     
-    public static void AddAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity,GXGame.UnitTypeEnum param)
+    public static void AddAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p  =  (GXGame.AbilityUnitTypeComponent)ecsEntity.AddComponent(Components.AbilityUnitTypeComponent);
         p.AbilityUnitTargetTeam = param;
     }
           
-    public static GXGame.AbilityUnitTypeComponent GetAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity)
+    public static GXGame.AbilityUnitTypeComponent GetAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity)
     {
         return (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
     }
      
-    public static ECSEntity SetAbilityUnitTypeComponent(this GXGame.SkillManagerEntity ecsEntity,GXGame.UnitTypeEnum param)
+    public static ECSEntity SetAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p = (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
         p.AbilityUnitTargetTeam = param;

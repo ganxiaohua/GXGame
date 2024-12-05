@@ -71,6 +71,8 @@ crashlytics-build.properties
 *.bundle
 Config/Gen
 Config/Gen.meta
+ParadoxNotion
+ParadoxNotion.meta
 
 Scripts/Runtime/Temp
 Scripts/Runtime/Temp.meta

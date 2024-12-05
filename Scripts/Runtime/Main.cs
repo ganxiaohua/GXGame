@@ -8,11 +8,13 @@ namespace GXGame
     {
         public static Transform ViewLayer;
         public static Transform CollisionLayer;
+        public static Transform BTOLayer;
         async UniTaskVoid Start()
         {
             DontDestroyOnLoad(this);
             ViewLayer = transform.Find("ViewLayer");
             CollisionLayer = transform.Find("CollisionLayer");
+            BTOLayer = transform.Find("BTOLayer");
             Components.SetComponent();
             new AutoBindEvent().AddSystem();
             await GXGameFrame.Instance.Start();

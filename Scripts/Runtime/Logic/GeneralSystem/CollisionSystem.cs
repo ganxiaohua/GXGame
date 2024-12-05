@@ -81,7 +81,6 @@ namespace GXGame
                     break;
                 }
             }
-
             return count;
         }
 

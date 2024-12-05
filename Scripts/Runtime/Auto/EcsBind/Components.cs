@@ -6,62 +6,55 @@ public static class Components {
     
     public const int Destroy= 0;
     public const int View= 1;
-    public const int WorldPos= 2;
-    public const int WorldRotate= 3;
-    public const int LocalPos= 4;
-    public const int LocalRotate= 5;
-    public const int LocalScale= 6;
-    public const int AssetPath= 7;
-    public const int DirectionSpeed= 8;
-    public const int MeshRendererColor= 9;
-    public const int UseShareMaterial= 10;
-    public const int FaceDirection= 11;
-    public const int GXInput= 12;
-    public const int MoveDirection= 13;
-    public const int MoveSpeed= 14;
-    public const int ViewType= 15;
-    public const int CampComponent= 16;
-    public const int UnitTypeComponent= 17;
-    public const int CollisionBox= 18;
-    public const int RaycastHit= 19;
-    public const int CollisionGroundType= 20;
-    public const int SkillComponent= 21;
-    public const int SkillSoundPathComponent= 22;
-    public const int SkillSoundTargetComponent= 23;
-    public const int SkillPlayModelPathComponent= 24;
-    public const int SkillModelTargetComponent= 25;
-    public const int SkillEffectComponent= 26;
-    public const int SkillEffectEntityComponent= 27;
-    public const int SkillIsEffectComponent= 28;
-    public const int SkillEffectTargetComponent= 29;
-    public const int AbilityCastPointComponent= 30;
-    public const int AbilityCastRangeComponent= 31;
-    public const int AbilityCooldownComponent= 32;
-    public const int AbilityCurCooldownComponent= 33;
-    public const int AbilityUnitTargetCampComponent= 34;
-    public const int AbilityUnitTypeComponent= 35;
-    public const int OnSpellStartComponent= 36;
-    public const int SkillAbilityBehaviorComponent= 37;
-    public const int SkillCollisionShapeComponent= 38;
-    public const int SkillCollisionRadiusComponent= 39;
-    public const int SkillGroupComponent= 40;
-    public const int SkillIDComponent= 41;
-    public const int SkillManagerStateComponent= 42;
-    public const int SkillOwnerComponent= 43;
+    public const int PreSkillComponent= 2;
+    public const int LateSkillComponent= 3;
+    public const int AtkIntervalComponent= 4;
+    public const int SkillComponent= 5;
+    public const int AbilityUnitTypeComponent= 6;
+    public const int WorldPos= 7;
+    public const int WorldRotate= 8;
+    public const int LocalPos= 9;
+    public const int LocalRotate= 10;
+    public const int LocalScale= 11;
+    public const int AssetPath= 12;
+    public const int DestroyCountdown= 13;
+    public const int DirectionSpeed= 14;
+    public const int MeshRendererColor= 15;
+    public const int UseShareMaterial= 16;
+    public const int FaceDirection= 17;
+    public const int GXInput= 18;
+    public const int MoveDirection= 19;
+    public const int MoveSpeed= 20;
+    public const int TargetPos= 21;
+    public const int TargetEntity= 22;
+    public const int ViewType= 23;
+    public const int Monster= 24;
+    public const int CampComponent= 25;
+    public const int UnitTypeComponent= 26;
+    public const int BehaviorTreeComponent= 27;
+    public const int CollisionBox= 28;
+    public const int RaycastHit= 29;
+    public const int CollisionGroundType= 30;
     
-    public const int TotalComponents = 44;
+    public const int TotalComponents = 31;
     
     
     public static readonly System.Type[] ComponentTypes = {
         
         typeof(GameFrame.Destroy),
         typeof(GameFrame.View),
+        typeof(GXGame.PreSkillComponent),
+        typeof(GXGame.LateSkillComponent),
+        typeof(GXGame.AtkIntervalComponent),
+        typeof(GXGame.SkillComponent),
+        typeof(GXGame.AbilityUnitTypeComponent),
         typeof(GXGame.WorldPos),
         typeof(GXGame.WorldRotate),
         typeof(GXGame.LocalPos),
         typeof(GXGame.LocalRotate),
         typeof(GXGame.LocalScale),
         typeof(GXGame.AssetPath),
+        typeof(GXGame.DestroyCountdown),
         typeof(GXGame.DirectionSpeed),
         typeof(GXGame.MeshRendererColor),
         typeof(GXGame.UseShareMaterial),
@@ -69,35 +62,16 @@ public static class Components {
         typeof(GXGame.GXInput),
         typeof(GXGame.MoveDirection),
         typeof(GXGame.MoveSpeed),
+        typeof(GXGame.TargetPos),
+        typeof(GXGame.TargetEntity),
         typeof(GXGame.ViewType),
+        typeof(GXGame.Monster),
         typeof(GXGame.CampComponent),
         typeof(GXGame.UnitTypeComponent),
+        typeof(GXGame.BehaviorTreeComponent),
         typeof(GXGame.CollisionBox),
         typeof(GXGame.RaycastHit),
         typeof(GXGame.CollisionGroundType),
-        typeof(GXGame.SkillComponent),
-        typeof(GXGame.SkillSoundPathComponent),
-        typeof(GXGame.SkillSoundTargetComponent),
-        typeof(GXGame.SkillPlayModelPathComponent),
-        typeof(GXGame.SkillModelTargetComponent),
-        typeof(GXGame.SkillEffectComponent),
-        typeof(GXGame.SkillEffectEntityComponent),
-        typeof(GXGame.SkillIsEffectComponent),
-        typeof(GXGame.SkillEffectTargetComponent),
-        typeof(GXGame.AbilityCastPointComponent),
-        typeof(GXGame.AbilityCastRangeComponent),
-        typeof(GXGame.AbilityCooldownComponent),
-        typeof(GXGame.AbilityCurCooldownComponent),
-        typeof(GXGame.AbilityUnitTargetCampComponent),
-        typeof(GXGame.AbilityUnitTypeComponent),
-        typeof(GXGame.OnSpellStartComponent),
-        typeof(GXGame.SkillAbilityBehaviorComponent),
-        typeof(GXGame.SkillCollisionShapeComponent),
-        typeof(GXGame.SkillCollisionRadiusComponent),
-        typeof(GXGame.SkillGroupComponent),
-        typeof(GXGame.SkillIDComponent),
-        typeof(GXGame.SkillManagerStateComponent),
-        typeof(GXGame.SkillOwnerComponent),
     };
 
     

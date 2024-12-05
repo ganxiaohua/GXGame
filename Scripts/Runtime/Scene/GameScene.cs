@@ -20,10 +20,16 @@ namespace GXGame
 
         private void CameraSet()
         {
-            var uiCamera =  GameObject.Find("Stage Camera").GetComponent<Camera>();
+            var uiCamera = GameObject.Find("Stage Camera").GetComponent<Camera>();
             uiCamera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;
             var cameraData = Camera.main.GetUniversalAdditionalCameraData();
             cameraData.cameraStack.Add(uiCamera);
+        }
+        
+
+        public override void Dispose()
+        {
+            base.Dispose();
         }
     }
 }

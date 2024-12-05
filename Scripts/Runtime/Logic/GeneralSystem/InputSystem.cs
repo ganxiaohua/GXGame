@@ -8,14 +8,14 @@ namespace GXGame
 {
     public class InputSystem : IInitializeSystem<World>, IUpdateSystem
     {
-        private Vector3 InputPos;
-        private Group Group;
+        private Vector3 inputPos;
+        private Group group;
         private Dictionary<KeyCode, int> keyCode;
 
         public void OnInitialize(World entity)
         {
             Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.GXInput, Components.FaceDirection).NoneOf(Components.SkillComponent);
-            Group = entity.GetGroup(matcher);
+            group = entity.GetGroup(matcher);
             keyCode = new();
             keyCode.Add(KeyCode.A, -1);
             keyCode.Add(KeyCode.D, 1);
@@ -26,10 +26,10 @@ namespace GXGame
         public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
             bool set = false;
-            if (InputPos != Vector3.zero)
+            if (inputPos != Vector3.zero)
             {
                 set = true;
-                InputPos.Set(0, 0, 0);
+                inputPos.Set(0, 0, 0);
             }
 
             int index = 0;
@@ -40,11 +40,11 @@ namespace GXGame
                     set = true;
                     if (index < 2)
                     {
-                        InputPos.x = variable.Value;
+                        inputPos.x = variable.Value;
                     }
                     else
                     {
-                        InputPos.y = variable.Value;
+                        inputPos.y = variable.Value;
                     }
                 }
 
@@ -53,12 +53,10 @@ namespace GXGame
 
             if (!set)
                 return;
-            foreach (var entity in Group)
+            foreach (var entity in group)
             {
-                //inputDirecttion就是一開始給與的方向。
-                entity.SetFaceDirection(InputPos);
-                //movedirection在中途可能會發現修改。如碰撞
-                entity.SetMoveDirection(InputPos);
+                entity.SetFaceDirection(inputPos);
+                entity.SetMoveDirection(inputPos);
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using Common.Runtime;
 using GameFrame;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -40,7 +39,12 @@ namespace GXGame
     {
         public string path;
     }
-    
+
+    public class DestroyCountdown : ECSComponent
+    {
+        public float Time;
+    }
+
 
     public class DirectionSpeed : ECSComponent
     {
@@ -78,9 +82,24 @@ namespace GXGame
         public float Speed;
     }
 
+    public class TargetPos : ECSComponent
+    {
+        public Vector2 Target;
+    }
+
+    public class TargetEntity : ECSComponent
+    {
+        public ECSEntity Target;
+    }
+
     public class ViewType : ECSComponent
     {
         public Type Type;
+    }
+    
+    public class Monster : ECSComponent
+    {
+        
     }
 
     public class CampComponent : ECSComponent

@@ -35,6 +35,16 @@ namespace GXGame
             LoadingOver = true;
             m_UniTaskCompletionSource?.TrySetResult();
             m_UniTaskCompletionSource = null;
+            if (BindEntity.GetLocalPos() != null)
+                LocalPosition(BindEntity.GetLocalPos());
+            if (BindEntity.GetLocalRotate() != null)
+                LocalRotate(BindEntity.GetLocalRotate());
+            if (BindEntity.GetLocalScale() != null)
+                LocalScale(BindEntity.GetLocalScale());
+            if (BindEntity.GetWorldRotate() != null)
+                WorldRotate(BindEntity.GetWorldRotate());
+            if (BindEntity.GetWorldPos() != null)
+                WolrdPosition(BindEntity.GetWorldPos());
         }
 
         public virtual void OnUpdate(float elapseSeconds, float realElapseSeconds)
