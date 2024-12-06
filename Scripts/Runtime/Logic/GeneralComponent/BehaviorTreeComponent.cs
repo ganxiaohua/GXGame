@@ -9,17 +9,17 @@ namespace GXGame
 {
     public class BehaviorTreeComponent : ECSComponent
     {
-        public string BehaviorAsset
+        public string Value
         {
-            get { return behaviorAsset; }
+            get { return value; }
             set
             {
-                behaviorAsset = value;
+                this.value = value;
                 Real();
             }
         }
 
-        private string behaviorAsset;
+        private string value;
 
         private GXGameObject gxGameObject;
         private AsyncLoadAsset<Object> asyncLoadAsset;
@@ -38,7 +38,7 @@ namespace GXGame
                 behaviourTreeOwner.blackboard = blackboard;
             }
             asyncLoadAsset ??= new AsyncLoadAsset<Object>(LoadOver);
-            asyncLoadAsset.LoadAsset(behaviorAsset);
+            asyncLoadAsset.LoadAsset(value);
         }
 
         private void LoadOver(List<Object> assets)

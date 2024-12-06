@@ -15,7 +15,7 @@ public static class AutoWorldPos
     public static void AddWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p  =  (GXGame.WorldPos)ecsEntity.AddComponent(Components.WorldPos);
-        p.Pos = param;
+        p.Value = param;
     }
           
     public static GXGame.WorldPos GetWorldPos(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoWorldPos
     public static ECSEntity SetWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
-        p.Pos = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity,EcsChangeEventState.UpdateType);
         View view = ecsEntity.GetView();
         if (view == null) return null;

@@ -26,21 +26,23 @@ namespace GXGame
             skillEntity.AddSkillComponent(1);
             skillEntity.AddViewType(typeof(GoBaseView));
             skillEntity.AddAssetPath("Skill_1");
-            var ownerDir = owner.GetFaceDirection().Dir.normalized;
-            var pos = owner.GetWorldPos().Pos + ownerDir * 0.5f;
+            var ownerDir = owner.GetFaceDirection().Value.normalized;
+            Vector2 pos = owner.GetWorldPos().Value + ownerDir * 0.5f;
             skillEntity.AddWorldPos(pos);
-            skillEntity.AddMoveDirection(ownerDir);
+            skillEntity.AddMoveDirection(owner.GetFaceDirection().Value);
             skillEntity.AddMoveSpeed(4);
             skillEntity.AddDestroyCountdown(2.0f);
-            skillEntity.AddFaceDirection();
-            skillEntity.AddLocalScale(Vector3.one * 0.2f);
-            skillEntity.AddTargetPos(owner.GetTargetEntity().Target.GetWorldPos().Pos);
+            skillEntity.AddLocalScale(Vector3.one * 0.3f);
+            skillEntity.AddCampComponent(GXGame.Camp.ENEMY);
+            skillEntity.AddCollisionBox(CollisionBox.Create(skillEntity, LayerMask.NameToLayer($"Object")));
+            skillEntity.AddCollisionGroundType(CollisionGroundType.Reflect);
+            skillEntity.AddHP(1);
             owner.AddAtkIntervalComponent(4.0f);
             owner.SetMoveSpeed(0);
             owner.AddLateSkillComponent(0.5f);
             EndAction(true);
         }
-        
+
 
         protected override void OnUpdate()
         {

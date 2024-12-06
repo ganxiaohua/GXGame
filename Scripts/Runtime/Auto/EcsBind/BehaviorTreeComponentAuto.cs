@@ -15,7 +15,7 @@ public static class AutoBehaviorTreeComponent
     public static void AddBehaviorTreeComponent(this ECSEntity ecsEntity,System.String param)
     {
         var p  =  (GXGame.BehaviorTreeComponent)ecsEntity.AddComponent(Components.BehaviorTreeComponent);
-        p.BehaviorAsset = param;
+        p.Value = param;
     }
           
     public static GXGame.BehaviorTreeComponent GetBehaviorTreeComponent(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoBehaviorTreeComponent
     public static ECSEntity SetBehaviorTreeComponent(this ECSEntity ecsEntity,System.String param)
     {
         var p = (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(Components.BehaviorTreeComponent);
-        p.BehaviorAsset = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.BehaviorTreeComponent, ecsEntity,EcsChangeEventState.UpdateType);
         
         return ecsEntity;

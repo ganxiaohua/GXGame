@@ -32,7 +32,7 @@ namespace GXGame.Editor.Tilemaps
         {
             base.OnPaintSceneGUI(grid, brushTarget, position, tool, executing);
 
-            var labelText = "Pos: " + position.position;
+            var labelText = "value: " + position.position;
             if (position.size.x > 1 || position.size.y > 1)
             {
                 labelText += " Size: " + position.size;

@@ -1,43 +1,43 @@
-﻿using System.Collections.Generic;
-using GameFrame;
-using Unity.Burst;
-using Unity.Collections;
-using Unity.Jobs;
+﻿using GameFrame;
 using UnityEngine;
 
 namespace GXGame
 {
-    public class WorldPosChangeSystem : ReactiveSystem
+    public class WorldPosChangeSystem : IInitializeSystem<World>, IUpdateSystem
     {
-        private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[4];
+        private Group group;
+        private World world;
 
-        protected override Collector GetTrigger(World world) =>
-            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, Components.MoveDirection);
-
-        protected override bool Filter(ECSEntity entity)
+        public void OnInitialize(World world)
         {
-            return entity.HasComponent(Components.MoveDirection) && entity.HasComponent(Components.MoveSpeed) && entity.HasComponent(Components.WorldPos);
+            this.world = world;
+            Matcher matcher = Matcher.SetAll(Components.MoveDirection);
+            group = world.GetGroup(matcher);
         }
 
-        protected override void Execute(List<ECSEntity> entities)
+
+        public void OnUpdate(float elapseSeconds, float realElapseSeconds)
         {
-            Common(entities);
+            Common();
         }
 
-        private void Common(List<ECSEntity> entities)
+        private void Common()
         {
-            foreach (var entity in entities)
+            foreach (var entity in group)
             {
-                var dir = entity.GetMoveDirection().Dir;
-                var distance = entity.GetMoveSpeed().Speed * World.DeltaTime;
-                var pos = entity.GetWorldPos().Pos;
-                pos += (dir * distance);
+                var dir = entity.GetMoveDirection().Value;
+                if(dir == Vector3.zero)
+                    continue;
+                var distance = entity.GetMoveSpeed().Value * world.DeltaTime;
+                var pos = entity.GetWorldPos().Value;
+                pos += (dir.normalized * distance);
                 entity.SetWorldPos(pos);
             }
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
+  
         }
     }
 }

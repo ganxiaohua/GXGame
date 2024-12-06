@@ -12,7 +12,7 @@ namespace GXGame
         public override void Link(ECSEntity ecsEntity)
         {
             base.Link(ecsEntity);
-            Load(ecsEntity.GetAssetPath().path).Forget();
+            Load(ecsEntity.GetAssetPath().Value).Forget();
             spriterenderer = ReferencePool.Acquire<SpriteRendererView>();
             spriterenderer.Init(ecsEntity, this);
             animator = ReferencePool.Acquire<AnimatorView>();
@@ -25,15 +25,16 @@ namespace GXGame
             base.OnUpdate(elapseSeconds, realElapseSeconds);
             if (animator == null)
                 return;
-            var dir = BindEntity.GetFaceDirection().Dir;
+            var dir = BindEntity.GetFaceDirection().Value;
+            var scale = BindEntity.GetLocalScale().Value;
             if (dir != Vector3.zero)
             {
                 animator.SetBool("Stop", false);
                 animator.SetInteger("State", 1);
                 GXGO.scale = dir.x switch
                 {
-                    > 0 => new Vector3(1, 1, 1),
-                    < 0 => new Vector3(-1, 1, 1),
+                    > 0 => new Vector3(scale.x, scale.y, scale.z),
+                    < 0 => new Vector3(-scale.x, scale.y, scale.z),
                     _ => GXGO.scale
                 };
                 if (dir.y < 0)

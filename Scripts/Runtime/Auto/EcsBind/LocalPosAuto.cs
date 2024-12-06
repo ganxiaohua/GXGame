@@ -15,7 +15,7 @@ public static class AutoLocalPos
     public static void AddLocalPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p  =  (GXGame.LocalPos)ecsEntity.AddComponent(Components.LocalPos);
-        p.Pos = param;
+        p.Value = param;
     }
           
     public static GXGame.LocalPos GetLocalPos(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoLocalPos
     public static ECSEntity SetLocalPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.LocalPos)ecsEntity.GetComponent(Components.LocalPos);
-        p.Pos = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.LocalPos, ecsEntity,EcsChangeEventState.UpdateType);
         View view = ecsEntity.GetView();
         if (view == null) return null;

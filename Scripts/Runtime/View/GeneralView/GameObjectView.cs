@@ -70,27 +70,27 @@ namespace GXGame
 
         public virtual void LocalPosition(LocalPos localPos)
         {
-            m_GXGO.localPosition = localPos.Pos;
+            m_GXGO.localPosition = localPos.Value;
         }
 
         public virtual void LocalRotate(LocalRotate localRotate)
         {
-            m_GXGO.localRotation = localRotate.Rotate;
+            m_GXGO.localRotation = localRotate.Value;
         }
 
         public virtual void WolrdPosition(WorldPos worldPos)
         {
-            m_GXGO.position = worldPos.Pos;
+            m_GXGO.position = worldPos.Value;
         }
 
         public virtual void WorldRotate(WorldRotate worldRotate)
         {
-            m_GXGO.rotation = worldRotate.Rotate;
+            m_GXGO.rotation = worldRotate.Value;
         }
 
         public virtual void LocalScale(LocalScale localScale)
         {
-            m_GXGO.scale = localScale.Scale;
+            m_GXGO.scale = localScale.Value;
         }
     }
 }

@@ -15,7 +15,7 @@ public static class AutoWorldRotate
     public static void AddWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
         var p  =  (GXGame.WorldRotate)ecsEntity.AddComponent(Components.WorldRotate);
-        p.Rotate = param;
+        p.Value = param;
     }
           
     public static GXGame.WorldRotate GetWorldRotate(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoWorldRotate
     public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
         var p = (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
-        p.Rotate = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.WorldRotate, ecsEntity,EcsChangeEventState.UpdateType);
         View view = ecsEntity.GetView();
         if (view == null) return null;

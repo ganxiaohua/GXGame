@@ -15,7 +15,7 @@ public static class AutoLocalRotate
     public static void AddLocalRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
         var p  =  (GXGame.LocalRotate)ecsEntity.AddComponent(Components.LocalRotate);
-        p.Rotate = param;
+        p.Value = param;
     }
           
     public static GXGame.LocalRotate GetLocalRotate(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoLocalRotate
     public static ECSEntity SetLocalRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
         var p = (GXGame.LocalRotate)ecsEntity.GetComponent(Components.LocalRotate);
-        p.Rotate = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.LocalRotate, ecsEntity,EcsChangeEventState.UpdateType);
         View view = ecsEntity.GetView();
         if (view == null) return null;

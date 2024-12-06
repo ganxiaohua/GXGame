@@ -45,7 +45,7 @@ namespace GXGame
 
         private void LoadAsset(ECSEntity ecsentity)
         {
-            Type type = ecsentity.GetViewType().Type;
+            Type type = ecsentity.GetViewType().Value;
             var objectView = View.Create(type);
             objectView.Link(ecsentity);
             ecsentity.AddView(objectView);
@@ -55,7 +55,7 @@ namespace GXGame
         {
             var pos = ecsentity.GetWorldPos();
             camera ??= Camera.main;
-            Vector3 viewPos = camera.WorldToViewportPoint(pos.Pos);
+            Vector3 viewPos = camera.WorldToViewportPoint(pos.Value);
             bool isInView = viewPos.x > 0 && viewPos.x < 1 &&
                             viewPos.y > 0 && viewPos.y < 1 &&
                             viewPos.z > camera.nearClipPlane && viewPos.z < camera.farClipPlane;

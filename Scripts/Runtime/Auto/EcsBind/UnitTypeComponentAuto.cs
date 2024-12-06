@@ -15,7 +15,7 @@ public static class AutoUnitTypeComponent
     public static void AddUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p  =  (GXGame.UnitTypeComponent)ecsEntity.AddComponent(Components.UnitTypeComponent);
-        p.UnitTypeEnum = param;
+        p.Value = param;
     }
           
     public static GXGame.UnitTypeComponent GetUnitTypeComponent(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoUnitTypeComponent
     public static ECSEntity SetUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
         var p = (GXGame.UnitTypeComponent)ecsEntity.GetComponent(Components.UnitTypeComponent);
-        p.UnitTypeEnum = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.UnitTypeComponent, ecsEntity,EcsChangeEventState.UpdateType);
         
         return ecsEntity;

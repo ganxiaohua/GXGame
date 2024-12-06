@@ -11,32 +11,33 @@ public static class Components {
     public const int AtkIntervalComponent= 4;
     public const int SkillComponent= 5;
     public const int AbilityUnitTypeComponent= 6;
-    public const int WorldPos= 7;
-    public const int WorldRotate= 8;
-    public const int LocalPos= 9;
-    public const int LocalRotate= 10;
-    public const int LocalScale= 11;
-    public const int AssetPath= 12;
-    public const int DestroyCountdown= 13;
-    public const int DirectionSpeed= 14;
-    public const int MeshRendererColor= 15;
-    public const int UseShareMaterial= 16;
-    public const int FaceDirection= 17;
-    public const int GXInput= 18;
-    public const int MoveDirection= 19;
-    public const int MoveSpeed= 20;
-    public const int TargetPos= 21;
-    public const int TargetEntity= 22;
-    public const int ViewType= 23;
-    public const int Monster= 24;
-    public const int CampComponent= 25;
-    public const int UnitTypeComponent= 26;
-    public const int BehaviorTreeComponent= 27;
-    public const int CollisionBox= 28;
-    public const int RaycastHit= 29;
-    public const int CollisionGroundType= 30;
+    public const int Player= 7;
+    public const int HP= 8;
+    public const int WorldPos= 9;
+    public const int WorldRotate= 10;
+    public const int LocalPos= 11;
+    public const int LocalRotate= 12;
+    public const int LocalScale= 13;
+    public const int AssetPath= 14;
+    public const int DestroyCountdown= 15;
+    public const int DirectionSpeed= 16;
+    public const int MeshRendererColor= 17;
+    public const int UseShareMaterial= 18;
+    public const int FaceDirection= 19;
+    public const int GXInput= 20;
+    public const int MoveDirection= 21;
+    public const int MoveSpeed= 22;
+    public const int TargetPos= 23;
+    public const int ViewType= 24;
+    public const int Monster= 25;
+    public const int CampComponent= 26;
+    public const int UnitTypeComponent= 27;
+    public const int BehaviorTreeComponent= 28;
+    public const int CollisionBox= 29;
+    public const int RaycastHit= 30;
+    public const int CollisionGroundType= 31;
     
-    public const int TotalComponents = 31;
+    public const int TotalComponents = 32;
     
     
     public static readonly System.Type[] ComponentTypes = {
@@ -48,6 +49,8 @@ public static class Components {
         typeof(GXGame.AtkIntervalComponent),
         typeof(GXGame.SkillComponent),
         typeof(GXGame.AbilityUnitTypeComponent),
+        typeof(GXGame.Player),
+        typeof(GXGame.HP),
         typeof(GXGame.WorldPos),
         typeof(GXGame.WorldRotate),
         typeof(GXGame.LocalPos),
@@ -63,7 +66,6 @@ public static class Components {
         typeof(GXGame.MoveDirection),
         typeof(GXGame.MoveSpeed),
         typeof(GXGame.TargetPos),
-        typeof(GXGame.TargetEntity),
         typeof(GXGame.ViewType),
         typeof(GXGame.Monster),
         typeof(GXGame.CampComponent),

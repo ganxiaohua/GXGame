@@ -15,7 +15,7 @@ public static class AutoFaceDirection
     public static void AddFaceDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p  =  (GXGame.FaceDirection)ecsEntity.AddComponent(Components.FaceDirection);
-        p.Dir = param;
+        p.Value = param;
     }
           
     public static GXGame.FaceDirection GetFaceDirection(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoFaceDirection
     public static ECSEntity SetFaceDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.FaceDirection)ecsEntity.GetComponent(Components.FaceDirection);
-        p.Dir = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.FaceDirection, ecsEntity,EcsChangeEventState.UpdateType);
         
         return ecsEntity;

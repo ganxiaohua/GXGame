@@ -33,7 +33,7 @@ namespace GXGame
         {
             foreach (var entity in destroyCountGroup)
             {
-                var time = entity.GetDestroyCountdown().Time - world.DeltaTime;
+                var time = entity.GetDestroyCountdown().Value - world.DeltaTime;
                 if (time <= 0)
                 {
                     entity.AddDestroy();

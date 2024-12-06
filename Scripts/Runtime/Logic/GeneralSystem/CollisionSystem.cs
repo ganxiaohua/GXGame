@@ -7,7 +7,7 @@ namespace GXGame
     /// <summary>
     /// 碰到了就修正方向
     /// </summary>
-    public class CollisionSystem : ReactiveSystem
+    public partial class CollisionSystem : ReactiveSystem
     {
         private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[4];
 
@@ -25,14 +25,16 @@ namespace GXGame
             foreach (var entity in entities)
             {
                 CleaRaycastHit2Ds();
-                var dir = entity.GetMoveDirection().Dir;
-                var distance = entity.GetMoveSpeed().Speed * World.DeltaTime;
-                var pos = entity.GetWorldPos().Pos;
+                var dir = entity.GetMoveDirection().Value;
+                var distance = entity.GetMoveSpeed().Value * World.DeltaTime;
+                var pos = entity.GetWorldPos().Value;
                 dir = dir.normalized;
                 dir = GetCollisionDir(pos, dir, distance, entity);
                 pos += dir * distance;
-                entity.GetCollisionBox().Value.position = pos;
-                entity.GetMoveDirection().Dir = dir;
+                var collisionBox = entity.GetCollisionBox();
+                collisionBox.Value.position = pos;
+                entity.SetCollisionBox(collisionBox.Value);
+                entity.SetMoveDirection(dir);
             }
         }
 
@@ -41,14 +43,18 @@ namespace GXGame
             var box = entity.GetCollisionBox();
             var count = BoxCast(pos, dir, distance, box);
             if (count == 0) return dir;
-            var collisonProority = CollisionPriority();
-            if (collisonProority.priority == 2)
+            var collisonProority = CollisionPriority(entity);
+            RaycastHit2D targetRaycastHit2D = collisonProority.hit2D;
+            if (collisonProority.priority == 0)
             {
-                //TODO:
+                return dir;
+            }
+            else if (collisonProority.priority == 2)
+            {
+                Behavior(targetRaycastHit2D, entity);
                 return Vector2.zero;
             }
 
-            RaycastHit2D targetRaycastHit2D = collisonProority.hit2D;
             if ((entity.GetCollisionGroundType().Type == CollisionGroundType.Slide))
             {
                 Vector2 projection = Vector2.Dot(-dir, targetRaycastHit2D.normal) / dir.sqrMagnitude * targetRaycastHit2D.normal.normalized;
@@ -56,14 +62,19 @@ namespace GXGame
             }
             else if (entity.GetCollisionGroundType().Type == CollisionGroundType.Reflect)
             {
-                dir = Vector2.Reflect(dir, targetRaycastHit2D.normal);
-            }else if (entity.GetCollisionGroundType().Type == CollisionGroundType.Bomb)
-            {
-                dir = targetRaycastHit2D.normal;
+                dir = Vector2.Reflect(dir, targetRaycastHit2D.normal).normalized;
             }
-            count = BoxCast(pos, dir, distance, box);
-            if (count != 0)
-                dir = Vector2.zero;
+            else if (entity.GetCollisionGroundType().Type == CollisionGroundType.Bomb)
+            {
+                dir = -dir;
+            }
+
+            // count = BoxCast(pos, dir, distance, box);
+            // if (count != 0)
+            // {
+            //     //仍然碰到了就沿着法线向着外面挤出去
+            //     
+            // }
 
             return dir;
         }
@@ -81,23 +92,33 @@ namespace GXGame
                     break;
                 }
             }
+
             return count;
         }
 
         /// <summary>
-        /// 碰触优先级,碰到其他东西的优先级
+        /// 碰触优先级,碰到其他东西的优先级 并且过滤掉同阵营的
         /// </summary>
         /// <returns></returns>
-        private (int priority, RaycastHit2D hit2D) CollisionPriority()
+        private (int priority, RaycastHit2D hit2D) CollisionPriority(ECSEntity owner)
         {
             int priority = 0;
             RaycastHit2D hit2D = default;
+            var camp = owner.GetCampComponent().Value;
             for (int i = 0; i < raycastHit2Ds.Length; i++)
             {
                 if (raycastHit2Ds[i] == default)
                     continue;
-                if (priority < 2 && raycastHit2Ds[i].transform.gameObject.layer == LayerMask.NameToLayer($"Object") )
+
+                if (priority < 2 && raycastHit2Ds[i].transform.gameObject.layer == LayerMask.NameToLayer($"Object"))
                 {
+                    //过滤掉同阵营
+                    var rayCamp = raycastHit2Ds[i].transform.GetComponent<CollisionEntity>().Entity.GetCampComponent();
+                    if (rayCamp != null && rayCamp.Value == camp)
+                    {
+                        continue;
+                    }
+
                     priority = 2;
                     hit2D = raycastHit2Ds[i];
                 }

@@ -23,7 +23,8 @@ namespace GXGame
 
         public override void Dispose()
         {
-            mAnimator.enabled = false;
+            if (mAnimator != null)
+                mAnimator.enabled = false;
             mAnimator = null;
             base.Dispose();
         }

@@ -15,7 +15,7 @@ public static class AutoTargetPos
     public static void AddTargetPos(this ECSEntity ecsEntity,UnityEngine.Vector2 param)
     {
         var p  =  (GXGame.TargetPos)ecsEntity.AddComponent(Components.TargetPos);
-        p.Target = param;
+        p.Value = param;
     }
           
     public static GXGame.TargetPos GetTargetPos(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoTargetPos
     public static ECSEntity SetTargetPos(this ECSEntity ecsEntity,UnityEngine.Vector2 param)
     {
         var p = (GXGame.TargetPos)ecsEntity.GetComponent(Components.TargetPos);
-        p.Target = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.TargetPos, ecsEntity,EcsChangeEventState.UpdateType);
         
         return ecsEntity;

@@ -15,7 +15,7 @@ public static class AutoLocalScale
     public static void AddLocalScale(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p  =  (GXGame.LocalScale)ecsEntity.AddComponent(Components.LocalScale);
-        p.Scale = param;
+        p.Value = param;
     }
           
     public static GXGame.LocalScale GetLocalScale(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoLocalScale
     public static ECSEntity SetLocalScale(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.LocalScale)ecsEntity.GetComponent(Components.LocalScale);
-        p.Scale = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.LocalScale, ecsEntity,EcsChangeEventState.UpdateType);
         View view = ecsEntity.GetView();
         if (view == null) return null;

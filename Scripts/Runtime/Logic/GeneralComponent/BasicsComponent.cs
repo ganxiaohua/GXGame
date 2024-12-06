@@ -1,61 +1,70 @@
 ﻿using System;
 using GameFrame;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace GXGame
 {
+    public class Player : ECSComponent
+    {
+        
+    }
+    
+    public class HP : ECSComponent
+    {
+        public int Value;
+    }
+    
     [ViewBind(typeof(IWolrdPosition))]
     public class WorldPos : ECSComponent
     {
-        public Vector3 Pos;
+        public Vector3 Value;
     }
 
     [ViewBind(typeof(IWorldRotate))]
     public class WorldRotate : ECSComponent
     {
-        public Quaternion Rotate;
+        public Quaternion Value;
     }
 
     [ViewBind(typeof(ILocalPosition))]
     public class LocalPos : ECSComponent
     {
-        public Vector3 Pos;
+        public Vector3 Value;
     }
 
     [ViewBind(typeof(ILocalRotate))]
     public class LocalRotate : ECSComponent
     {
-        public Quaternion Rotate;
+        public Quaternion Value;
     }
 
     [ViewBind(typeof(ILocalScale))]
     public class LocalScale : ECSComponent
     {
-        public Vector3 Scale;
+        public Vector3 Value;
     }
 
     public class AssetPath : ECSComponent
     {
-        public string path;
+        public string Value;
     }
 
     public class DestroyCountdown : ECSComponent
     {
-        public float Time;
+        public float Value;
     }
 
 
     public class DirectionSpeed : ECSComponent
     {
-        public float DirSpeed;
+        public float Value;
     }
     
 
     [ViewBind(typeof(IMeshRendererColor))]
     public class MeshRendererColor : ECSComponent
     {
-        public Color Color;
+        public Color Value;
     }
 
     public class UseShareMaterial : ECSComponent
@@ -64,7 +73,7 @@ namespace GXGame
 
     public class FaceDirection : ECSComponent
     {
-        public Vector3 Dir;
+        public Vector3 Value;
     }
 
     public class GXInput : ECSComponent
@@ -74,27 +83,22 @@ namespace GXGame
 
     public class MoveDirection : ECSComponent
     {
-        public Vector3 Dir;
+        public Vector3 Value;
     }
 
     public class MoveSpeed : ECSComponent
     {
-        public float Speed;
+        public float Value;
     }
 
     public class TargetPos : ECSComponent
     {
-        public Vector2 Target;
+        public Vector2 Value;
     }
-
-    public class TargetEntity : ECSComponent
-    {
-        public ECSEntity Target;
-    }
-
+    
     public class ViewType : ECSComponent
     {
-        public Type Type;
+        public Type Value;
     }
     
     public class Monster : ECSComponent
@@ -104,11 +108,11 @@ namespace GXGame
 
     public class CampComponent : ECSComponent
     {
-        public Camp Camp;
+        public Camp Value;
     }
 
     public class UnitTypeComponent : ECSComponent
     {
-        public UnitTypeEnum UnitTypeEnum;
+        public UnitTypeEnum Value;
     }
 }

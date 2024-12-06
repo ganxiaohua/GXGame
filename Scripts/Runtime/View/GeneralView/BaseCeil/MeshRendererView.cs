@@ -36,10 +36,10 @@ namespace GXGame
             if (m_MeshRenderer == null) return;
             var useShareMaterial = BindEntity.GetUseShareMaterial();
             if (useShareMaterial != null)
-                m_MeshRenderer.sharedMaterial.color = param.Color;
+                m_MeshRenderer.sharedMaterial.color = param.Value;
             else
             {
-                m_MeshRenderer.material.color = param.Color;
+                m_MeshRenderer.material.color = param.Value;
             }
         }
     }

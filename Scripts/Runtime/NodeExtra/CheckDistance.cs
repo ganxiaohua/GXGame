@@ -41,14 +41,9 @@ namespace GXGame
             var targetPos = Vector3.zero;
             if (owner.HasComponent(Components.TargetPos))
             {
-                targetPos = owner.GetTargetPos().Target;
+                targetPos = owner.GetTargetPos().Value;
             }
-            else if (owner.HasComponent(Components.TargetEntity))
-            {
-                targetPos = owner.GetTargetEntity().Target.GetWorldPos().Pos;
-            }
-
-            var curPos = owner.GetWorldPos().Pos;
+            var curPos = owner.GetWorldPos().Value;
             return Vector3.Distance(curPos, targetPos) <= maxDistance;
         }
     }

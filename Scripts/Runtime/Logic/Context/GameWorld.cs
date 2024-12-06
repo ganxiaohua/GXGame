@@ -16,7 +16,6 @@ namespace GXGame.Logic
             this.AddSystem<InputSystem>();
             this.AddSystem<CollisionSystem>();
             this.AddSystem<WorldPosChangeSystem>();
-            this.AddSystem<TargetSystem>();
             this.AddSystem<CountDowntSystem>();
             //最后执行
             this.AddSystem<DestroySystem>();
@@ -43,11 +42,14 @@ namespace GXGame.Logic
             palyer.AddWorldPos(new Vector3(-0.5f, 0, 0));
             palyer.AddLocalScale(Vector2.one);
             palyer.AddMoveDirection();
-            palyer.AddMoveSpeed(1);
+            palyer.AddMoveSpeed(2);
             palyer.AddFaceDirection();
-            palyer.AddCollisionBox(CollisionBox.Create(palyer));
+            palyer.AddCollisionBox(CollisionBox.Create(palyer,LayerMask.NameToLayer($"Object")));
             palyer.AddCollisionGroundType(CollisionGroundType.Slide);
+            palyer.AddCampComponent(GXGame.Camp.SELF);
             palyer.AddGXInput();
+            palyer.AddPlayer();
+            palyer.AddHP(10);
             //
             //
             var monster = AddChild();
@@ -59,12 +61,13 @@ namespace GXGame.Logic
             monster.AddMoveDirection();
             monster.AddMoveSpeed(0.5f);
             monster.AddFaceDirection();
-            monster.AddCollisionBox(CollisionBox.Create(monster));
+            monster.AddCollisionBox(CollisionBox.Create(monster,LayerMask.NameToLayer($"Object")));
             monster.AddCollisionGroundType(CollisionGroundType.Slide);
-            monster.AddTargetEntity(palyer);
+            monster.AddCampComponent(GXGame.Camp.ENEMY);
             monster.AddMonster();
+            monster.AddHP(10);
             monster.AddBehaviorTreeComponent("MonsterBTO");
-            
+            //
             
             // monster = AddChild();
             // monster.Name = "史莱姆";
@@ -72,7 +75,6 @@ namespace GXGame.Logic
             // monster.AddAssetPath("Monster_002/Prefab/Monster_002");
             // monster.AddWorldPos(new Vector3(5.5f, 1, -1));
             // monster.AddMoveDirection();
-            // monster.AddTargetPos(new Vector3(4, 1, -1).normalized);
             // monster.AddMoveSpeed(0.2f);
             // monster.AddFaceDirection();
             // monster.AddCollisionBox(CollisionBox.Create(monster));

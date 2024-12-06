@@ -11,11 +11,12 @@ namespace GXGame
     {
         public GXGameObject Value;
 
-        public static GXGameObject Create(ECSEntity ecsEntity)
+        public static GXGameObject Create(ECSEntity ecsEntity,LayerMask layerMask)
         {
             var value = new GXGameObject();
             value.BindFromEmpty(Main.CollisionLayer);
             value.gameObject.name = ecsEntity.Name;
+            value.gameObject.layer = layerMask;
             var box = value.gameObject.AddComponent<BoxCollider2D>();
             value.gameObject.AddComponent<CollisionEntity>().Entity = ecsEntity;
             box.size = Vector2.one * 0.5f;
@@ -35,8 +36,7 @@ namespace GXGame
 
     public class RaycastHit : ECSComponent
     {
-        public RaycastHit2D[] RaycastHit2Ds;
-        public int Count;
+        public RaycastHit2D RaycastHit2Ds;
     }
 
 

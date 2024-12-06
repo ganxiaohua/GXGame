@@ -20,7 +20,7 @@ namespace GXGame {
 		{
 			if (owner.GetLateSkillComponent() == null)
 			{
-				owner.GetMoveSpeed().Speed = 0.5f;
+				owner.GetMoveSpeed().Value = 0.5f;
 				EndAction(true);
 			}
 			EndAction(false);

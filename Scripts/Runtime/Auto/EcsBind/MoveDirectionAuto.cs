@@ -15,7 +15,7 @@ public static class AutoMoveDirection
     public static void AddMoveDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p  =  (GXGame.MoveDirection)ecsEntity.AddComponent(Components.MoveDirection);
-        p.Dir = param;
+        p.Value = param;
     }
           
     public static GXGame.MoveDirection GetMoveDirection(this ECSEntity ecsEntity)
@@ -26,7 +26,7 @@ public static class AutoMoveDirection
     public static ECSEntity SetMoveDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
         var p = (GXGame.MoveDirection)ecsEntity.GetComponent(Components.MoveDirection);
-        p.Dir = param;
+        p.Value = param;
         ((World)ecsEntity.Parent).Reactive(Components.MoveDirection, ecsEntity,EcsChangeEventState.UpdateType);
         
         return ecsEntity;
