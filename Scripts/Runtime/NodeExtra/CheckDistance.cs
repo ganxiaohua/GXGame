@@ -15,12 +15,16 @@ namespace GXGame
 
         public float maxDistance;
 
+        private Group playerGroup;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
             owner = (ECSEntity) blackboard.parent.GetVariable("Entity").value;
             world = ((World) owner.Parent);
+            Matcher matcher = Matcher.SetAll(Components.Player);
+            playerGroup = world.GetGroup(matcher);
             return null;
         }
 
@@ -38,13 +42,12 @@ namespace GXGame
         //Return whether the condition is success or failure.
         protected override bool OnCheck()
         {
-            var targetPos = Vector3.zero;
-            if (owner.HasComponent(Components.TargetPos))
+            foreach (var player in playerGroup)
             {
-                targetPos = owner.GetTargetPos().Value;
+                var curPos = owner.GetWorldPos().Value;
+                return Vector3.Distance(curPos, player.GetWorldPos().Value) <= maxDistance;
             }
-            var curPos = owner.GetWorldPos().Value;
-            return Vector3.Distance(curPos, targetPos) <= maxDistance;
+            return false;
         }
     }
 }

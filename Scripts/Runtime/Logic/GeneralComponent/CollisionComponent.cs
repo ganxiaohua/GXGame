@@ -1,4 +1,5 @@
-﻿using Common.Runtime;
+﻿using System.Collections.Generic;
+using Common.Runtime;
 using GameFrame;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace GXGame
             var box = value.gameObject.AddComponent<BoxCollider2D>();
             value.gameObject.AddComponent<CollisionEntity>().Entity = ecsEntity;
             box.size = Vector2.one * 0.5f;
+            value.position = ecsEntity.GetWorldPos().Value;
             return value;
         }
 
@@ -36,7 +38,8 @@ namespace GXGame
 
     public class RaycastHit : ECSComponent
     {
-        public RaycastHit2D RaycastHit2Ds;
+        public List<RaycastHit2D> Value;
+        
     }
 
 

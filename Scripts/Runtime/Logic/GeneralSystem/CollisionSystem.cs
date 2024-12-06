@@ -7,7 +7,7 @@ namespace GXGame
     /// <summary>
     /// 碰到了就修正方向
     /// </summary>
-    public partial class CollisionSystem : ReactiveSystem
+    public partial class CollisionSystem : FixedUpdateReactiveSystem
     {
         private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[4];
 
@@ -24,17 +24,18 @@ namespace GXGame
         {
             foreach (var entity in entities)
             {
-                CleaRaycastHit2Ds();
                 var dir = entity.GetMoveDirection().Value;
-                var distance = entity.GetMoveSpeed().Value * World.DeltaTime;
+                if (dir == Vector3.zero)
+                    continue;
+                var distance = entity.GetMoveSpeed().Value * Time.deltaTime * World.Multiple;
                 var pos = entity.GetWorldPos().Value;
                 dir = dir.normalized;
                 dir = GetCollisionDir(pos, dir, distance, entity);
+                entity.SetMoveDirection(dir);
                 pos += dir * distance;
                 var collisionBox = entity.GetCollisionBox();
                 collisionBox.Value.position = pos;
                 entity.SetCollisionBox(collisionBox.Value);
-                entity.SetMoveDirection(dir);
             }
         }
 
@@ -51,13 +52,21 @@ namespace GXGame
             }
             else if (collisonProority.priority == 2)
             {
-                Behavior(targetRaycastHit2D, entity);
+                var hit = entity.GetRaycastHit();
+                if (hit == null)
+                {
+                    entity.AddRaycastHit(new List<RaycastHit2D>());
+                    hit = entity.GetRaycastHit();
+                }
+                hit.Value.Add(targetRaycastHit2D);
+                entity.SetRaycastHit(hit.Value);
                 return Vector2.zero;
             }
 
             if ((entity.GetCollisionGroundType().Type == CollisionGroundType.Slide))
             {
-                Vector2 projection = Vector2.Dot(-dir, targetRaycastHit2D.normal) / dir.sqrMagnitude * targetRaycastHit2D.normal.normalized;
+                var rayNormal = targetRaycastHit2D.normal.normalized;
+                Vector2 projection = Vector2.Dot(-dir, rayNormal) / rayNormal.sqrMagnitude * rayNormal;
                 dir = (dir + projection).normalized;
             }
             else if (entity.GetCollisionGroundType().Type == CollisionGroundType.Reflect)
@@ -68,14 +77,6 @@ namespace GXGame
             {
                 dir = -dir;
             }
-
-            // count = BoxCast(pos, dir, distance, box);
-            // if (count != 0)
-            // {
-            //     //仍然碰到了就沿着法线向着外面挤出去
-            //     
-            // }
-
             return dir;
         }
 
@@ -132,13 +133,6 @@ namespace GXGame
             return (priority, hit2D);
         }
 
-        private void CleaRaycastHit2Ds()
-        {
-            for (int i = 0; i < raycastHit2Ds.Length; i++)
-            {
-                raycastHit2Ds[i] = default;
-            }
-        }
 
         public override void Dispose()
         {

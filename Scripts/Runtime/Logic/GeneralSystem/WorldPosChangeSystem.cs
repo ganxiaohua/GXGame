@@ -6,6 +6,7 @@ namespace GXGame
     public class WorldPosChangeSystem : IInitializeSystem<World>, IUpdateSystem
     {
         private Group group;
+        private Group group2;
         private World world;
 
         public void OnInitialize(World world)
@@ -25,19 +26,26 @@ namespace GXGame
         {
             foreach (var entity in group)
             {
-                var dir = entity.GetMoveDirection().Value;
-                if(dir == Vector3.zero)
-                    continue;
-                var distance = entity.GetMoveSpeed().Value * world.DeltaTime;
-                var pos = entity.GetWorldPos().Value;
-                pos += (dir.normalized * distance);
-                entity.SetWorldPos(pos);
+                var collisionBox = entity.GetCollisionBox();
+                if (collisionBox == null)
+                {
+                    var dir = entity.GetMoveDirection().Value;
+                    if (dir == Vector3.zero)
+                        continue;
+                    var distance = entity.GetMoveSpeed().Value * world.DeltaTime;
+                    var pos = entity.GetWorldPos().Value;
+                    pos += (dir.normalized * distance);
+                    entity.SetWorldPos(pos);
+                }
+                else
+                {
+                    entity.SetWorldPos(collisionBox.Value.position);
+                }
             }
         }
 
         public void Dispose()
         {
-  
         }
     }
 }

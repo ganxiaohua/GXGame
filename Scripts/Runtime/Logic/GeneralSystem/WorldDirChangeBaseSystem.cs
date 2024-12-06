@@ -22,7 +22,7 @@ namespace GXGame
         }
     }
 
-    public class WorldDirChangeSystem : ReactiveSystem
+    public class WorldDirChangeBaseSystem : ReactiveBaseSystem
     {
         public override void OnInitialize(World entity)
         {

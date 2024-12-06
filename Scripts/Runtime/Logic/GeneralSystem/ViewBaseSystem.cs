@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class ViewSystem : ReactiveSystem
+    public class ViewBaseSystem : UpdateReactiveSystem
     {
         private Camera camera;
 

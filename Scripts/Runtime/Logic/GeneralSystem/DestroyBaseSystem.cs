@@ -3,7 +3,7 @@ using GameFrame;
 
 namespace GXGame
 {
-    public class DestroySystem : ReactiveSystem
+    public class DestroyBaseSystem : UpdateReactiveSystem
     {
 
         protected override Collector GetTrigger(World world) => Collector.CreateCollector(world,EcsChangeEventState.ChangeEventState.AddRemoveUpdate, Components.Destroy);
