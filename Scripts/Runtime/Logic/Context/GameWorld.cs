@@ -52,25 +52,25 @@ namespace GXGame.Logic
             palyer.AddPlayer();
             palyer.AddHP(10);
 
-            // for (int i = 0; i < monsterCount; i++)
-            // {
-            //     var monster = AddChild();
-            //     monster.Name = "骷髅";
-            //     monster.AddViewType(typeof(Go2DView));
-            //     monster.AddAssetPath("Monster_001/Prefab/Monster_001");
-            //     monster.AddWorldPos(new Vector3(-0.5f + i % 50, 3.0f + i / 50, 0));
-            //     monster.AddLocalScale(Vector2.one);
-            //     monster.AddMoveDirection();
-            //     monster.AddMoveSpeed(0.5f);
-            //     monster.AddFaceDirection();
-            //     // monster.AddCollisionBox(CollisionBox.Create(monster, LayerMask.NameToLayer($"Object")));
-            //     // monster.AddCollisionGroundType(CollisionGroundType.Slide);
-            //     monster.AddCampComponent(GXGame.Camp.ENEMY);
-            //     monster.AddMonster();
-            //     monster.AddHP(10);
-            //     monster.AddGXInput();
-            //     // monster.AddBehaviorTreeComponent("MonsterBTO");
-            // }
+            for (int i = 0; i < monsterCount; i++)
+            {
+                var monster = AddChild();
+                monster.Name = "骷髅";
+                monster.AddViewType(typeof(Go2DView));
+                monster.AddAssetPath("Monster_001/Prefab/Monster_001");
+                monster.AddWorldPos(new Vector3(-0.5f + i % 50, 3.0f + i / 50, 0));
+                monster.AddLocalScale(Vector2.one);
+                monster.AddMoveDirection();
+                monster.AddMoveSpeed(0.5f);
+                monster.AddFaceDirection();
+                // monster.AddCollisionBox(CollisionBox.Create(monster, LayerMask.NameToLayer($"Object")));
+                // monster.AddCollisionGroundType(CollisionGroundType.Slide);
+                monster.AddCampComponent(GXGame.Camp.ENEMY);
+                monster.AddMonster();
+                monster.AddHP(10);
+                monster.AddGXInput();
+                // monster.AddBehaviorTreeComponent("MonsterBTO");
+            }
             //
             var monster1 = AddChild();
             monster1.Name = "史莱姆";
