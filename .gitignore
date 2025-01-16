@@ -2,13 +2,14 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/GXGameFrame/[Ll]ibrary/
-/GXGameFrame/[Oo]bj/
-/GXGameFrame/[Bb]uild/
-/GXGameFrame/[Bb]uilds/
-/GXGameFrame/[Ll]ogs/
-/GXGameFrame/[Uu]ser[Ss]ettings/
-/GXGameFrame/ServerData/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/ServerData/
 /[Tt]emp/
 
 # MemoryCaptures can get excessive in size.
@@ -74,5 +75,7 @@ Config/Gen.meta
 ParadoxNotion
 ParadoxNotion.meta
 
-Scripts/Runtime/Temp
-Scripts/Runtime/Temp.meta
+Assets/GXGame/Scripts/Runtime/Temp
+Assets/GXGame/Scripts/Runtime/Temp.meta
+Assets/3rd/UnityGXGameFrame
+Assets/3rd/UnityGXGameFrame.meta
