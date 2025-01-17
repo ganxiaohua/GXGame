@@ -27,7 +27,7 @@ public static class AutoBehaviorTreeComponent
     {
         var p = (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(Components.BehaviorTreeComponent);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.BehaviorTreeComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.BehaviorTreeComponent, ecsEntity);
         
         return ecsEntity;
     }

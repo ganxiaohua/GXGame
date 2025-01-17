@@ -27,7 +27,7 @@ public static class AutoMeshRendererColor
     {
         var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.MeshRendererColor, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.MeshRendererColor, ecsEntity);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IMeshRendererColor) (view.Value)).MeshRendererColor(p);

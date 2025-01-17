@@ -27,7 +27,7 @@ public static class AutoTargetPos
     {
         var p = (GXGame.TargetPos)ecsEntity.GetComponent(Components.TargetPos);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.TargetPos, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.TargetPos, ecsEntity);
         
         return ecsEntity;
     }

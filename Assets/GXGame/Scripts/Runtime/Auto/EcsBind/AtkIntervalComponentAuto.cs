@@ -27,7 +27,7 @@ public static class AutoAtkIntervalComponent
     {
         var p = (GXGame.AtkIntervalComponent)ecsEntity.GetComponent(Components.AtkIntervalComponent);
         p.Time = param;
-        ((World)ecsEntity.Parent).Reactive(Components.AtkIntervalComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.AtkIntervalComponent, ecsEntity);
         
         return ecsEntity;
     }

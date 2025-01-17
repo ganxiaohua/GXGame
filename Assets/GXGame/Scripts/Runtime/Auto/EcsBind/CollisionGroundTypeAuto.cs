@@ -27,7 +27,7 @@ public static class AutoCollisionGroundType
     {
         var p = (GXGame.CollisionGroundType)ecsEntity.GetComponent(Components.CollisionGroundType);
         p.Type = param;
-        ((World)ecsEntity.Parent).Reactive(Components.CollisionGroundType, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.CollisionGroundType, ecsEntity);
         
         return ecsEntity;
     }

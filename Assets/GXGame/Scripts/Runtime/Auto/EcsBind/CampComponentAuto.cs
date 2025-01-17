@@ -27,7 +27,7 @@ public static class AutoCampComponent
     {
         var p = (GXGame.CampComponent)ecsEntity.GetComponent(Components.CampComponent);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.CampComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.CampComponent, ecsEntity);
         
         return ecsEntity;
     }

@@ -27,7 +27,7 @@ public static class AutoMoveSpeed
     {
         var p = (GXGame.MoveSpeed)ecsEntity.GetComponent(Components.MoveSpeed);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.MoveSpeed, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.MoveSpeed, ecsEntity);
         
         return ecsEntity;
     }

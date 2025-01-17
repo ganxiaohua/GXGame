@@ -27,7 +27,7 @@ public static class AutoDestroyCountdown
     {
         var p = (GXGame.DestroyCountdown)ecsEntity.GetComponent(Components.DestroyCountdown);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.DestroyCountdown, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.DestroyCountdown, ecsEntity);
         
         return ecsEntity;
     }

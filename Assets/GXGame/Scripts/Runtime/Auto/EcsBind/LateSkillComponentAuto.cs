@@ -27,7 +27,7 @@ public static class AutoLateSkillComponent
     {
         var p = (GXGame.LateSkillComponent)ecsEntity.GetComponent(Components.LateSkillComponent);
         p.Time = param;
-        ((World)ecsEntity.Parent).Reactive(Components.LateSkillComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.LateSkillComponent, ecsEntity);
         
         return ecsEntity;
     }

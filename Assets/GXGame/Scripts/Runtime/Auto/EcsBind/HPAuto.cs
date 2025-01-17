@@ -27,7 +27,7 @@ public static class AutoHP
     {
         var p = (GXGame.HP)ecsEntity.GetComponent(Components.HP);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.HP, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.HP, ecsEntity);
         
         return ecsEntity;
     }

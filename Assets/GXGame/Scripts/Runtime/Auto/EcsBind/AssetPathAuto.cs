@@ -27,7 +27,7 @@ public static class AutoAssetPath
     {
         var p = (GXGame.AssetPath)ecsEntity.GetComponent(Components.AssetPath);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.AssetPath, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.AssetPath, ecsEntity);
         
         return ecsEntity;
     }

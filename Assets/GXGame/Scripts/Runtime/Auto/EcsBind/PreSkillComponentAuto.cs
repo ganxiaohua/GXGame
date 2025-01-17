@@ -27,7 +27,7 @@ public static class AutoPreSkillComponent
     {
         var p = (GXGame.PreSkillComponent)ecsEntity.GetComponent(Components.PreSkillComponent);
         p.Time = param;
-        ((World)ecsEntity.Parent).Reactive(Components.PreSkillComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.PreSkillComponent, ecsEntity);
         
         return ecsEntity;
     }

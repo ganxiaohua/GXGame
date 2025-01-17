@@ -27,7 +27,7 @@ public static class AutoFaceDirection
     {
         var p = (GXGame.FaceDirection)ecsEntity.GetComponent(Components.FaceDirection);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.FaceDirection, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.FaceDirection, ecsEntity);
         
         return ecsEntity;
     }

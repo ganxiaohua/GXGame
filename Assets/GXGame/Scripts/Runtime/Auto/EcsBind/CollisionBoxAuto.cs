@@ -27,7 +27,7 @@ public static class AutoCollisionBox
     {
         var p = (GXGame.CollisionBox)ecsEntity.GetComponent(Components.CollisionBox);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.CollisionBox, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.CollisionBox, ecsEntity);
         
         return ecsEntity;
     }

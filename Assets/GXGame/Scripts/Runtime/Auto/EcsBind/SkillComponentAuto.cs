@@ -27,7 +27,7 @@ public static class AutoSkillComponent
     {
         var p = (GXGame.SkillComponent)ecsEntity.GetComponent(Components.SkillComponent);
         p.ID = param;
-        ((World)ecsEntity.Parent).Reactive(Components.SkillComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.SkillComponent, ecsEntity);
         
         return ecsEntity;
     }

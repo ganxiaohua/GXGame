@@ -35,6 +35,7 @@ namespace GXGame
                 pos += dir * distance;
                 var collisionBox = entity.GetCollisionBox();
                 collisionBox.Value.position = pos;
+                entity.SetWorldPos(pos);
                 entity.SetCollisionBox(collisionBox.Value);
             }
         }

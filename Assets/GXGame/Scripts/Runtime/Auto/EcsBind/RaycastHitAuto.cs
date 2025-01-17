@@ -27,7 +27,7 @@ public static class AutoRaycastHit
     {
         var p = (GXGame.RaycastHit)ecsEntity.GetComponent(Components.RaycastHit);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.RaycastHit, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.RaycastHit, ecsEntity);
         
         return ecsEntity;
     }

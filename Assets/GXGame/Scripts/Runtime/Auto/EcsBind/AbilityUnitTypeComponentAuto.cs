@@ -27,7 +27,7 @@ public static class AutoAbilityUnitTypeComponent
     {
         var p = (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
         p.AbilityUnitTargetTeam = param;
-        ((World)ecsEntity.Parent).Reactive(Components.AbilityUnitTypeComponent, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.AbilityUnitTypeComponent, ecsEntity);
         
         return ecsEntity;
     }

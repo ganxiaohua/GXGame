@@ -27,7 +27,7 @@ public static class AutoDirectionSpeed
     {
         var p = (GXGame.DirectionSpeed)ecsEntity.GetComponent(Components.DirectionSpeed);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.DirectionSpeed, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.DirectionSpeed, ecsEntity);
         
         return ecsEntity;
     }

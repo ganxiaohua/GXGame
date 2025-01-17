@@ -27,7 +27,7 @@ public static class AutoWorldPos
     {
         var p = (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity,EcsChangeEventState.UpdateType);
+        ((World)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IWolrdPosition) (view.Value)).WolrdPosition(p);
