@@ -16,7 +16,7 @@ namespace GXGame
             CollisionLayer = transform.Find("CollisionLayer");
             BTOLayer = transform.Find("BTOLayer");
             Components.SetComponent();
-            new AutoBindEvent().AddSystem();
+            AutoBindEvent.AddSystem();
             await GXGameFrame.Instance.Start();
             GXGameFrame.Instance.RootEntity.AddComponent<GameProcess>();
         }
