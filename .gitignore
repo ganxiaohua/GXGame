@@ -12,6 +12,7 @@
 /ServerData/
 /[Tt]emp/
 /[B]undles/
+/Bundles
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -83,3 +84,5 @@ Assets/3rd/UnityGXGameFrame.meta
 Assets/3rd/ParadoxNotion
 Assets/3rd/Sirenix
 Assets/3rd/Sirenix.meta
+Assets/StreamingAssets
+Assets/StreamingAssets.meta
