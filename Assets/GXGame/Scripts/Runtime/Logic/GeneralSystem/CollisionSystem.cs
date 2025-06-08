@@ -86,7 +86,7 @@ namespace GXGame
             int count = Physics2D.BoxCastNonAlloc(pos, Vector2.one * 0.5f, 0, dir, raycastHit2Ds, distance);
             for (int i = 0; i < count; i++)
             {
-                if (raycastHit2Ds[i].transform == box.Value.transform)
+                if (raycastHit2Ds[i].transform == box.Value.Trans)
                 {
                     raycastHit2Ds[i] = raycastHit2Ds[count - 1];
                     raycastHit2Ds[count - 1] = default;

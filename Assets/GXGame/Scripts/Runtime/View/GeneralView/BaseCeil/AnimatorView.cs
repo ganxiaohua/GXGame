@@ -16,7 +16,7 @@ namespace GXGame
         protected override async UniTask WaitLoadOver()
         {
             await base.WaitLoadOver();
-            mAnimator = GameObjectView.GXGO.gameObject.GetComponent<Animator>();
+            mAnimator = GameObjectView.GXGO.Go.GetComponent<Animator>();
             mAnimator.enabled = true;
         }
 

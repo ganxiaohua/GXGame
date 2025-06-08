@@ -16,10 +16,10 @@ namespace GXGame
         {
             var value = new GXGameObject();
             value.BindFromEmpty(Main.CollisionLayer);
-            value.gameObject.name = ecsEntity.Name;
-            value.gameObject.layer = layerMask;
-            var box = value.gameObject.AddComponent<BoxCollider2D>();
-            value.gameObject.AddComponent<CollisionEntity>().Entity = ecsEntity;
+            value.Go.name = ecsEntity.Name;
+            value.Go.layer = layerMask;
+            var box = value.Go.AddComponent<BoxCollider2D>();
+            value.Go.AddComponent<CollisionEntity>().Entity = ecsEntity;
             box.size = Vector2.one * 0.5f;
             value.position = ecsEntity.GetWorldPos().Value;
             return value;
@@ -27,9 +27,9 @@ namespace GXGame
 
         public override void Dispose()
         {
-            var box = Value.gameObject.GetComponent<BoxCollider2D>();
+            var box = Value.Go.GetComponent<BoxCollider2D>();
             Object.Destroy(box);
-            var entity = Value.gameObject.GetComponent<CollisionEntity>();
+            var entity = Value.Go.GetComponent<CollisionEntity>();
             Object.Destroy(entity);
             Value.Unbind();
             Value = null;

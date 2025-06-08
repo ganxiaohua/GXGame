@@ -17,29 +17,8 @@ namespace GXGame
             BTOLayer = transform.Find("BTOLayer");
             Components.SetComponent();
             AutoBindEvent.AddSystem();
-            await GXGameFrame.Instance.Start();
+            await GXGameFrame.Instance.Init();
             GXGameFrame.Instance.RootEntity.AddComponent<GameProcess>();
-        }
-
-        void Update()
-        {
-            GXGameFrame.Instance.Update();
-        }
-
-        private void LateUpdate()
-        {
-            GXGameFrame.Instance.LateUpdate();
-        }
-
-        private void FixedUpdate()
-        {
-            GXGameFrame.Instance.FixedUpdate();
-        }
-        
-        
-        private void OnApplicationQuit()
-        {
-            GXGameFrame.Instance.OnDisable();
         }
     }
 }

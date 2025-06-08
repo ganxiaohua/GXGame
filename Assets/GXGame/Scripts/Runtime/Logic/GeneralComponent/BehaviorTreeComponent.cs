@@ -31,8 +31,8 @@ namespace GXGame
             {
                 gxGameObject = new GXGameObject();
                 gxGameObject.BindFromEmpty();
-                gxGameObject.gameObject.name = Owner.Name;
-                behaviourTreeOwner = gxGameObject.gameObject.AddComponent<BehaviourTreeOwner>();
+                gxGameObject.Go.name = Owner.Name;
+                behaviourTreeOwner = gxGameObject.Go.AddComponent<BehaviourTreeOwner>();
                 blackboard = behaviourTreeOwner.gameObject.AddComponent<Blackboard>();
                 blackboard.AddVariable("Entity", Owner);
                 behaviourTreeOwner.blackboard = blackboard;
