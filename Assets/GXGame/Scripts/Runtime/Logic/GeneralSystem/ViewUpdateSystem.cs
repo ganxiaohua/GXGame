@@ -9,7 +9,7 @@ namespace GXGame
 
         public void OnInitialize(World world)
         {
-            var matcher = Matcher.SetAll(Components.View);
+            var matcher = Matcher.SetAll(ComponentsID<View>.TID);
             viewGroup = world.GetGroup(matcher);
         }
 

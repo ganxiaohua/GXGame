@@ -4,34 +4,50 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoWorldPos
+public static partial class AutoWorldPos
 {
     
     public static void AddWorldPos(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.WorldPos);
+        ecsEntity.AddComponent<GXGame.WorldPos>();
     }
     
     public static void AddWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
-        var p  =  (GXGame.WorldPos)ecsEntity.AddComponent(Components.WorldPos);
+        var p  =  (GXGame.WorldPos)ecsEntity.AddComponent<GXGame.WorldPos>();
         p.Value = param;
     }
           
     public static GXGame.WorldPos GetWorldPos(this ECSEntity ecsEntity)
     {
-        return (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
+        var id = ComponentsID<GXGame.WorldPos>.TID;
+        return (GXGame.WorldPos)ecsEntity.GetComponent(ComponentsID<GXGame.WorldPos>.TID);
     }
      
     public static ECSEntity SetWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
-        var p = (GXGame.WorldPos)ecsEntity.GetComponent(Components.WorldPos);
+        var p = (GXGame.WorldPos)ecsEntity.GetComponent(ComponentsID<GXGame.WorldPos>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.WorldPos, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.WorldPos>.TID, ecsEntity);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IWolrdPosition) (view.Value)).WolrdPosition(p);
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetWorldPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
+    {
+        var p = (GXGame.WorldPos)ecsEntity.GetComponent(ComponentsID<GXGame.WorldPos>.TID);
+        if(p==null)
+        {
+           p = (GXGame.WorldPos)(ecsEntity.AddComponent<GXGame.WorldPos>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.WorldPos>.TID, ecsEntity);
+        View view = ecsEntity.GetView();
+        if (view == null) return null;
+        ((GXGame.IWolrdPosition) (view.Value)).WolrdPosition(p);
+        return ecsEntity;
+    } 
          
 }

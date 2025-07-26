@@ -12,12 +12,13 @@ namespace GXGame
         private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[4];
 
         protected override Collector GetTrigger(World world) =>
-            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, Components.MoveDirection);
+            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, ComponentsID<MoveDirection>.TID);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return entity.HasComponent(Components.CollisionBox) &&
-                   entity.HasComponent(Components.MoveDirection) && entity.HasComponent(Components.MoveSpeed) && entity.HasComponent(Components.WorldPos);
+            return entity.HasComponent(ComponentsID<CollisionBox>.TID) &&
+                   entity.HasComponent(ComponentsID<MoveDirection>.TID) && entity.HasComponent(
+                           ComponentsID<MoveSpeed>.TID) && entity.HasComponent(ComponentsID<WorldPos>.TID);
         }
 
         protected override void Execute(List<ECSEntity> entities)

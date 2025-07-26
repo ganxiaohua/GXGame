@@ -10,11 +10,11 @@ namespace GXGame
         private Camera camera;
 
         protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddRemoveUpdate,
-            Components.WorldPos);
+                ComponentsID<WorldPos>.TID);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return entity.HasComponent(Components.ViewType);
+            return entity.HasComponent(ComponentsID<ViewType>.TID);
         }
 
         protected override void Execute(List<ECSEntity> entities)
@@ -38,7 +38,7 @@ namespace GXGame
                 }
                 else if (view != null && !isInView)
                 {
-                    entity.RemoveComponent(Components.View);
+                    entity.RemoveComponent(ComponentsID<View>.TID);
                 }
             }
         }

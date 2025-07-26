@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoViewType
+public static partial class AutoViewType
 {
     
     public static void AddViewType(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.ViewType);
+        ecsEntity.AddComponent<GXGame.ViewType>();
     }
     
     public static void AddViewType(this ECSEntity ecsEntity,System.Type param)
     {
-        var p  =  (GXGame.ViewType)ecsEntity.AddComponent(Components.ViewType);
+        var p  =  (GXGame.ViewType)ecsEntity.AddComponent<GXGame.ViewType>();
         p.Value = param;
     }
           
     public static GXGame.ViewType GetViewType(this ECSEntity ecsEntity)
     {
-        return (GXGame.ViewType)ecsEntity.GetComponent(Components.ViewType);
+        return (GXGame.ViewType)ecsEntity.GetComponent(ComponentsID<GXGame.ViewType>.TID);
     }
      
     public static ECSEntity SetViewType(this ECSEntity ecsEntity,System.Type param)
     {
-        var p = (GXGame.ViewType)ecsEntity.GetComponent(Components.ViewType);
+        var p = (GXGame.ViewType)ecsEntity.GetComponent(ComponentsID<GXGame.ViewType>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.ViewType, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.ViewType>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetViewType(this ECSEntity ecsEntity,System.Type param)
+    {
+        var p = (GXGame.ViewType)ecsEntity.GetComponent(ComponentsID<GXGame.ViewType>.TID);
+        if(p==null)
+        {
+           p = (GXGame.ViewType)(ecsEntity.AddComponent<GXGame.ViewType>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.ViewType>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

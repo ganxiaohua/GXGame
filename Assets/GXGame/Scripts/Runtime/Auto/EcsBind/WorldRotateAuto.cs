@@ -4,34 +4,49 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoWorldRotate
+public static partial class AutoWorldRotate
 {
     
     public static void AddWorldRotate(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.WorldRotate);
+        ecsEntity.AddComponent<GXGame.WorldRotate>();
     }
     
     public static void AddWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
-        var p  =  (GXGame.WorldRotate)ecsEntity.AddComponent(Components.WorldRotate);
+        var p  =  (GXGame.WorldRotate)ecsEntity.AddComponent<GXGame.WorldRotate>();
         p.Value = param;
     }
           
     public static GXGame.WorldRotate GetWorldRotate(this ECSEntity ecsEntity)
     {
-        return (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
+        return (GXGame.WorldRotate)ecsEntity.GetComponent(ComponentsID<GXGame.WorldRotate>.TID);
     }
      
     public static ECSEntity SetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
     {
-        var p = (GXGame.WorldRotate)ecsEntity.GetComponent(Components.WorldRotate);
+        var p = (GXGame.WorldRotate)ecsEntity.GetComponent(ComponentsID<GXGame.WorldRotate>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.WorldRotate, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.WorldRotate>.TID, ecsEntity);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IWorldRotate) (view.Value)).WorldRotate(p);
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetWorldRotate(this ECSEntity ecsEntity,UnityEngine.Quaternion param)
+    {
+        var p = (GXGame.WorldRotate)ecsEntity.GetComponent(ComponentsID<GXGame.WorldRotate>.TID);
+        if(p==null)
+        {
+           p = (GXGame.WorldRotate)(ecsEntity.AddComponent<GXGame.WorldRotate>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.WorldRotate>.TID, ecsEntity);
+        View view = ecsEntity.GetView();
+        if (view == null) return null;
+        ((GXGame.IWorldRotate) (view.Value)).WorldRotate(p);
+        return ecsEntity;
+    } 
          
 }

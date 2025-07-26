@@ -62,7 +62,6 @@ namespace GXGame
             LoadingOver = false;
         }
 
-
         public async UniTask WaitLoadOver()
         {
             await m_UniTaskCompletionSource.Task;

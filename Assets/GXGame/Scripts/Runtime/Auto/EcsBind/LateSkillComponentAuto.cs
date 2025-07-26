@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoLateSkillComponent
+public static partial class AutoLateSkillComponent
 {
     
     public static void AddLateSkillComponent(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.LateSkillComponent);
+        ecsEntity.AddComponent<GXGame.LateSkillComponent>();
     }
     
     public static void AddLateSkillComponent(this ECSEntity ecsEntity,System.Single param)
     {
-        var p  =  (GXGame.LateSkillComponent)ecsEntity.AddComponent(Components.LateSkillComponent);
+        var p  =  (GXGame.LateSkillComponent)ecsEntity.AddComponent<GXGame.LateSkillComponent>();
         p.Time = param;
     }
           
     public static GXGame.LateSkillComponent GetLateSkillComponent(this ECSEntity ecsEntity)
     {
-        return (GXGame.LateSkillComponent)ecsEntity.GetComponent(Components.LateSkillComponent);
+        return (GXGame.LateSkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.LateSkillComponent>.TID);
     }
      
     public static ECSEntity SetLateSkillComponent(this ECSEntity ecsEntity,System.Single param)
     {
-        var p = (GXGame.LateSkillComponent)ecsEntity.GetComponent(Components.LateSkillComponent);
+        var p = (GXGame.LateSkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.LateSkillComponent>.TID);
         p.Time = param;
-        ((World)ecsEntity.Parent).Reactive(Components.LateSkillComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.LateSkillComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetLateSkillComponent(this ECSEntity ecsEntity,System.Single param)
+    {
+        var p = (GXGame.LateSkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.LateSkillComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.LateSkillComponent)(ecsEntity.AddComponent<GXGame.LateSkillComponent>());
+        }
+        p.Time = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.LateSkillComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

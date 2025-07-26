@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoUnitTypeComponent
+public static partial class AutoUnitTypeComponent
 {
     
     public static void AddUnitTypeComponent(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.UnitTypeComponent);
+        ecsEntity.AddComponent<GXGame.UnitTypeComponent>();
     }
     
     public static void AddUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
-        var p  =  (GXGame.UnitTypeComponent)ecsEntity.AddComponent(Components.UnitTypeComponent);
+        var p  =  (GXGame.UnitTypeComponent)ecsEntity.AddComponent<GXGame.UnitTypeComponent>();
         p.Value = param;
     }
           
     public static GXGame.UnitTypeComponent GetUnitTypeComponent(this ECSEntity ecsEntity)
     {
-        return (GXGame.UnitTypeComponent)ecsEntity.GetComponent(Components.UnitTypeComponent);
+        return (GXGame.UnitTypeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.UnitTypeComponent>.TID);
     }
      
     public static ECSEntity SetUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
-        var p = (GXGame.UnitTypeComponent)ecsEntity.GetComponent(Components.UnitTypeComponent);
+        var p = (GXGame.UnitTypeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.UnitTypeComponent>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.UnitTypeComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.UnitTypeComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetUnitTypeComponent(this ECSEntity ecsEntity,GXGame.UnitTypeEnum param)
+    {
+        var p = (GXGame.UnitTypeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.UnitTypeComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.UnitTypeComponent)(ecsEntity.AddComponent<GXGame.UnitTypeComponent>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.UnitTypeComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

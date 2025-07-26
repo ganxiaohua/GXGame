@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoBehaviorTreeComponent
+public static partial class AutoBehaviorTreeComponent
 {
     
     public static void AddBehaviorTreeComponent(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.BehaviorTreeComponent);
+        ecsEntity.AddComponent<GXGame.BehaviorTreeComponent>();
     }
     
     public static void AddBehaviorTreeComponent(this ECSEntity ecsEntity,System.String param)
     {
-        var p  =  (GXGame.BehaviorTreeComponent)ecsEntity.AddComponent(Components.BehaviorTreeComponent);
+        var p  =  (GXGame.BehaviorTreeComponent)ecsEntity.AddComponent<GXGame.BehaviorTreeComponent>();
         p.Value = param;
     }
           
     public static GXGame.BehaviorTreeComponent GetBehaviorTreeComponent(this ECSEntity ecsEntity)
     {
-        return (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(Components.BehaviorTreeComponent);
+        return (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.BehaviorTreeComponent>.TID);
     }
      
     public static ECSEntity SetBehaviorTreeComponent(this ECSEntity ecsEntity,System.String param)
     {
-        var p = (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(Components.BehaviorTreeComponent);
+        var p = (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.BehaviorTreeComponent>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.BehaviorTreeComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.BehaviorTreeComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetBehaviorTreeComponent(this ECSEntity ecsEntity,System.String param)
+    {
+        var p = (GXGame.BehaviorTreeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.BehaviorTreeComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.BehaviorTreeComponent)(ecsEntity.AddComponent<GXGame.BehaviorTreeComponent>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.BehaviorTreeComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

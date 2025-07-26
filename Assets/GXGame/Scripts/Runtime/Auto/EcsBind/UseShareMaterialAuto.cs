@@ -4,17 +4,17 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoUseShareMaterial
+public static partial class AutoUseShareMaterial
 {
     
     public static void AddUseShareMaterial(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.UseShareMaterial);
+        ecsEntity.AddComponent<GXGame.UseShareMaterial>();
     }
           
     public static GXGame.UseShareMaterial GetUseShareMaterial(this ECSEntity ecsEntity)
     {
-        return (GXGame.UseShareMaterial)ecsEntity.GetComponent(Components.UseShareMaterial);
+        return (GXGame.UseShareMaterial)ecsEntity.GetComponent(ComponentsID<GXGame.UseShareMaterial>.TID);
     }
          
 }

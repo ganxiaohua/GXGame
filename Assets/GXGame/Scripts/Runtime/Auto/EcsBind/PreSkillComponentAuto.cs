@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoPreSkillComponent
+public static partial class AutoPreSkillComponent
 {
     
     public static void AddPreSkillComponent(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.PreSkillComponent);
+        ecsEntity.AddComponent<GXGame.PreSkillComponent>();
     }
     
     public static void AddPreSkillComponent(this ECSEntity ecsEntity,System.Single param)
     {
-        var p  =  (GXGame.PreSkillComponent)ecsEntity.AddComponent(Components.PreSkillComponent);
+        var p  =  (GXGame.PreSkillComponent)ecsEntity.AddComponent<GXGame.PreSkillComponent>();
         p.Time = param;
     }
           
     public static GXGame.PreSkillComponent GetPreSkillComponent(this ECSEntity ecsEntity)
     {
-        return (GXGame.PreSkillComponent)ecsEntity.GetComponent(Components.PreSkillComponent);
+        return (GXGame.PreSkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.PreSkillComponent>.TID);
     }
      
     public static ECSEntity SetPreSkillComponent(this ECSEntity ecsEntity,System.Single param)
     {
-        var p = (GXGame.PreSkillComponent)ecsEntity.GetComponent(Components.PreSkillComponent);
+        var p = (GXGame.PreSkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.PreSkillComponent>.TID);
         p.Time = param;
-        ((World)ecsEntity.Parent).Reactive(Components.PreSkillComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.PreSkillComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetPreSkillComponent(this ECSEntity ecsEntity,System.Single param)
+    {
+        var p = (GXGame.PreSkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.PreSkillComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.PreSkillComponent)(ecsEntity.AddComponent<GXGame.PreSkillComponent>());
+        }
+        p.Time = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.PreSkillComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

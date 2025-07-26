@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoCollisionGroundType
+public static partial class AutoCollisionGroundType
 {
     
     public static void AddCollisionGroundType(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.CollisionGroundType);
+        ecsEntity.AddComponent<GXGame.CollisionGroundType>();
     }
     
     public static void AddCollisionGroundType(this ECSEntity ecsEntity,System.Int32 param)
     {
-        var p  =  (GXGame.CollisionGroundType)ecsEntity.AddComponent(Components.CollisionGroundType);
+        var p  =  (GXGame.CollisionGroundType)ecsEntity.AddComponent<GXGame.CollisionGroundType>();
         p.Type = param;
     }
           
     public static GXGame.CollisionGroundType GetCollisionGroundType(this ECSEntity ecsEntity)
     {
-        return (GXGame.CollisionGroundType)ecsEntity.GetComponent(Components.CollisionGroundType);
+        return (GXGame.CollisionGroundType)ecsEntity.GetComponent(ComponentsID<GXGame.CollisionGroundType>.TID);
     }
      
     public static ECSEntity SetCollisionGroundType(this ECSEntity ecsEntity,System.Int32 param)
     {
-        var p = (GXGame.CollisionGroundType)ecsEntity.GetComponent(Components.CollisionGroundType);
+        var p = (GXGame.CollisionGroundType)ecsEntity.GetComponent(ComponentsID<GXGame.CollisionGroundType>.TID);
         p.Type = param;
-        ((World)ecsEntity.Parent).Reactive(Components.CollisionGroundType, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.CollisionGroundType>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetCollisionGroundType(this ECSEntity ecsEntity,System.Int32 param)
+    {
+        var p = (GXGame.CollisionGroundType)ecsEntity.GetComponent(ComponentsID<GXGame.CollisionGroundType>.TID);
+        if(p==null)
+        {
+           p = (GXGame.CollisionGroundType)(ecsEntity.AddComponent<GXGame.CollisionGroundType>());
+        }
+        p.Type = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.CollisionGroundType>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

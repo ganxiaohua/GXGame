@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoView
+public static partial class AutoView
 {
     
     public static void AddView(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.View);
+        ecsEntity.AddComponent<GameFrame.View>();
     }
     
     public static void AddView(this ECSEntity ecsEntity,GameFrame.IEceView param)
     {
-        var p  =  (GameFrame.View)ecsEntity.AddComponent(Components.View);
+        var p  =  (GameFrame.View)ecsEntity.AddComponent<GameFrame.View>();
         p.Value = param;
     }
           
     public static GameFrame.View GetView(this ECSEntity ecsEntity)
     {
-        return (GameFrame.View)ecsEntity.GetComponent(Components.View);
+        return (GameFrame.View)ecsEntity.GetComponent(ComponentsID<GameFrame.View>.TID);
     }
      
     public static ECSEntity SetView(this ECSEntity ecsEntity,GameFrame.IEceView param)
     {
-        var p = (GameFrame.View)ecsEntity.GetComponent(Components.View);
+        var p = (GameFrame.View)ecsEntity.GetComponent(ComponentsID<GameFrame.View>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.View, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GameFrame.View>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetView(this ECSEntity ecsEntity,GameFrame.IEceView param)
+    {
+        var p = (GameFrame.View)ecsEntity.GetComponent(ComponentsID<GameFrame.View>.TID);
+        if(p==null)
+        {
+           p = (GameFrame.View)(ecsEntity.AddComponent<GameFrame.View>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GameFrame.View>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

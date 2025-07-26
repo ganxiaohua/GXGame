@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoAtkIntervalComponent
+public static partial class AutoAtkIntervalComponent
 {
     
     public static void AddAtkIntervalComponent(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.AtkIntervalComponent);
+        ecsEntity.AddComponent<GXGame.AtkIntervalComponent>();
     }
     
     public static void AddAtkIntervalComponent(this ECSEntity ecsEntity,System.Single param)
     {
-        var p  =  (GXGame.AtkIntervalComponent)ecsEntity.AddComponent(Components.AtkIntervalComponent);
+        var p  =  (GXGame.AtkIntervalComponent)ecsEntity.AddComponent<GXGame.AtkIntervalComponent>();
         p.Time = param;
     }
           
     public static GXGame.AtkIntervalComponent GetAtkIntervalComponent(this ECSEntity ecsEntity)
     {
-        return (GXGame.AtkIntervalComponent)ecsEntity.GetComponent(Components.AtkIntervalComponent);
+        return (GXGame.AtkIntervalComponent)ecsEntity.GetComponent(ComponentsID<GXGame.AtkIntervalComponent>.TID);
     }
      
     public static ECSEntity SetAtkIntervalComponent(this ECSEntity ecsEntity,System.Single param)
     {
-        var p = (GXGame.AtkIntervalComponent)ecsEntity.GetComponent(Components.AtkIntervalComponent);
+        var p = (GXGame.AtkIntervalComponent)ecsEntity.GetComponent(ComponentsID<GXGame.AtkIntervalComponent>.TID);
         p.Time = param;
-        ((World)ecsEntity.Parent).Reactive(Components.AtkIntervalComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.AtkIntervalComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetAtkIntervalComponent(this ECSEntity ecsEntity,System.Single param)
+    {
+        var p = (GXGame.AtkIntervalComponent)ecsEntity.GetComponent(ComponentsID<GXGame.AtkIntervalComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.AtkIntervalComponent)(ecsEntity.AddComponent<GXGame.AtkIntervalComponent>());
+        }
+        p.Time = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.AtkIntervalComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

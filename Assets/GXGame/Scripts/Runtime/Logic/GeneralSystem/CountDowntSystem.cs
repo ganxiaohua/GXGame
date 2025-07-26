@@ -12,13 +12,13 @@ namespace GXGame
         public void OnInitialize(World world)
         {
             this.world = world;
-            Matcher matcher = Matcher.SetAll(Components.DestroyCountdown);
+            Matcher matcher = Matcher.SetAll(ComponentsID<DestroyCountdown>.TID);
             destroyCountGroup = world.GetGroup(matcher);
 
-            matcher = Matcher.SetAll(Components.AtkIntervalComponent);
+            matcher = Matcher.SetAll(ComponentsID<AtkIntervalComponent>.TID);
             atkIntervalGroup = world.GetGroup(matcher);
-            
-            matcher = Matcher.SetAll(Components.LateSkillComponent);
+
+            matcher = Matcher.SetAll(ComponentsID<LateSkillComponent>.TID);
             lateSkillGroup = world.GetGroup(matcher);
         }
 
@@ -37,7 +37,7 @@ namespace GXGame
                 if (time <= 0)
                 {
                     entity.AddDestroy();
-                    entity.RemoveComponent(Components.DestroyCountdown);
+                    entity.RemoveComponent(ComponentsID<DestroyCountdown>.TID);
                     continue;
                 }
 
@@ -52,14 +52,14 @@ namespace GXGame
                 var time = entity.GetAtkIntervalComponent().Time - world.DeltaTime;
                 if (time <= 0)
                 {
-                    entity.RemoveComponent(Components.AtkIntervalComponent);
+                    entity.RemoveComponent(ComponentsID<AtkIntervalComponent>.TID);
                     continue;
                 }
 
                 entity.SetAtkIntervalComponent(time);
             }
         }
-        
+
         private void LateSkillCountDown()
         {
             foreach (var entity in lateSkillGroup)
@@ -67,13 +67,14 @@ namespace GXGame
                 var time = entity.GetLateSkillComponent().Time - world.DeltaTime;
                 if (time <= 0)
                 {
-                    entity.RemoveComponent(Components.LateSkillComponent);
+                    entity.RemoveComponent(ComponentsID<LateSkillComponent>.TID);
                     continue;
                 }
 
                 entity.SetLateSkillComponent(time);
             }
         }
+
         public void Dispose()
         {
         }

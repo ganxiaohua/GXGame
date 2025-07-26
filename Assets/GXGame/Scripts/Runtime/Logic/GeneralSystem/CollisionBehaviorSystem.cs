@@ -6,7 +6,7 @@ namespace GXGame
     public class CollisionBehaviorSystem : UpdateReactiveSystem
     {
         protected override Collector GetTrigger(World world) =>
-            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.Update, Components.RaycastHit);
+            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.Update,ComponentsID<RaycastHit>.TID);
 
         protected override bool Filter(ECSEntity entity)
         {

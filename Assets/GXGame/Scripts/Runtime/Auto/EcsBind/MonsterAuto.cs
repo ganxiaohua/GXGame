@@ -4,17 +4,17 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoMonster
+public static partial class AutoMonster
 {
     
     public static void AddMonster(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.Monster);
+        ecsEntity.AddComponent<GXGame.Monster>();
     }
           
     public static GXGame.Monster GetMonster(this ECSEntity ecsEntity)
     {
-        return (GXGame.Monster)ecsEntity.GetComponent(Components.Monster);
+        return (GXGame.Monster)ecsEntity.GetComponent(ComponentsID<GXGame.Monster>.TID);
     }
          
 }

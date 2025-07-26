@@ -11,7 +11,9 @@ namespace GXGame
         public void OnInitialize(World world)
         {
             this.world = world;
-            Matcher matcher = Matcher.SetAll(Components.MoveDirection,Components.MoveSpeed).NoneOf(Components.CollisionBox);
+            Matcher matcher = Matcher.SetAll(
+                    ComponentsID<MoveDirection>.TID,
+                    ComponentsID<MoveSpeed>.TID).NoneOf(ComponentsID<CollisionBox>.TID);
             group = world.GetGroup(matcher);
         }
 

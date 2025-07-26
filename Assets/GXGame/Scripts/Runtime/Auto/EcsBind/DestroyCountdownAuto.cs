@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoDestroyCountdown
+public static partial class AutoDestroyCountdown
 {
     
     public static void AddDestroyCountdown(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.DestroyCountdown);
+        ecsEntity.AddComponent<GXGame.DestroyCountdown>();
     }
     
     public static void AddDestroyCountdown(this ECSEntity ecsEntity,System.Single param)
     {
-        var p  =  (GXGame.DestroyCountdown)ecsEntity.AddComponent(Components.DestroyCountdown);
+        var p  =  (GXGame.DestroyCountdown)ecsEntity.AddComponent<GXGame.DestroyCountdown>();
         p.Value = param;
     }
           
     public static GXGame.DestroyCountdown GetDestroyCountdown(this ECSEntity ecsEntity)
     {
-        return (GXGame.DestroyCountdown)ecsEntity.GetComponent(Components.DestroyCountdown);
+        return (GXGame.DestroyCountdown)ecsEntity.GetComponent(ComponentsID<GXGame.DestroyCountdown>.TID);
     }
      
     public static ECSEntity SetDestroyCountdown(this ECSEntity ecsEntity,System.Single param)
     {
-        var p = (GXGame.DestroyCountdown)ecsEntity.GetComponent(Components.DestroyCountdown);
+        var p = (GXGame.DestroyCountdown)ecsEntity.GetComponent(ComponentsID<GXGame.DestroyCountdown>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.DestroyCountdown, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.DestroyCountdown>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetDestroyCountdown(this ECSEntity ecsEntity,System.Single param)
+    {
+        var p = (GXGame.DestroyCountdown)ecsEntity.GetComponent(ComponentsID<GXGame.DestroyCountdown>.TID);
+        if(p==null)
+        {
+           p = (GXGame.DestroyCountdown)(ecsEntity.AddComponent<GXGame.DestroyCountdown>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.DestroyCountdown>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

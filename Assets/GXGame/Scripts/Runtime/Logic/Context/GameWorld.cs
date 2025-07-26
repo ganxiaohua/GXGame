@@ -8,9 +8,9 @@ namespace GXGame.Logic
         private int otherCount = 2;
         private int monsterCount = 5000;
 
-        public override void OnInitialize()
+        public override void OnInitialize(int totalComponents)
         {
-            base.OnInitialize();
+            base.OnInitialize(totalComponents);
             EstimateChildsCount(monsterCount + otherCount);
             this.AddSystem<ViewBaseSystem>();
             this.AddSystem<ViewUpdateSystem>();
@@ -71,7 +71,7 @@ namespace GXGame.Logic
                 monster.AddGXInput();
                 // monster.AddBehaviorTreeComponent("MonsterBTO");
             }
-            //
+
             var monster1 = AddChild();
             monster1.Name = "史莱姆";
             monster1.AddViewType(typeof(Go2DView));
@@ -81,7 +81,7 @@ namespace GXGame.Logic
             monster1.AddMoveDirection();
             monster1.AddMoveSpeed(0f);
             monster1.AddFaceDirection();
-            monster1.AddCollisionBox(CollisionBox.Create(monster1,LayerMask.NameToLayer($"Object")));
+            monster1.AddCollisionBox(CollisionBox.Create(monster1, LayerMask.NameToLayer($"Object")));
             monster1.AddCollisionGroundType(CollisionGroundType.Slide);
             monster1.AddMonster();
             monster1.AddCampComponent(GXGame.Camp.ENEMY);

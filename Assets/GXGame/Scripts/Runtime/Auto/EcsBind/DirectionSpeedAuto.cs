@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoDirectionSpeed
+public static partial class AutoDirectionSpeed
 {
     
     public static void AddDirectionSpeed(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.DirectionSpeed);
+        ecsEntity.AddComponent<GXGame.DirectionSpeed>();
     }
     
     public static void AddDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
     {
-        var p  =  (GXGame.DirectionSpeed)ecsEntity.AddComponent(Components.DirectionSpeed);
+        var p  =  (GXGame.DirectionSpeed)ecsEntity.AddComponent<GXGame.DirectionSpeed>();
         p.Value = param;
     }
           
     public static GXGame.DirectionSpeed GetDirectionSpeed(this ECSEntity ecsEntity)
     {
-        return (GXGame.DirectionSpeed)ecsEntity.GetComponent(Components.DirectionSpeed);
+        return (GXGame.DirectionSpeed)ecsEntity.GetComponent(ComponentsID<GXGame.DirectionSpeed>.TID);
     }
      
     public static ECSEntity SetDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
     {
-        var p = (GXGame.DirectionSpeed)ecsEntity.GetComponent(Components.DirectionSpeed);
+        var p = (GXGame.DirectionSpeed)ecsEntity.GetComponent(ComponentsID<GXGame.DirectionSpeed>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.DirectionSpeed, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.DirectionSpeed>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetDirectionSpeed(this ECSEntity ecsEntity,System.Single param)
+    {
+        var p = (GXGame.DirectionSpeed)ecsEntity.GetComponent(ComponentsID<GXGame.DirectionSpeed>.TID);
+        if(p==null)
+        {
+           p = (GXGame.DirectionSpeed)(ecsEntity.AddComponent<GXGame.DirectionSpeed>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.DirectionSpeed>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

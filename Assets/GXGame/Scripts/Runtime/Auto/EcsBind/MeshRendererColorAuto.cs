@@ -4,34 +4,49 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoMeshRendererColor
+public static partial class AutoMeshRendererColor
 {
     
     public static void AddMeshRendererColor(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.MeshRendererColor);
+        ecsEntity.AddComponent<GXGame.MeshRendererColor>();
     }
     
     public static void AddMeshRendererColor(this ECSEntity ecsEntity,UnityEngine.Color param)
     {
-        var p  =  (GXGame.MeshRendererColor)ecsEntity.AddComponent(Components.MeshRendererColor);
+        var p  =  (GXGame.MeshRendererColor)ecsEntity.AddComponent<GXGame.MeshRendererColor>();
         p.Value = param;
     }
           
     public static GXGame.MeshRendererColor GetMeshRendererColor(this ECSEntity ecsEntity)
     {
-        return (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
+        return (GXGame.MeshRendererColor)ecsEntity.GetComponent(ComponentsID<GXGame.MeshRendererColor>.TID);
     }
      
     public static ECSEntity SetMeshRendererColor(this ECSEntity ecsEntity,UnityEngine.Color param)
     {
-        var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(Components.MeshRendererColor);
+        var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(ComponentsID<GXGame.MeshRendererColor>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.MeshRendererColor, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.MeshRendererColor>.TID, ecsEntity);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.IMeshRendererColor) (view.Value)).MeshRendererColor(p);
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetMeshRendererColor(this ECSEntity ecsEntity,UnityEngine.Color param)
+    {
+        var p = (GXGame.MeshRendererColor)ecsEntity.GetComponent(ComponentsID<GXGame.MeshRendererColor>.TID);
+        if(p==null)
+        {
+           p = (GXGame.MeshRendererColor)(ecsEntity.AddComponent<GXGame.MeshRendererColor>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.MeshRendererColor>.TID, ecsEntity);
+        View view = ecsEntity.GetView();
+        if (view == null) return null;
+        ((GXGame.IMeshRendererColor) (view.Value)).MeshRendererColor(p);
+        return ecsEntity;
+    } 
          
 }

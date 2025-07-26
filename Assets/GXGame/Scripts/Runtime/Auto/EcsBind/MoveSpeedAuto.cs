@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoMoveSpeed
+public static partial class AutoMoveSpeed
 {
     
     public static void AddMoveSpeed(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.MoveSpeed);
+        ecsEntity.AddComponent<GXGame.MoveSpeed>();
     }
     
     public static void AddMoveSpeed(this ECSEntity ecsEntity,System.Single param)
     {
-        var p  =  (GXGame.MoveSpeed)ecsEntity.AddComponent(Components.MoveSpeed);
+        var p  =  (GXGame.MoveSpeed)ecsEntity.AddComponent<GXGame.MoveSpeed>();
         p.Value = param;
     }
           
     public static GXGame.MoveSpeed GetMoveSpeed(this ECSEntity ecsEntity)
     {
-        return (GXGame.MoveSpeed)ecsEntity.GetComponent(Components.MoveSpeed);
+        return (GXGame.MoveSpeed)ecsEntity.GetComponent(ComponentsID<GXGame.MoveSpeed>.TID);
     }
      
     public static ECSEntity SetMoveSpeed(this ECSEntity ecsEntity,System.Single param)
     {
-        var p = (GXGame.MoveSpeed)ecsEntity.GetComponent(Components.MoveSpeed);
+        var p = (GXGame.MoveSpeed)ecsEntity.GetComponent(ComponentsID<GXGame.MoveSpeed>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.MoveSpeed, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.MoveSpeed>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetMoveSpeed(this ECSEntity ecsEntity,System.Single param)
+    {
+        var p = (GXGame.MoveSpeed)ecsEntity.GetComponent(ComponentsID<GXGame.MoveSpeed>.TID);
+        if(p==null)
+        {
+           p = (GXGame.MoveSpeed)(ecsEntity.AddComponent<GXGame.MoveSpeed>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.MoveSpeed>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

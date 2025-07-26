@@ -14,7 +14,10 @@ namespace GXGame
 
         public void OnInitialize(World entity)
         {
-            Matcher matcher = Matcher.SetAll(Components.MoveDirection, Components.GXInput, Components.FaceDirection).NoneOf(Components.SkillComponent);
+            Matcher matcher = Matcher.SetAll(
+                    ComponentsID<MoveDirection>.TID,
+                    ComponentsID<GXInput>.TID,
+                    ComponentsID<FaceDirection>.TID).NoneOf(ComponentsID<SkillComponent>.TID);
             group = entity.GetGroup(matcher);
             keyCode = new();
             keyCode.Add(KeyCode.A, -1);

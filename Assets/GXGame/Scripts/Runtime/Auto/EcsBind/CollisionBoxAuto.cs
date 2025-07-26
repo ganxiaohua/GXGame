@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoCollisionBox
+public static partial class AutoCollisionBox
 {
     
     public static void AddCollisionBox(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.CollisionBox);
+        ecsEntity.AddComponent<GXGame.CollisionBox>();
     }
     
     public static void AddCollisionBox(this ECSEntity ecsEntity,Common.Runtime.GXGameObject param)
     {
-        var p  =  (GXGame.CollisionBox)ecsEntity.AddComponent(Components.CollisionBox);
+        var p  =  (GXGame.CollisionBox)ecsEntity.AddComponent<GXGame.CollisionBox>();
         p.Value = param;
     }
           
     public static GXGame.CollisionBox GetCollisionBox(this ECSEntity ecsEntity)
     {
-        return (GXGame.CollisionBox)ecsEntity.GetComponent(Components.CollisionBox);
+        return (GXGame.CollisionBox)ecsEntity.GetComponent(ComponentsID<GXGame.CollisionBox>.TID);
     }
      
     public static ECSEntity SetCollisionBox(this ECSEntity ecsEntity,Common.Runtime.GXGameObject param)
     {
-        var p = (GXGame.CollisionBox)ecsEntity.GetComponent(Components.CollisionBox);
+        var p = (GXGame.CollisionBox)ecsEntity.GetComponent(ComponentsID<GXGame.CollisionBox>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.CollisionBox, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.CollisionBox>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetCollisionBox(this ECSEntity ecsEntity,Common.Runtime.GXGameObject param)
+    {
+        var p = (GXGame.CollisionBox)ecsEntity.GetComponent(ComponentsID<GXGame.CollisionBox>.TID);
+        if(p==null)
+        {
+           p = (GXGame.CollisionBox)(ecsEntity.AddComponent<GXGame.CollisionBox>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.CollisionBox>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

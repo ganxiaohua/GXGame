@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoAbilityUnitTypeComponent
+public static partial class AutoAbilityUnitTypeComponent
 {
     
     public static void AddAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.AbilityUnitTypeComponent);
+        ecsEntity.AddComponent<GXGame.AbilityUnitTypeComponent>();
     }
     
     public static void AddAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
-        var p  =  (GXGame.AbilityUnitTypeComponent)ecsEntity.AddComponent(Components.AbilityUnitTypeComponent);
+        var p  =  (GXGame.AbilityUnitTypeComponent)ecsEntity.AddComponent<GXGame.AbilityUnitTypeComponent>();
         p.AbilityUnitTargetTeam = param;
     }
           
     public static GXGame.AbilityUnitTypeComponent GetAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity)
     {
-        return (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
+        return (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.AbilityUnitTypeComponent>.TID);
     }
      
     public static ECSEntity SetAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity,GXGame.UnitTypeEnum param)
     {
-        var p = (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(Components.AbilityUnitTypeComponent);
+        var p = (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.AbilityUnitTypeComponent>.TID);
         p.AbilityUnitTargetTeam = param;
-        ((World)ecsEntity.Parent).Reactive(Components.AbilityUnitTypeComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.AbilityUnitTypeComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetAbilityUnitTypeComponent(this GXGame.SkillEntity ecsEntity,GXGame.UnitTypeEnum param)
+    {
+        var p = (GXGame.AbilityUnitTypeComponent)ecsEntity.GetComponent(ComponentsID<GXGame.AbilityUnitTypeComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.AbilityUnitTypeComponent)(ecsEntity.AddComponent<GXGame.AbilityUnitTypeComponent>());
+        }
+        p.AbilityUnitTargetTeam = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.AbilityUnitTypeComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoRaycastHit
+public static partial class AutoRaycastHit
 {
     
     public static void AddRaycastHit(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.RaycastHit);
+        ecsEntity.AddComponent<GXGame.RaycastHit>();
     }
     
     public static void AddRaycastHit(this ECSEntity ecsEntity,System.Collections.Generic.List<UnityEngine.RaycastHit2D> param)
     {
-        var p  =  (GXGame.RaycastHit)ecsEntity.AddComponent(Components.RaycastHit);
+        var p  =  (GXGame.RaycastHit)ecsEntity.AddComponent<GXGame.RaycastHit>();
         p.Value = param;
     }
           
     public static GXGame.RaycastHit GetRaycastHit(this ECSEntity ecsEntity)
     {
-        return (GXGame.RaycastHit)ecsEntity.GetComponent(Components.RaycastHit);
+        return (GXGame.RaycastHit)ecsEntity.GetComponent(ComponentsID<GXGame.RaycastHit>.TID);
     }
      
     public static ECSEntity SetRaycastHit(this ECSEntity ecsEntity,System.Collections.Generic.List<UnityEngine.RaycastHit2D> param)
     {
-        var p = (GXGame.RaycastHit)ecsEntity.GetComponent(Components.RaycastHit);
+        var p = (GXGame.RaycastHit)ecsEntity.GetComponent(ComponentsID<GXGame.RaycastHit>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.RaycastHit, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.RaycastHit>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetRaycastHit(this ECSEntity ecsEntity,System.Collections.Generic.List<UnityEngine.RaycastHit2D> param)
+    {
+        var p = (GXGame.RaycastHit)ecsEntity.GetComponent(ComponentsID<GXGame.RaycastHit>.TID);
+        if(p==null)
+        {
+           p = (GXGame.RaycastHit)(ecsEntity.AddComponent<GXGame.RaycastHit>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.RaycastHit>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

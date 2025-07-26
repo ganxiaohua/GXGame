@@ -4,17 +4,17 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoDestroy
+public static partial class AutoDestroy
 {
     
     public static void AddDestroy(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.Destroy);
+        ecsEntity.AddComponent<GameFrame.Destroy>();
     }
           
     public static GameFrame.Destroy GetDestroy(this ECSEntity ecsEntity)
     {
-        return (GameFrame.Destroy)ecsEntity.GetComponent(Components.Destroy);
+        return (GameFrame.Destroy)ecsEntity.GetComponent(ComponentsID<GameFrame.Destroy>.TID);
     }
          
 }

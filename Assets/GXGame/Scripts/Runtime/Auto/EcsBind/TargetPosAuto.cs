@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoTargetPos
+public static partial class AutoTargetPos
 {
     
     public static void AddTargetPos(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.TargetPos);
+        ecsEntity.AddComponent<GXGame.TargetPos>();
     }
     
     public static void AddTargetPos(this ECSEntity ecsEntity,UnityEngine.Vector2 param)
     {
-        var p  =  (GXGame.TargetPos)ecsEntity.AddComponent(Components.TargetPos);
+        var p  =  (GXGame.TargetPos)ecsEntity.AddComponent<GXGame.TargetPos>();
         p.Value = param;
     }
           
     public static GXGame.TargetPos GetTargetPos(this ECSEntity ecsEntity)
     {
-        return (GXGame.TargetPos)ecsEntity.GetComponent(Components.TargetPos);
+        return (GXGame.TargetPos)ecsEntity.GetComponent(ComponentsID<GXGame.TargetPos>.TID);
     }
      
     public static ECSEntity SetTargetPos(this ECSEntity ecsEntity,UnityEngine.Vector2 param)
     {
-        var p = (GXGame.TargetPos)ecsEntity.GetComponent(Components.TargetPos);
+        var p = (GXGame.TargetPos)ecsEntity.GetComponent(ComponentsID<GXGame.TargetPos>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.TargetPos, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.TargetPos>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetTargetPos(this ECSEntity ecsEntity,UnityEngine.Vector2 param)
+    {
+        var p = (GXGame.TargetPos)ecsEntity.GetComponent(ComponentsID<GXGame.TargetPos>.TID);
+        if(p==null)
+        {
+           p = (GXGame.TargetPos)(ecsEntity.AddComponent<GXGame.TargetPos>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.TargetPos>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

@@ -4,17 +4,17 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoGXInput
+public static partial class AutoGXInput
 {
     
     public static void AddGXInput(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.GXInput);
+        ecsEntity.AddComponent<GXGame.GXInput>();
     }
           
     public static GXGame.GXInput GetGXInput(this ECSEntity ecsEntity)
     {
-        return (GXGame.GXInput)ecsEntity.GetComponent(Components.GXInput);
+        return (GXGame.GXInput)ecsEntity.GetComponent(ComponentsID<GXGame.GXInput>.TID);
     }
          
 }

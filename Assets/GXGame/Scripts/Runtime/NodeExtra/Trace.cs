@@ -17,7 +17,7 @@ namespace GXGame {
 		protected override string OnInit() {
 			owner = (ECSEntity) blackboard.parent.GetVariable("Entity").value;
 			world = ((World) owner.Parent);
-			Matcher matcher = Matcher.SetAll(Components.Player);
+			Matcher matcher = Matcher.SetAll(ComponentsID<Player>.TID);
 			playerGroup = world.GetGroup(matcher);
 			return null;
 		}

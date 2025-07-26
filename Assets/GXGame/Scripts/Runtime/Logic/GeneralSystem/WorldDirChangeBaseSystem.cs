@@ -7,13 +7,14 @@ namespace GXGame
     public class WorldDirChangeBaseSystem : UpdateReactiveSystem
     {
         protected override Collector GetTrigger(World world) =>
-            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, Components.FaceDirection);
+            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate,
+                    ComponentsID<FaceDirection>.TID);
 
         protected override bool Filter(ECSEntity entity)
         {
-            return !entity.HasComponent(Components.CollisionBox) && entity.HasComponent((Components.WorldRotate)) &&
-                   entity.HasComponent(Components.FaceDirection) &&
-                   entity.HasComponent(Components.DirectionSpeed);
+            return !entity.HasComponent(ComponentsID<CollisionBox>.TID) && entity.HasComponent( ComponentsID<WorldRotate>.TID) &&
+                   entity.HasComponent(ComponentsID<FaceDirection>.TID) &&
+                   entity.HasComponent(ComponentsID<DirectionSpeed>.TID);
         }
 
         protected override void Execute(List<ECSEntity> entities)

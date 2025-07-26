@@ -4,17 +4,17 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoPlayer
+public static partial class AutoPlayer
 {
     
     public static void AddPlayer(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.Player);
+        ecsEntity.AddComponent<GXGame.Player>();
     }
           
     public static GXGame.Player GetPlayer(this ECSEntity ecsEntity)
     {
-        return (GXGame.Player)ecsEntity.GetComponent(Components.Player);
+        return (GXGame.Player)ecsEntity.GetComponent(ComponentsID<GXGame.Player>.TID);
     }
          
 }

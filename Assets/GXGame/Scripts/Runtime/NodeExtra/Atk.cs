@@ -23,6 +23,7 @@ namespace GXGame
         protected override void OnExecute()
         {
             var skillEntity = world.AddChild<SkillEntity>();
+            skillEntity.Name = "子弹";
             skillEntity.AddSkillComponent(1);
             skillEntity.AddViewType(typeof(GoBaseView));
             skillEntity.AddAssetPath("Skill_1");

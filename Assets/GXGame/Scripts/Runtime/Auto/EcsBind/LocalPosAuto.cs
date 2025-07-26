@@ -4,34 +4,49 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoLocalPos
+public static partial class AutoLocalPos
 {
     
     public static void AddLocalPos(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.LocalPos);
+        ecsEntity.AddComponent<GXGame.LocalPos>();
     }
     
     public static void AddLocalPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
-        var p  =  (GXGame.LocalPos)ecsEntity.AddComponent(Components.LocalPos);
+        var p  =  (GXGame.LocalPos)ecsEntity.AddComponent<GXGame.LocalPos>();
         p.Value = param;
     }
           
     public static GXGame.LocalPos GetLocalPos(this ECSEntity ecsEntity)
     {
-        return (GXGame.LocalPos)ecsEntity.GetComponent(Components.LocalPos);
+        return (GXGame.LocalPos)ecsEntity.GetComponent(ComponentsID<GXGame.LocalPos>.TID);
     }
      
     public static ECSEntity SetLocalPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
-        var p = (GXGame.LocalPos)ecsEntity.GetComponent(Components.LocalPos);
+        var p = (GXGame.LocalPos)ecsEntity.GetComponent(ComponentsID<GXGame.LocalPos>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.LocalPos, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.LocalPos>.TID, ecsEntity);
         View view = ecsEntity.GetView();
         if (view == null) return null;
         ((GXGame.ILocalPosition) (view.Value)).LocalPosition(p);
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetLocalPos(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
+    {
+        var p = (GXGame.LocalPos)ecsEntity.GetComponent(ComponentsID<GXGame.LocalPos>.TID);
+        if(p==null)
+        {
+           p = (GXGame.LocalPos)(ecsEntity.AddComponent<GXGame.LocalPos>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.LocalPos>.TID, ecsEntity);
+        View view = ecsEntity.GetView();
+        if (view == null) return null;
+        ((GXGame.ILocalPosition) (view.Value)).LocalPosition(p);
+        return ecsEntity;
+    } 
          
 }

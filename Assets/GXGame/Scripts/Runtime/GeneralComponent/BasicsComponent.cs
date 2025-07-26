@@ -19,30 +19,36 @@ namespace GXGame
     {
         public Vector3 Value;
     }
-
+    
     [ViewBind(typeof(IWorldRotate))]
     public class WorldRotate : ECSComponent
     {
         public Quaternion Value;
     }
-
+    
     [ViewBind(typeof(ILocalPosition))]
     public class LocalPos : ECSComponent
     {
         public Vector3 Value;
     }
-
+    
     [ViewBind(typeof(ILocalRotate))]
     public class LocalRotate : ECSComponent
     {
         public Quaternion Value;
     }
-
+    
     [ViewBind(typeof(ILocalScale))]
     public class LocalScale : ECSComponent
     {
         public Vector3 Value;
     }
+    
+    public class ViewType : ECSComponent
+    {
+        public Type Value;
+    }
+
 
     public class AssetPath : ECSComponent
     {
@@ -96,11 +102,6 @@ namespace GXGame
         public Vector2 Value;
     }
     
-    public class ViewType : ECSComponent
-    {
-        public Type Value;
-    }
-    
     public class Monster : ECSComponent
     {
         
@@ -110,7 +111,7 @@ namespace GXGame
     {
         public Camp Value;
     }
-
+    
     public class UnitTypeComponent : ECSComponent
     {
         public UnitTypeEnum Value;

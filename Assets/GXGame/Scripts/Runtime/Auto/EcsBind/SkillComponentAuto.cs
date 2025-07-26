@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoSkillComponent
+public static partial class AutoSkillComponent
 {
     
     public static void AddSkillComponent(this GXGame.SkillEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.SkillComponent);
+        ecsEntity.AddComponent<GXGame.SkillComponent>();
     }
     
     public static void AddSkillComponent(this GXGame.SkillEntity ecsEntity,System.Int32 param)
     {
-        var p  =  (GXGame.SkillComponent)ecsEntity.AddComponent(Components.SkillComponent);
+        var p  =  (GXGame.SkillComponent)ecsEntity.AddComponent<GXGame.SkillComponent>();
         p.ID = param;
     }
           
     public static GXGame.SkillComponent GetSkillComponent(this GXGame.SkillEntity ecsEntity)
     {
-        return (GXGame.SkillComponent)ecsEntity.GetComponent(Components.SkillComponent);
+        return (GXGame.SkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.SkillComponent>.TID);
     }
      
     public static ECSEntity SetSkillComponent(this GXGame.SkillEntity ecsEntity,System.Int32 param)
     {
-        var p = (GXGame.SkillComponent)ecsEntity.GetComponent(Components.SkillComponent);
+        var p = (GXGame.SkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.SkillComponent>.TID);
         p.ID = param;
-        ((World)ecsEntity.Parent).Reactive(Components.SkillComponent, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.SkillComponent>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetSkillComponent(this GXGame.SkillEntity ecsEntity,System.Int32 param)
+    {
+        var p = (GXGame.SkillComponent)ecsEntity.GetComponent(ComponentsID<GXGame.SkillComponent>.TID);
+        if(p==null)
+        {
+           p = (GXGame.SkillComponent)(ecsEntity.AddComponent<GXGame.SkillComponent>());
+        }
+        p.ID = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.SkillComponent>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }

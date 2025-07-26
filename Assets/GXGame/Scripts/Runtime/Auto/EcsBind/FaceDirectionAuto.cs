@@ -4,32 +4,45 @@
 //------------------------------------------------------------------------------
 using GameFrame;
 using UnityEngine;
-public static class AutoFaceDirection
+public static partial class AutoFaceDirection
 {
     
     public static void AddFaceDirection(this ECSEntity ecsEntity)
     {
-        ecsEntity.AddComponent(Components.FaceDirection);
+        ecsEntity.AddComponent<GXGame.FaceDirection>();
     }
     
     public static void AddFaceDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
-        var p  =  (GXGame.FaceDirection)ecsEntity.AddComponent(Components.FaceDirection);
+        var p  =  (GXGame.FaceDirection)ecsEntity.AddComponent<GXGame.FaceDirection>();
         p.Value = param;
     }
           
     public static GXGame.FaceDirection GetFaceDirection(this ECSEntity ecsEntity)
     {
-        return (GXGame.FaceDirection)ecsEntity.GetComponent(Components.FaceDirection);
+        return (GXGame.FaceDirection)ecsEntity.GetComponent(ComponentsID<GXGame.FaceDirection>.TID);
     }
      
     public static ECSEntity SetFaceDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
     {
-        var p = (GXGame.FaceDirection)ecsEntity.GetComponent(Components.FaceDirection);
+        var p = (GXGame.FaceDirection)ecsEntity.GetComponent(ComponentsID<GXGame.FaceDirection>.TID);
         p.Value = param;
-        ((World)ecsEntity.Parent).Reactive(Components.FaceDirection, ecsEntity);
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.FaceDirection>.TID, ecsEntity);
         
         return ecsEntity;
     }
+    
+    public static ECSEntity AddOrSetFaceDirection(this ECSEntity ecsEntity,UnityEngine.Vector3 param)
+    {
+        var p = (GXGame.FaceDirection)ecsEntity.GetComponent(ComponentsID<GXGame.FaceDirection>.TID);
+        if(p==null)
+        {
+           p = (GXGame.FaceDirection)(ecsEntity.AddComponent<GXGame.FaceDirection>());
+        }
+        p.Value = param;
+        ((World)ecsEntity.Parent).Reactive(ComponentsID<GXGame.FaceDirection>.TID, ecsEntity);
+        
+        return ecsEntity;
+    } 
          
 }
