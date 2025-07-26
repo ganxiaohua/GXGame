@@ -5,20 +5,17 @@ namespace GXGame
 {
     public class DestroyBaseSystem : UpdateReactiveSystem
     {
-
-        protected override Collector GetTrigger(World world) => Collector.CreateCollector(world,EcsChangeEventState.ChangeEventState.AddRemoveUpdate,ComponentsID<Destroy>.TID);
+        protected override Collector GetTrigger(World world) =>
+                Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddRemoveUpdate, ComponentsID<Destroy>.TID);
 
         protected override bool Filter(ECSEntity entity)
         {
             return true;
         }
 
-        protected override void Execute(List<ECSEntity> entities)
+        protected override void Execute(ECSEntity Entity)
         {
-            foreach (var item in entities)
-            {
-                World.RemoveChild(item);
-            }
+            World.RemoveChild(Entity);
         }
 
         public override void Dispose()

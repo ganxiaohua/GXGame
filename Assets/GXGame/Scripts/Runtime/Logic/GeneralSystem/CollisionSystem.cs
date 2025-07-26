@@ -12,7 +12,7 @@ namespace GXGame
         private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[4];
 
         protected override Collector GetTrigger(World world) =>
-            Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, ComponentsID<MoveDirection>.TID);
+                Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, ComponentsID<MoveDirection>.TID);
 
         protected override bool Filter(ECSEntity entity)
         {
@@ -21,24 +21,21 @@ namespace GXGame
                            ComponentsID<MoveSpeed>.TID) && entity.HasComponent(ComponentsID<WorldPos>.TID);
         }
 
-        protected override void Execute(List<ECSEntity> entities)
+        protected override void Execute(ECSEntity entity)
         {
-            foreach (var entity in entities)
-            {
-                var dir = entity.GetMoveDirection().Value;
-                if (dir == Vector3.zero)
-                    continue;
-                var distance = entity.GetMoveSpeed().Value * Time.deltaTime * World.Multiple;
-                var pos = entity.GetWorldPos().Value;
-                dir = dir.normalized;
-                dir = GetCollisionDir(pos, dir, distance, entity);
-                entity.SetMoveDirection(dir);
-                pos += dir * distance;
-                var collisionBox = entity.GetCollisionBox();
-                collisionBox.Value.position = pos;
-                entity.SetWorldPos(pos);
-                entity.SetCollisionBox(collisionBox.Value);
-            }
+            var dir = entity.GetMoveDirection().Value;
+            if (dir == Vector3.zero)
+                return;
+            var distance = entity.GetMoveSpeed().Value * Time.deltaTime * World.Multiple;
+            var pos = entity.GetWorldPos().Value;
+            dir = dir.normalized;
+            dir = GetCollisionDir(pos, dir, distance, entity);
+            entity.SetMoveDirection(dir);
+            pos += dir * distance;
+            var collisionBox = entity.GetCollisionBox();
+            collisionBox.Value.position = pos;
+            entity.SetWorldPos(pos);
+            entity.SetCollisionBox(collisionBox.Value);
         }
 
         private Vector2 GetCollisionDir(Vector2 pos, Vector2 dir, float distance, ECSEntity entity)
@@ -60,6 +57,7 @@ namespace GXGame
                     entity.AddRaycastHit(new List<RaycastHit2D>());
                     hit = entity.GetRaycastHit();
                 }
+
                 hit.Value.Add(targetRaycastHit2D);
                 entity.SetRaycastHit(hit.Value);
                 return Vector2.zero;
@@ -79,6 +77,7 @@ namespace GXGame
             {
                 dir = -dir;
             }
+
             return dir;
         }
 
