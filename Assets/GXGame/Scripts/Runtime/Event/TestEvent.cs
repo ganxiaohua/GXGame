@@ -1,4 +1,4 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 
 namespace GXGame
 {
@@ -6,7 +6,7 @@ namespace GXGame
     {
         public void Test(string key);
     }
-    
+
     public interface ITestEvent2 : IEvent
     {
         public void Test();

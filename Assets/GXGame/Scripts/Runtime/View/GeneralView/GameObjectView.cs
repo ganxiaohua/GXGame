@@ -1,22 +1,22 @@
 ﻿using Common.Runtime;
 using Cysharp.Threading.Tasks;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
 {
     public abstract class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale, ILocalPosition, ILocalRotate
     {
-        protected ECSEntity BindEntity;
+        protected EffEntity BindEntity;
         private GXGameObject m_GXGO;
         private UniTaskCompletionSource m_UniTaskCompletionSource;
         public GXGameObject GXGO => m_GXGO;
 
         public bool LoadingOver { get; private set; }
 
-        public virtual void Link(ECSEntity ecsEntity)
+        public virtual void Link(EffEntity effEntity)
         {
-            BindEntity = ecsEntity;
+            BindEntity = effEntity;
         }
 
         protected async UniTaskVoid Load(string path)

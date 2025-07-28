@@ -1,4 +1,4 @@
-using GameFrame;
+using GameFrame.Runtime;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
@@ -10,12 +10,12 @@ namespace GXGame
     [Description("攻击")]
     public class Atk : ActionTask
     {
-        private ECSEntity owner;
+        private EffEntity owner;
         private World world;
 
         protected override string OnInit()
         {
-            owner = (ECSEntity) blackboard.parent.GetVariable("Entity").value;
+            owner = (EffEntity) blackboard.parent.GetVariable("Entity").value;
             world = ((World) owner.Parent);
             return null;
         }
@@ -24,7 +24,7 @@ namespace GXGame
         {
             var skillEntity = world.AddChild<SkillEntity>();
             skillEntity.Name = "子弹";
-            skillEntity.AddSkillComponent(1);
+            // skillEntity.AddSkillComponent(1);
             skillEntity.AddViewType(typeof(GoBaseView));
             skillEntity.AddAssetPath("Skill_1");
             var ownerDir = owner.GetFaceDirection().Value.normalized;

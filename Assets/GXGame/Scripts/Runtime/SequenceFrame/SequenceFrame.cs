@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame.Runtime.SequenceFrame

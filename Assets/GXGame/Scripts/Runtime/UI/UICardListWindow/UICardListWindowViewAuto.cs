@@ -3,7 +3,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using FairyGUI;
-using GameFrame;
+using GameFrame.Runtime;
 namespace GXGame
 {
     public partial class UICardListWindowView : UIViewBase

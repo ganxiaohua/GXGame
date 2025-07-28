@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace GameFrame
+namespace GameFrame.Runtime
 {
-    public class View : ECSComponent
+    public class View : EffComponent
     {
         public IEceView Value;
 
         public static IEceView Create(Type type)
         {
-            return (IEceView)ReferencePool.Acquire(type);
+            return (IEceView) ReferencePool.Acquire(type);
         }
 
         public override void Dispose()
@@ -16,5 +16,4 @@ namespace GameFrame
             ReferencePool.Release(Value);
         }
     }
-    
 }

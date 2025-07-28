@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -10,14 +10,14 @@ namespace GXGame
                 Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate,
                         ComponentsID<FaceDirection>.TID);
 
-        protected override bool Filter(ECSEntity entity)
+        protected override bool Filter(EffEntity entity)
         {
             return !entity.HasComponent(ComponentsID<CollisionBox>.TID) && entity.HasComponent(ComponentsID<WorldRotate>.TID) &&
                    entity.HasComponent(ComponentsID<FaceDirection>.TID) &&
                    entity.HasComponent(ComponentsID<DirectionSpeed>.TID);
         }
 
-        protected override void Execute(ECSEntity entity)
+        protected override void Execute(EffEntity entity)
         {
             var dir = entity.GetFaceDirection().Value;
             if (dir != Vector3.zero)

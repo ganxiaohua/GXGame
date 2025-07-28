@@ -1,4 +1,4 @@
-using GameFrame;
+using GameFrame.Runtime;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
@@ -10,7 +10,7 @@ namespace GXGame
     [Description("判断和目标的距离")]
     public class CheckDistance : ConditionTask
     {
-        private ECSEntity owner;
+        private EffEntity owner;
         private World world;
 
         public float maxDistance;
@@ -21,7 +21,7 @@ namespace GXGame
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
         {
-            owner = (ECSEntity) blackboard.parent.GetVariable("Entity").value;
+            owner = (EffEntity) blackboard.parent.GetVariable("Entity").value;
             world = ((World) owner.Parent);
             Matcher matcher = Matcher.SetAll(ComponentsID<Player>.TID);
             playerGroup = world.GetGroup(matcher);
@@ -47,6 +47,7 @@ namespace GXGame
                 var curPos = owner.GetWorldPos().Value;
                 return Vector3.Distance(curPos, player.GetWorldPos().Value) <= maxDistance;
             }
+
             return false;
         }
     }

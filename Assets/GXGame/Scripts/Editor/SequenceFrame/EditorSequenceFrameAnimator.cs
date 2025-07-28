@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFrame.Editor;
+using GameFrame.Runtime.Editor;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -111,7 +111,7 @@ namespace GXGame.Editor
                 string assetPath = AssetDatabase.GetAssetPath(RooteTexture2D);
                 string textureName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
                 var animtorConllor = CreateAnimtorController(AimationClipType, $"{OutPutPath}/{textureName}/Animation/{textureName}.controller",
-                    $"{OutPutPath}/{textureName}/Animation");
+                        $"{OutPutPath}/{textureName}/Animation");
                 CreatePrefab(animtorConllor);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();

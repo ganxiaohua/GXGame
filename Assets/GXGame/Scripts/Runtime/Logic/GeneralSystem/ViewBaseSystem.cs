@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -12,12 +12,12 @@ namespace GXGame
         protected override Collector GetTrigger(World world) => Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddRemoveUpdate,
                 ComponentsID<WorldPos>.TID);
 
-        protected override bool Filter(ECSEntity entity)
+        protected override bool Filter(EffEntity entity)
         {
             return entity.HasComponent(ComponentsID<ViewType>.TID);
         }
 
-        protected override void Execute(ECSEntity entity)
+        protected override void Execute(EffEntity entity)
         {
             bool isInView = IsObjectInView(entity);
             var view = entity.GetView();
@@ -36,7 +36,7 @@ namespace GXGame
         }
 
 
-        private void LoadAsset(ECSEntity ecsentity)
+        private void LoadAsset(EffEntity ecsentity)
         {
             Type type = ecsentity.GetViewType().Value;
             var objectView = View.Create(type);
@@ -44,7 +44,7 @@ namespace GXGame
             ecsentity.AddView(objectView);
         }
 
-        private bool IsObjectInView(ECSEntity ecsentity)
+        private bool IsObjectInView(EffEntity ecsentity)
         {
             var pos = ecsentity.GetWorldPos();
             camera ??= Camera.main;

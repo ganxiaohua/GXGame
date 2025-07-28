@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -14,14 +14,14 @@ namespace GXGame
         protected override Collector GetTrigger(World world) =>
                 Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddUpdate, ComponentsID<MoveDirection>.TID);
 
-        protected override bool Filter(ECSEntity entity)
+        protected override bool Filter(EffEntity entity)
         {
             return entity.HasComponent(ComponentsID<CollisionBox>.TID) &&
                    entity.HasComponent(ComponentsID<MoveDirection>.TID) && entity.HasComponent(
                            ComponentsID<MoveSpeed>.TID) && entity.HasComponent(ComponentsID<WorldPos>.TID);
         }
 
-        protected override void Execute(ECSEntity entity)
+        protected override void Execute(EffEntity entity)
         {
             var dir = entity.GetMoveDirection().Value;
             if (dir == Vector3.zero)
@@ -38,7 +38,7 @@ namespace GXGame
             entity.SetCollisionBox(collisionBox.Value);
         }
 
-        private Vector2 GetCollisionDir(Vector2 pos, Vector2 dir, float distance, ECSEntity entity)
+        private Vector2 GetCollisionDir(Vector2 pos, Vector2 dir, float distance, EffEntity entity)
         {
             var box = entity.GetCollisionBox();
             var count = BoxCast(pos, dir, distance, box);
@@ -102,7 +102,7 @@ namespace GXGame
         /// 碰触优先级,碰到其他东西的优先级 并且过滤掉同阵营的
         /// </summary>
         /// <returns></returns>
-        private (int priority, RaycastHit2D hit2D) CollisionPriority(ECSEntity owner)
+        private (int priority, RaycastHit2D hit2D) CollisionPriority(EffEntity owner)
         {
             int priority = 0;
             RaycastHit2D hit2D = default;

@@ -1,12 +1,11 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 
 namespace GXGame
 {
-    
     /// <summary>
     /// 技能前摇
     /// </summary>
-    public class PreSkillComponent : ECSComponent
+    public class PreSkillComponent : EffComponent
     {
         public float Time;
     }
@@ -14,7 +13,7 @@ namespace GXGame
     /// <summary>
     /// 技能后摇
     /// </summary>
-    public class LateSkillComponent : ECSComponent
+    public class LateSkillComponent : EffComponent
     {
         public float Time;
     }
@@ -22,22 +21,22 @@ namespace GXGame
     /// <summary>
     /// 释放技能的间隔
     /// </summary>
-    public class AtkIntervalComponent : ECSComponent
+    public class AtkIntervalComponent : EffComponent
     {
         public float Time;
     }
-    
+
     [AssignBind(typeof(SkillEntity))]
-    public class SkillComponent : ECSComponent
+    public class SkillComponent : EffComponent
     {
         public int ID;
     }
-    
+
     /// <summary>
     /// 技能作用的角色类型
     /// </summary>
     [AssignBind(typeof(SkillEntity))]
-    public class AbilityUnitTypeComponent : ECSComponent
+    public class AbilityUnitTypeComponent : EffComponent
     {
         public UnitTypeEnum AbilityUnitTargetTeam;
     }

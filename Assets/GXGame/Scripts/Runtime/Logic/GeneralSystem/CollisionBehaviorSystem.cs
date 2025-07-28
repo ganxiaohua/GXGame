@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 
 namespace GXGame
 {
@@ -8,15 +8,13 @@ namespace GXGame
         protected override Collector GetTrigger(World world) =>
                 Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.Update, ComponentsID<RaycastHit>.TID);
 
-        protected override bool Filter(ECSEntity entity)
+        protected override bool Filter(EffEntity entity)
         {
             return true;
         }
 
-        protected override void Execute(ECSEntity entity)
+        protected override void Execute(EffEntity entity)
         {
-            // foreach (var entity in entities)
-            // {
             var raycastHits = entity.GetRaycastHit();
             foreach (var raycastHit in raycastHits.Value)
             {
@@ -35,7 +33,6 @@ namespace GXGame
             }
 
             entity.GetRaycastHit().Value.Clear();
-            // }
         }
 
         public override void Dispose()

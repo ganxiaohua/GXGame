@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 
 namespace GXGame
 {
@@ -8,12 +8,12 @@ namespace GXGame
         protected override Collector GetTrigger(World world) =>
                 Collector.CreateCollector(world, EcsChangeEventState.ChangeEventState.AddRemoveUpdate, ComponentsID<Destroy>.TID);
 
-        protected override bool Filter(ECSEntity entity)
+        protected override bool Filter(EffEntity entity)
         {
             return true;
         }
 
-        protected override void Execute(ECSEntity Entity)
+        protected override void Execute(EffEntity Entity)
         {
             World.RemoveChild(Entity);
         }

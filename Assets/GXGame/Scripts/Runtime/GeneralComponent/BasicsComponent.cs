@@ -1,118 +1,115 @@
 ﻿using System;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
 {
-    public class Player : ECSComponent
+    public class Player : EffComponent
     {
-        
     }
-    
-    public class HP : ECSComponent
+
+    public class HP : EffComponent
     {
         public int Value;
     }
-    
+
     [ViewBind(typeof(IWolrdPosition))]
-    public class WorldPos : ECSComponent
+    public class WorldPos : EffComponent
     {
         public Vector3 Value;
     }
-    
+
     [ViewBind(typeof(IWorldRotate))]
-    public class WorldRotate : ECSComponent
+    public class WorldRotate : EffComponent
     {
         public Quaternion Value;
     }
-    
+
     [ViewBind(typeof(ILocalPosition))]
-    public class LocalPos : ECSComponent
+    public class LocalPos : EffComponent
     {
         public Vector3 Value;
     }
-    
+
     [ViewBind(typeof(ILocalRotate))]
-    public class LocalRotate : ECSComponent
+    public class LocalRotate : EffComponent
     {
         public Quaternion Value;
     }
-    
+
     [ViewBind(typeof(ILocalScale))]
-    public class LocalScale : ECSComponent
+    public class LocalScale : EffComponent
     {
         public Vector3 Value;
     }
-    
-    public class ViewType : ECSComponent
+
+    public class ViewType : EffComponent
     {
         public Type Value;
     }
 
 
-    public class AssetPath : ECSComponent
+    public class AssetPath : EffComponent
     {
         public string Value;
     }
 
-    public class DestroyCountdown : ECSComponent
+    public class DestroyCountdown : EffComponent
     {
         public float Value;
     }
 
 
-    public class DirectionSpeed : ECSComponent
+    public class DirectionSpeed : EffComponent
     {
         public float Value;
     }
-    
 
-    [ViewBind(typeof(IMeshRendererColor))]
-    public class MeshRendererColor : ECSComponent
+
+    // [ViewBind(typeof(IMeshRendererColor))]
+    public class MeshRendererColor : EffComponent
     {
         public Color Value;
     }
 
-    public class UseShareMaterial : ECSComponent
+    public class UseShareMaterial : EffComponent
     {
     }
 
-    public class FaceDirection : ECSComponent
-    {
-        public Vector3 Value;
-    }
-
-    public class GXInput : ECSComponent
-    {
-        
-    }
-
-    public class MoveDirection : ECSComponent
+    public class FaceDirection : EffComponent
     {
         public Vector3 Value;
     }
 
-    public class MoveSpeed : ECSComponent
+    public class GXInput : EffComponent
+    {
+    }
+
+    public class MoveDirection : EffComponent
+    {
+        public Vector3 Value;
+    }
+
+    public class MoveSpeed : EffComponent
     {
         public float Value;
     }
 
-    public class TargetPos : ECSComponent
+    public class TargetPos : EffComponent
     {
         public Vector2 Value;
     }
-    
-    public class Monster : ECSComponent
+
+    public class Monster : EffComponent
     {
-        
     }
 
-    public class CampComponent : ECSComponent
+    public class CampComponent : EffComponent
     {
         public Camp Value;
     }
-    
-    public class UnitTypeComponent : ECSComponent
+
+    public class UnitTypeComponent : EffComponent
     {
         public UnitTypeEnum Value;
     }

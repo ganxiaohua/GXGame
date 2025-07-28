@@ -1,4 +1,4 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 using UnityEngine;
 
 
@@ -9,14 +9,14 @@ namespace GXGame
         private AnimatorView animator;
         private SpriteRendererView spriterenderer;
 
-        public override void Link(ECSEntity ecsEntity)
+        public override void Link(EffEntity effEntity)
         {
-            base.Link(ecsEntity);
-            Load(ecsEntity.GetAssetPath().Value).Forget();
+            base.Link(effEntity);
+            Load(effEntity.GetAssetPath().Value).Forget();
             spriterenderer = ReferencePool.Acquire<SpriteRendererView>();
-            spriterenderer.Init(ecsEntity, this);
+            spriterenderer.Init(effEntity, this);
             animator = ReferencePool.Acquire<AnimatorView>();
-            animator.Init(ecsEntity, this);
+            animator.Init(effEntity, this);
         }
 
 
@@ -33,9 +33,9 @@ namespace GXGame
                 animator.SetInteger("State", 1);
                 GXGO.scale = dir.x switch
                 {
-                    > 0 => new Vector3(scale.x, scale.y, scale.z),
-                    < 0 => new Vector3(-scale.x, scale.y, scale.z),
-                    _ => GXGO.scale
+                        > 0 => new Vector3(scale.x, scale.y, scale.z),
+                        < 0 => new Vector3(-scale.x, scale.y, scale.z),
+                        _ => GXGO.scale
                 };
                 if (dir.y < 0)
                     animator.SetInteger("Direction", 1);

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameFrame;
-
-
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -63,7 +61,7 @@ namespace GXGame
             }
         }
 
-        
+
         public void Dispose()
         {
         }

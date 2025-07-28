@@ -1,8 +1,8 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 
 namespace GXGame
 {
-    public class SkillEntity : ECSEntity
+    public class SkillEntity : EffEntity
     {
     }
 }

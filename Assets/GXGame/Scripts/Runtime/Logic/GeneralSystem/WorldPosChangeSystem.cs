@@ -1,4 +1,4 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame

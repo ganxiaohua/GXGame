@@ -1,7 +1,6 @@
-﻿namespace GameFrame
+﻿namespace GameFrame.Runtime
 {
-    public class Destroy : ECSComponent
+    public class Destroy : EffComponent
     {
-        
     }
 }

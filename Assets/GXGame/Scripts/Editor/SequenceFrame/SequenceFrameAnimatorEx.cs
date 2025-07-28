@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GameFrame.Editor;
+using GameFrame.Runtime.Editor;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -114,17 +114,17 @@ namespace GXGame.Editor
             {
                 AnimatorStateTransition(controller, machine, value, pos, 2);
             }
-            
+
             if (typeDic.TryGetValue(Data.AnimatorType.RightAtk, out var value2))
             {
                 AnimatorStateTransition(controller, machine, value2, ++pos, 3);
             }
-            
+
             if (typeDic.TryGetValue(Data.AnimatorType.ForwardAtk, out var value3))
             {
                 AnimatorStateTransition(controller, machine, value3, ++pos, 4);
             }
-            
+
             if (typeDic.TryGetValue(Data.AnimatorType.Die, out var value4))
             {
                 AnimatorStateTransition(controller, machine, value4, ++pos, 5);
@@ -132,7 +132,7 @@ namespace GXGame.Editor
         }
 
         private static void AnimatorStateTransition(AnimatorController controller, AnimatorStateMachine machine, AnimatorState a, AnimatorState b,
-            int direction)
+                int direction)
         {
             int pos = direction;
             machine.AddState(a, new Vector3(250, pos * 100));
@@ -160,7 +160,7 @@ namespace GXGame.Editor
             animatorCondition.mode = AnimatorConditionMode.Equals;
             animatorCondition.threshold = 1;
             animatorConditionlist.Add(animatorCondition);
-            
+
             animatorCondition = new AnimatorCondition();
             animatorCondition.parameter = "Stop";
             animatorCondition.mode = AnimatorConditionMode.IfNot;

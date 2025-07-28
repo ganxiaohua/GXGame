@@ -1,7 +1,7 @@
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 public class CollisionEntity : MonoBehaviour
 {
-    public ECSEntity Entity;
+    public EffEntity Entity;
 }

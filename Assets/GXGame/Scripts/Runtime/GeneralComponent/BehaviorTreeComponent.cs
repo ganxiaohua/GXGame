@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using Common.Runtime;
-using GameFrame;
+using GameFrame.Runtime;
 using NodeCanvas.BehaviourTrees;
 using NodeCanvas.Framework;
 using UnityEngine;
 
 namespace GXGame
 {
-    public class BehaviorTreeComponent : ECSComponent
+    public class BehaviorTreeComponent : EffComponent
     {
         public string Value
         {
@@ -25,6 +25,7 @@ namespace GXGame
         private AsyncLoadAsset<Object> asyncLoadAsset;
         private BehaviourTreeOwner behaviourTreeOwner;
         private Blackboard blackboard;
+
         private void Real()
         {
             if (gxGameObject == null)
@@ -37,6 +38,7 @@ namespace GXGame
                 blackboard.AddVariable("Entity", Owner);
                 behaviourTreeOwner.blackboard = blackboard;
             }
+
             asyncLoadAsset ??= new AsyncLoadAsset<Object>(LoadOver);
             asyncLoadAsset.LoadAsset(value);
         }

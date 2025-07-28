@@ -1,17 +1,17 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 
 namespace GXGame
 {
-    public class Go3DView : GameObjectView,IMeshRendererColor
+    public class Go3DView : GameObjectView, IMeshRendererColor
     {
         private MeshRendererView m_MeshRendererView;
 
-        public override void Link(ECSEntity ecsEntity)
+        public override void Link(EffEntity effEntity)
         {
-            base.Link(ecsEntity);
-            Load(ecsEntity.GetAssetPath().Value).Forget();
+            base.Link(effEntity);
+            Load(effEntity.GetAssetPath().Value).Forget();
             m_MeshRendererView = ReferencePool.Acquire<MeshRendererView>();
-            m_MeshRendererView.Init(BindEntity,this);
+            m_MeshRendererView.Init(BindEntity, this);
         }
 
         public override void Dispose()

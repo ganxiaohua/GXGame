@@ -1,13 +1,13 @@
-﻿using GameFrame;
+﻿using GameFrame.Runtime;
 
 namespace GXGame
 {
     public class GoBaseView : GameObjectView
     {
-        public override void Link(ECSEntity ecsEntity)
+        public override void Link(EffEntity effEntity)
         {
-            base.Link(ecsEntity);
-            Load(ecsEntity.GetAssetPath().Value).Forget();
+            base.Link(effEntity);
+            Load(effEntity.GetAssetPath().Value).Forget();
         }
 
         public override void Dispose()

@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -11,9 +11,9 @@ namespace GXGame
     {
         private MeshRenderer m_MeshRenderer;
 
-        public override void Init(ECSEntity ecsEntity, GameObjectView gameObjectView)
+        public override void Init(EffEntity effEntity, GameObjectView gameObjectView)
         {
-            base.Init(ecsEntity, gameObjectView);
+            base.Init(effEntity, gameObjectView);
         }
 
         public override void Dispose()

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -12,7 +12,7 @@ namespace GXGame
             base.Init(behaviorWorld);
             behaviorWorld.AddBehavior<BehaviorNo1>();
             behaviorWorld.AddBehavior<BehaviorNo2>();
-            
+
             var data = behaviorWorld.AddData<BehaviorData1>();
             behaviorWorld.ChangeBehavior<BehaviorNo1>(data);
         }
@@ -24,6 +24,7 @@ namespace GXGame
         {
             Debug.Log("数据加入No1");
         }
+
         public override void Update(List<IBehaviorData> behaviorData, float elapseSeconds)
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -31,6 +32,7 @@ namespace GXGame
                 ChangeBehavior<BehaviorNo2>(behaviorData[0]);
             }
         }
+
         public override void DataLeave(IBehaviorData behaviorData)
         {
             Debug.Log("数据离开No1");
@@ -43,6 +45,7 @@ namespace GXGame
         {
             Debug.Log("数据加入No2");
         }
+
         public override void Update(List<IBehaviorData> behaviorData, float elapseSeconds)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -50,6 +53,7 @@ namespace GXGame
                 ChangeBehavior<BehaviorNo1>(behaviorData[0]);
             }
         }
+
         public override void DataLeave(IBehaviorData behaviorData)
         {
             Debug.Log("数据离开No2");
@@ -61,6 +65,7 @@ namespace GXGame
         public int Number;
 
         public string Str;
+
         public void Dispose()
         {
         }
@@ -69,6 +74,7 @@ namespace GXGame
     public class BehaviorTest
     {
         private BehaviorWorldEntity bwe;
+
         public void Init(Entity entity)
         {
             bwe = entity.AddChild<BehaviorWorldEntity, Type>(typeof(BehaviorWorldTest));
@@ -76,7 +82,7 @@ namespace GXGame
 
         public void Update(float elapseSeconds, float realElapseSeconds)
         {
-            bwe.OnUpdate(elapseSeconds,realElapseSeconds);
+            bwe.OnUpdate(elapseSeconds, realElapseSeconds);
         }
     }
 }

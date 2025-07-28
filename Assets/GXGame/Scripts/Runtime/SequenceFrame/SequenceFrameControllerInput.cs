@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame.Runtime.SequenceFrame
@@ -34,12 +34,12 @@ namespace GXGame.Runtime.SequenceFrame
         {
             return walkWithForward.Do();
         }
-        
+
         public Sprite RightOrLeft()
         {
             return walkWithRL.Do();
         }
-        
+
         public Sprite Below()
         {
             return walkWithBelow.Do();

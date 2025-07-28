@@ -1,18 +1,18 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using GameFrame;
+using GameFrame.Runtime;
 
 namespace GXGame
 {
     public class BaseView : IDisposable
     {
-        protected ECSEntity BindEntity;
+        protected EffEntity BindEntity;
         protected GameObjectView GameObjectView;
 
-        public virtual void Init(ECSEntity ecsEntity, GameObjectView gameObjectView)
+        public virtual void Init(EffEntity effEntity, GameObjectView gameObjectView)
         {
             GameObjectView = gameObjectView;
-            BindEntity = ecsEntity;
+            BindEntity = effEntity;
             WaitLoadOver().Forget();
         }
 

@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using GameFrame;
+using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
@@ -8,9 +8,9 @@ namespace GXGame
     {
         private Animator mAnimator;
 
-        public override void Init(ECSEntity ecsEntity, GameObjectView gameObjectView)
+        public override void Init(EffEntity effEntity, GameObjectView gameObjectView)
         {
-            base.Init(ecsEntity, gameObjectView);
+            base.Init(effEntity, gameObjectView);
         }
 
         protected override async UniTask WaitLoadOver()
