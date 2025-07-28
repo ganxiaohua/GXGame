@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFrame.Runtime.Editor;
+using GameFrame.Editor;
+using GameFrame.Runtime;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEditor.Animations;

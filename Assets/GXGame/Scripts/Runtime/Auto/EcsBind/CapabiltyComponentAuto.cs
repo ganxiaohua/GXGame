@@ -9,12 +9,12 @@ public static partial class AutoCapabiltyComponent
     
     public static void AddCapabiltyComponent(this EffEntity effEntity)
     {
-        effEntity.AddComponent<GameFrame.Runtime.Runtime.SH.CapabiltyComponent>();
+        effEntity.AddComponent<GameFrame.Runtime.CapabiltyComponent>();
     }
           
-    public static GameFrame.Runtime.Runtime.SH.CapabiltyComponent GetCapabiltyComponent(this EffEntity effEntity)
+    public static GameFrame.Runtime.CapabiltyComponent GetCapabiltyComponent(this EffEntity effEntity)
     {
-        return (GameFrame.Runtime.Runtime.SH.CapabiltyComponent)effEntity.GetComponent(ComponentsID<GameFrame.Runtime.Runtime.SH.CapabiltyComponent>.TID);
+        return (GameFrame.Runtime.CapabiltyComponent)effEntity.GetComponent(ComponentsID<GameFrame.Runtime.CapabiltyComponent>.TID);
     }
          
 }
