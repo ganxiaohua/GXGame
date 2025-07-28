@@ -14,7 +14,7 @@ namespace GXGame
         protected override void OnReady()
         {
             CameraSet();
-            AddComponent<GameWorld, int>(AllComponents.TotalComponents);
+            AddComponent<EcsGameWorld, int>(AllComponents.TotalComponents);
             QualitySettings.vSyncCount = 0;
             Time.fixedDeltaTime = 1 / 59.0f;
             Application.targetFrameRate = 60;

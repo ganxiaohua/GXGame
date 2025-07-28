@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GXGame.Logic
 {
-    public class GameWorld : World
+    public class EcsGameWorld : World
     {
         private int otherCount = 2;
         private int monsterCount = 5000;
