@@ -17,17 +17,20 @@ namespace GXGame
             return entity.HasComponent(ComponentsID<ViewType>.TID);
         }
 
-        protected override void Execute(EffEntity entity)
+        protected override void Execute(List<EffEntity> entitys)
         {
-            bool isInView = IsObjectInView(entity);
-            var view = entity.GetView();
-            if (isInView && view == null)
+            foreach (var entity in entitys)
             {
-                LoadAsset(entity);
-            }
-            else if (view != null && !isInView)
-            {
-                entity.RemoveComponent(ComponentsID<View>.TID);
+                bool isInView = IsObjectInView(entity);
+                var view = entity.GetView();
+                if (isInView && view == null)
+                {
+                    LoadAsset(entity);
+                }
+                else if (view != null && !isInView)
+                {
+                    entity.RemoveComponent(ComponentsID<View>.TID);
+                }
             }
         }
 

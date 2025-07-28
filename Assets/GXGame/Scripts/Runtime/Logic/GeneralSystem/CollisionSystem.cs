@@ -21,21 +21,24 @@ namespace GXGame
                            ComponentsID<MoveSpeed>.TID) && entity.HasComponent(ComponentsID<WorldPos>.TID);
         }
 
-        protected override void Execute(EffEntity entity)
+        protected override void Execute(List<EffEntity> entitys)
         {
-            var dir = entity.GetMoveDirection().Value;
-            if (dir == Vector3.zero)
-                return;
-            var distance = entity.GetMoveSpeed().Value * Time.deltaTime * World.Multiple;
-            var pos = entity.GetWorldPos().Value;
-            dir = dir.normalized;
-            dir = GetCollisionDir(pos, dir, distance, entity);
-            entity.SetMoveDirection(dir);
-            pos += dir * distance;
-            var collisionBox = entity.GetCollisionBox();
-            collisionBox.Value.position = pos;
-            entity.SetWorldPos(pos);
-            entity.SetCollisionBox(collisionBox.Value);
+            foreach (var entity in entitys)
+            {
+                var dir = entity.GetMoveDirection().Value;
+                if (dir == Vector3.zero)
+                    return;
+                var distance = entity.GetMoveSpeed().Value * Time.deltaTime * World.Multiple;
+                var pos = entity.GetWorldPos().Value;
+                dir = dir.normalized;
+                dir = GetCollisionDir(pos, dir, distance, entity);
+                entity.SetMoveDirection(dir);
+                pos += dir * distance;
+                var collisionBox = entity.GetCollisionBox();
+                collisionBox.Value.position = pos;
+                entity.SetWorldPos(pos);
+                entity.SetCollisionBox(collisionBox.Value);
+            }
         }
 
         private Vector2 GetCollisionDir(Vector2 pos, Vector2 dir, float distance, EffEntity entity)

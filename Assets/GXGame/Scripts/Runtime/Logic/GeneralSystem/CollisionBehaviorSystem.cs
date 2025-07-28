@@ -13,26 +13,29 @@ namespace GXGame
             return true;
         }
 
-        protected override void Execute(EffEntity entity)
+        protected override void Execute(List<EffEntity> entitys)
         {
-            var raycastHits = entity.GetRaycastHit();
-            foreach (var raycastHit in raycastHits.Value)
+            foreach (var entity in entitys)
             {
-                var campValue = raycastHit.transform.GetComponent<CollisionEntity>().Entity.GetCampComponent().Value;
-                if (campValue != entity.GetCampComponent().Value)
+                var raycastHits = entity.GetRaycastHit();
+                foreach (var raycastHit in raycastHits.Value)
                 {
-                    var hp = entity.GetHP().Value - 1;
-                    entity.SetHP(hp);
-                    if (hp == 0)
+                    var campValue = raycastHit.transform.GetComponent<CollisionEntity>().Entity.GetCampComponent().Value;
+                    if (campValue != entity.GetCampComponent().Value)
                     {
-                        entity.AddDestroy();
+                        var hp = entity.GetHP().Value - 1;
+                        entity.SetHP(hp);
+                        if (hp == 0)
+                        {
+                            entity.AddDestroy();
+                        }
+
+                        break;
                     }
-
-                    break;
                 }
-            }
 
-            entity.GetRaycastHit().Value.Clear();
+                entity.GetRaycastHit().Value.Clear();
+            }
         }
 
         public override void Dispose()

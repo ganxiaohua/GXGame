@@ -13,9 +13,12 @@ namespace GXGame
             return true;
         }
 
-        protected override void Execute(EffEntity Entity)
+        protected override void Execute(List<EffEntity> entitys)
         {
-            World.RemoveChild(Entity);
+            foreach (var entity in entitys)
+            {
+                World.RemoveChild(entity);
+            }
         }
 
         public override void Dispose()

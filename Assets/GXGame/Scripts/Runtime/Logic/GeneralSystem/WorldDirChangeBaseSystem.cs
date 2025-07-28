@@ -17,16 +17,19 @@ namespace GXGame
                    entity.HasComponent(ComponentsID<DirectionSpeed>.TID);
         }
 
-        protected override void Execute(EffEntity entity)
+        protected override void Execute(List<EffEntity> entitys)
         {
-            var dir = entity.GetFaceDirection().Value;
-            if (dir != Vector3.zero)
+            foreach (var entity in entitys)
             {
-                float speed = entity.GetDirectionSpeed().Value;
-                Vector3 nowDir = entity.GetWorldRotate().Value * Vector3.forward;
-                float angle = speed * World.DeltaTime;
-                Vector3 curDir = Vector3.RotateTowards(nowDir, dir, Mathf.Deg2Rad * angle, 0);
-                entity.SetWorldRotate(Quaternion.LookRotation(curDir));
+                var dir = entity.GetFaceDirection().Value;
+                if (dir != Vector3.zero)
+                {
+                    float speed = entity.GetDirectionSpeed().Value;
+                    Vector3 nowDir = entity.GetWorldRotate().Value * Vector3.forward;
+                    float angle = speed * World.DeltaTime;
+                    Vector3 curDir = Vector3.RotateTowards(nowDir, dir, Mathf.Deg2Rad * angle, 0);
+                    entity.SetWorldRotate(Quaternion.LookRotation(curDir));
+                }
             }
         }
 
