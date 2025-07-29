@@ -1,9 +1,9 @@
 ﻿using GameFrame.Runtime;
 using UnityEngine;
 
-namespace GXGame.Logic
+namespace GXGame.Runtime
 {
-    public class EcsGameWorld : World
+    public class ECSGameWorld : World
     {
         private int otherCount = 2;
         private int monsterCount = 5000;

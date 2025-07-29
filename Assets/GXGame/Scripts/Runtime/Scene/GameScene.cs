@@ -1,7 +1,6 @@
 using Eden.Gameplay.Runtime;
 using GameFrame.Runtime;
-using GXGame.Logic;
-// using GXGame.Logic;
+using GXGame.Runtime;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -14,10 +13,9 @@ namespace GXGame
         protected override void OnReady()
         {
             CameraSet();
-            AddComponent<EcsGameWorld, int>(AllComponents.TotalComponents);
+            AddComponent<ECSGameWorld, int>(AllComponents.TotalComponents);
+            // AddComponent<ECCGameWorld, int>(AllComponents.TotalComponents);
             QualitySettings.vSyncCount = 0;
-            Time.fixedDeltaTime = 1 / 59.0f;
-            Application.targetFrameRate = 60;
             UIManager.Instance.OpenUI(typeof(UICardListWindow), "input (自定义数据)");
             EventSend.Instance.FireTestEvent1("发送一个事件");
         }
