@@ -28,7 +28,9 @@ public static partial class AutoFaceDirection
         var p = (GXGame.FaceDirection)effEntity.GetComponent(ComponentsID<GXGame.FaceDirection>.TID);
         p.Value = param;
         ((World)effEntity.Parent).Reactive(ComponentsID<GXGame.FaceDirection>.TID, effEntity);
-        
+        View view = effEntity.GetView();
+        if (view == null) return null;
+        ((GXGame.IFaceDirection) (view.Value)).FaceDirection(p);
         return effEntity;
     }
     
@@ -41,7 +43,9 @@ public static partial class AutoFaceDirection
         }
         p.Value = param;
         ((World)effEntity.Parent).Reactive(ComponentsID<GXGame.FaceDirection>.TID, effEntity);
-        
+        View view = effEntity.GetView();
+        if (view == null) return null;
+        ((GXGame.IFaceDirection) (view.Value)).FaceDirection(p);
         return effEntity;
     } 
          

@@ -1,43 +1,49 @@
 ﻿using System;
 using GameFrame.Runtime;
+using UnityEngine;
 
 namespace GXGame.Runtime
 {
-    public class ViewCapability : CapabilityBase
+    public class AtkingCapability : CapabilityBase
     {
         public override void Init(EffEntity owner, int id)
         {
             base.Init(owner, id);
         }
 
-
         public override bool ShouldActivate()
         {
-            return true;
+            return Owner.GetAtkCompCountdown() != null;
         }
 
         public override bool ShouldDeactivate()
         {
-            return false;
+            return Owner.GetAtkCompCountdown() == null;
         }
 
         public override void OnActivated()
         {
+            Owner.GetCapabiltyComponent().Block(CapabilityTags.Tag_Move, this);
             base.OnActivated();
-            Type type = Owner.GetViewType().Value;
-            var view = View.Create(type);
-            view.Link(Owner);
-            Owner.AddView(view);
         }
 
         public override void OnDeactivated()
         {
+            Owner.GetCapabiltyComponent().UnBlock(CapabilityTags.Tag_Move, this);
             base.OnDeactivated();
         }
 
 
         public override void TickActive(float delatTime, float realElapseSeconds)
         {
+            var x = Owner.GetAtkCompCountdown().Value;
+            x -= delatTime;
+            Owner.SetAtkCompCountdown(x);
+            if (x <= 0)
+            {
+                Owner.RemoveComponent(ComponentsID<GXGame.AtkCompCountdown>.TID);
+                Owner.AddOrSetAtkOverComp(1);
+            }
         }
 
         public override void Dispose()

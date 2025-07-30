@@ -9,8 +9,8 @@
     {
         public void WorldRotate(WorldRotate worldRotate);
     }
-    
-    
+
+
     public interface ILocalPosition
     {
         public void LocalPosition(LocalPos localPos);
@@ -26,9 +26,24 @@
         public void LocalScale(LocalScale localScale);
     }
 
-    public interface IMeshRendererColor
+    public interface IFaceDirection
     {
-        public void MeshRendererColor(MeshRendererColor meshRendererColor); 
+        public void FaceDirection(FaceDirection faceDirection);
     }
 
+    public interface IAtkComp
+    {
+        public void AtkComp(AtkStartComp atkStartComp);
+    }
+
+    public interface IAtkOverComp
+    {
+        public void AtkOverComp(AtkOverComp atkComp);
+    }
+
+
+    public interface IMeshRendererColor
+    {
+        public void MeshRendererColor(MeshRendererColor meshRendererColor);
+    }
 }

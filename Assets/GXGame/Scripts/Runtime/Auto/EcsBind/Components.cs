@@ -4,5 +4,5 @@
 //------------------------------------------------------------------------------
 public static class AllComponents {
     
-    public const int TotalComponents = 34;
+    public const int TotalComponents = 37;
 }

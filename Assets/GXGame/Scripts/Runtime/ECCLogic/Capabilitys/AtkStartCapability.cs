@@ -1,33 +1,29 @@
 ﻿using System;
 using GameFrame.Runtime;
+using UnityEngine;
 
 namespace GXGame.Runtime
 {
-    public class ViewCapability : CapabilityBase
+    public class AtkStartCapability : CapabilityBase
     {
         public override void Init(EffEntity owner, int id)
         {
             base.Init(owner, id);
         }
 
-
         public override bool ShouldActivate()
         {
-            return true;
+            return Owner.GetAtkCompCountdown() == null;
         }
 
         public override bool ShouldDeactivate()
         {
-            return false;
+            return Owner.GetAtkCompCountdown() != null;
         }
 
         public override void OnActivated()
         {
             base.OnActivated();
-            Type type = Owner.GetViewType().Value;
-            var view = View.Create(type);
-            view.Link(Owner);
-            Owner.AddView(view);
         }
 
         public override void OnDeactivated()
@@ -38,6 +34,11 @@ namespace GXGame.Runtime
 
         public override void TickActive(float delatTime, float realElapseSeconds)
         {
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                Owner.AddOrSetAtkStartComp(1);
+                Owner.AddOrSetAtkCompCountdown(3.0f);
+            }
         }
 
         public override void Dispose()

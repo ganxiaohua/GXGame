@@ -12,7 +12,7 @@ namespace GXGame
 
         protected override void OnReady()
         {
-            CameraSet();
+            SetCamera();
             AddComponent<ECSGameWorld, int>(AllComponents.TotalComponents);
             // AddComponent<ECCGameWorld, int>(AllComponents.TotalComponents);
             QualitySettings.vSyncCount = 0;
@@ -20,7 +20,7 @@ namespace GXGame
             EventSend.Instance.FireTestEvent1("发送一个事件");
         }
 
-        private void CameraSet()
+        private void SetCamera()
         {
             var uiCamera = GameObject.Find("Stage Camera").GetComponent<Camera>();
             uiCamera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Overlay;

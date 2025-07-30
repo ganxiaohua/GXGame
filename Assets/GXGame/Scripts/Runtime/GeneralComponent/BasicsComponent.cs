@@ -76,9 +76,27 @@ namespace GXGame
     {
     }
 
+    [ViewBind(typeof(IFaceDirection))]
     public class FaceDirection : EffComponent
     {
         public Vector3 Value;
+    }
+
+    [ViewBind(typeof(IAtkComp))]
+    public class AtkStartComp : EffComponent
+    {
+        public int Value;
+    }
+
+    [ViewBind(typeof(IAtkOverComp))]
+    public class AtkOverComp : EffComponent
+    {
+        public int Value;
+    }
+
+    public class AtkCompCountdown : EffComponent
+    {
+        public float Value;
     }
 
     public class GXInput : EffComponent

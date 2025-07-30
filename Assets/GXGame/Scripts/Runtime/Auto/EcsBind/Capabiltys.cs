@@ -4,5 +4,5 @@
 //------------------------------------------------------------------------------
 public static class AllCapability {
     
-    public const int TotallCapabiltys = 3;
+    public const int TotallCapabiltys = 5;
 }
