@@ -6,6 +6,7 @@ namespace GXGame.Runtime
 {
     public class MoveCapability : CapabilityBase
     {
+        public override int TickGroupOrder { get; protected set; } = 5;
         private int[] KeyDir = new[] {0, -1, 1};
 
         public override void Init(SHWorld world, EffEntity owner, int id)

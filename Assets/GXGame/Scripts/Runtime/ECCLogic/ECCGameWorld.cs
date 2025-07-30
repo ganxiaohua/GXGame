@@ -24,7 +24,7 @@ namespace GXGame.Runtime
             map.AddViewType(typeof(GoBaseView));
             map.AddAssetPath("Map_BaseMap");
             map.AddWorldPos(Vector3.zero);
-            BindCapabilityUpdate<ViewCapability>(map);
+            BindCapability<ViewCapability>(map);
         }
 
         private void CreatePlayer()
@@ -33,11 +33,11 @@ namespace GXGame.Runtime
             palyer.Name = "主角";
             palyer.AddViewType(typeof(Go2DView));
             palyer.AddAssetPath("Player/Prefab/Player");
-            BindCapabilityUpdate<ViewCapability>(palyer);
-            BindCapabilityUpdate<MoveCapability>(palyer);
-            BindCapabilityUpdate<AtkStartCapability>(palyer);
-            BindCapabilityUpdate<AtkingCapability>(palyer);
-            BindCapabilityUpdate<SearchMonsterCapability>(palyer);
+            BindCapability<ViewCapability>(palyer);
+            BindCapability<MoveCapability>(palyer);
+            BindCapability<AtkStartCapability>(palyer);
+            BindCapability<AtkingCapability>(palyer);
+            BindCapability<SearchMonsterCapability>(palyer);
         }
 
         private void CreateMonster()
@@ -50,7 +50,7 @@ namespace GXGame.Runtime
                 monster.AddViewType(typeof(Go2DView));
                 monster.AddAssetPath("Monster_002/Prefab/Monster_002");
                 monster.AddWorldPos(new Vector3(3 * i + 2, 0, 0));
-                BindCapabilityUpdate<ViewCapability>(monster);
+                BindCapability<ViewCapability>(monster);
             }
         }
     }
