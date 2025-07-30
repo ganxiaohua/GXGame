@@ -8,9 +8,9 @@ namespace GXGame.Runtime
     {
         private int[] KeyDir = new[] {0, -1, 1};
 
-        public override void Init(EffEntity owner, int id)
+        public override void Init(SHWorld world, EffEntity owner, int id)
         {
-            base.Init(owner, id);
+            base.Init(world, owner, id);
             owner.AddLocalScale(Vector3.one);
             owner.AddFaceDirection(Vector2.right);
             owner.AddWorldPos(Vector3.zero);

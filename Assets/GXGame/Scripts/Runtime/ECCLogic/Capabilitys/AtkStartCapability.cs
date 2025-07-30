@@ -6,9 +6,9 @@ namespace GXGame.Runtime
 {
     public class AtkStartCapability : CapabilityBase
     {
-        public override void Init(EffEntity owner, int id)
+        public override void Init(SHWorld world, EffEntity owner, int id)
         {
-            base.Init(owner, id);
+            base.Init(world, owner, id);
         }
 
         public override bool ShouldActivate()

@@ -1,15 +1,19 @@
 ﻿using System;
 using GameFrame.Runtime;
+using UnityEngine;
 
 namespace GXGame.Runtime
 {
-    public class ViewCapability : CapabilityBase
+    public class SearchMonsterCapability : CapabilityBase
     {
+        private Group group;
+
         public override void Init(SHWorld world, EffEntity owner, int id)
         {
             base.Init(world, owner, id);
+            Matcher matcher = Matcher.SetAll(ComponentsID<Monster>.TID);
+            group = world.GetGroup(matcher);
         }
-
 
         public override bool ShouldActivate()
         {
@@ -24,10 +28,6 @@ namespace GXGame.Runtime
         public override void OnActivated()
         {
             base.OnActivated();
-            Type type = Owner.GetViewType().Value;
-            var view = View.Create(type);
-            view.Link(Owner);
-            Owner.AddView(view);
         }
 
         public override void OnDeactivated()

@@ -14,26 +14,44 @@ namespace GXGame.Runtime
             EstimateChildsCount(estimateChild);
             CreateMap();
             CreatePlayer();
+            CreateMonster();
         }
 
         private void CreateMap()
         {
-            var child = AddChild();
-            child.AddViewType(typeof(GoBaseView));
-            child.AddAssetPath("Map_BaseMap");
-            child.AddWorldPos(Vector3.zero);
-            BindCapabilityUpdate<ViewCapability>(child);
+            var map = AddChild();
+            map.Name = "地图";
+            map.AddViewType(typeof(GoBaseView));
+            map.AddAssetPath("Map_BaseMap");
+            map.AddWorldPos(Vector3.zero);
+            BindCapabilityUpdate<ViewCapability>(map);
         }
 
         private void CreatePlayer()
         {
             var palyer = AddChild();
+            palyer.Name = "主角";
             palyer.AddViewType(typeof(Go2DView));
             palyer.AddAssetPath("Player/Prefab/Player");
             BindCapabilityUpdate<ViewCapability>(palyer);
             BindCapabilityUpdate<MoveCapability>(palyer);
             BindCapabilityUpdate<AtkStartCapability>(palyer);
             BindCapabilityUpdate<AtkingCapability>(palyer);
+            BindCapabilityUpdate<SearchMonsterCapability>(palyer);
+        }
+
+        private void CreateMonster()
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                var monster = AddChild();
+                monster.Name = "史莱姆";
+                monster.AddComponent<Monster>();
+                monster.AddViewType(typeof(Go2DView));
+                monster.AddAssetPath("Monster_002/Prefab/Monster_002");
+                monster.AddWorldPos(new Vector3(3 * i + 2, 0, 0));
+                BindCapabilityUpdate<ViewCapability>(monster);
+            }
         }
     }
 }
