@@ -15,8 +15,8 @@ namespace GXGame.Runtime
             owner.AddFaceDirection(Vector2.right);
             owner.AddWorldPos(Vector3.zero);
             owner.AddMoveSpeed(5);
-            tagList = new List<int>();
-            tagList.Add(CapabilityTags.Tag_Move);
+            TagList = new List<int>();
+            TagList.Add(CapabilityTags.Tag_Move);
         }
 
         public override bool ShouldActivate()

@@ -33,7 +33,6 @@ namespace GXGame.Runtime
             base.OnDeactivated();
         }
 
-
         public override void TickActive(float delatTime, float realElapseSeconds)
         {
             var x = Owner.GetAtkCompCountdown().Value;
