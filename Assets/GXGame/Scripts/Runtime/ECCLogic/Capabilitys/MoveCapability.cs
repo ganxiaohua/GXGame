@@ -6,8 +6,8 @@ namespace GXGame.Runtime
 {
     public class MoveCapability : CapabilityBase
     {
-        public override int TickGroupOrder { get; protected set; } = 5;
-        private int[] KeyDir = new[] {0, -1, 1};
+        public override int TickGroupOrder { get; protected set; } = CapabilityGroupOrder.Move;
+        private int[] keyDir = new[] {0, -1, 1};
 
         public override void Init(SHWorld world, EffEntity owner, int id)
         {
@@ -55,7 +55,7 @@ namespace GXGame.Runtime
                 indexY = 2;
             else if (Input.GetKey(KeyCode.S))
                 indexY = 1;
-            faceDir = new Vector3(KeyDir[indexX], KeyDir[indexY]);
+            faceDir = new Vector3(keyDir[indexX], keyDir[indexY]);
             pos += faceDir.normalized * delatTime * speed;
             Owner.SetFaceDirection(faceDir);
             Owner.SetWorldPos(pos);

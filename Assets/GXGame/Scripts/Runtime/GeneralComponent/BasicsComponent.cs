@@ -94,7 +94,7 @@ namespace GXGame
         public int Value;
     }
 
-    public class AtkCompCountdown : EffComponent
+    public class AtkCountdownComp : EffComponent
     {
         public float Value;
     }

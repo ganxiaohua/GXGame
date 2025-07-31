@@ -9,7 +9,6 @@ namespace Eden.Gameplay.Runtime
 {
     public class EventSend : Singleton<EventSend>
     {
-       
         public void FireTestEvent1(System.String key)
         {
             var allEntity = EventData.Instance.GetEntity(typeof(ITestEvent1));

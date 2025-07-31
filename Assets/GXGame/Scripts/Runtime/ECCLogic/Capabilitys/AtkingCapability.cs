@@ -6,6 +6,8 @@ namespace GXGame.Runtime
 {
     public class AtkingCapability : CapabilityBase
     {
+        public override int TickGroupOrder { get; protected set; } = CapabilityGroupOrder.Atk + 1;
+
         public override void Init(SHWorld world, EffEntity owner, int id)
         {
             base.Init(world, owner, id);
@@ -13,12 +15,12 @@ namespace GXGame.Runtime
 
         public override bool ShouldActivate()
         {
-            return Owner.GetAtkCompCountdown() != null;
+            return Owner.GetAtkCountdownComp() != null;
         }
 
         public override bool ShouldDeactivate()
         {
-            return Owner.GetAtkCompCountdown() == null;
+            return Owner.GetAtkCountdownComp() == null;
         }
 
         public override void OnActivated()
@@ -35,12 +37,12 @@ namespace GXGame.Runtime
 
         public override void TickActive(float delatTime, float realElapseSeconds)
         {
-            var x = Owner.GetAtkCompCountdown().Value;
+            var x = Owner.GetAtkCountdownComp().Value;
             x -= delatTime;
-            Owner.SetAtkCompCountdown(x);
+            Owner.SetAtkCountdownComp(x);
             if (x <= 0)
             {
-                Owner.RemoveComponent(ComponentsID<GXGame.AtkCompCountdown>.TID);
+                Owner.RemoveComponent(ComponentsID<GXGame.AtkCountdownComp>.TID);
                 Owner.AddOrSetAtkOverComp(1);
             }
         }
