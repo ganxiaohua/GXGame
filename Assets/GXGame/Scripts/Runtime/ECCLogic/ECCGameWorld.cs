@@ -10,7 +10,7 @@ namespace GXGame.Runtime
         public override void OnInitialize(int compCount)
         {
             base.OnInitialize(compCount);
-            InitCapabilitys(AllCapability.TotallCapabiltys, CapabilityTags.Tag_Count, estimateChild);
+            InitCapabilitys(AllCapabilitys.TotallCapabiltys, CapabilityTags.Tag_Count, estimateChild);
             EstimateChildsCount(estimateChild);
             CreateMap();
             CreatePlayer();

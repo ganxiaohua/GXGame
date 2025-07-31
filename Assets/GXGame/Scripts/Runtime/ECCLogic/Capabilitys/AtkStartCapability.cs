@@ -27,13 +27,10 @@ namespace GXGame.Runtime
         {
             base.OnActivated();
         }
-
         public override void OnDeactivated()
         {
             base.OnDeactivated();
         }
-
-
         public override void TickActive(float delatTime, float realElapseSeconds)
         {
             if (Input.GetKeyDown(KeyCode.J))
