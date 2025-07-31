@@ -8,9 +8,9 @@ namespace GXGame.Runtime
     {
         private Group group;
 
-        public override void Init(SHWorld world, EffEntity owner, int id)
+        public override void Init(SHWorld world, EffEntity owner)
         {
-            base.Init(world, owner, id);
+            base.Init(world, owner);
             Matcher matcher = Matcher.SetAll(ComponentsID<Monster>.TID);
             group = world.GetGroup(matcher);
         }

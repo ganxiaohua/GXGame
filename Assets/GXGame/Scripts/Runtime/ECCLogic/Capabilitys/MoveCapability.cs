@@ -9,9 +9,9 @@ namespace GXGame.Runtime
         public override int TickGroupOrder { get; protected set; } = CapabilityGroupOrder.Move;
         private int[] keyDir = new[] {0, -1, 1};
 
-        public override void Init(SHWorld world, EffEntity owner, int id)
+        public override void Init(SHWorld world, EffEntity owner)
         {
-            base.Init(world, owner, id);
+            base.Init(world, owner);
             owner.AddLocalScale(Vector3.one);
             owner.AddFaceDirection(Vector2.right);
             owner.AddWorldPos(Vector3.zero);
