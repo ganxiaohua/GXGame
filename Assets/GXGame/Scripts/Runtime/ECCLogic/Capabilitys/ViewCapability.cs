@@ -8,11 +8,10 @@ namespace GXGame.Runtime
     {
         private Camera camera;
 
-        public override void Init(SHWorld world, EffEntity owner)
+        public override void Init(int id, SHWorld world, EffEntity owner)
         {
-            base.Init(world, owner);
+            base.Init(id, world, owner);
         }
-
 
         public override bool ShouldActivate()
         {
