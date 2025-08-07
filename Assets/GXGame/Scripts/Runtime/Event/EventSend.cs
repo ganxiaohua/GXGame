@@ -3,16 +3,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using GameFrame.Runtime;
-using GXGame;
 
-namespace Eden.Gameplay.Runtime
+namespace Gameplay.Runtime
 {
     public class EventSend : Singleton<EventSend>
     {
        
         public void FireTestEvent1(System.String key)
         {
-            var allEntity = EventData.Instance.GetEntity(typeof(ITestEvent1));
+            var allEntity = EventData.Instance.GetEntity(typeof(GXGame.ITestEvent1));
             if (allEntity == null)
             {
                 return;
@@ -21,7 +20,7 @@ namespace Eden.Gameplay.Runtime
             {
                 if (entity.State == IEntity.EntityState.IsRunning)
                 {
-                    ((ITestEvent1) entity).Test(key);
+                    ((GXGame.ITestEvent1) entity).Test(key);
                 }
             }
         }

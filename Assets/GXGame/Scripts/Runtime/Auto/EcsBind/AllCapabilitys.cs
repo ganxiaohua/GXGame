@@ -3,7 +3,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using GameFrame.Runtime;
-public static class AllCapabilitys {
+public static class AllCapability {
  
     public static readonly int TotallCapabiltys = Order();
     
