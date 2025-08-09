@@ -8,11 +8,11 @@ namespace GXGame.Runtime
     {
         private Group group;
 
-        public override void Init(int id, ECCWorld world, EffEntity owner)
+
+        protected override void OnInit()
         {
-            base.Init(id, world, owner);
             Matcher matcher = Matcher.SetAll(ComponentsID<Monster>.TID);
-            group = world.GetGroup(matcher);
+            group = World.GetGroup(matcher);
         }
 
         public override bool ShouldActivate()

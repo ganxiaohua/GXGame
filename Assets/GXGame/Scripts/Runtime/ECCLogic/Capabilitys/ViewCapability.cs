@@ -7,11 +7,7 @@ namespace GXGame.Runtime
     public class ViewCapability : CapabilityBase
     {
         private Camera camera;
-
-        public override void Init(int id, ECCWorld world, EffEntity owner)
-        {
-            base.Init(id, world, owner);
-        }
+        
 
         public override bool ShouldActivate()
         {

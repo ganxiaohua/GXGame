@@ -9,13 +9,12 @@ namespace GXGame.Runtime
         public override int TickGroupOrder { get; protected set; } = CapabilityGroupOrder.Move;
         private int[] keyDir = new[] {0, -1, 1};
 
-        public override void Init(int id, ECCWorld world, EffEntity owner)
+        protected override void OnInit()
         {
-            base.Init(id, world, owner);
-            owner.AddLocalScale(Vector3.one);
-            owner.AddFaceDirection(Vector2.right);
-            owner.AddWorldPos(Vector3.zero);
-            owner.AddMoveSpeed(5);
+            Owner.AddLocalScale(Vector3.one);
+            Owner.AddFaceDirection(Vector2.right);
+            Owner.AddWorldPos(Vector3.zero);
+            Owner.AddMoveSpeed(5);
             TagList = new List<int>();
             TagList.Add(CapabilityTags.Tag_Move);
         }

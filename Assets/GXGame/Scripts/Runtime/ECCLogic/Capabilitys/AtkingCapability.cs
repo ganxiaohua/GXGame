@@ -7,12 +7,7 @@ namespace GXGame.Runtime
     public class AtkingCapability : CapabilityBase
     {
         public override int TickGroupOrder { get; protected set; } = CapabilityGroupOrder.Atk + 1;
-
-        public override void Init(int id, ECCWorld world, EffEntity owner)
-        {
-            base.Init(id, world, owner);
-        }
-
+        
         public override bool ShouldActivate()
         {
             return Owner.GetAtkCountdownComp() != null;
