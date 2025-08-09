@@ -21,7 +21,7 @@ namespace GXGame
 
         private string value;
 
-        private GXGameObject gxGameObject;
+        private GameObjectProxy gxGameObject;
         private AsyncLoadAsset<Object> asyncLoadAsset;
         private BehaviourTreeOwner behaviourTreeOwner;
         private Blackboard blackboard;
@@ -30,10 +30,9 @@ namespace GXGame
         {
             if (gxGameObject == null)
             {
-                gxGameObject = new GXGameObject();
-                gxGameObject.BindFromEmpty();
-                gxGameObject.Go.name = Owner.Name;
-                behaviourTreeOwner = gxGameObject.Go.AddComponent<BehaviourTreeOwner>();
+                gxGameObject = GameObjectProxyPool.Instance.Spawn();
+                gxGameObject.gameObject.name = Owner.Name;
+                behaviourTreeOwner = gxGameObject.gameObject.AddComponent<BehaviourTreeOwner>();
                 blackboard = behaviourTreeOwner.gameObject.AddComponent<Blackboard>();
                 blackboard.AddVariable("Entity", Owner);
                 behaviourTreeOwner.blackboard = blackboard;
@@ -45,7 +44,8 @@ namespace GXGame
 
         private void LoadOver(List<Object> assets)
         {
-            gxGameObject.BindFromEmpty(Main.BTOLayer);
+            gxGameObject = GameObjectProxyPool.Instance.Spawn();
+            gxGameObject.gameObject.transform.parent = Main.BTOLayer;
             var graph = (BehaviourTree) assets[0];
             behaviourTreeOwner.graph = graph;
             graph.UpdateReferences(behaviourTreeOwner, blackboard, true);

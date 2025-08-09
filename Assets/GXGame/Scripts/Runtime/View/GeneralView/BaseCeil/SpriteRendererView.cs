@@ -16,7 +16,7 @@ namespace GXGame
         protected override async UniTask WaitLoadOver()
         {
             await base.WaitLoadOver();
-            m_SpriteRenderer = GameObjectView.GXGO.Go.GetComponent<SpriteRenderer>();
+            m_SpriteRenderer = GameObjectView.GXGO.gameObject.GetComponentInChildren<SpriteRenderer>();
         }
 
 

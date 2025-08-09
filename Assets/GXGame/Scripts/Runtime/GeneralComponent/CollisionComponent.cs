@@ -10,29 +10,28 @@ namespace GXGame
     /// </summary>
     public class CollisionBox : EffComponent
     {
-        public GXGameObject Value;
+        public GameObjectProxy Value;
 
-        public static GXGameObject Create(EffEntity effEntity, LayerMask layerMask)
+        public static GameObjectProxy Create(EffEntity effEntity, LayerMask layerMask)
         {
-            var value = new GXGameObject();
-            value.BindFromEmpty(Main.CollisionLayer);
-            value.Go.name = effEntity.Name;
-            value.Go.layer = layerMask;
-            var box = value.Go.AddComponent<BoxCollider2D>();
-            value.Go.AddComponent<CollisionEntity>().Entity = effEntity;
+            var value = GameObjectProxyPool.Instance.Spawn();
+            value.transform.parent = Main.CollisionLayer;
+            value.transform.name = effEntity.Name;
+            value.gameObject.layer = layerMask;
+            var box = value.gameObject.AddComponent<BoxCollider2D>();
+            value.gameObject.AddComponent<CollisionEntity>().Entity = effEntity;
             box.size = Vector2.one * 0.5f;
-            value.position = effEntity.GetWorldPos().Value;
+            value.transform.position = effEntity.GetWorldPos().Value;
             return value;
         }
 
         public override void Dispose()
         {
-            var box = Value.Go.GetComponent<BoxCollider2D>();
+            var box = Value.gameObject.GetComponent<BoxCollider2D>();
             Object.Destroy(box);
-            var entity = Value.Go.GetComponent<CollisionEntity>();
+            var entity = Value.gameObject.GetComponent<CollisionEntity>();
             Object.Destroy(entity);
-            Value.Unbind();
-            Value = null;
+            GameObjectProxyPool.Instance.UnSpawn(Value);
         }
     }
 

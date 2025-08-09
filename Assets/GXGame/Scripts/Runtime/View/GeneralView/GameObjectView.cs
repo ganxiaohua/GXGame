@@ -8,9 +8,9 @@ namespace GXGame
     public abstract class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale, ILocalPosition, ILocalRotate
     {
         protected EffEntity BindEntity;
-        private GXGameObject m_GXGO;
+        private GameObjectProxy mGxgo;
         private UniTaskCompletionSource m_UniTaskCompletionSource;
-        public GXGameObject GXGO => m_GXGO;
+        public GameObjectProxy GXGO => mGxgo;
 
         public bool LoadingOver { get; private set; }
 
@@ -22,10 +22,10 @@ namespace GXGame
         protected async UniTaskVoid Load(string path)
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
-            m_GXGO = new GXGameObject();
+            mGxgo = GameObjectProxyPool.Instance.Spawn();
             m_UniTaskCompletionSource = new UniTaskCompletionSource();
             LoadingOver = false;
-            bool success = await m_GXGO.BindFromAssetAsync(path, Main.ViewLayer);
+            bool success = await mGxgo.BindFromAssetAsync(path, Main.ViewLayer);
             if (!success)
             {
                 m_UniTaskCompletionSource?.TrySetCanceled();
@@ -55,9 +55,7 @@ namespace GXGame
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
             m_UniTaskCompletionSource = null;
-
-            m_GXGO.Unbind();
-            m_GXGO = null;
+            GameObjectProxyPool.Instance.UnSpawn(mGxgo);
             BindEntity = null;
             LoadingOver = false;
         }
@@ -69,27 +67,27 @@ namespace GXGame
 
         public virtual void LocalPosition(LocalPos localPos)
         {
-            m_GXGO.localPosition = localPos.Value;
+            mGxgo.LocalPosition = localPos.Value;
         }
 
         public virtual void LocalRotate(LocalRotate localRotate)
         {
-            m_GXGO.localRotation = localRotate.Value;
+            mGxgo.LocalRotation = localRotate.Value;
         }
 
         public virtual void WolrdPosition(WorldPos worldPos)
         {
-            m_GXGO.position = worldPos.Value;
+            mGxgo.Position = worldPos.Value;
         }
 
         public virtual void WorldRotate(WorldRotate worldRotate)
         {
-            m_GXGO.rotation = worldRotate.Value;
+            mGxgo.Rotation = worldRotate.Value;
         }
 
         public virtual void LocalScale(LocalScale localScale)
         {
-            m_GXGO.scale = localScale.Value;
+            mGxgo.scale = localScale.Value;
         }
     }
 }

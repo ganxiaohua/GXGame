@@ -32,7 +32,7 @@ namespace GXGame
         {
             if (!GameObjectView.LoadingOver) return;
             if (m_MeshRenderer == null)
-                m_MeshRenderer = GameObjectView.GXGO.Go.GetComponent<MeshRenderer>();
+                m_MeshRenderer = GameObjectView.GXGO.gameObject.GetComponentInChildren<MeshRenderer>();
             if (m_MeshRenderer == null) return;
             var useShareMaterial = BindEntity.GetUseShareMaterial();
             if (useShareMaterial != null)

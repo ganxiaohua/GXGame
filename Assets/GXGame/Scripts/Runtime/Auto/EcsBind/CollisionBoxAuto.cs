@@ -12,7 +12,7 @@ public static partial class AutoCollisionBox
         effEntity.AddComponent<GXGame.CollisionBox>();
     }
     
-    public static void AddCollisionBox(this EffEntity effEntity,Common.Runtime.GXGameObject param)
+    public static void AddCollisionBox(this EffEntity effEntity,GameObjectProxy param)
     {
         var p  =  (GXGame.CollisionBox)effEntity.AddComponent<GXGame.CollisionBox>();
         p.Value = param;
@@ -23,7 +23,7 @@ public static partial class AutoCollisionBox
         return (GXGame.CollisionBox)effEntity.GetComponent(ComponentsID<GXGame.CollisionBox>.TID);
     }
      
-    public static EffEntity SetCollisionBox(this EffEntity effEntity,Common.Runtime.GXGameObject param)
+    public static EffEntity SetCollisionBox(this EffEntity effEntity,GameObjectProxy param)
     {
         var p = (GXGame.CollisionBox)effEntity.GetComponent(ComponentsID<GXGame.CollisionBox>.TID);
         p.Value = param;
@@ -32,7 +32,7 @@ public static partial class AutoCollisionBox
         return effEntity;
     }
     
-    public static EffEntity AddOrSetCollisionBox(this EffEntity effEntity,Common.Runtime.GXGameObject param)
+    public static EffEntity AddOrSetCollisionBox(this EffEntity effEntity,GameObjectProxy param)
     {
         var p = (GXGame.CollisionBox)effEntity.GetComponent(ComponentsID<GXGame.CollisionBox>.TID);
         if(p==null)
