@@ -146,7 +146,34 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: AssemblyNames
+    - Name: $v
+      Entry: 7
+      Data: 3|System.String[], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 1
+      Data: GamePlay.Runtime
+    - Name: 
+      Entry: 1
+      Data: GameFrame.Runtime
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

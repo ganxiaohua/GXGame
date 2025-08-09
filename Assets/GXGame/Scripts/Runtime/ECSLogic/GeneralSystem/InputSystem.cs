@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class InputSystem : IInitializeSystem<World>, IUpdateSystem
+    public class InputSystem : SimpleEntity, IInitializeSystem<World>, IUpdateSystem
     {
         private Vector3 inputPos;
         private Group group;
@@ -59,11 +59,6 @@ namespace GXGame
                 entity.SetFaceDirection(inputPos);
                 entity.SetMoveDirection(inputPos);
             }
-        }
-
-
-        public void Dispose()
-        {
         }
     }
 }

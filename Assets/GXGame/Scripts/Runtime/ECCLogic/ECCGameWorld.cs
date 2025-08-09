@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GXGame.Runtime
 {
-    public class ECCGameWorld : SHWorld
+    public class ECCGameWorld : ECCWorld
     {
         private int estimateChild = 200;
 

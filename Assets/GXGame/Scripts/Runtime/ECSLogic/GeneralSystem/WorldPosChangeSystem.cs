@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GXGame
 {
-    public class WorldPosChangeSystem : IInitializeSystem<World>, IUpdateSystem
+    public class WorldPosChangeSystem : SimpleEntity, IInitializeSystem<World>, IUpdateSystem
     {
         private Group group;
         private World world;
@@ -32,10 +32,6 @@ namespace GXGame
                 pos += (dir.normalized * distance);
                 entity.SetWorldPos(pos);
             }
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

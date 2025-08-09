@@ -14,9 +14,9 @@ namespace GXGame
         {
             SetCamera();
             //这里是走ecs路线
-            // AddComponent<ECSGameWorld, int>(AllComponents.TotalComponents);
+            AddComponent<ECSGameWorld, int>(AllComponents.TotalComponents);
             //这里是走ecc路线
-            AddComponent<ECCGameWorld, int>(AllComponents.TotalComponents);
+            // AddComponent<ECCGameWorld, int>(AllComponents.TotalComponents);
             QualitySettings.vSyncCount = 0;
             UIManager.Instance.OpenUI(typeof(UICardListWindow), "input (自定义数据)");
             EventSend.Instance.FireTestEvent1("发送一个事件");

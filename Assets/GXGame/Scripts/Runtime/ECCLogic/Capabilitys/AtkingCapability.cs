@@ -8,7 +8,7 @@ namespace GXGame.Runtime
     {
         public override int TickGroupOrder { get; protected set; } = CapabilityGroupOrder.Atk + 1;
 
-        public override void Init(int id, SHWorld world, EffEntity owner)
+        public override void Init(int id, ECCWorld world, EffEntity owner)
         {
             base.Init(id, world, owner);
         }

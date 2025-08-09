@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GXGame.Runtime
 {
-    public class ECSGameWorld : World
+    public class ECSGameWorld : ECSWorld
     {
         private int otherCount = 2;
         private int monsterCount = 5000;
@@ -12,15 +12,16 @@ namespace GXGame.Runtime
         {
             base.OnInitialize(totalComponents);
             EstimateChildsCount(monsterCount + otherCount);
-            this.AddSystem<ViewBaseSystem>();
-            this.AddSystem<ViewUpdateSystem>();
-            this.AddSystem<CollisionSystem>();
-            this.AddSystem<CollisionBehaviorSystem>();
-            this.AddSystem<WorldPosChangeSystem>();
-            this.AddSystem<CountDowntSystem>();
-            this.AddSystem<InputSystem>();
+            // add
+            AddSystem<ViewBaseSystem>();
+            AddSystem<ViewUpdateSystem>();
+            AddSystem<CollisionSystem>();
+            AddSystem<CollisionBehaviorSystem>();
+            AddSystem<WorldPosChangeSystem>();
+            AddSystem<CountDowntSystem>();
+            AddSystem<InputSystem>();
             //最后执行
-            this.AddSystem<DestroyBaseSystem>();
+            AddSystem<DestroyBaseSystem>();
             CreateMap();
             CreatePlayer();
         }

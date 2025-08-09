@@ -3,7 +3,7 @@
 
 namespace GXGame
 {
-    public class ViewUpdateSystem : IInitializeSystem<World>, IUpdateSystem
+    public class ViewUpdateSystem : SimpleEntity, IInitializeSystem<World>, IUpdateSystem
     {
         private Group viewGroup;
 
@@ -18,7 +18,6 @@ namespace GXGame
             ViewGroupUpdate(elapseSeconds, realElapseSeconds);
         }
 
-
         private void ViewGroupUpdate(float elapseSeconds, float realElapseSeconds)
         {
             foreach (var entity in viewGroup)
@@ -26,10 +25,6 @@ namespace GXGame
                 var view = entity.GetView();
                 view.Value.OnUpdate(elapseSeconds, realElapseSeconds);
             }
-        }
-
-        public void Dispose()
-        {
         }
     }
 }

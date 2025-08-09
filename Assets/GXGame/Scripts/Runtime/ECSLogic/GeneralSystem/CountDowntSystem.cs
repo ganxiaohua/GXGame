@@ -2,7 +2,7 @@
 
 namespace GXGame
 {
-    public class CountDowntSystem : IInitializeSystem<World>, IUpdateSystem
+    public class CountDowntSystem : SimpleEntity, IInitializeSystem<World>, IUpdateSystem
     {
         private Group atkIntervalGroup;
         private Group destroyCountGroup;
@@ -73,10 +73,6 @@ namespace GXGame
 
                 entity.SetLateSkillComponent(time);
             }
-        }
-
-        public void Dispose()
-        {
         }
     }
 }
