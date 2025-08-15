@@ -7,7 +7,8 @@ namespace GXGame
         public override void OnEnter(FsmController fsmController)
         {
             base.OnEnter(fsmController);
-            SceneFactory.ChangePlayerScene<GameScene>(this);
+            SceneFactory.ChangePlayerScene<GameScene>();
+            ((Entity) fsmController.Parent).RemoveComponent(fsmController);
         }
     }
 }
