@@ -11,7 +11,7 @@ namespace GXGame.Editor
     {
         private static void CreateSpriteClip(List<Sprite> sprites, string path)
         {
-            OpFile.CreateDiectory(path);
+            OpFile.CreateDirectory(path);
             AnimationClip clip = new AnimationClip();
             EditorCurveBinding curveBinding = new EditorCurveBinding();
             curveBinding.type = typeof(SpriteRenderer);
@@ -55,7 +55,7 @@ namespace GXGame.Editor
 
         private static AnimatorController CreateAnimtorController(List<Data.AnimatorType> aimationClipType, string path, string rolePath)
         {
-            OpFile.CreateDiectory(path);
+            OpFile.CreateDirectory(path);
             AssetDatabase.DeleteAsset(path);
             AnimatorController animator = new AnimatorController();
             AssetDatabase.CreateAsset(animator, path);

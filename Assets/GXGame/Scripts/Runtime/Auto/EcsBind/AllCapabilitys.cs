@@ -14,8 +14,9 @@ public static class AllCapability {
         orderTid =  CapabilityID<GXGame.Runtime.AtkStartCapability,IUpdateSystem>.TID;
         orderTid =  CapabilityID<GXGame.Runtime.AtkingCapability,IUpdateSystem>.TID;
         orderTid =  CapabilityID<GXGame.Runtime.MoveCapability,IUpdateSystem>.TID;
+        orderTid =  CapabilityID<GameFrame.Runtime.DestroyCapability,IUpdateSystem>.TID;
 
 
-       return 5;
+       return 6;
     }
 }

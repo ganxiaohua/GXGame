@@ -123,7 +123,7 @@ namespace GXGame.Editor
                 string assetPath = AssetDatabase.GetAssetPath(RooteTexture2D);
                 string textureName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
                 string targetPath = $"{OutPutPath}/{textureName}/Prefab/{textureName}.prefab";
-                OpFile.CreateDiectory(targetPath);
+                OpFile.CreateDirectory(targetPath);
                 AssetDatabase.DeleteAsset(targetPath);
                 AssetDatabase.CopyAsset("Assets/GXGame/Art/Editor/Template/RoleTemplate.prefab", targetPath);
                 GameObject go = AssetDatabase.LoadAssetAtPath<GameObject>(targetPath);
