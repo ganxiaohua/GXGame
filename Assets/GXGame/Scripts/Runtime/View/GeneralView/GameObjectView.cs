@@ -1,10 +1,14 @@
-﻿using Common.Runtime;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using GameFrame.Runtime;
 using UnityEngine;
 
 namespace GXGame
 {
+    /// <summary>
+    /// 这是一个早期方案，新方案是直接继承GameObjectProxy
+    /// 删除 IWolrdPosition, IWorldRotate, ILocalScale, ILocalPosition, ILocalRotate
+    /// 这样更好。因为绝大多数插件需要一个GameObject
+    /// </summary>
     public abstract class GameObjectView : IEceView, IWolrdPosition, IWorldRotate, ILocalScale, ILocalPosition, ILocalRotate
     {
         protected EffEntity BindEntity;
