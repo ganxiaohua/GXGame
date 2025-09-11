@@ -18,7 +18,7 @@ namespace GXGame
             BTOLayer = transform.Find("BTOLayer");
             AutoBindEvent.AddSystem();
             await GXGameFrame.Instance.Init();
-            GXGameFrame.Instance.RootEntity.AddComponent<GameProcess>();
+            GXGameFrame.Instance.AddFsmComponents(typeof(GameProcess));
         }
     }
 }

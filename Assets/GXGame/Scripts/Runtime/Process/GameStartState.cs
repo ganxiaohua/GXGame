@@ -8,7 +8,7 @@ namespace GXGame
         {
             base.OnEnter(fsmController);
             SceneFactory.ChangePlayerScene<GameScene>();
-            ((Entity) fsmController.Parent).RemoveComponent(fsmController);
+            GXGameFrame.Instance.RemoveFsmComponents(fsmController);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GXGame.Runtime
             CreateMap();
             CreatePlayer();
             CreateMonster();
+            Debug.Log("<color=green>按J进行攻击</color>");
         }
 
         private void CreateMap()
