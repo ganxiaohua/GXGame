@@ -22,7 +22,7 @@ namespace GXGame.Runtime.SequenceFrame
             walkWithBelow = ReferencePool.Acquire<SequenceFrame>();
         }
 
-        private void LoadOver(List<SequenceFrameSO> so)
+        private void LoadOver(ArrayEx<SequenceFrameSO> so)
         {
             sequenceFrameSo = so[0];
             walkWithForward.Initialize(sequenceFrameSo.WalkWithForwardPath);

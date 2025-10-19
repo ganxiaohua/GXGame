@@ -42,7 +42,7 @@ namespace GXGame
             asyncLoadAsset.LoadAsset(value);
         }
 
-        private void LoadOver(List<Object> assets)
+        private void LoadOver(ArrayEx<Object> assets)
         {
             gxGameObject = GameObjectProxyPool.Instance.Spawn();
             gxGameObject.gameObject.transform.parent = Main.BTOLayer;
