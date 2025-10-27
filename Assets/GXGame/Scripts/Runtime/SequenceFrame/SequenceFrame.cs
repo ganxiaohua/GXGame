@@ -10,7 +10,7 @@ namespace GXGame.Runtime.SequenceFrame
         private int spriteIndex = 0;
         private float interval = 0;
         private float time;
-        private ArrayEx<Sprite> sequenceFrame;
+        private List<Sprite> sequenceFrame;
         private AsyncLoadAsset<Sprite> sequenceFrameLoader;
         private List<string> spritePaths;
 
@@ -24,7 +24,7 @@ namespace GXGame.Runtime.SequenceFrame
             sequenceFrameLoader.LoadAssets(spritePaths);
         }
 
-        private void LoadOver(ArrayEx<Sprite> sprites)
+        private void LoadOver(List<Sprite> sprites)
         {
             sequenceFrame = sprites;
         }

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Common.Runtime;
 using GameFrame.Runtime;
 using NodeCanvas.BehaviourTrees;
 using NodeCanvas.Framework;
@@ -42,7 +41,7 @@ namespace GXGame
             asyncLoadAsset.LoadAsset(value);
         }
 
-        private void LoadOver(ArrayEx<Object> assets)
+        private void LoadOver(List<Object> assets)
         {
             gxGameObject = GameObjectProxyPool.Instance.Spawn();
             gxGameObject.gameObject.transform.parent = Main.BTOLayer;
