@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Common.Runtime;
 using GameFrame.Runtime;
 using UnityEngine;
 
@@ -14,7 +13,8 @@ namespace GXGame
 
         public static GameObjectProxy Create(EffEntity effEntity, LayerMask layerMask)
         {
-            var value = GameObjectProxyPool.Instance.Spawn();
+            var value = ReferencePool.Acquire<GameObjectProxy>();
+            value.Initialize();
             value.transform.parent = Main.CollisionLayer;
             value.transform.name = effEntity.Name;
             value.gameObject.layer = layerMask;
@@ -31,7 +31,7 @@ namespace GXGame
             Object.Destroy(box);
             var entity = Value.gameObject.GetComponent<CollisionEntity>();
             Object.Destroy(entity);
-            GameObjectProxyPool.Instance.UnSpawn(Value);
+            ReferencePool.Release(Value);
         }
     }
 

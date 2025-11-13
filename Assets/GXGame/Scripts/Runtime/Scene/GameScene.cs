@@ -1,5 +1,5 @@
 using GameFrame.Runtime;
-using Gameplay.Runtime;
+using GamePlay.Runtime;
 using GXGame.Runtime;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -18,7 +18,7 @@ namespace GXGame
             //这里是走ecc路线
             AddComponent<ECCGameWorld, int>(AllComponents.TotalComponents);
             QualitySettings.vSyncCount = 0;
-            EventSend.Instance.FireTestEvent1("发送一个事件");
+            // EventSend.Instance
         }
 
         private void SetCamera()

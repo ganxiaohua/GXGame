@@ -3,14 +3,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using GameFrame.Runtime;
-
-public static class AutoBindEvent
+namespace GamePlay.Runtime
 {
-    public static void AddSystem()
+    public static class AutoBindEvent
     {
-        var  eventData =  EventData.Instance;
-        
-        // eventData.AddSourceDic(typeof(GXGame.UICardListWindow),typeof(GXGame.ITestEvent1));
+        public static void AddSystem()
+        {
+            var  eventData =  EventData.Instance;
+            
+        }
     }
 }
-

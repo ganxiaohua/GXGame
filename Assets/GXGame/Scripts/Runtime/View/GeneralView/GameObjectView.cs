@@ -26,7 +26,8 @@ namespace GXGame
         protected async UniTaskVoid Load(string path)
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
-            mGxgo = GameObjectProxyPool.Instance.Spawn();
+            mGxgo = ReferencePool.Acquire<GameObjectProxy>();
+            mGxgo.Initialize();
             m_UniTaskCompletionSource = new UniTaskCompletionSource();
             LoadingOver = false;
             bool success = await mGxgo.BindFromAssetAsync(path, Main.ViewLayer);
@@ -59,7 +60,7 @@ namespace GXGame
         {
             m_UniTaskCompletionSource?.TrySetCanceled();
             m_UniTaskCompletionSource = null;
-            GameObjectProxyPool.Instance.UnSpawn(mGxgo);
+            ReferencePool.Release(mGxgo);
             BindEntity = null;
             LoadingOver = false;
         }

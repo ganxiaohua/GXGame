@@ -29,7 +29,8 @@ namespace GXGame
         {
             if (gxGameObject == null)
             {
-                gxGameObject = GameObjectProxyPool.Instance.Spawn();
+                gxGameObject = ReferencePool.Acquire<GameObjectProxy>();
+                gxGameObject.Initialize();
                 gxGameObject.gameObject.name = Owner.Name;
                 behaviourTreeOwner = gxGameObject.gameObject.AddComponent<BehaviourTreeOwner>();
                 blackboard = behaviourTreeOwner.gameObject.AddComponent<Blackboard>();
@@ -43,7 +44,7 @@ namespace GXGame
 
         private void LoadOver(List<Object> assets)
         {
-            gxGameObject = GameObjectProxyPool.Instance.Spawn();
+            ReferencePool.Release(gxGameObject);
             gxGameObject.gameObject.transform.parent = Main.BTOLayer;
             var graph = (BehaviourTree) assets[0];
             behaviourTreeOwner.graph = graph;
