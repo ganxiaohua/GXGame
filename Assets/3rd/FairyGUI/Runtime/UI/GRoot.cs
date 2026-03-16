@@ -33,17 +33,6 @@ namespace FairyGUI
         GObject _tooltipWin;
         GObject _defaultTooltipWin;
 
-        /// <summary>
-        /// 是否忽略对象本身的OnClick事件
-        /// true:忽略,表示无论点击对象是否有onclick事件，都会执行CustomPopups中的回调
-        /// false:处理CustomPopups事件时，如果点击对象本身有onclick事件，则不进行处理
-        /// </summary>
-        public bool overlookTargetClick = true;
-        /// <summary>
-        /// 自定义Popups
-        /// </summary>
-        Dictionary<GObject, EventCallback0> _CustomPopups;
-        HashSet<GObject> _excludePopus;
         internal static GRoot _inst;
         public static GRoot inst
         {
@@ -56,6 +45,15 @@ namespace FairyGUI
             }
         }
 
+
+#if UNITY_2019_3_OR_NEWER
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void InitializeOnLoad()
+        {
+            _inst = null;
+        }
+#endif
+
         public GRoot()
         {
             this.name = this.rootContainer.name = this.rootContainer.gameObject.name = "GRoot";
@@ -64,8 +62,6 @@ namespace FairyGUI
             _popupStack = new List<GObject>();
             _justClosedPopups = new List<GObject>();
             _specialPopups = new HashSet<GObject>();
-            _excludePopus = new HashSet<GObject>();
-            _CustomPopups = new Dictionary<GObject, EventCallback0>();  //初始化定义CustomPopups
 
             Stage.inst.onTouchBegin.AddCapture(__stageTouchBegin);
             Stage.inst.onTouchEnd.AddCapture(__stageTouchEnd);
@@ -137,7 +133,6 @@ namespace FairyGUI
             AddChild(win);
             AdjustModalLayer();
         }
-
 
         /// <summary>
         /// Call window.Hide
@@ -518,18 +513,6 @@ namespace FairyGUI
                 }
             }
 
-            if (dir == PopupDirection.Left)
-            {
-                xx = pos.x - popup.width;
-                yy = pos.y - popup.height + size.y;
-            }
-            else if (dir == PopupDirection.Right)
-            {
-                xx = pos.x + size.x;
-                yy = pos.y - popup.height + size.y;
-            }
-
-
             return new Vector2(Mathf.RoundToInt(xx), Mathf.RoundToInt(yy));
         }
 
@@ -767,7 +750,6 @@ namespace FairyGUI
                 HideTooltips();
 
             CheckPopups(true);
-            CheckCustomPopups();
         }
 
         void __stageTouchEnd(EventContext context)
@@ -869,80 +851,6 @@ namespace FairyGUI
         {
             get { return Stage.inst.soundVolume; }
             set { Stage.inst.soundVolume = value; }
-        }
-
-
-        /// <summary>
-        /// 增加一个自定义的GObject Popups，如果不是点击改obj，则会调用Callback方法
-        /// </summary>
-        /// <param name="targetObj">目标obj</param>
-        /// <param name="callback">回调方法</param>
-        public void AddCustomPopups(GObject targetObj, EventCallback0 callback)
-        {   
-            if (!_CustomPopups.ContainsKey(targetObj))
-                _CustomPopups.Add(targetObj, callback);
-        }
-
-          /// <summary>
-        /// 增加一个自定义的GObject Popups，如果不是点击改obj，则会调用Callback方法
-        /// </summary>
-        /// <param name="targetObj">目标obj</param>
-        /// <param name="callback">回调方法</param>
-        public void AddCustomPopups(GObject targetObj, EventCallback0 callback, GObject excludePopus)
-        {   
-            _excludePopus.Add(excludePopus);
-
-            if (!_CustomPopups.ContainsKey(targetObj))
-                _CustomPopups.Add(targetObj, callback);
-        }
-
-
-        /// <summary>
-        /// 清除自定义Popups
-        /// </summary>
-        public void ClearCustomPopups()
-        {
-            _CustomPopups.Clear();
-        }
-
-
-        /// <summary>
-        /// 检查自定义Popups
-        /// </summary>
-        void CheckCustomPopups()
-        {
-            if (_CustomPopups.Count > 0)
-            {
-                DisplayObject mc = Stage.inst.touchTarget as DisplayObject;
-                bool handled = false;
-
-                if (handled == false)
-                {
-                    while (mc != Stage.inst && mc != null)
-                    {
-                        if (mc.gOwner != null)
-                        {
-                            if (_CustomPopups.ContainsKey(mc.gOwner) ||_excludePopus.Contains(mc.gOwner)|| (overlookTargetClick == false && !mc.gOwner.onClick.isEmpty))
-                            {
-                                //是否点击的为自定义组中的成员
-                                handled = true;
-                                break;
-                            }
-
-                        }
-                        mc = mc.parent;  //显示父级
-                    }
-                }
-                if (!handled)
-                {
-                    //未点击到执行回调
-                    foreach (var item in _CustomPopups)
-                    {
-                        item.Value();
-                    }
-                    _CustomPopups.Clear();  
-                }
-            }
         }
     }
 }

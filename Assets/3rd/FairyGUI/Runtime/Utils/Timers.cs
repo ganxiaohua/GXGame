@@ -35,14 +35,21 @@ namespace FairyGUI
             }
         }
 
+#if UNITY_2019_3_OR_NEWER
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void InitializeOnLoad()
+        {
+            _inst = null;
+        }
+#endif
+
         public Timers()
         {
             _inst = this;
             gameObject = new GameObject("[FairyGUI.Timers]");
             gameObject.hideFlags = HideFlags.HideInHierarchy;
             gameObject.SetActive(true);
-            if (Application.isPlaying)
-                Object.DontDestroyOnLoad(gameObject);
+            Object.DontDestroyOnLoad(gameObject);
 
             _engine = gameObject.AddComponent<TimersEngine>();
 

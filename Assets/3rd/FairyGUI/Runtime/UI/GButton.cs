@@ -573,8 +573,6 @@ namespace FairyGUI
         {
             if (context.inputEvent.button != 0)
                 return;
-            // //防止穿透
-            // context.StopPropagation();
 
             _down = true;
             context.CaptureTouch();

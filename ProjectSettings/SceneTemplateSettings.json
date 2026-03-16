@@ -84,7 +84,7 @@
         {
             "userAdded": false,
             "type": "UnityEditor.SceneAsset",
-            "defaultInstantiationMode": 1
+            "defaultInstantiationMode": 0
         },
         {
             "userAdded": false,

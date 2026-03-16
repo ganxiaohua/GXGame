@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - 'Obstacle '
+  - Monster
   layers:
   - Default
   - TransparentFX
@@ -11,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Object
-  - Wall
+  - CollisionAndOperatedDetection
+  - OperatedDetection
+  - Collision
   - 
   - 
   - 

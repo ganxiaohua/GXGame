@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks.Internal;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Cysharp.Threading.Tasks.Linq
@@ -18,7 +19,7 @@ namespace Cysharp.Threading.Tasks.Linq
     {
         internal static async UniTask<TSource[]> ToArrayAsync<TSource>(IUniTaskAsyncEnumerable<TSource> source, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             TSource[] result = default;

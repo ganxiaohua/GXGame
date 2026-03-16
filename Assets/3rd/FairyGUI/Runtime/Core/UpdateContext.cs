@@ -214,7 +214,7 @@ namespace FairyGUI
             rectMaskDepth = clipInfo.rectMaskDepth;
             clipped = stencilReferenceValue != 0 || rectMaskDepth != 0;
         }
-        
+
         public void ApplyClippingProperties(Material mat, bool isStdMaterial)
         {
             if (rectMaskDepth > 0) //在矩形剪裁下，且不是遮罩对象
@@ -223,8 +223,6 @@ namespace FairyGUI
                 if (clipInfo.soft)
                     mat.SetVector(ShaderConfig.ID_ClipSoftness, clipInfo.softness);
             }
-            
-
 
             if (stencilReferenceValue > 0)
             {
@@ -308,5 +306,14 @@ namespace FairyGUI
                 }
             }
         }
+
+#if UNITY_2019_3_OR_NEWER
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void InitializeOnLoad()
+        {
+            OnBegin = null;
+            OnEnd = null;
+        }
+#endif
     }
 }

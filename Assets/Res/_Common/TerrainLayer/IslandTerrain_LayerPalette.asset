@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c509dbaa7b6f416409e3195321a2187e, type: 3}
+  m_Name: IslandTerrain_LayerPalette
+  m_EditorClassIdentifier: 
+  PaletteLayers:
+  - {fileID: 8574412962073106934, guid: 63d6905242db20e4b9a713547a3de471, type: 2}
+  - {fileID: 8574412962073106934, guid: a1aca0473c8385942a4585b85ae6cd3b, type: 2}
+  - {fileID: 8574412962073106934, guid: be6d732c40216fc4980d081139d1568a, type: 2}
+  - {fileID: 8574412962073106934, guid: e467ed8dd5bfac646a7a1cab2de3893f, type: 2}

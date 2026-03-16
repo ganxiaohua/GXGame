@@ -1036,11 +1036,6 @@ namespace FairyGUI
         void __clickItem(EventContext context)
         {
             GObject item = context.sender as GObject;
-            if (item.parent == null)
-            {
-                return;
-            }
-
             if ((item is GButton) && selectionMode != ListSelectionMode.None)
                 SetSelectionOnEvent(item, context.inputEvent);
 
@@ -2609,8 +2604,6 @@ namespace FairyGUI
                             continue;
 
                         child.SetSize(viewWidth, child.height, true);
-                        if (child.width > maxWidth)
-                            maxWidth = child.width;
                     }
                 }
                 cw = Mathf.CeilToInt(maxWidth);
@@ -2644,8 +2637,6 @@ namespace FairyGUI
                             continue;
 
                         child.SetSize(child.width, viewHeight, true);
-                        if (child.height > maxHeight)
-                            maxHeight = child.height;
                     }
                 }
                 ch = Mathf.CeilToInt(maxHeight);

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db3550c07f4446db55212fe8f834cfd, type: 3}
+  m_Name: HouseData_1
+  m_EditorClassIdentifier: 
+  Id: 1
+  Units: []
+  ProtalUnit:
+  - Index: 0
+    lPos: {x: -2.9004724, y: 0.025590472, z: -4.039011}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 13001
+    PortaTagertlID: 1
+    ProtalUnitHouse: 1
+    ProtalTargetPoint: {x: 0, y: 0, z: 0}
+  - Index: 1
+    lPos: {x: 3.6264825, y: 0.02558969, z: -4.2814093}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 13001
+    PortaTagertlID: 1
+    ProtalUnitHouse: 1
+    ProtalTargetPoint: {x: 0, y: 0, z: 0}

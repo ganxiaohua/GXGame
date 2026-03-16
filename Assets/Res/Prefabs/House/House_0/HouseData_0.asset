@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db3550c07f4446db55212fe8f834cfd, type: 3}
+  m_Name: HouseData_0
+  m_EditorClassIdentifier: 
+  Id: 0
+  Units:
+  - Index: 5
+    lPos: {x: 4.78, y: 0.025589883, z: 1.24}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 1
+    lPos: {x: 4.69, y: 0.025590263, z: -0.044957593}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 2
+    lPos: {x: -4.82, y: 0.025590517, z: -0.38081557}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 3
+    lPos: {x: -4.9, y: 0.025590613, z: 1.7716385}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 4
+    lPos: {x: -1.3355796, y: 0.025590286, z: -0.3818937}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -1, z: -0, w: 0}
+    UnitId: 10000
+  - Index: 5
+    lPos: {x: -2.9822223, y: 0.02559048, z: -0.6058713}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1200
+  - Index: 6
+    lPos: {x: 2.11, y: 0.025589362, z: 0.83}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 11001

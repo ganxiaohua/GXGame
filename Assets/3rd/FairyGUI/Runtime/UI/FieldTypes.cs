@@ -197,9 +197,7 @@
     {
         Auto,
         Up,
-        Down,
-        Left,
-        Right,
+        Down
     }
 
     /// <summary>

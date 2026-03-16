@@ -45,14 +45,6 @@ namespace FairyGUI
 
         EventListener _onDrop;
 
-        public GObject this[int i]
-        {
-            get
-            {
-                return GetChildAt(i);
-            }
-        }
-
         public GComponent()
         {
             _children = new List<GObject>();
@@ -787,35 +779,6 @@ namespace FairyGUI
             return null;
         }
 
-        static int SortTransitions(Transition a, Transition b)
-        {
-            return a.totalDuration.CompareTo(b.totalDuration);
-        }
-
-        public Transition[] GetTransitionsInChildren(string name, bool includeInactive = false)
-        {
-            List<Transition> transitions = new List<Transition>();
-            var selfTrans = GetTransition(name);
-            if (selfTrans != null)
-                transitions.Add(selfTrans);
-            foreach (var item in _children)
-            {
-                if (!includeInactive && !item.visible)
-                    continue;
-                var comp = item.asCom;
-                if (comp != null)
-                {
-                    var trans = comp.GetTransition(name);
-                    if (trans != null)
-                    {
-                        transitions.Add(trans);
-                    }
-                }
-            }
-            transitions.Sort(SortTransitions);
-            return transitions.ToArray();
-        }
-
         /// <summary>
         /// Returns transition list.
         /// </summary>
@@ -1209,10 +1172,10 @@ namespace FairyGUI
                     tmp = child.y;
                     if (tmp < ay)
                         ay = tmp;
-                    tmp = child.x + child.actualWidth;
+                    tmp = child.x + (child.pivotAsAnchor ? child.actualWidth * (1 - child.pivot.x) : child.actualWidth);//Add anchor offset
                     if (tmp > ar)
                         ar = tmp;
-                    tmp = child.y + child.actualHeight;
+                    tmp = child.y + (child.pivotAsAnchor ? child.actualHeight * (1 - child.pivot.y) : child.actualHeight);//Add anchor offset
                     if (tmp > ab)
                         ab = tmp;
                 }

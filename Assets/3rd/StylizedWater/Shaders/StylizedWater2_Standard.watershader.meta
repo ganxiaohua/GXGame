@@ -1,0 +1,40 @@
+fileFormatVersion: 2
+guid: d7b0192b9bf19c949900035fa781fdc4
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 531a3ff0802e4acbaef16e2b9d97fd66, type: 3}
+  template: {instanceID: 0}
+  settings:
+    shaderName: Standard
+    hidden: 0
+    type: 0
+    autoIntegration: 1
+    fogIntegration: 2
+    quadNormalMapSamples: 0
+    customIncludeDirectives:
+    - type: 0
+      value: float _MyParameter;
+    - type: 3
+      value: SOMETHING_ENABLED
+  dependencies:
+  - Assets/StylizedWater2/Shaders/Libraries/URP.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Input.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Common.hlsl
+  - Assets/ThirdParty/ColorfulSky/Shaders/Libraries/Fog.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Fog.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Waves.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Lighting.hlsl
+  - Assets/StylizedWater2/Shaders/Underwater/UnderwaterFog.hlsl
+  - Assets/StylizedWater2/Shaders/Underwater/UnderwaterShading.hlsl
+  - Assets/StylizedWater2/Shaders/Simulation/Simulation.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Features.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Caustics.hlsl
+  - Assets/StylizedWater2/Shaders/SurfaceModifiers/SurfaceModifiers.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Vertex.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/Tesselation.hlsl
+  - Assets/StylizedWater2/Shaders/Libraries/ForwardPass.hlsl

@@ -1,0 +1,609 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: M_CliffRocks_0
+  m_Shader: {fileID: -6465566751694194690, guid: 8d15515b38fabfc4f8bfe1b2d8bbe173,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _OBJECT_TRIPLANAR
+  - _TERRAIN_BLEND_HEIGHT
+  - _TERRAIN_DISTANCEBLEND
+  - _TERRAIN_PARALLAX
+  m_InvalidKeywords:
+  - _EDGESLOPEONOFF_ON
+  - _EDGESLOPE_ON
+  - _LIGHTDETECTBACKFACE_ON
+  - _NORMALBLUR_ON
+  - _NORMALMAPBASEDSNOW_ON
+  - _OBJECT_STEEP_INTERSECTION
+  - _SEASONVERTEXCOLORR_ON
+  - _SLOPEMODE_TANGENTSLOPETS
+  - _SNOWSLOPE_ON
+  - _SPARKLES_ON
+  - _TOGGLEBLUR_ON
+  - _WINDTYPE_GENTLEBREEZE
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _2dNoise1:
+        m_Texture: {fileID: 2800000, guid: b77f7b8226e9ef748a6e3a9c7a1b77f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 8d0cd79917d5e9a4e939610583c04710, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoMap:
+        m_Texture: {fileID: 2800000, guid: b078c6a5f13bb36468651128bb0fcb76, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: a4803fc51a7e3fd4d914706170fcbd82, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 1af3effb3e9b3294fa957ef8847e93e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CavityAlbedo:
+        m_Texture: {fileID: 2800000, guid: 9b197fead8b6f984ba29846a1ee340ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Control:
+        m_Texture: {fileID: 5327084416171288501, guid: 6e3bf36e07aa88d49af07343d0dc9311,
+          type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverAlbedo:
+        m_Texture: {fileID: 2800000, guid: b6d760db90ce6ef4cbf685e2c3b8a24a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverMetallicAoGloss:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverageAlbedo:
+        m_Texture: {fileID: 2800000, guid: f342feadc66e9a04b9941beb835befdd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverageHeight:
+        m_Texture: {fileID: 2800000, guid: c096afb5c176a0d49b11c7742dc650ab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverageMask:
+        m_Texture: {fileID: 2800000, guid: e3e17f7ee6882624bbec7de8d04946e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverageMetallicAoGloss:
+        m_Texture: {fileID: 2800000, guid: b5de5d8634f0d534aaa5dc2d00ea2db9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverageNormal:
+        m_Texture: {fileID: 2800000, guid: 2b9b807f14b1a1740954e8305a3bcce9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CoverageSmoothness:
+        m_Texture: {fileID: 2800000, guid: ba8db66ce68994246b6f910b2178e72f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedo:
+        m_Texture: {fileID: 2800000, guid: 2ed1f31cd55d1524a8b4577570a69888, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 2800000, guid: 2ed1f31cd55d1524a8b4577570a69888, type: 3}
+        m_Scale: {x: 5, y: 5}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 2800000, guid: 65f8add481f592648a0b1003b940e48c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DirtAlbedo:
+        m_Texture: {fileID: 2800000, guid: b078c6a5f13bb36468651128bb0fcb76, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DirtAo:
+        m_Texture: {fileID: 2800000, guid: 8e72e6623fca19042b7dc54e8f7f41b9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DirtMetallicAoGloss:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DirtNormal:
+        m_Texture: {fileID: 2800000, guid: 3145d252f36d46849ae441a4ecacb8ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EdgeNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GrassCoverageAlbedo:
+        m_Texture: {fileID: 2800000, guid: 13d6f37c16e94f943aafbe0153a868e5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GrassCoverageMetallicAoGloss:
+        m_Texture: {fileID: 2800000, guid: b5de5d8634f0d534aaa5dc2d00ea2db9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _GrassCoverageNormal:
+        m_Texture: {fileID: 2800000, guid: 2b9b807f14b1a1740954e8305a3bcce9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainAO:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainAlbedo:
+        m_Texture: {fileID: 2800000, guid: 9b197fead8b6f984ba29846a1ee340ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainGloss:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainMask:
+        m_Texture: {fileID: 2800000, guid: ea3e9386b84d44b4abfeb5c7e366124d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainNormal:
+        m_Texture: {fileID: 2800000, guid: 3145d252f36d46849ae441a4ecacb8ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainSpec:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMapRGBA:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicAoGloss:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseMapGrayscale:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalDetail2:
+        m_Texture: {fileID: 2800000, guid: a9f7b99447126ee44991916a8dc0121c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 3145d252f36d46849ae441a4ecacb8ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockAlbedo:
+        m_Texture: {fileID: 2800000, guid: 2ed1f31cd55d1524a8b4577570a69888, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockMetallicAoGloss:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockTileAlbedo:
+        m_Texture: {fileID: 2800000, guid: aca8fa1bb44fa754dad7be291027b834, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockTileMetallicAoGloss:
+        m_Texture: {fileID: 2800000, guid: 4db64710e32f66148b56177df1c5d3e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RockTileNormal:
+        m_Texture: {fileID: 2800000, guid: 9345d09902717e341af19113716582ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecularMapGrayscale:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat0:
+        m_Texture: {fileID: 2800000, guid: 60a8ff904226290459c5e35624157495, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat1:
+        m_Texture: {fileID: 2800000, guid: 2ed1f31cd55d1524a8b4577570a69888, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat2:
+        m_Texture: {fileID: 2800000, guid: b6d760db90ce6ef4cbf685e2c3b8a24a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Splat3:
+        m_Texture: {fileID: 2800000, guid: 96efe765a146d0d468472207a07527fd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainColorTintTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 100, y: 100}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHeightmapTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainNormalTintTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainNormalmapTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileAO:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileAlbedo:
+        m_Texture: {fileID: 2800000, guid: aca8fa1bb44fa754dad7be291027b834, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileAlbedo1:
+        m_Texture: {fileID: 2800000, guid: 9b197fead8b6f984ba29846a1ee340ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileGloss:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileMetallicAoGloss:
+        m_Texture: {fileID: 2800000, guid: 4db64710e32f66148b56177df1c5d3e1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileMetallicAoGloss2:
+        m_Texture: {fileID: 2800000, guid: a1be297d0bebdfe44954b277ee029142, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileNormal:
+        m_Texture: {fileID: 2800000, guid: 9345d09902717e341af19113716582ad, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileNormal1:
+        m_Texture: {fileID: 2800000, guid: 3145d252f36d46849ae441a4ecacb8ce, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaClip: 0
+    - _AlphaCutoff: 0.5
+    - _AlphaToMask: 0
+    - _AmbientOcclusionIntensity: 1
+    - _Ao: 0
+    - _AoCoverageIntensity: 0
+    - _AoCoverageIntensity2: 1
+    - _AointensityX: 0.6
+    - _Blend: 0
+    - _BlendModePreserveSpecular: 0
+    - _BlurSize: 0
+    - _BlureONOFF: 0
+    - _BranchMaskR: 0
+    - _BumpScale: 1
+    - _CastShadows: 1
+    - _CenterOfMass: 1
+    - _CenterofMass3: 0
+    - _ColorVariation: 1
+    - _ControlNumber: -1
+    - _CoverAoIntensity: 1
+    - _CoverageAmount: 1.5
+    - _CoverageFalloff: 5
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DetailNormalIntensity: 1
+    - _DetailNormalMapScale: 1
+    - _DetailNormalStrenght: 0.5
+    - _DetailStrenght: 0.5
+    - _DirtAoIntensity: 1
+    - _DirtGlossIntensity: 1
+    - _DirtIntensity: 1.5
+    - _DisableDistanceBlending: 0
+    - _DisableOffsetY: 1
+    - _DisableTerrainParallax: 0
+    - _DisplacementAmount: 0
+    - _Distance_HeightTransition: 0
+    - _DryColorOffset: 0
+    - _DryColorScale: 1
+    - _DryLeavesOffset: 0
+    - _DryLeavesScale: 0
+    - _DstBlend: 0
+    - _EdgeIntensity: 2.5
+    - _EdgeNormalintensity: 0.5
+    - _EdgeSlope: 1
+    - _EdgeSlopeOnOff: 1
+    - _EdgeSlopeTessellation: 0
+    - _EmissionEnabled: 0
+    - _EmissionIntensity: 0
+    - _EnvironmentReflections: 1
+    - _FalloffTriplanar: 10
+    - _FalloffTriplanarRock: 10
+    - _Float3: 0
+    - _Float4: 0
+    - _Float5: 0
+    - _Float6: 0
+    - _Float7: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _GrassBlurSize: 0.05
+    - _HT_cover: 1
+    - _HT_distance_scale: 0.5
+    - _Hardness2: 1
+    - _HasDetailAlbedo: 1
+    - _HasMask: 1
+    - _HeightTransition: 0
+    - _LayerIndex1: 0
+    - _LayerIndex2: 0
+    - _LayerNumber: 0
+    - _LightDetectBackface: 1
+    - _LightDetectFrontface: 0
+    - _Metallic: 0
+    - _MipMapCount: 12
+    - _MipMapLevel: 0
+    - _MobileShadingWorldUp: 0
+    - _Mode: 0
+    - _MossColor: 0
+    - _NormalBackFaceFixBranch: 0
+    - _NormalBlur: 1
+    - _NormalIntensity: 0
+    - _NormalMapBasedSnow: 1
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _ParallaxAffineSteps: 3
+    - _ParallaxAffineStepsTerrain: 3
+    - _ParallaxHeight: 0
+    - _ParallaxSteps: 1
+    - _PassNumber: 0
+    - _QuadScatter: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Radius2: 1
+    - _RandomContrast: 1
+    - _RandomContrastOnOff: 0
+    - _ReceiveShadows: 1
+    - _RockAointensity: 1
+    - _RockGlossintensity: 0
+    - _RockTileAointensity: 1
+    - _RockTileGlossintensity: 1
+    - _RockTriplanarFalloff: 5
+    - _SeasonChangeGlobal: -2
+    - _SeasonVertexColorR: 1
+    - _Sharpness: 30
+    - _SlopeMax: 8
+    - _SlopeMax1: 2
+    - _SlopeMaxTS: 2
+    - _SlopeMin: -2
+    - _SlopeMin1: -0.4
+    - _SlopeMinTS: -0.4
+    - _SlopeMode: 0
+    - _Smoothness: 0
+    - _SmoothnessIntensity: 1
+    - _SmoothnessTextureChannel: 0
+    - _SnowAmount: 0
+    - _SnowMaskVertexR: 0
+    - _SnowOffset: -0.5
+    - _SnowScale: 0.5
+    - _SnowSlope: 1
+    - _Sparkles: 1
+    - _SpecintensityX: 1
+    - _Specular: 0
+    - _SpecularBackfaceOcclusion: 0
+    - _SpecularHighlights: 1
+    - _SpecularPower: 0
+    - _Specularpower: 1
+    - _SrcBlend: 1
+    - _SteepDistortion: 0
+    - _SteepIntersection: 1
+    - _Steepness: -0.25
+    - _StrongWindSpeed: 1
+    - _Surface: 0
+    - _TSSlopeMax: 8
+    - _TSSlopeMin: -1
+    - _TerrainColorTintStrenght: 0
+    - _TerrainNormalTintStrenght: 0
+    - _TileAointensity: 1
+    - _TileGlossintensity: 1
+    - _TileNormalIntensity: 1
+    - _ToggleBlur: 1
+    - _ToggleGrassBlur: 0
+    - _TransitionDistance1: 0
+    - _TransitionFalloff1: 0
+    - _TranslucencyFluffiness: 0
+    - _TranslucencyPower: 1
+    - _TranslucencyRange: 1
+    - _TriplanarOneToAllSteep: 0
+    - _TriplanarSharpness: 9
+    - _UVSec: 0
+    - _VertexNormalWarpAmount: 0
+    - _Vizmask: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
+    - __dirty: 0
+    m_Colors:
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapOffset0: {r: 0, g: 0, b: 0, a: 0}
+    - _DiffuseRemapOffset1: {r: 0, g: 0, b: 0, a: 0}
+    - _DiffuseRemapOffset2: {r: 0, g: 0, b: 0, a: 0}
+    - _DiffuseRemapOffset3: {r: 0, g: 0, b: 0, a: 0}
+    - _DiffuseRemapScale0: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale1: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale2: {r: 1, g: 1, b: 1, a: 1}
+    - _DiffuseRemapScale3: {r: 1, g: 1, b: 1, a: 1}
+    - _DryLeafColor: {r: 0.5568628, g: 0.37306848, b: 0.17647055, a: 0}
+    - _Drycolor: {r: 0.41960776, g: 0.43921566, b: 0.23529407, a: 0}
+    - _Drycolor1: {r: 0.41960776, g: 0.43921566, b: 0.23529407, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FalloffTriplanar: {r: 10, g: 2, b: 0, a: 0}
+    - _HT_distance: {r: 1, g: 40, b: 1, a: 40}
+    - _Healthycolor: {r: 0.75, g: 0.5608131, b: 0.15441176, a: 0}
+    - _Healthycolor1: {r: 0.75, g: 0.5608131, b: 0.15441176, a: 0}
+    - _Intersection: {r: -0.5, g: 50, b: -0.5, a: 50}
+    - _Intersection2: {r: -1.180197, g: 2, b: -2, a: 2}
+    - _LayerHasMask: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset: {r: 0, g: 0.44864866, b: 0.44864866, a: 0}
+    - _MaskMapRemapOffset0: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset1: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset2: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapOffset3: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskMapRemapScale: {r: 0, g: 0.5513513, b: 0.5513513, a: 0}
+    - _MaskMapRemapScale0: {r: 1, g: 0, b: 1, a: 1}
+    - _MaskMapRemapScale1: {r: 1, g: 0, b: 1, a: 1}
+    - _MaskMapRemapScale2: {r: 1, g: 0, b: 1, a: 1}
+    - _MaskMapRemapScale3: {r: 1, g: 0, b: 1, a: 1}
+    - _MipMapFade: {r: 4.489362, g: 16.48936, b: 0, a: 35}
+    - _NormIntersect: {r: 0, g: 0.99999994, b: 0, a: 1}
+    - _NormalScale: {r: 0, g: 0, b: 0, a: 0}
+    - _Offset: {r: 1, g: 1, b: 0, a: 0}
+    - _OffsetDetail: {r: 1, g: 1, b: 0, a: 0}
+    - _OffsetDirt: {r: 1, g: 1, b: 0, a: 0}
+    - _OffsetDirtLayer: {r: 1, g: 1, b: 0, a: 0}
+    - _OffsetEdge: {r: 1, g: 1, b: 0, a: 0}
+    - _OffsetEdge1: {r: 1, g: 1, b: 0, a: 0}
+    - _SplatUV0: {r: 5, g: 5, b: 0, a: 0}
+    - _SplatUV1: {r: 5, g: 5, b: 0, a: 0}
+    - _SplatUV2: {r: 7.5, g: 7.5, b: 0, a: 0}
+    - _SplatUV3: {r: 10, g: 10, b: 0, a: 0}
+    - _Tangent: {r: 0, g: 1, b: 0, a: 0}
+    - _TerrainHeightmapScale: {r: 0.12207031, g: 600.02747, b: 0.12207031, a: 300}
+    - _TerrainMetallic: {r: 0, g: 0, b: 0, a: 0}
+    - _TerrainNormalScale: {r: 1, g: 1, b: 1, a: 1}
+    - _TerrainNormalTintDistance: {r: 3, g: 10, b: 0, a: 25}
+    - _TerrainPosition: {r: -250, g: -5, b: -250, a: 0}
+    - _TerrainSize: {r: 500, g: 300, b: 500, a: 0}
+    - _TerrainSmoothness: {r: 1, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 8, g: 8, b: 0, a: 0}
+    - _TilingCoverLayer: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _TilingCoverage: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _TilingDetail: {r: 1, g: 1, b: 0, a: 0}
+    - _TilingDirt: {r: 22, g: 22, b: 0, a: 0}
+    - _TilingDirtLayer: {r: 22, g: 22, b: 0, a: 0}
+    - _TilingEdge: {r: 5, g: 5, b: 0, a: 0}
+    - _TilingEdge1: {r: 16, g: 16, b: 0, a: 0}
+    - _TilingOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _TilingRockLayer: {r: 0.36, g: 0.36, b: 0, a: 0}
+    - _TilingScale: {r: 1, g: 1, b: 0, a: 0}
+    - _TilingTriplanar: {r: 0.3, g: 0.3, b: 0, a: 0}
+    - _TilingTriplanar2: {r: 0.16, g: 0.16, b: 0, a: 0}
+    - _TilingTriplanarGrass: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _TilingTriplanarRock: {r: 0.16, g: 0.16, b: 0, a: 0}
+    - _Vector0: {r: 1, g: 1, b: 0, a: 0}
+    - _Vector1: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &429256299789676466
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

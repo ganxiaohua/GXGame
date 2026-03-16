@@ -122,7 +122,7 @@ namespace Cysharp.Threading.Tasks.Linq
     {
         internal static async UniTask<ILookup<TKey, TSource>> ToLookupAsync<TSource, TKey>(IUniTaskAsyncEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             var e = source.GetAsyncEnumerator(cancellationToken);
@@ -157,7 +157,7 @@ namespace Cysharp.Threading.Tasks.Linq
 
         internal static async UniTask<ILookup<TKey, TElement>> ToLookupAsync<TSource, TKey, TElement>(IUniTaskAsyncEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             IUniTaskAsyncEnumerator<TSource> e = default;
@@ -196,7 +196,7 @@ namespace Cysharp.Threading.Tasks.Linq
 
         internal static async UniTask<ILookup<TKey, TSource>> ToLookupAwaitAsync<TSource, TKey>(IUniTaskAsyncEnumerable<TSource> source, Func<TSource, UniTask<TKey>> keySelector, IEqualityComparer<TKey> comparer, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             IUniTaskAsyncEnumerator<TSource> e = default;
@@ -232,7 +232,7 @@ namespace Cysharp.Threading.Tasks.Linq
 
         internal static async UniTask<ILookup<TKey, TElement>> ToLookupAwaitAsync<TSource, TKey, TElement>(IUniTaskAsyncEnumerable<TSource> source, Func<TSource, UniTask<TKey>> keySelector, Func<TSource, UniTask<TElement>> elementSelector, IEqualityComparer<TKey> comparer, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             IUniTaskAsyncEnumerator<TSource> e = default;
@@ -270,7 +270,7 @@ namespace Cysharp.Threading.Tasks.Linq
 
         internal static async UniTask<ILookup<TKey, TSource>> ToLookupAwaitWithCancellationAsync<TSource, TKey>(IUniTaskAsyncEnumerable<TSource> source, Func<TSource, CancellationToken, UniTask<TKey>> keySelector, IEqualityComparer<TKey> comparer, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             IUniTaskAsyncEnumerator<TSource> e = default;
@@ -306,7 +306,7 @@ namespace Cysharp.Threading.Tasks.Linq
 
         internal static async UniTask<ILookup<TKey, TElement>> ToLookupAwaitWithCancellationAsync<TSource, TKey, TElement>(IUniTaskAsyncEnumerable<TSource> source, Func<TSource, CancellationToken, UniTask<TKey>> keySelector, Func<TSource, CancellationToken, UniTask<TElement>> elementSelector, IEqualityComparer<TKey> comparer, CancellationToken cancellationToken)
         {
-            var pool = Cysharp.Threading.Tasks.Internal.ArrayPool<TSource>.Shared;
+            var pool = ArrayPool<TSource>.Shared;
             var array = pool.Rent(16);
 
             IUniTaskAsyncEnumerator<TSource> e = default;

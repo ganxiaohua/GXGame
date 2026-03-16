@@ -20,7 +20,6 @@ namespace FairyGUI
         /// <summary>
         /// 
         /// </summary>
-        /// </summary>
         public bool bringToFontOnClick;
 
         GComponent _frame;
@@ -44,10 +43,6 @@ namespace FairyGUI
         public Action __doShowAnimation;
         public Action __doHideAnimation;
 #endif
-
-        public float contentPanelOffsetX { get; set; } = 0f;
-
-        public bool isFullScreen = true;
 
         public Window()
             : base()
@@ -94,17 +89,8 @@ namespace FairyGUI
                         _contentPane.gameObjectName = "ContentPane";
 
                         AddChild(_contentPane);
-
-                        //if (Mathf.Abs(contentPanelOffsetX) > 0f)
-                        //{
-                        //    _contentPane.SetPivot(0.5f, 0f);
-                        //}
-                        if (isFullScreen)
-                        {
-                            _contentPane.SetSize(GRoot.inst.width + contentPanelOffsetX, GRoot.inst.height);
-                            _contentPane.AddRelation(GRoot.inst, RelationType.Size);
-                            _contentPane.x = Mathf.Abs(contentPanelOffsetX) * 0.5f;
-                        }
+                        this.SetSize(_contentPane.width, _contentPane.height);
+                        _contentPane.AddRelation(this, RelationType.Size);
                         _contentPane.fairyBatching = true;
                         _frame = _contentPane.GetChild("frame") as GComponent;
                         if (_frame != null)

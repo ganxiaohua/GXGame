@@ -13,25 +13,417 @@ MonoBehaviour:
   m_Name: BuildinCatalog
   m_EditorClassIdentifier: 
   PackageName: DefaultPackage
-  PackageVersion: 2025-04-08-512
+  PackageVersion: 2025-11-28-53566
   Wrappers:
-  - BundleGUID: 0e6be5a93dba9c88aeb585b9d51c3d88
-    FileName: 0e6be5a93dba9c88aeb585b9d51c3d88.bundle
-  - BundleGUID: 2ad4c54d6753b86267125ffe76d64eb3
-    FileName: 2ad4c54d6753b86267125ffe76d64eb3.bundle
-  - BundleGUID: 2def39964d88d5df0b060f25e3e57f72
-    FileName: 2def39964d88d5df0b060f25e3e57f72.bundle
-  - BundleGUID: 59a54e675e732b8248684d927c2a51fb
-    FileName: 59a54e675e732b8248684d927c2a51fb.bundle
-  - BundleGUID: 5d52ded0e63afe56c9e8fd9bf4ef8197
-    FileName: 5d52ded0e63afe56c9e8fd9bf4ef8197.bundle
-  - BundleGUID: 5ecb019a2729acfc44f16f45d06af1e8
-    FileName: 5ecb019a2729acfc44f16f45d06af1e8.bundle
-  - BundleGUID: 7596e885057740882bd5f511ce870732
-    FileName: 7596e885057740882bd5f511ce870732.bundle
-  - BundleGUID: 7598038ae1598ae2bbfbff5d88f88e26
-    FileName: 7598038ae1598ae2bbfbff5d88f88e26.bundle
-  - BundleGUID: 8209359c33c20c9bf38c8d09743b3663
-    FileName: 8209359c33c20c9bf38c8d09743b3663.bundle
-  - BundleGUID: c4ca350dd21ae03c581b7f6c508cef48
-    FileName: c4ca350dd21ae03c581b7f6c508cef48.bundle
+  - BundleGUID: 4f5fd408133a0d6e31434e368e658ca9
+    FileName: defaultpackage_assets_res_behaviour_4f5fd408133a0d6e31434e368e658ca9.bundle
+  - BundleGUID: 6dc9f4ce5877801085593e9f0031642f
+    FileName: defaultpackage_assets_res_exceldata_bytes_animationtable_bytes_6dc9f4ce5877801085593e9f0031642f.rawfile
+  - BundleGUID: 8617830e2a8fc351cbadb8965fbfc79f
+    FileName: defaultpackage_assets_res_exceldata_bytes_attributetable_bytes_8617830e2a8fc351cbadb8965fbfc79f.rawfile
+  - BundleGUID: bd45401c6c894213267638a092422aed
+    FileName: defaultpackage_assets_res_exceldata_bytes_battlebehaviortable_bytes_bd45401c6c894213267638a092422aed.rawfile
+  - BundleGUID: 5411e7f7d02eac2644b30d7a58e60179
+    FileName: defaultpackage_assets_res_exceldata_bytes_behaviortable_bytes_5411e7f7d02eac2644b30d7a58e60179.rawfile
+  - BundleGUID: e5c48f28d190b03de1a3d9bece99be32
+    FileName: defaultpackage_assets_res_exceldata_bytes_boxtable_bytes_e5c48f28d190b03de1a3d9bece99be32.rawfile
+  - BundleGUID: 3885956bbbb345b3de6fc8096fd0c51a
+    FileName: defaultpackage_assets_res_exceldata_bytes_growthtable_bytes_3885956bbbb345b3de6fc8096fd0c51a.rawfile
+  - BundleGUID: 448b722c8e72ed5aac351f2cfcde0fe6
+    FileName: defaultpackage_assets_res_exceldata_bytes_itemtable_bytes_448b722c8e72ed5aac351f2cfcde0fe6.rawfile
+  - BundleGUID: 40ac35f8a0fee829be9211bdef432fa2
+    FileName: defaultpackage_assets_res_exceldata_bytes_modeltable_bytes_40ac35f8a0fee829be9211bdef432fa2.rawfile
+  - BundleGUID: bdccf44d5d0622aff0723419133db473
+    FileName: defaultpackage_assets_res_exceldata_bytes_synthesistable_bytes_bdccf44d5d0622aff0723419133db473.rawfile
+  - BundleGUID: 4bff29651e756ed058b80a702c1de4ab
+    FileName: defaultpackage_assets_res_exceldata_bytes_unittable_bytes_4bff29651e756ed058b80a702c1de4ab.rawfile
+  - BundleGUID: 07cdc3dfbf509e895a0ed668fc0482eb
+    FileName: defaultpackage_assets_res_prefabs_box_woodenbox_0_07cdc3dfbf509e895a0ed668fc0482eb.bundle
+  - BundleGUID: a7a298b72a5af621c463174dd28cb401
+    FileName: defaultpackage_assets_res_prefabs_box_woodenbox_0_logic_a7a298b72a5af621c463174dd28cb401.bundle
+  - BundleGUID: bfc8ff974af5b3562c831b9e2f9b4a7b
+    FileName: defaultpackage_assets_res_prefabs_box_woodenbox_bfc8ff974af5b3562c831b9e2f9b4a7b.bundle
+  - BundleGUID: 6495b271bddca51f9855b91003d684a4
+    FileName: defaultpackage_assets_res_prefabs_box_woodenbox_logic_6495b271bddca51f9855b91003d684a4.bundle
+  - BundleGUID: e2a939bc66283562e1823f628a9b1580
+    FileName: defaultpackage_assets_res_prefabs_build_bed_e2a939bc66283562e1823f628a9b1580.bundle
+  - BundleGUID: e86758e4d18f1743adb2f55ab060f04c
+    FileName: defaultpackage_assets_res_prefabs_build_bed_logic_e86758e4d18f1743adb2f55ab060f04c.bundle
+  - BundleGUID: 2a5a490b2f7060d16785e815bb7115c1
+    FileName: defaultpackage_assets_res_prefabs_build_workbench_2a5a490b2f7060d16785e815bb7115c1.bundle
+  - BundleGUID: d391e0ec7278799ccf2fd046ac05f466
+    FileName: defaultpackage_assets_res_prefabs_build_workbench_logic_d391e0ec7278799ccf2fd046ac05f466.bundle
+  - BundleGUID: d878fa9e56873c11051fa16abfc623b1
+    FileName: defaultpackage_assets_res_prefabs_cropland_cropland_d878fa9e56873c11051fa16abfc623b1.bundle
+  - BundleGUID: 5cd6f1330f422f4f7db81f2fe81745df
+    FileName: defaultpackage_assets_res_prefabs_crop_jiucai_jcmiao_5cd6f1330f422f4f7db81f2fe81745df.bundle
+  - BundleGUID: 9f351205f80b0661da585005403e5d49
+    FileName: defaultpackage_assets_res_prefabs_crop_jiucai_jcmiao_logic_9f351205f80b0661da585005403e5d49.bundle
+  - BundleGUID: 9192012e5fc6a03de47b3dd0e90af63a
+    FileName: defaultpackage_assets_res_prefabs_crop_jiucai_jczz_9192012e5fc6a03de47b3dd0e90af63a.bundle
+  - BundleGUID: a4aa75c1d602ed12bef76cd91b8a83a1
+    FileName: defaultpackage_assets_res_prefabs_crop_jiucai_jczz_logic_a4aa75c1d602ed12bef76cd91b8a83a1.bundle
+  - BundleGUID: fd01f9bfc326071372fe4dbb9ab857a3
+    FileName: defaultpackage_assets_res_prefabs_crop_jiucai_jc_fd01f9bfc326071372fe4dbb9ab857a3.bundle
+  - BundleGUID: d9e0e08dab516827ffc1bb7450759723
+    FileName: defaultpackage_assets_res_prefabs_crop_jiucai_jc_logic_d9e0e08dab516827ffc1bb7450759723.bundle
+  - BundleGUID: e462aabc7f716caa19d11d9a3f452750
+    FileName: defaultpackage_assets_res_prefabs_crop_lanmei_lanmeimiao_e462aabc7f716caa19d11d9a3f452750.bundle
+  - BundleGUID: fc5cd26b3754cc5358b79fab70264a38
+    FileName: defaultpackage_assets_res_prefabs_crop_lanmei_lanmeimiao_logic_fc5cd26b3754cc5358b79fab70264a38.bundle
+  - BundleGUID: 494ea011bd02eb498df701a4a445966d
+    FileName: defaultpackage_assets_res_prefabs_crop_lanmei_lanmeizz_494ea011bd02eb498df701a4a445966d.bundle
+  - BundleGUID: 5b5736d58cc47b0d4ad620edfbab6cd6
+    FileName: defaultpackage_assets_res_prefabs_crop_lanmei_lanmeizz_logic_5b5736d58cc47b0d4ad620edfbab6cd6.bundle
+  - BundleGUID: 6a0b6b7cf67ca39ab55960c2fcebf729
+    FileName: defaultpackage_assets_res_prefabs_crop_lanmei_lanmei_6a0b6b7cf67ca39ab55960c2fcebf729.bundle
+  - BundleGUID: 19781e70367d8d9c5cf65a157c242bbe
+    FileName: defaultpackage_assets_res_prefabs_crop_lanmei_lanmei_logic_19781e70367d8d9c5cf65a157c242bbe.bundle
+  - BundleGUID: 24c29b7919f29b01d931d35d5a004629
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fjmiao_24c29b7919f29b01d931d35d5a004629.bundle
+  - BundleGUID: c2d0c819e3c49feee5560351e722d069
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fjmiao_logic_c2d0c819e3c49feee5560351e722d069.bundle
+  - BundleGUID: 7b1bbc203cb6adca68be801ee8c33cf5
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fjny_7b1bbc203cb6adca68be801ee8c33cf5.bundle
+  - BundleGUID: 67c9ec5e15c9d0d5b2067c390058cc91
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fjny_logic_67c9ec5e15c9d0d5b2067c390058cc91.bundle
+  - BundleGUID: afce17fb11fdd405b03faab168b58e52
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fjzz_afce17fb11fdd405b03faab168b58e52.bundle
+  - BundleGUID: 1b2710c4afe700c992a9868dad520659
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fjzz_logic_1b2710c4afe700c992a9868dad520659.bundle
+  - BundleGUID: 98804df598251eaa04d8285d8215e708
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fj_98804df598251eaa04d8285d8215e708.bundle
+  - BundleGUID: e0ce42a603d1c9fbc7baf76ae6f79fb3
+    FileName: defaultpackage_assets_res_prefabs_crop_wujing_fj_logic_e0ce42a603d1c9fbc7baf76ae6f79fb3.bundle
+  - BundleGUID: 37aa7bb67b7dd02820cc824ae0775a63
+    FileName: defaultpackage_assets_res_prefabs_effects_quality_itemepicgreen_37aa7bb67b7dd02820cc824ae0775a63.bundle
+  - BundleGUID: f64dab82f15465fc078bea15ce00321d
+    FileName: defaultpackage_assets_res_prefabs_effects_quality_itemepicmodular_f64dab82f15465fc078bea15ce00321d.bundle
+  - BundleGUID: 57b6b1a54bbf92d41ae1af945ce6e737
+    FileName: defaultpackage_assets_res_prefabs_effects_quality_itemepicorange_57b6b1a54bbf92d41ae1af945ce6e737.bundle
+  - BundleGUID: 7c6200a43ced284396bb371635394fe7
+    FileName: defaultpackage_assets_res_prefabs_effects_quality_itemepicpurple_7c6200a43ced284396bb371635394fe7.bundle
+  - BundleGUID: 969509993743e9a9103092f369c94aa0
+    FileName: defaultpackage_assets_res_prefabs_effects_quality_itemepicred_969509993743e9a9103092f369c94aa0.bundle
+  - BundleGUID: 43db0bdc874ca15cc1aebff9c8094dfe
+    FileName: defaultpackage_assets_res_prefabs_effects_windtrail_43db0bdc874ca15cc1aebff9c8094dfe.bundle
+  - BundleGUID: bd5b0b35fe36e49110bf00771cd41815
+    FileName: defaultpackage_assets_res_prefabs_enviro_cameraroot_bd5b0b35fe36e49110bf00771cd41815.bundle
+  - BundleGUID: 893490bb0b6251c14bc60b2d03c3a9bc
+    FileName: defaultpackage_assets_res_prefabs_enviro_islandterrain_893490bb0b6251c14bc60b2d03c3a9bc.bundle
+  - BundleGUID: c3611f6baeaff131acfe9d01fed1a005
+    FileName: defaultpackage_assets_res_prefabs_enviro_ppv_c3611f6baeaff131acfe9d01fed1a005.bundle
+  - BundleGUID: 0af209b6663e85cb75743044e866724c
+    FileName: defaultpackage_assets_res_prefabs_house_house_0_housedata_0_0af209b6663e85cb75743044e866724c.bundle
+  - BundleGUID: 4c0a9fa74b11657580a67c774347c595
+    FileName: defaultpackage_assets_res_prefabs_house_house_0_house_0_4c0a9fa74b11657580a67c774347c595.bundle
+  - BundleGUID: 38005eaeccb8b235484b9f47e4c8364a
+    FileName: defaultpackage_assets_res_prefabs_makings_branches_1_38005eaeccb8b235484b9f47e4c8364a.bundle
+  - BundleGUID: ae12bc3ae50411e3cfcd0fe1dd181c20
+    FileName: defaultpackage_assets_res_prefabs_makings_branches_1_logic_ae12bc3ae50411e3cfcd0fe1dd181c20.bundle
+  - BundleGUID: da1a46727e9e79fd8efae4390e99370c
+    FileName: defaultpackage_assets_res_prefabs_makings_branches_logic_da1a46727e9e79fd8efae4390e99370c.bundle
+  - BundleGUID: a34a4d821ed0eeebdafb7148719d87c8
+    FileName: defaultpackage_assets_res_prefabs_makings_citem_a34a4d821ed0eeebdafb7148719d87c8.bundle
+  - BundleGUID: 818ddebab33f3f3aa2d6a31773cad3fb
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_1_818ddebab33f3f3aa2d6a31773cad3fb.bundle
+  - BundleGUID: bff172ff5b68b9edee8573a99e6cab34
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_1_logic_bff172ff5b68b9edee8573a99e6cab34.bundle
+  - BundleGUID: 725b22a47807c4ad080dd2c2bac7c1cd
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_2_725b22a47807c4ad080dd2c2bac7c1cd.bundle
+  - BundleGUID: d7319f30944eaf7788e08c20fe9370da
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_2_logic_d7319f30944eaf7788e08c20fe9370da.bundle
+  - BundleGUID: a7bf656d201b7e6041fa9756567d1b3e
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_3_a7bf656d201b7e6041fa9756567d1b3e.bundle
+  - BundleGUID: d4fdaedac063f55c7c18b16508e9a027
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_3_logic_d4fdaedac063f55c7c18b16508e9a027.bundle
+  - BundleGUID: 7264bf685e6c32da321c1599f65a6879
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_7264bf685e6c32da321c1599f65a6879.bundle
+  - BundleGUID: ec5eecb7201fc9da7045e57759de4610
+    FileName: defaultpackage_assets_res_prefabs_makings_stone_logic_ec5eecb7201fc9da7045e57759de4610.bundle
+  - BundleGUID: 4cb7497676f5ee67f03fc1e8c84cf25e
+    FileName: defaultpackage_assets_res_prefabs_makings_stump_1_4cb7497676f5ee67f03fc1e8c84cf25e.bundle
+  - BundleGUID: 6d5cd957864a03f71a64d45d5c5dc706
+    FileName: defaultpackage_assets_res_prefabs_makings_stump_1_logic_6d5cd957864a03f71a64d45d5c5dc706.bundle
+  - BundleGUID: 64ccf96fa7bad7b9da03a3aa50e5e13f
+    FileName: defaultpackage_assets_res_prefabs_makings_stump_2_64ccf96fa7bad7b9da03a3aa50e5e13f.bundle
+  - BundleGUID: f8676e17f38ce658bd205e1c38a43635
+    FileName: defaultpackage_assets_res_prefabs_makings_stump_2_logic_f8676e17f38ce658bd205e1c38a43635.bundle
+  - BundleGUID: fbded9ea87b83eafafab8dabe1b743c6
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_1_fbded9ea87b83eafafab8dabe1b743c6.bundle
+  - BundleGUID: 98aadd2052e2efa236ab947ae815ea52
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_1_logic_98aadd2052e2efa236ab947ae815ea52.bundle
+  - BundleGUID: 2e837c38dd8caa8e231cf1fdb79da7d8
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_2_2e837c38dd8caa8e231cf1fdb79da7d8.bundle
+  - BundleGUID: 80e8066e9c997d70c407ddb40a4804dc
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_2_logic_80e8066e9c997d70c407ddb40a4804dc.bundle
+  - BundleGUID: 9280f4c49e93d1d32de62749aa66d502
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_3_9280f4c49e93d1d32de62749aa66d502.bundle
+  - BundleGUID: d93b030e89d740e6c00fcb8d95d5252f
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_3_logic_d93b030e89d740e6c00fcb8d95d5252f.bundle
+  - BundleGUID: 7386d8f2c16bd013288592921ce2d241
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_4_7386d8f2c16bd013288592921ce2d241.bundle
+  - BundleGUID: f006a94c06236b649edfe4588ec5b8b8
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_4_logic_f006a94c06236b649edfe4588ec5b8b8.bundle
+  - BundleGUID: 4a8ffb76bdaf2504b5b26ba92673f91c
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_5_4a8ffb76bdaf2504b5b26ba92673f91c.bundle
+  - BundleGUID: fc51214d7b20dfa942968a2f88a7aeab
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_5_logic_fc51214d7b20dfa942968a2f88a7aeab.bundle
+  - BundleGUID: 8ca0961b47408e24336f3afef5e2b7aa
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_6_8ca0961b47408e24336f3afef5e2b7aa.bundle
+  - BundleGUID: e8e255946ba755dee77091eacf54be09
+    FileName: defaultpackage_assets_res_prefabs_makings_tree_6_logic_e8e255946ba755dee77091eacf54be09.bundle
+  - BundleGUID: 05db2656ec39d9867b8749512c0f50f5
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_cropland_cropland_0_05db2656ec39d9867b8749512c0f50f5.bundle
+  - BundleGUID: 6179da8bbff60d7d098bc3d1e12154d6
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_maparea_0_6179da8bbff60d7d098bc3d1e12154d6.bundle
+  - BundleGUID: 84be165f92db02ffeb53c0697364474e
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_0_84be165f92db02ffeb53c0697364474e.bundle
+  - BundleGUID: ea449d41ab81313a08a697dce4b94b56
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_10_ea449d41ab81313a08a697dce4b94b56.bundle
+  - BundleGUID: c36f6d65f2b7194267f242522e610545
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_11_c36f6d65f2b7194267f242522e610545.bundle
+  - BundleGUID: dd43a1924e08bf73d571c40f5ed6e225
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_12_dd43a1924e08bf73d571c40f5ed6e225.bundle
+  - BundleGUID: 3888dfad3cd6ad124ace578bec895574
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_13_3888dfad3cd6ad124ace578bec895574.bundle
+  - BundleGUID: 09aad9816007d1801aca1c8abd1b8794
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_14_09aad9816007d1801aca1c8abd1b8794.bundle
+  - BundleGUID: 412c03e8253e050c951aacbc278a4357
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_15_412c03e8253e050c951aacbc278a4357.bundle
+  - BundleGUID: 29b5c0739221f07a61d82d0af0c0eeb9
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_16_29b5c0739221f07a61d82d0af0c0eeb9.bundle
+  - BundleGUID: b5ad03822b2d57a3782e4c6ce7c48e85
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_17_b5ad03822b2d57a3782e4c6ce7c48e85.bundle
+  - BundleGUID: 790ff14442617995d44c3476f6a3ae0f
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_18_790ff14442617995d44c3476f6a3ae0f.bundle
+  - BundleGUID: d8be6bf60c63e24394cdfe7605b8a9ae
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_19_d8be6bf60c63e24394cdfe7605b8a9ae.bundle
+  - BundleGUID: 2956f503c65cc5ad36151121f1f05265
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_1_2956f503c65cc5ad36151121f1f05265.bundle
+  - BundleGUID: a647b8ed6f086d750117d502a3eedd8e
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_20_a647b8ed6f086d750117d502a3eedd8e.bundle
+  - BundleGUID: be8fae53d7e44fc75f9b6b1a9a841fd4
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_21_be8fae53d7e44fc75f9b6b1a9a841fd4.bundle
+  - BundleGUID: a8a7965740414aedff4ffb2ed7f9348c
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_22_a8a7965740414aedff4ffb2ed7f9348c.bundle
+  - BundleGUID: 421e2760f077f9c0a62e8b2fcbcb520e
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_23_421e2760f077f9c0a62e8b2fcbcb520e.bundle
+  - BundleGUID: dc7be4cc32b12c999d8bb082d8ab3f59
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_24_dc7be4cc32b12c999d8bb082d8ab3f59.bundle
+  - BundleGUID: aaca7dd3a76397b9966375dfd3ec090d
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_2_aaca7dd3a76397b9966375dfd3ec090d.bundle
+  - BundleGUID: d6cb1fa72bbf516e806322cd65ba07e0
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_3_d6cb1fa72bbf516e806322cd65ba07e0.bundle
+  - BundleGUID: d93f2a1aa1e4b506a793688edd6bed12
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_4_d93f2a1aa1e4b506a793688edd6bed12.bundle
+  - BundleGUID: a86e23f04daa5aca7a222bf152fb9b83
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_5_a86e23f04daa5aca7a222bf152fb9b83.bundle
+  - BundleGUID: f660e96afdf839b5ba18e3d0c165a393
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_6_f660e96afdf839b5ba18e3d0c165a393.bundle
+  - BundleGUID: f9825e87a9ed110befc997d4e7fe51f8
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_7_f9825e87a9ed110befc997d4e7fe51f8.bundle
+  - BundleGUID: 4360c7d5af14f84f9d68971266c36d10
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_8_4360c7d5af14f84f9d68971266c36d10.bundle
+  - BundleGUID: f89bb2ef276a0d085b9fb1d834a3ac57
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_mapchunk_9_f89bb2ef276a0d085b9fb1d834a3ac57.bundle
+  - BundleGUID: a6adfce9970c61e7ba3540dbc3054666
+    FileName: defaultpackage_assets_res_prefabs_map_map_0_map_0_a6adfce9970c61e7ba3540dbc3054666.bundle
+  - BundleGUID: 92757f45cdc23c591c8fef29c2a2da24
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_cropland_cropland_0_92757f45cdc23c591c8fef29c2a2da24.bundle
+  - BundleGUID: 87e47eaaabd84d54db8a7e755e3d929c
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_maparea_1_87e47eaaabd84d54db8a7e755e3d929c.bundle
+  - BundleGUID: 7791e5ce5e61f0a52cb920446bed0cbb
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_0_7791e5ce5e61f0a52cb920446bed0cbb.bundle
+  - BundleGUID: da93971a834645130b4d8e0bd4a3794a
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_10_da93971a834645130b4d8e0bd4a3794a.bundle
+  - BundleGUID: c3ec64e323da692fdb560e67287c0f3a
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_11_c3ec64e323da692fdb560e67287c0f3a.bundle
+  - BundleGUID: 3f80d6b66b370289c4ab30ab6758560c
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_12_3f80d6b66b370289c4ab30ab6758560c.bundle
+  - BundleGUID: 9344851f215a79ec295c82348d535adc
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_13_9344851f215a79ec295c82348d535adc.bundle
+  - BundleGUID: d54508adf59344a4a556d8b2a62bce4f
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_14_d54508adf59344a4a556d8b2a62bce4f.bundle
+  - BundleGUID: a3165d74d6c9a82eaf7664a52b3c7dab
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_15_a3165d74d6c9a82eaf7664a52b3c7dab.bundle
+  - BundleGUID: e79e10c2484242600becd3e782dfed7c
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_16_e79e10c2484242600becd3e782dfed7c.bundle
+  - BundleGUID: 8360b3757fc39bf6e138667e3060f43c
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_17_8360b3757fc39bf6e138667e3060f43c.bundle
+  - BundleGUID: 8e11fd306036f40ed74d5675f36fc424
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_18_8e11fd306036f40ed74d5675f36fc424.bundle
+  - BundleGUID: 9b20e0edf88e5175e1b69e872e5f092f
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_19_9b20e0edf88e5175e1b69e872e5f092f.bundle
+  - BundleGUID: 5650f3e638fd63ad6c14a3271cace441
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_1_5650f3e638fd63ad6c14a3271cace441.bundle
+  - BundleGUID: ec45d82611e921b531b1bfb930761dd1
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_20_ec45d82611e921b531b1bfb930761dd1.bundle
+  - BundleGUID: 5c89b6dd1907eb1b72c9b78b6331ca8a
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_21_5c89b6dd1907eb1b72c9b78b6331ca8a.bundle
+  - BundleGUID: e87d3495b2e6017ca10b3ae28379212b
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_22_e87d3495b2e6017ca10b3ae28379212b.bundle
+  - BundleGUID: 1e1ee7bca24bc38cb63039bfc05d2cdd
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_23_1e1ee7bca24bc38cb63039bfc05d2cdd.bundle
+  - BundleGUID: 35e7cdf44b2a243d0146727d3eb32810
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_24_35e7cdf44b2a243d0146727d3eb32810.bundle
+  - BundleGUID: ae2a3d87d29f2159fecb87e8d1b2c40c
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_2_ae2a3d87d29f2159fecb87e8d1b2c40c.bundle
+  - BundleGUID: 2c9539e29ca11effead7b5990afb7ad6
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_3_2c9539e29ca11effead7b5990afb7ad6.bundle
+  - BundleGUID: d49e01748dd5e0a5a698a15ba46c2231
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_4_d49e01748dd5e0a5a698a15ba46c2231.bundle
+  - BundleGUID: 051908c614eaeb7f00608a944d609144
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_5_051908c614eaeb7f00608a944d609144.bundle
+  - BundleGUID: e6442aeb547ea18e2e19f2eaca8f19f8
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_6_e6442aeb547ea18e2e19f2eaca8f19f8.bundle
+  - BundleGUID: 2272f4449c32802c66c66ce84d6b0ee8
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_7_2272f4449c32802c66c66ce84d6b0ee8.bundle
+  - BundleGUID: 1378c1cdc472fc0c6a55799346be9252
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_8_1378c1cdc472fc0c6a55799346be9252.bundle
+  - BundleGUID: 62d738f8c3f8985439cd399a2c56e7e6
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_mapchunk_9_62d738f8c3f8985439cd399a2c56e7e6.bundle
+  - BundleGUID: 1257da5d262ab1caaf26a11d6016781f
+    FileName: defaultpackage_assets_res_prefabs_map_map_1_map_1_1257da5d262ab1caaf26a11d6016781f.bundle
+  - BundleGUID: 7442190978b0b1240ee4e3f1a1fd2b34
+    FileName: defaultpackage_assets_res_prefabs_monster_monster_01_7442190978b0b1240ee4e3f1a1fd2b34.bundle
+  - BundleGUID: 0355535bfa4d4c1892ebb8e8abd35a15
+    FileName: defaultpackage_assets_res_prefabs_monster_monster_01_logic_0355535bfa4d4c1892ebb8e8abd35a15.bundle
+  - BundleGUID: b16d07ea2521cb16232848b049e25da7
+    FileName: defaultpackage_assets_res_prefabs_monster_monster_02_b16d07ea2521cb16232848b049e25da7.bundle
+  - BundleGUID: 2ecfd74462d4e2ed6ad15f3f83615e60
+    FileName: defaultpackage_assets_res_prefabs_monster_monster_02_logic_2ecfd74462d4e2ed6ad15f3f83615e60.bundle
+  - BundleGUID: 4fd0190f0f1136af84bb690e002b9209
+    FileName: defaultpackage_assets_res_prefabs_monster_monster_03_4fd0190f0f1136af84bb690e002b9209.bundle
+  - BundleGUID: cd011c21d98df17f7449a7df30a4ff0f
+    FileName: defaultpackage_assets_res_prefabs_monster_monster_03_logic_cd011c21d98df17f7449a7df30a4ff0f.bundle
+  - BundleGUID: c424f3a1cfd23944b89b17cb32f54cc0
+    FileName: defaultpackage_assets_res_prefabs_obj_broadleaf_1_c424f3a1cfd23944b89b17cb32f54cc0.bundle
+  - BundleGUID: 0f5c23d01813bc112491f261c00423b7
+    FileName: defaultpackage_assets_res_prefabs_obj_broadleaf_2_0f5c23d01813bc112491f261c00423b7.bundle
+  - BundleGUID: c1078523c7c1f072137a7734a92c822c
+    FileName: defaultpackage_assets_res_prefabs_obj_broadleaf_3_c1078523c7c1f072137a7734a92c822c.bundle
+  - BundleGUID: 32284c540b2ac9b70c3aba56db926bc3
+    FileName: defaultpackage_assets_res_prefabs_obj_bush_1_32284c540b2ac9b70c3aba56db926bc3.bundle
+  - BundleGUID: 65fd8ba00afef41011022689d1bc1488
+    FileName: defaultpackage_assets_res_prefabs_obj_bush_2_65fd8ba00afef41011022689d1bc1488.bundle
+  - BundleGUID: bb96a17add3ab322d9b95062b92b755e
+    FileName: defaultpackage_assets_res_prefabs_obj_cliffrock_0_bb96a17add3ab322d9b95062b92b755e.bundle
+  - BundleGUID: 49431daf14fce44995d437de41d5881d
+    FileName: defaultpackage_assets_res_prefabs_obj_cliffrock_1_49431daf14fce44995d437de41d5881d.bundle
+  - BundleGUID: cde022934e8acb4712aac6c320595f21
+    FileName: defaultpackage_assets_res_prefabs_obj_cliff_0_cde022934e8acb4712aac6c320595f21.bundle
+  - BundleGUID: d7a7941932f07e2c1473ccfaf2ebd0f0
+    FileName: defaultpackage_assets_res_prefabs_obj_grass_0_d7a7941932f07e2c1473ccfaf2ebd0f0.bundle
+  - BundleGUID: 21b2aea1f08d5b53927df5cd55211030
+    FileName: defaultpackage_assets_res_prefabs_obj_stone_4_21b2aea1f08d5b53927df5cd55211030.bundle
+  - BundleGUID: bfca2f3075b4d7fb50062d938a5464fb
+    FileName: defaultpackage_assets_res_prefabs_obj_stone_5_bfca2f3075b4d7fb50062d938a5464fb.bundle
+  - BundleGUID: eb8d50e08e5de5fb1c1acf86a603b9e5
+    FileName: defaultpackage_assets_res_prefabs_obj_stone_6_eb8d50e08e5de5fb1c1acf86a603b9e5.bundle
+  - BundleGUID: 952f921c30260c8873d858ecbbf5a611
+    FileName: defaultpackage_assets_res_prefabs_obj_stone_7_952f921c30260c8873d858ecbbf5a611.bundle
+  - BundleGUID: cca2e43c15e894471061ec1f846255aa
+    FileName: defaultpackage_assets_res_prefabs_role_player_cca2e43c15e894471061ec1f846255aa.bundle
+  - BundleGUID: 7b99d36aabda900db7156239b95ad66c
+    FileName: defaultpackage_assets_res_prefabs_role_player_logic_7b99d36aabda900db7156239b95ad66c.bundle
+  - BundleGUID: 6ddca926811f840b5c438ec6c70d5d4b
+    FileName: defaultpackage_assets_res_prefabs_role_yellowhair_6ddca926811f840b5c438ec6c70d5d4b.bundle
+  - BundleGUID: c804891f34738789558ac8438c660958
+    FileName: defaultpackage_assets_res_prefabs_role_yellowhair_logic_c804891f34738789558ac8438c660958.bundle
+  - BundleGUID: d8cdc06cc60c6c9106bac5ac3ea670d6
+    FileName: defaultpackage_assets_res_prefabs_skill_jianqi_d8cdc06cc60c6c9106bac5ac3ea670d6.bundle
+  - BundleGUID: de91feb4c3bc24583d34d358bfdd5ee3
+    FileName: defaultpackage_assets_res_prefabs_skill_jianqi_logic_de91feb4c3bc24583d34d358bfdd5ee3.bundle
+  - BundleGUID: 632c77e58e67ce7c91347d1834239446
+    FileName: defaultpackage_assets_res_scenes_632c77e58e67ce7c91347d1834239446.bundle
+  - BundleGUID: dda99005c8c25d0b61fec43fbd5edc36
+    FileName: defaultpackage_assets_res_scenes_scene_2_dda99005c8c25d0b61fec43fbd5edc36.bundle
+  - BundleGUID: 75394bf0cf9d43a9c7c99603df356f6a
+    FileName: defaultpackage_assets_res_scenes_scene_game_75394bf0cf9d43a9c7c99603df356f6a.bundle
+  - BundleGUID: 9918c7003d0bb681e8000d4814729e34
+    FileName: defaultpackage_assets_res_timeline_9918c7003d0bb681e8000d4814729e34.bundle
+  - BundleGUID: 0d1622e922a975ec2d52a758c3a40552
+    FileName: defaultpackage_assets_res_ui_0d1622e922a975ec2d52a758c3a40552.bundle
+  - BundleGUID: 378802d2ce18947ee333bd0f68cbe698
+    FileName: defaultpackage_assets_res__common_animations_box_378802d2ce18947ee333bd0f68cbe698.bundle
+  - BundleGUID: eb50e32265029d54e5a5aa6b813c79d3
+    FileName: defaultpackage_assets_res__common_animations_monster_eb50e32265029d54e5a5aa6b813c79d3.bundle
+  - BundleGUID: 452e8dd000f395289abb73068b397fc2
+    FileName: defaultpackage_assets_res__common_materials_452e8dd000f395289abb73068b397fc2.bundle
+  - BundleGUID: bf888310e01aac468b468ab4f92190db
+    FileName: defaultpackage_assets_res__common_materials_effects_bf888310e01aac468b468ab4f92190db.bundle
+  - BundleGUID: 68389b9d691b9a43150ff6fa817644e1
+    FileName: defaultpackage_assets_res__common_materials_skybox_68389b9d691b9a43150ff6fa817644e1.bundle
+  - BundleGUID: eddc981a866a759b9e277b57dc7b752c
+    FileName: defaultpackage_assets_res__common_model_eddc981a866a759b9e277b57dc7b752c.bundle
+  - BundleGUID: 2252f6e85f6bd009ae7df5d256d91abc
+    FileName: defaultpackage_assets_res__common_terrainlayer_2252f6e85f6bd009ae7df5d256d91abc.bundle
+  - BundleGUID: bf2cab046f4615d0ce291947221499c9
+    FileName: defaultpackage_assets_res__common_textures_bf2cab046f4615d0ce291947221499c9.bundle
+  - BundleGUID: ca95cc98994d919c28ee4f562101cc96
+    FileName: defaultpackage_assets_res__common_textures_skybox_ca95cc98994d919c28ee4f562101cc96.bundle
+  - BundleGUID: 9f8d99200e75f2584c5ac2a93bbdacc6
+    FileName: defaultpackage_assets_res__oneself_farmer_9f8d99200e75f2584c5ac2a93bbdacc6.bundle
+  - BundleGUID: 5306743a82591409e4a20893aeab2bee
+    FileName: defaultpackage_assets_res__oneself_fujing_5306743a82591409e4a20893aeab2bee.bundle
+  - BundleGUID: 6a703f311857147210ba91a17f1e2d3f
+    FileName: defaultpackage_assets_res__oneself_jiucai_6a703f311857147210ba91a17f1e2d3f.bundle
+  - BundleGUID: 20b5ccb4a2efe2ddbb7a103025c98be5
+    FileName: defaultpackage_assets_res__oneself_lanmei_20b5ccb4a2efe2ddbb7a103025c98be5.bundle
+  - BundleGUID: 13924fce8569a85b6dae5778225fddfd
+    FileName: defaultpackage_assets_res__oneself_monster01_13924fce8569a85b6dae5778225fddfd.bundle
+  - BundleGUID: 77b7b6ab702ba5a70786b522ad409008
+    FileName: defaultpackage_assets_res__oneself_monster02_77b7b6ab702ba5a70786b522ad409008.bundle
+  - BundleGUID: 82242d168604ee378d454977afa35f2d
+    FileName: defaultpackage_assets_res__oneself_monster03_82242d168604ee378d454977afa35f2d.bundle
+  - BundleGUID: 4105b065eeb6173e59227053c421526c
+    FileName: defaultpackage_share_assets_3rd_arpg effects_materials_loot_4105b065eeb6173e59227053c421526c.bundle
+  - BundleGUID: abde9a1032f99cf1410c206c499e5894
+    FileName: defaultpackage_share_assets_3rd_arpg effects_materials_misc_abde9a1032f99cf1410c206c499e5894.bundle
+  - BundleGUID: bf72f00c6aa604f541817d0149bd3892
+    FileName: defaultpackage_share_assets_3rd_arpg effects_textures_bf72f00c6aa604f541817d0149bd3892.bundle
+  - BundleGUID: 46ed6b1f4c2c6e0ee4bf6e5f8ba3a945
+    FileName: defaultpackage_share_assets_3rd_paradoxnotion_canvascore_framework_design_editor_resources_stylesheet_stylesheettextures_dark_icons_46ed6b1f4c2c6e0ee4bf6e5f8ba3a945.bundle
+  - BundleGUID: 4a1047ae39dfc8dc9e3d9dedeaf743e5
+    FileName: defaultpackage_share_assets_3rd_post processing assets_better fog_resources_gradients_fog
+      gradients_textures_4a1047ae39dfc8dc9e3d9dedeaf743e5.bundle
+  - BundleGUID: 8b768fe2a90deb3ab6b8eb94573d0d82
+    FileName: defaultpackage_share_assets_3rd_post processing assets_better fog_resources_gradients_ssms
+      fade ramps_textures_8b768fe2a90deb3ab6b8eb94573d0d82.bundle
+  - BundleGUID: 4d9275b7cea73c2fe11a551560634285
+    FileName: defaultpackage_share_assets_3rd_stylized grass shader__demo_demoassets_4d9275b7cea73c2fe11a551560634285.bundle
+  - BundleGUID: b6a0e3f4bfcffb0d31d02a2c36973e02
+    FileName: defaultpackage_share_assets_3rd_stylized grass shader__demo_materials_textures_b6a0e3f4bfcffb0d31d02a2c36973e02.bundle
+  - BundleGUID: 30bbadff1ffb4f5e1dd8d00e6e121fb5
+    FileName: defaultpackage_share_assets_3rd_stylized grass shader__demo_prefabs_benders_30bbadff1ffb4f5e1dd8d00e6e121fb5.bundle
+  - BundleGUID: c7c30d06a7f00bfeca0fafab885797f5
+    FileName: defaultpackage_share_assets_3rd_stylizedwater_editor_resources_c7c30d06a7f00bfeca0fafab885797f5.bundle
+  - BundleGUID: 27ee997085d6be51962b2f72f4118e2a
+    FileName: defaultpackage_share_assets_3rd_stylizedwater_materials_27ee997085d6be51962b2f72f4118e2a.bundle
+  - BundleGUID: 12796274114be3492c6784d60a6b0823
+    FileName: defaultpackage_share_assets_3rd_stylizedwater_materials_textures_12796274114be3492c6784d60a6b0823.bundle
+  - BundleGUID: 8d2039ce7eaa671cc92735f92b355e4c
+    FileName: defaultpackage_share_assets_3rd_stylizedwater_materials_textures_foam_8d2039ce7eaa671cc92735f92b355e4c.bundle
+  - BundleGUID: 664e32287bd841d79b3ea331b7cb0bdc
+    FileName: defaultpackage_share_assets_3rd_stylizedwater_materials_textures_normals_664e32287bd841d79b3ea331b7cb0bdc.bundle
+  - BundleGUID: a1b5a43523d4e2179e0a76722ebb04b2
+    FileName: defaultpackage_share_assets_reseditor_materials_a1b5a43523d4e2179e0a76722ebb04b2.bundle
+  - BundleGUID: 239753d836351b4348365f246d9b248e
+    FileName: defaultpackage_share_assets_settings_239753d836351b4348365f246d9b248e.bundle
+  - BundleGUID: 6a74e3828207cba3e3df15dbb5dcc25c
+    FileName: defaultpackage_share_packages_com_arongranberg_astar_drawing_resources_6a74e3828207cba3e3df15dbb5dcc25c.bundle
+  - BundleGUID: dd43a166239c3e9c41b77be3c8d4aa18
+    FileName: defaultpackage_share_packages_com_arongranberg_astar_editor_editorassets_componenticons_dd43a166239c3e9c41b77be3c8d4aa18.bundle
+  - BundleGUID: 25b49d13d1f195ded22bf7a9fafbca80
+    FileName: defaultpackage_share_packages_com_arongranberg_astar_resources_25b49d13d1f195ded22bf7a9fafbca80.bundle
+  - BundleGUID: 642f6da6b6162d3858ca57daf0317fc2
+    FileName: defaultpackage_share_packages_com_unity_cinemachine_editor_editorresources_642f6da6b6162d3858ca57daf0317fc2.bundle
+  - BundleGUID: b7e600bb5b945bc5e91fdb5e2d15415a
+    FileName: defaultpackage_share_packages_com_unity_probuilder_content_icons_scripts_b7e600bb5b945bc5e91fdb5e2d15415a.bundle
+  - BundleGUID: 86a94b1e7acfe7bec149540fbad4b073
+    FileName: defaultpackage_share_packages_com_unity_render-pipelines_core_editor_volume_icons_86a94b1e7acfe7bec149540fbad4b073.bundle
+  - BundleGUID: c9347311037ef82cf5379f85caad2842
+    FileName: defaultpackage_share_packages_com_unity_render-pipelines_universal_runtime_materials_c9347311037ef82cf5379f85caad2842.bundle
+  - BundleGUID: 5891a54208bcb206e0d9ca5b65a181d0
+    FileName: defaultpackage_unityshaders_5891a54208bcb206e0d9ca5b65a181d0.bundle

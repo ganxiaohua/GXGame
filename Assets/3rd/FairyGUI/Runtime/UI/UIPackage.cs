@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using UnityEngine;
 using FairyGUI.Utils;
-using UnityEngine.SocialPlatforms;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -68,7 +66,6 @@ namespace FairyGUI
         Dictionary<string, PackageItem> _itemsById;
         Dictionary<string, PackageItem> _itemsByName;
         Dictionary<string, string>[] _dependencies;
-        List<string> m_ReadyLoadFile;
         string _assetPath;
         string[] _branches;
         internal int _branchIndex;
@@ -77,7 +74,7 @@ namespace FairyGUI
         bool _fromBundle;
         LoadResource _loadFunc;
         LoadResourceAsync _loadAsyncFunc;
-        
+
         class AtlasSprite
         {
             public PackageItem atlas;
@@ -118,7 +115,7 @@ namespace FairyGUI
             _itemsById = new Dictionary<string, PackageItem>();
             _itemsByName = new Dictionary<string, PackageItem>();
             _sprites = new Dictionary<string, AtlasSprite>();
-            m_ReadyLoadFile = new List<string>();
+
             _branchIndex = -1;
         }
 
@@ -255,7 +252,7 @@ namespace FairyGUI
             if (source == null)
                 throw new Exception("FairyGUI: no package found in this bundle.");
 
-            if (desc != res)
+            if (unloadBundleByFGUI && desc != res)
                 desc.Unload(true);
 
             ByteBuffer buffer = new ByteBuffer(source);
@@ -536,7 +533,6 @@ namespace FairyGUI
             return item.owner.GetItemAsset(item);
         }
 
-        public static StringBuilder Sb = new StringBuilder(32);
         /// <summary>
         /// Get url of an item in package.
         /// </summary>
@@ -545,7 +541,6 @@ namespace FairyGUI
         /// <returns>Url.</returns>
         public static string GetItemURL(string pkgName, string resName)
         {
-            Sb.Clear();
             UIPackage pkg = GetByName(pkgName);
             if (pkg == null)
                 return null;
@@ -553,10 +548,8 @@ namespace FairyGUI
             PackageItem pi;
             if (!pkg._itemsByName.TryGetValue(resName, out pi))
                 return null;
-            Sb.Append(URL_PREFIX);
-            Sb.Append(pkg.id);
-            Sb.Append(pi.id);
-            return Sb.ToString();
+
+            return URL_PREFIX + pkg.id + pi.id;
         }
 
         public static PackageItem GetItemByURL(string url)
@@ -683,7 +676,7 @@ namespace FairyGUI
                     return false;
                 }
             }
-            m_ReadyLoadFile.Clear();
+
             buffer.version = buffer.ReadInt();
             bool ver2 = buffer.version >= 2;
             buffer.ReadBool(); //compressed
@@ -856,13 +849,9 @@ namespace FairyGUI
                             pi.file = assetPath + pi.file;
                             pi.skeletonAnchor.x = buffer.ReadFloat();
                             pi.skeletonAnchor.y = buffer.ReadFloat();
+                            pi.skeletonLoaders = new HashSet<GLoader3D>();
                             break;
                         }
-                }
-
-                if (!string.IsNullOrEmpty(pi.file) && !m_ReadyLoadFile.Contains(pi.file))
-                {
-                    m_ReadyLoadFile.Add(pi.file);
                 }
 
                 if (ver2)
@@ -1173,8 +1162,6 @@ namespace FairyGUI
             else
                 return null;
         }
-        
-        
 
         public PackageItem GetItemByName(string itemName)
         {
@@ -1264,6 +1251,12 @@ namespace FairyGUI
                 case PackageItemType.Spine:
 #if FAIRYGUI_SPINE
                     item.skeletonAsset = (Spine.Unity.SkeletonDataAsset)asset;
+                    foreach (var gLoader3D in item.skeletonLoaders)
+                    {
+                        if(!gLoader3D.isDisposed)
+                            gLoader3D.SetSpine((Spine.Unity.SkeletonDataAsset) item.skeletonAsset);
+                    }
+                    item.skeletonLoaders.Clear();
 #endif
                     break;
 
@@ -1274,26 +1267,6 @@ namespace FairyGUI
                     break;
             }
         }
-
-
-        public bool LoadOver()
-        {
-            return m_ReadyLoadFile.Count == 0 ? true : false;
-        }
-
-        public bool ReadyLoadFileLoadOver(string path)
-        {
-            if (m_ReadyLoadFile.Contains(path))
-            {
-                m_ReadyLoadFile.Remove(path);
-                return LoadOver();
-            }
-            else
-            {
-                throw new Exception($"{path}没有被加入预加载资源列表!!!");
-            }
-        }
-
 
         void LoadAtlas(PackageItem item)
         {
@@ -1339,6 +1312,7 @@ namespace FairyGUI
                         Debug.LogWarning("FairyGUI: settings for '" + item.file + "' is wrong! Correct values are: (Generate Mip Maps=unchecked)");
                 }
 
+#if FAIRYGUI_USE_ALPHA_TEXTURE
                 if (tex != null)
                 {
                     fileName = fileName + "!a";
@@ -1350,6 +1324,7 @@ namespace FairyGUI
                     else
                         alphaTex = (Texture2D)_loadFunc(fileName, ext, typeof(Texture2D), out dm);
                 }
+#endif
 
                 if (tex == null)
                 {
@@ -1635,24 +1610,31 @@ namespace FairyGUI
 
         void LoadSpine(PackageItem item)
         {
-#if FAIRYGUI_SPINE
             string ext = Path.GetExtension(item.file);
             string fileName = item.file.Substring(0, item.file.Length - ext.Length);
             int index = fileName.LastIndexOf(".skel");
             if (index > 0)
                 fileName = fileName.Substring(0, index);
 
-            Spine.Unity.SkeletonDataAsset asset;
-            if (_resBundle != null)
-                asset = _resBundle.LoadAsset<Spine.Unity.SkeletonDataAsset>(fileName + "_SkeletonData");
+#if FAIRYGUI_SPINE
+            if (_loadAsyncFunc != null)
+            {
+                _loadAsyncFunc(fileName + "_SkeletonData", ".asset", typeof(Spine.Unity.SkeletonDataAsset), item);
+            }
             else
             {
-                DestroyMethod dm;
-                asset = (Spine.Unity.SkeletonDataAsset)_loadFunc(fileName + "_SkeletonData", ".asset", typeof(Spine.Unity.SkeletonDataAsset), out dm);
+                Spine.Unity.SkeletonDataAsset asset;
+                if (_resBundle != null)
+                    asset = _resBundle.LoadAsset<Spine.Unity.SkeletonDataAsset>(fileName);
+                else
+                {
+                    DestroyMethod dm;
+                    asset = (Spine.Unity.SkeletonDataAsset)_loadFunc(fileName + "_SkeletonData", ".asset", typeof(Spine.Unity.SkeletonDataAsset), out dm);
+                }
+                if (asset == null)
+                    Debug.LogWarning("FairyGUI: Failed to load " + fileName);
+                item.skeletonAsset = asset;
             }
-            if (asset == null)
-                Debug.LogWarning("FairyGUI: Failed to load " + fileName);
-            item.skeletonAsset = asset;
 #else
             Debug.LogWarning("To enable Spine support, add script define symbol: FAIRYGUI_SPINE");
 #endif
@@ -1696,5 +1678,15 @@ namespace FairyGUI
             Debug.LogWarning("To enable DragonBones support, add script define symbol: FAIRYGUI_DRAGONBONES");
 #endif
         }
+
+
+#if UNITY_2019_3_OR_NEWER
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void InitializeOnLoad()
+        {
+            RemoveAllPackages();
+            UIPackage.branch = null;
+        }
+#endif
     }
 }

@@ -1,0 +1,267 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b00a7e920e4c09b5bb00438427b0e7, type: 3}
+  m_Name: MapChunk_0
+  m_EditorClassIdentifier: 
+  Id: 0
+  Units:
+  - Index: 0
+    lPos: {x: -19.056341, y: 0.0001, z: -12.00876}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1000
+  - Index: 1
+    lPos: {x: -14.805612, y: 0.0001, z: -11.762936}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1000
+  - Index: 2
+    lPos: {x: -9.607583, y: 0.0001, z: -11.960657}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1000
+  - Index: 3
+    lPos: {x: 8.10158, y: 0.0001, z: -12.643431}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1000
+  - Index: 4
+    lPos: {x: -20.05719, y: 0.00009999999, z: -7.7532644}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1100
+  - Index: 5
+    lPos: {x: -15.23134, y: 0.000100000005, z: -7.9795322}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1100
+  - Index: 6
+    lPos: {x: -9.34028, y: 0.00009999999, z: -7.9508038}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1100
+  - Index: 7
+    lPos: {x: -4.6980286, y: 0.0001, z: -7.9281673}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1100
+  - Index: 8
+    lPos: {x: 0.50559044, y: 0.000100000005, z: -8.150695}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1100
+  - Index: 9
+    lPos: {x: 6.5498085, y: 0.000100000005, z: -8.611997}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1100
+  - Index: 10
+    lPos: {x: -20.642326, y: 0.0001, z: -3.6643314}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1101
+  - Index: 11
+    lPos: {x: -16.540817, y: 0.0001, z: -3.7840443}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1101
+  - Index: 12
+    lPos: {x: -12.715396, y: 0.0001, z: -3.7662487}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1101
+  - Index: 13
+    lPos: {x: -7.313816, y: 0.000100000005, z: -4.017084}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1101
+  - Index: 14
+    lPos: {x: -1.4732838, y: 0.00009999999, z: -4.5359535}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1101
+  - Index: 15
+    lPos: {x: 4.9394913, y: 0.0001, z: -3.9599}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1101
+  - Index: 16
+    lPos: {x: -21.370745, y: 0.0001, z: 1.1965942}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 17
+    lPos: {x: -15.246819, y: 0.000100000005, z: 1.0675011}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 18
+    lPos: {x: -9.672201, y: 0.00009999999, z: 1.0919933}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 19
+    lPos: {x: -4.8346653, y: 0.000100000005, z: 0.64907646}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 20
+    lPos: {x: 0.32362556, y: 0.0001, z: 0.21284103}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 21
+    lPos: {x: 6.3408012, y: 0.000100000005, z: 0.3919735}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1102
+  - Index: 22
+    lPos: {x: -20.395754, y: 0.000100000005, z: 6.511242}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1200
+  - Index: 23
+    lPos: {x: -13.73486, y: 0.0001, z: 6.1875744}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1200
+  - Index: 24
+    lPos: {x: -7.236164, y: 0.0001, z: 5.520689}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1200
+  - Index: 25
+    lPos: {x: -1.7746162, y: 0.00009999999, z: 5.371681}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1200
+  - Index: 26
+    lPos: {x: 5.3853645, y: 0.0001, z: 5.2305202}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1200
+  - Index: 27
+    lPos: {x: -20.90389, y: 0.00009999999, z: 11.334293}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1201
+  - Index: 28
+    lPos: {x: -13.546705, y: 0.00009999999, z: 11.558311}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1201
+  - Index: 29
+    lPos: {x: -10.275622, y: 0.0001, z: 11.570839}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1201
+  - Index: 30
+    lPos: {x: -1.3117924, y: 0.000100000005, z: 10.827494}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1201
+  - Index: 31
+    lPos: {x: 4.985571, y: 0.000100000005, z: 10.08695}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1201
+  - Index: 32
+    lPos: {x: -19.204191, y: 0.0001, z: 15.841631}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1300
+  - Index: 33
+    lPos: {x: -8.706533, y: 0.000100000005, z: 16.525797}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1300
+  - Index: 34
+    lPos: {x: -0.33662987, y: 0.000100000005, z: 15.9095955}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1300
+  - Index: 35
+    lPos: {x: 8.290096, y: 0.00009999999, z: 14.465588}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1301
+  - Index: 36
+    lPos: {x: 14.479034, y: 0.0001, z: 10.124117}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1301
+  - Index: 37
+    lPos: {x: 16.95029, y: 0.0001, z: 1.5208454}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1302
+  - Index: 38
+    lPos: {x: 14.640005, y: 0.000100000005, z: -3.5004673}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1302
+  - Index: 39
+    lPos: {x: 13.693409, y: 0.000100000005, z: -11.052474}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1303
+  - Index: 40
+    lPos: {x: 19.455635, y: 0.00009999999, z: -14.39417}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1303
+  - Index: 41
+    lPos: {x: 13.106644, y: 0.00009999999, z: -17.311913}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1304
+  - Index: 42
+    lPos: {x: 16.450914, y: 0.000100000005, z: -19.684078}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1304
+  - Index: 43
+    lPos: {x: 9.24403, y: 0.0001, z: -18.733364}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1305
+  - Index: 44
+    lPos: {x: 9.227613, y: 0.0001, z: -21.449982}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 1305
+  - Index: 45
+    lPos: {x: 0.946228, y: -0.009899881, z: 4.904991}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 12001
+  - Index: 46
+    lPos: {x: 3.2459946, y: -0.009899881, z: 2.7739563}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 12001
+  ChunkHouseList:
+  - Index: 0
+    lPos: {x: -16.733524, y: 0.00009999999, z: -17.138464}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    HouseId: 0
+  ProtalUnit:
+  - Index: 48
+    lPos: {x: -3.6367111, y: -0.009899881, z: -15.290428}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: -0, y: -0, z: -0, w: 1}
+    UnitId: 13001
+    PortaTagertlID: 0
+    ProtalTargetPoint: {x: 0, y: 0, z: 0}
+  HaveAStarPath: 1
+  CroplandData: 00000000

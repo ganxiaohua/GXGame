@@ -1,14 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using FairyGUI;
 using UnityEngine;
 using UnityEditor;
-#if UNITY_5_3_OR_NEWER
 using UnityEditor.SceneManagement;
-using UnityEditor.IMGUI.Controls;
-#endif
+using System.Collections.Generic;
 #if UNITY_2018_3_OR_NEWER
 using UnityEditor.Experimental.SceneManagement;
 #endif
-using FairyGUI;
 
 namespace FairyGUIEditor
 {
@@ -21,14 +18,9 @@ namespace FairyGUIEditor
         Vector2 scrollPos2;
         GUIStyle itemStyle;
 
+        int selectedPackage;
         string selectedPackageName;
         string selectedComponentName;
-
-        SearchField searchField;
-        string searchText;
-
-        List<PackageItem> packageItems = new List<PackageItem>();
-        UIPackage selectedPkg;
 
         public PackagesWindow()
         {
@@ -46,13 +38,6 @@ namespace FairyGUIEditor
         {
             if (itemStyle == null)
                 itemStyle = new GUIStyle(GUI.skin.GetStyle("Tag MenuItem"));
-
-            if (searchField == null)
-            {
-                searchField = new SearchField();
-            }
-
-            searchText = searchField.OnToolbarGUI(searchText);
 
             EditorGUILayout.BeginHorizontal();
 
@@ -73,35 +58,20 @@ namespace FairyGUIEditor
             EditorToolSet.LoadPackages();
             List<UIPackage> pkgs = UIPackage.GetPackages();
             int cnt = pkgs.Count;
-            packageItems.Clear();
             if (cnt == 0)
             {
-                selectedPkg = null;
+                selectedPackage = -1;
                 selectedPackageName = null;
-                selectedComponentName = null;
             }
             else
             {
                 for (int i = 0; i < cnt; i++)
                 {
                     EditorGUILayout.BeginHorizontal();
-                    if (IsSearched(pkgs[i].name, searchText) && GUILayout.Toggle(selectedPackageName == pkgs[i].name, pkgs[i].name, itemStyle, GUILayout.ExpandWidth(true)))
+                    if (GUILayout.Toggle(selectedPackageName == pkgs[i].name, pkgs[i].name, itemStyle, GUILayout.ExpandWidth(true)))
                     {
-                        selectedPkg = pkgs[i];
+                        selectedPackage = i;
                         selectedPackageName = pkgs[i].name;
-                    }
-                    if (!string.IsNullOrEmpty(searchText))
-                    {
-                        var items = pkgs[i].GetItems();
-                        for (int j = 0; j < items.Count; j++)
-                        {
-                            var pi = items[j];
-                            if (pi.type == PackageItemType.Component && pi.exported && IsSearched(pi.name, searchText))
-                            {
-                                if (!packageItems.Contains(pi))
-                                    packageItems.Add(pi);
-                            }
-                        }
                     }
                     EditorGUILayout.EndHorizontal();
                 }
@@ -131,26 +101,20 @@ namespace FairyGUIEditor
             GUILayout.Space(4);
 
             scrollPos2 = EditorGUILayout.BeginScrollView(scrollPos2, (GUIStyle)"CN Box", GUILayout.Height(300), GUILayout.Width(220));
-            if (string.IsNullOrEmpty(searchText) && selectedPkg != null)
+            if (selectedPackage >= 0)
             {
-                foreach(var item in selectedPkg.GetItems())
+                List<PackageItem> items = pkgs[selectedPackage].GetItems();
+                int i = 0;
+                foreach (PackageItem pi in items)
                 {
-                    if (!packageItems.Contains(item))
-                        packageItems.Add(item);
-                }
-            }
-            foreach (PackageItem pi in packageItems)
-            {
-                if (pi.type == PackageItemType.Component && pi.exported)
-                {
-                    EditorGUILayout.BeginHorizontal();
-                    if (GUILayout.Toggle(selectedComponentName == pi.name, pi.name, itemStyle, GUILayout.ExpandWidth(true)))
+                    if (pi.type == PackageItemType.Component && pi.exported)
                     {
-                        selectedPkg = pi.owner;
-                        selectedPackageName = pi.owner.name;
-                        selectedComponentName = pi.name;
+                        EditorGUILayout.BeginHorizontal();
+                        if (GUILayout.Toggle(selectedComponentName == pi.name, pi.name, itemStyle, GUILayout.ExpandWidth(true)))
+                            selectedComponentName = pi.name;
+                        i++;
+                        EditorGUILayout.EndHorizontal();
                     }
-                    EditorGUILayout.EndHorizontal();
                 }
             }
             EditorGUILayout.EndScrollView();
@@ -178,8 +142,9 @@ namespace FairyGUIEditor
                 EditorToolSet.ReloadPackages();
 
             GUILayout.Space(20);
-            if (GUILayout.Button("OK", GUILayout.Width(100)) && selectedPkg != null)
+            if (GUILayout.Button("OK", GUILayout.Width(100)) && selectedPackage >= 0)
             {
+                UIPackage selectedPkg = pkgs[selectedPackage];
                 string tmp = selectedPkg.assetPath.ToLower();
                 string packagePath;
                 int pos = tmp.LastIndexOf("/resources/");
@@ -222,20 +187,7 @@ namespace FairyGUIEditor
 
         void ApplyChange()
         {
-#if UNITY_5_3_OR_NEWER
             EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
-#elif UNITY_5
-            EditorApplication.MarkSceneDirty();
-#else
-            EditorUtility.SetDirty(Selection.activeGameObject);
-#endif
-        }
-
-        static bool IsSearched(string source, string search)
-        {
-            if (string.IsNullOrEmpty(source))
-                return true;
-            return string.IsNullOrEmpty(search) || source.ToLower().Contains(search.ToLower());
         }
     }
 }

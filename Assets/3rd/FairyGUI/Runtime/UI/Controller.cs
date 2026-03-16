@@ -24,7 +24,7 @@ namespace FairyGUI
         int _selectedIndex;
         int _previousIndex;
         List<string> _pageIds;
-        public List<string> _pageNames;
+        List<string> _pageNames;
         List<ControllerAction> _actions;
 
         EventListener _onChanged;
@@ -69,10 +69,7 @@ namespace FairyGUI
                 if (_selectedIndex != value)
                 {
                     if (value > _pageIds.Count - 1)
-                    {
-                        UnityEngine.Debug.LogError($"controller:{name},count={_pageIds.Count},setIndex={value}, out of range.");
-                        value = _pageIds.Count - 1;
-                    }
+                        throw new IndexOutOfRangeException("" + value);
 
                     changing = true;
 
@@ -97,10 +94,7 @@ namespace FairyGUI
             if (_selectedIndex != value)
             {
                 if (value > _pageIds.Count - 1)
-                {
-                    UnityEngine.Debug.LogError($"controller:{name},count={_pageIds.Count},setIndex={value}, out of range.");
-                    value = _pageIds.Count - 1;
-                }
+                    throw new IndexOutOfRangeException("" + value);
 
                 changing = true;
                 _previousIndex = _selectedIndex;
@@ -145,11 +139,17 @@ namespace FairyGUI
             }
         }
 
+        [Obsolete("Use previousIndex")]
+        public int previsousIndex
+        {
+            get { return _previousIndex; }
+        }
+
         /// <summary>
         /// Previouse page index.
         /// 获得上次活动页面索引
         /// </summary>
-        public int previsousIndex
+        public int previousIndex
         {
             get { return _previousIndex; }
         }

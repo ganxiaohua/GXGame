@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542fcdcd05ba43bd9d39a1e473d38f69, type: 3}
+  m_Name: MapArea_1
+  m_EditorClassIdentifier: 
+  Id: 1
+  StartPoint: {x: -23, y: -25}
+  Size: {x: 250, y: 250}
+  CellSize: {x: 5, y: 5}
+  ChunkSize: {x: 50, y: 50}
+  ChunkCount: 0
+  CropLand: 00000000

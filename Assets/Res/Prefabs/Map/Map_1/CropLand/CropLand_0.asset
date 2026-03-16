@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25787fed57134da2a089782e8745b6af, type: 3}
+  m_Name: CropLand_0
+  m_EditorClassIdentifier: 
+  Data:
+    Index: 0
+    lPos: {x: -15.4, y: 0, z: -21.5}
+    lScale: {x: 1, y: 1, z: 1}
+    lRot: {x: 0, y: 0, z: 0, w: 1}
+    CellSize: {x: 1, y: 1}
+    GirdArea: {x: 28, y: 17}
+    OffsetPos: {x: 0, y: 0, z: 0}
