@@ -11,16 +11,20 @@ namespace GamePlay.Runtime
     {
         private static Dictionary<string, byte[]> bundles;
 
-        public static async UniTask InitializeAsync()
+        public static async UniTask<bool> InitializeAsync()
         {
             var tag = "Excel";
             PackageSearcher.SearchByAssetTag(tag, out var infos);
             bundles = new(infos.Length);
             var bytesList = await AssetManager.Instance.LoadRawsAsync(tag, default);
+            if (bytesList == null)
+                return false;
             for (int i = 0; i < infos.Length; i++)
             {
                 bundles[infos[i].Address] = bytesList[i];
             }
+
+            return true;
         }
 
         private static Tables instance;

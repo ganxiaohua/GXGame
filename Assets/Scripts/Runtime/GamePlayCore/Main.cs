@@ -12,8 +12,12 @@ namespace GamePlay.Runtime
         {
             DontDestroyOnLoad(this);
             GameObjectLayer = transform.Find("GameObjectLayer");
-            await GXGameFrame.Instance.Init();
-            await Tables.InitializeAsync();
+           var succ = await GXGameFrame.Instance.Init();
+           if (!succ)
+               return;
+           succ =  await Tables.InitializeAsync();
+           if (!succ)
+               return;
             AutoBindEvent.AddSystem();
             GXGameFrame.Instance.AddFsmComponents(typeof(GameProcess));
         }
