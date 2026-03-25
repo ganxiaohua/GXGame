@@ -43,5 +43,22 @@ namespace GamePlay.Runtime
             HashSetPool<IEntity>.Release(allEntity);
         }
         
+        public void FireAssetEvent(GameFrame.Runtime.AssetEventType assetEvent)
+        {
+            var allEntity = EventData.Instance.GetEntity(typeof(GameFrame.Runtime.IAssetEvent));
+            if (allEntity == null)
+            {
+                return;
+            }
+            foreach (var entity in allEntity)
+            {
+                if (entity.State == IEntity.EntityState.IsRunning)
+                {
+                    ((GameFrame.Runtime.IAssetEvent) entity).OnAssetEvent(assetEvent);
+                }
+            }
+            HashSetPool<IEntity>.Release(allEntity);
+        }
+        
     }
 }

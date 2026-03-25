@@ -14,6 +14,7 @@ namespace GamePlay.Runtime
         eventData.AddSourceDic(typeof(Gameplay.Runtime.MainBagPanel),typeof(GamePlay.Runtime.IUIEvent));
         eventData.AddSourceDic(typeof(Gameplay.Runtime.MainPanel),typeof(GamePlay.Runtime.IUIEvent));
         eventData.AddSourceDic(typeof(GamePlay.Runtime.MagicWorld),typeof(GamePlay.Runtime.IWorldEvent));
+        eventData.AddSourceDic(typeof(GamePlay.Runtime.GameInitState),typeof(GameFrame.Runtime.IAssetEvent));
         eventData.AddSourceDic(typeof(GamePlay.Runtime.GameScene),typeof(GamePlay.Runtime.IWorldEvent));
         }
     }
