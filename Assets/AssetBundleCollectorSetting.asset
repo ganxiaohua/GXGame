@@ -129,3 +129,25 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+  - PackageName: RemotelyPackage
+    PackageDesc: 
+    EnableAddressable: 1
+    SupportExtensionless: 1
+    LocationToLower: 0
+    IncludeAssetGUID: 0
+    AutoCollectShaders: 1
+    IgnoreRuleName: NormalIgnoreRule
+    Groups:
+    - GroupName: Test
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Res/TY
+        CollectorGUID: a54a394ef68fd9942aac2cc53f6c470d
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

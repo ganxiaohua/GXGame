@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7229dabb9ecf9e4d8ef463aedb0984c, type: 3}
   m_Name: YooAssetsData
   m_EditorClassIdentifier: 
-  RemoteResUrl: 
-  DebugResUrl: 
+  RemoteResUrl: http://localhost/download
+  DebugResUrl: http://localhost/download
   Datas:
   - Name: DefaultPackage
     PlayMode: 0

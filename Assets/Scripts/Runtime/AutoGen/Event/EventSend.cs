@@ -43,7 +43,7 @@ namespace GamePlay.Runtime
             HashSetPool<IEntity>.Release(allEntity);
         }
         
-        public void FireAssetEvent(GameFrame.Runtime.AssetEventType assetEvent)
+        public void FireAssetEvent(GameFrame.Runtime.AssetEventType assetEvent,System.Object obj)
         {
             var allEntity = EventData.Instance.GetEntity(typeof(GameFrame.Runtime.IAssetEvent));
             if (allEntity == null)
@@ -54,7 +54,7 @@ namespace GamePlay.Runtime
             {
                 if (entity.State == IEntity.EntityState.IsRunning)
                 {
-                    ((GameFrame.Runtime.IAssetEvent) entity).OnAssetEvent(assetEvent);
+                    ((GameFrame.Runtime.IAssetEvent) entity).OnAssetEvent(assetEvent,obj);
                 }
             }
             HashSetPool<IEntity>.Release(allEntity);
