@@ -20,7 +20,7 @@ namespace GamePlay.Runtime
             {
                 if (entity.State == IEntity.EntityState.IsRunning)
                 {
-                    ((GamePlay.Runtime.IUIEvent) entity).OnBagSelectChange(msg,obj);
+                    ((GamePlay.Runtime.IUIEvent) entity).OnUIEvent(msg,obj);
                 }
             }
             HashSetPool<IEntity>.Release(allEntity);

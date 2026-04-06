@@ -455,6 +455,8 @@ namespace FairyGUI
             }
 
             VertexBuffer vb2 = VertexBuffer.Begin();
+            if (color.a != 255)
+                vb2._alphaInVertexColor = true;
             for (int j = 0; j < dirs; j++)
             {
                 for (int i = 0; i < count; i++)
@@ -482,6 +484,8 @@ namespace FairyGUI
             }
 
             VertexBuffer vb2 = VertexBuffer.Begin();
+            if (color.a != 255)
+                vb2._alphaInVertexColor = true;
             for (int i = 0; i < count; i++)
             {
                 Vector3 vert = vertices[i];

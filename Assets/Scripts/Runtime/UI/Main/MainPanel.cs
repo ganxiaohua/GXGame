@@ -89,7 +89,7 @@ namespace Gameplay.Runtime
             // n3_n9_Cuttitle.text = string.Empty; //$"{value.CurActiveValue}/{value.MaxActiveValue}";
         }
 
-        public void OnBagSelectChange(UIEventMsg msg, object obj)
+        public void OnUIEvent(UIEventMsg msg, object obj)
         {
             switch (msg)
             {

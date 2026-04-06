@@ -119,7 +119,7 @@ namespace Gameplay.Runtime
             bagLoopList.Count = BagData.Instance.BagItems.Count;
         }
 
-        public void OnBagSelectChange(UIEventMsg msg, object obj)
+        public void OnUIEvent(UIEventMsg msg, object obj)
         {
             switch (msg)
             {

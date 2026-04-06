@@ -51,7 +51,6 @@ namespace GamePlay.Runtime
                 case AssetEventType.InitFail:
                     break;
                 case AssetEventType.LoadVersionFail:
-                    Debugger.LogError("下载版本出错!");
                     break;
                 case AssetEventType.PackageManifestFail:
                     break;

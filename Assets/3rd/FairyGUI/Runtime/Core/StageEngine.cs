@@ -35,7 +35,7 @@ namespace FairyGUI
             if (Application.isEditor)
             {
                 beingQuit = true;
-                // UIPackage.RemoveAllPackages();
+                UIPackage.RemoveAllPackages();
                 Stage.inst.Dispose();
             }
         }

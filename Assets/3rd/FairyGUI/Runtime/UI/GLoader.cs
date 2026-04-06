@@ -1,6 +1,6 @@
 ﻿using System;
-using FairyGUI.Utils;
 using UnityEngine;
+using FairyGUI.Utils;
 
 namespace FairyGUI
 {
@@ -30,7 +30,6 @@ namespace FairyGUI
         GObject _errorSign;
         GComponent _content2;
         public int ContentVersion { get; private set; }
-
 #if FAIRYGUI_PUERTS
         public Action __loadExternal;
         public Action<NTexture> __freeExternal;
@@ -50,15 +49,14 @@ namespace FairyGUI
             displayObject = new Container("GLoader");
             displayObject.gOwner = this;
             _content = new MovieClip();
-            ((Container) displayObject).AddChild(_content);
-            ((Container) displayObject).opaque = true;
+            ((Container)displayObject).AddChild(_content);
+            ((Container)displayObject).opaque = true;
         }
 
         override public void Dispose()
         {
             if (_disposed) return;
             ContentVersion++;
-
             if (_content.texture != null)
             {
                 if (_contentItem == null)
@@ -74,7 +72,6 @@ namespace FairyGUI
                     }
                 }
             }
-
             if (_errorSign != null)
                 _errorSign.Dispose();
             if (_content2 != null)
@@ -356,7 +353,10 @@ namespace FairyGUI
         /// </summary>
         public NTexture texture
         {
-            get { return _content.texture; }
+            get
+            {
+                return _content.texture;
+            }
 
             set
             {
@@ -420,7 +420,7 @@ namespace FairyGUI
                 if (_contentItem.type == PackageItemType.Image)
                 {
                     _content.texture = _contentItem.texture;
-                    _content.textureScale = new Vector2(_contentItem.width / (float) sourceWidth, _contentItem.height / (float) sourceHeight);
+                    _content.textureScale = new Vector2(_contentItem.width / (float)sourceWidth, _contentItem.height / (float)sourceHeight);
                     _content.scale9Grid = _contentItem.scale9Grid;
                     _content.scaleByTile = _contentItem.scaleByTile;
                     _content.tileGridIndice = _contentItem.tileGridIndice;
@@ -448,8 +448,8 @@ namespace FairyGUI
                     }
                     else
                     {
-                        _content2 = (GComponent) obj;
-                        ((Container) displayObject).AddChild(_content2.displayObject);
+                        _content2 = (GComponent)obj;
+                        ((Container)displayObject).AddChild(_content2.displayObject);
                         UpdateLayout();
                     }
                 }
@@ -476,7 +476,7 @@ namespace FairyGUI
                 return;
             }
 #endif
-            Texture2D tex = (Texture2D) Resources.Load(_url, typeof(Texture2D));
+            Texture2D tex = (Texture2D)Resources.Load(_url, typeof(Texture2D));
             if (tex != null)
                 onExternalLoadSuccess(new NTexture(tex));
             else
@@ -533,14 +533,14 @@ namespace FairyGUI
             if (_errorSign != null)
             {
                 _errorSign.SetSize(this.width, this.height);
-                ((Container) displayObject).AddChild(_errorSign.displayObject);
+                ((Container)displayObject).AddChild(_errorSign.displayObject);
             }
         }
 
         protected void ClearErrorState()
         {
             if (_errorSign != null && _errorSign.displayObject.parent != null)
-                ((Container) displayObject).RemoveChild(_errorSign.displayObject);
+                ((Container)displayObject).RemoveChild(_errorSign.displayObject);
         }
 
         protected void UpdateLayout()
@@ -553,7 +553,6 @@ namespace FairyGUI
                     SetSize(50, 30);
                     _updatingLayout = false;
                 }
-
                 return;
             }
 
@@ -679,10 +678,8 @@ namespace FairyGUI
                     _content.texture.onSizeChanged -= _reloadDelegate;
                     FreeExternal(_content.texture);
                 }
-
                 _content.texture = null;
             }
-
             _content.frames = null;
 
             if (_content2 != null)
@@ -690,7 +687,6 @@ namespace FairyGUI
                 _content2.Dispose();
                 _content2 = null;
             }
-
             _contentItem = null;
         }
 
@@ -709,9 +705,9 @@ namespace FairyGUI
             buffer.Seek(beginPos, 5);
 
             _url = buffer.ReadS();
-            _align = (AlignType) buffer.ReadByte();
-            _verticalAlign = (VertAlignType) buffer.ReadByte();
-            _fill = (FillType) buffer.ReadByte();
+            _align = (AlignType)buffer.ReadByte();
+            _verticalAlign = (VertAlignType)buffer.ReadByte();
+            _fill = (FillType)buffer.ReadByte();
             _shrinkOnly = buffer.ReadBool();
             _autoSize = buffer.ReadBool();
             showErrorSign = buffer.ReadBool();
@@ -720,14 +716,13 @@ namespace FairyGUI
 
             if (buffer.ReadBool())
                 _content.color = buffer.ReadColor();
-            _content.fillMethod = (FillMethod) buffer.ReadByte();
+            _content.fillMethod = (FillMethod)buffer.ReadByte();
             if (_content.fillMethod != FillMethod.None)
             {
                 _content.fillOrigin = buffer.ReadByte();
                 _content.fillClockwise = buffer.ReadBool();
                 _content.fillAmount = buffer.ReadFloat();
             }
-
             if (buffer.version >= 7)
                 _useResize = buffer.ReadBool();
 

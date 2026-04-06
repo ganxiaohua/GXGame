@@ -16,6 +16,6 @@ namespace GamePlay.Runtime
 
     public interface IUIEvent : IEvent
     {
-        public void OnBagSelectChange(UIEventMsg msg, object obj);
+        public void OnUIEvent(UIEventMsg msg, object obj);
     }
 }
