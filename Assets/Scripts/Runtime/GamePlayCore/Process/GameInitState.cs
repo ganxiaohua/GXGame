@@ -15,9 +15,9 @@ namespace GamePlay.Runtime
         private Dictionary<string, DownloadUpdateData> downloadUpdateDataDic;
 
 
-        public override void OnEnter(FsmController fsmController)
+        public override void OnEnter()
         {
-            base.OnEnter(fsmController);
+            base.OnEnter();
             fsmControllers = new List<FsmController>(4);
             resourceDownloaderOperationList = new List<ResourceDownloaderOperation>(4);
             downloadUpdateDataDic = new Dictionary<string, DownloadUpdateData>(4);

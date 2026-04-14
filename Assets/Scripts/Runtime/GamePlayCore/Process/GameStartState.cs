@@ -5,9 +5,9 @@ namespace GamePlay.Runtime
 {
     public class GameStartState : FsmState
     {
-        public override void OnEnter(FsmController fsmController)
+        public override void OnEnter()
         {
-            base.OnEnter(fsmController);
+            base.OnEnter();
             LoadConfig().Forget();
         }
 
