@@ -55,7 +55,6 @@ namespace GamePlay.Runtime
         private void CollisionMovement(float deltaTime)
         {
             var view = Owner.GetView().GetData();
-            var exPowerComp = Owner.GetMoveDirectionExPowerComp();
             var pos = view.Position;
             // Vector2 oldPos = pos;
             var rot = view.Rotation;
@@ -70,6 +69,7 @@ namespace GamePlay.Runtime
             dir = dir.normalized * (moveSpeed * deltaTime);
             if (Owner.HasComponent<MoveDirectionExPowerComp>())
             {
+                var exPowerComp = Owner.GetMoveDirectionExPowerComp();
                 dir += exPowerComp.Value.Strength * deltaTime;
             }
 
