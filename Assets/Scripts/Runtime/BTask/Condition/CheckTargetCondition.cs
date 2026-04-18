@@ -44,7 +44,7 @@ namespace GamePlay.Runtime
         protected override bool OnCheck()
         {
             var ownerViewData = Owner.GetView().GetData();
-            foreach (var eff in searchGroup)
+            foreach (var eff in searchGroup.EntitiesMap)
             {
                 var pos = eff.GetView().GetData().Position;
                 var owerPos = ownerViewData.Position;

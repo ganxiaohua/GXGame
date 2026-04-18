@@ -5,12 +5,13 @@
 using GameFrame.Runtime;
 public static partial class  AllComponents {
     
-    public const int TotalComponents = 56;
+    public const int TotalComponents = 57;
     public static void AddComponents(World world)
     {
         
         world.AddComp<GameFrame.Runtime.CapabilityComponent>();
         world.AddComp<GameFrame.Runtime.DestroyComp>();
+        world.AddComp<GameFrame.Runtime.BindingTargetOverComp>();
         world.AddComp<GameFrame.Runtime.GoapActionComponent>();
         world.AddComp<GamePlay.Runtime.CameraLensZoomAngleComp>();
         world.AddComp<GamePlay.Runtime.BeAttackBuffComp>();

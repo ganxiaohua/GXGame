@@ -19,6 +19,8 @@ public static partial class AllComponents
 
         ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.DestroyComp>.TID] = DisDestroyComp;
 
+        ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.BindingTargetOverComp>.TID] = DisBindingTargetOverComp;
+
         ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.GoapActionComponent>.TID] = DisGoapActionComponent;
 
         ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GamePlay.Runtime.CameraLensZoomAngleComp>.TID] = DisCameraLensZoomAngleComp;
@@ -138,6 +140,11 @@ public static partial class AllComponents
     private static void DisDestroyComp(World world,int effEntityId)
     {
         var v = world.GetComp<GameFrame.Runtime.DestroyComp>(effEntityId, ComponentsID<GameFrame.Runtime.DestroyComp>.TID);
+        v.Dispose();
+    }
+    private static void DisBindingTargetOverComp(World world,int effEntityId)
+    {
+        var v = world.GetComp<GameFrame.Runtime.BindingTargetOverComp>(effEntityId, ComponentsID<GameFrame.Runtime.BindingTargetOverComp>.TID);
         v.Dispose();
     }
     private static void DisGoapActionComponent(World world,int effEntityId)

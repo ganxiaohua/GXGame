@@ -32,7 +32,7 @@ namespace GamePlay.Runtime
         public override void TickActive(float delatTime, float realElapseSeconds)
         {
             var pos = Owner.GetView().GetData().Position;
-            foreach (var player in playerGroup)
+            foreach (var player in playerGroup.EntitiesMap)
             {
                 if (!player.IsAction || !player.HasComponent<ColliderLogicComp>())
                     return;
