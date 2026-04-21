@@ -17,7 +17,7 @@ namespace GamePlay.Runtime
             if (!succ)
                 return;
             SceneFactory.ChangePlayerScene<GameScene>();
-            GXGameFrame.Instance.RemoveFsmComponents(fsmController);
+            GXGameFrame.Instance.RemoveFsmComponent(fsmController);
         }
     }
 }

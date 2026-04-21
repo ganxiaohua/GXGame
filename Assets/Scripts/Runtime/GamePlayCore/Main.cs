@@ -14,7 +14,7 @@ namespace GamePlay.Runtime
             DontDestroyOnLoad(this);
             GameObjectLayer = transform.Find("GameObjectLayer");
             AutoBindEvent.AddSystem();
-            GXGameFrame.Instance.AddFsmComponents(typeof(GameProcess));
+            GXGameFrame.Instance.AddFsmComponent(typeof(GameProcess));
         }
     }
 }

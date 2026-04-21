@@ -24,9 +24,9 @@ namespace GamePlay.Runtime
         {
             base.OnActivated();
             view = Owner.GetView().GetData();
-            if (view.notNeedBuind)
+            if (view.NotNeedBuind)
                 return;
-            view.BindFromAssetAsync(Owner.GetAssetPathComp().GetData(), view.parent).Forget();
+            view.BindFromAssetAsync(Owner.GetAssetPathComp().GetData(), view.Parent).Forget();
         }
 
         public override void OnDeactivated()

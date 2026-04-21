@@ -32,7 +32,8 @@ namespace GamePlay.Editor.MapEditor
                       "5.鼠标左键进行操作(交互物品需要用不同的道具操作\n" +
                       "6.鼠标右键是控制人物同一个方向行走\n" +
                       "7.F键投掷物品\n" +
-                      "8.shift加速奔跑";
+                      "8.shift加速奔跑\n" +
+                      "想要打包，先将yoosasset资源打包，然后将Resources/YooAssetsData 下的模式修改了";
         }
 
         public void Clear()
