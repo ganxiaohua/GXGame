@@ -14,19 +14,26 @@ public unsafe static partial class AutoOperatedFuncComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.OperatedFuncComp GetOperatedFuncComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.OperatedFuncComp GetOperatedFuncComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.OperatedFuncComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.OperatedFuncComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.OperatedFuncComp data) GetOperatedFuncCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveOperatedFuncComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.OperatedFuncComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.OperatedFuncComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetOperatedFuncComp(this EffEntity effEntity,out GamePlay.Runtime.OperatedFuncComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.OperatedFuncComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.OperatedFuncComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveOperatedFuncComp(this EffEntity effEntity)
     {

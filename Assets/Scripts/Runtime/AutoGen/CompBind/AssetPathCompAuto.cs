@@ -14,19 +14,26 @@ public unsafe static partial class AutoAssetPathComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.AssetPathComp GetAssetPathComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.AssetPathComp GetAssetPathComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.AssetPathComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.AssetPathComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.AssetPathComp data) GetAssetPathCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveAssetPathComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.AssetPathComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.AssetPathComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetAssetPathComp(this EffEntity effEntity,out GamePlay.Runtime.AssetPathComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.AssetPathComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.AssetPathComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveAssetPathComp(this EffEntity effEntity)
     {

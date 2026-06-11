@@ -9,9 +9,10 @@ public static class AllCapability {
     
     private  static int Order()
     {
-        var orderTid =  CapabilityID<GamePlay.Runtime.PlayerEnterCapability,IUpdateSystem>.TID;
-        orderTid =  CapabilityID<GamePlay.Runtime.CollisionDealWithCapabilty,IUpdateSystem>.TID;
+        var orderTid =  CapabilityID<GameFrame.Runtime.Components.GOAPCapability,IUpdateSystem>.TID;
         orderTid =  CapabilityID<GamePlay.Runtime.SeekerCapability,IUpdateSystem>.TID;
+        orderTid =  CapabilityID<GamePlay.Runtime.CollisionDealWithCapabilty,IUpdateSystem>.TID;
+        orderTid =  CapabilityID<GamePlay.Runtime.PlayerEnterCapability,IUpdateSystem>.TID;
         orderTid =  CapabilityID<GamePlay.Runtime.BehaviorTreeCapability,IUpdateSystem>.TID;
         orderTid =  CapabilityID<GamePlay.Runtime.TimeOutDestroyCapability,IUpdateSystem>.TID;
         orderTid =  CapabilityID<GamePlay.Runtime.KCCCapability,IFixedUpdateSystem>.TID;
@@ -39,6 +40,6 @@ public static class AllCapability {
         orderTid =  CapabilityID<GameFrame.Runtime.DestroyCapability,IUpdateSystem>.TID;
 
 
-       return 28;
+       return 29;
     }
 }

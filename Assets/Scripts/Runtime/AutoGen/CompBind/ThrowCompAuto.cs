@@ -29,19 +29,26 @@ public unsafe static partial class AutoThrowComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.ThrowComp GetThrowComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.ThrowComp GetThrowComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.ThrowComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.ThrowComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.ThrowComp data) GetThrowCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveThrowComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.ThrowComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.ThrowComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetThrowComp(this EffEntity effEntity,out GamePlay.Runtime.ThrowComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.ThrowComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.ThrowComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveThrowComp(this EffEntity effEntity)
     {

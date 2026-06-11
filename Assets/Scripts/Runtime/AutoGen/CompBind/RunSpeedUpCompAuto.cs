@@ -29,19 +29,26 @@ public unsafe static partial class AutoRunSpeedUpComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.RunSpeedUpComp GetRunSpeedUpComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.RunSpeedUpComp GetRunSpeedUpComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.RunSpeedUpComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.RunSpeedUpComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.RunSpeedUpComp data) GetRunSpeedUpCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveRunSpeedUpComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.RunSpeedUpComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.RunSpeedUpComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetRunSpeedUpComp(this EffEntity effEntity,out GamePlay.Runtime.RunSpeedUpComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.RunSpeedUpComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.RunSpeedUpComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveRunSpeedUpComp(this EffEntity effEntity)
     {

@@ -29,19 +29,26 @@ public unsafe static partial class AutoBeAttackTypeComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.BeAttackTypeComp GetBeAttackTypeComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.BeAttackTypeComp GetBeAttackTypeComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.BeAttackTypeComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.BeAttackTypeComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.BeAttackTypeComp data) GetBeAttackTypeCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBeAttackTypeComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.BeAttackTypeComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.BeAttackTypeComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBeAttackTypeComp(this EffEntity effEntity,out GamePlay.Runtime.BeAttackTypeComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.BeAttackTypeComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.BeAttackTypeComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBeAttackTypeComp(this EffEntity effEntity)
     {

@@ -14,19 +14,26 @@ public unsafe static partial class AutoPortalDataComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.PortalDataComp GetPortalDataComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.PortalDataComp GetPortalDataComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.PortalDataComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.PortalDataComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.PortalDataComp data) GetPortalDataCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HavePortalDataComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.PortalDataComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.PortalDataComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetPortalDataComp(this EffEntity effEntity,out GamePlay.Runtime.PortalDataComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.PortalDataComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.PortalDataComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactivePortalDataComp(this EffEntity effEntity)
     {

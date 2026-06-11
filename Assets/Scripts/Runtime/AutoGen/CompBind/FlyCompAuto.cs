@@ -16,19 +16,26 @@ public unsafe static partial class AutoFlyComp
     {
         effEntity.AddComponent<GamePlay.Runtime.FlyComp>();
     }      
-    public static GamePlay.Runtime.FlyComp GetFlyComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.FlyComp GetFlyComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.FlyComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.FlyComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.FlyComp data) GetFlyCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveFlyComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.FlyComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.FlyComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetFlyComp(this EffEntity effEntity,out GamePlay.Runtime.FlyComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.FlyComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.FlyComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveFlyComp(this EffEntity effEntity)
     {

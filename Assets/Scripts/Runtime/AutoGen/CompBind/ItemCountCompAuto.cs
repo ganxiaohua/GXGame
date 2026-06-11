@@ -29,19 +29,26 @@ public unsafe static partial class AutoItemCountComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.ItemCountComp GetItemCountComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.ItemCountComp GetItemCountComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.ItemCountComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.ItemCountComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.ItemCountComp data) GetItemCountCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveItemCountComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.ItemCountComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.ItemCountComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetItemCountComp(this EffEntity effEntity,out GamePlay.Runtime.ItemCountComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.ItemCountComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.ItemCountComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveItemCountComp(this EffEntity effEntity)
     {

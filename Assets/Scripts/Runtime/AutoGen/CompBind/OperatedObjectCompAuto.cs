@@ -14,19 +14,26 @@ public unsafe static partial class AutoOperatedObjectComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.OperatedObjectComp GetOperatedObjectComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.OperatedObjectComp GetOperatedObjectComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.OperatedObjectComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.OperatedObjectComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.OperatedObjectComp data) GetOperatedObjectCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveOperatedObjectComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.OperatedObjectComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.OperatedObjectComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetOperatedObjectComp(this EffEntity effEntity,out GamePlay.Runtime.OperatedObjectComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.OperatedObjectComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.OperatedObjectComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveOperatedObjectComp(this EffEntity effEntity)
     {

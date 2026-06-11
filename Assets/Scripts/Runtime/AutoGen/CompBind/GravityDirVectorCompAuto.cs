@@ -29,19 +29,26 @@ public unsafe static partial class AutoGravityDirVectorComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.GravityDirVectorComp GetGravityDirVectorComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.GravityDirVectorComp GetGravityDirVectorComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.GravityDirVectorComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.GravityDirVectorComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.GravityDirVectorComp data) GetGravityDirVectorCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveGravityDirVectorComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.GravityDirVectorComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.GravityDirVectorComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetGravityDirVectorComp(this EffEntity effEntity,out GamePlay.Runtime.GravityDirVectorComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.GravityDirVectorComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.GravityDirVectorComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveGravityDirVectorComp(this EffEntity effEntity)
     {

@@ -14,19 +14,26 @@ public unsafe static partial class AutoUnitDataComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.UnitDataComp GetUnitDataComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.UnitDataComp GetUnitDataComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.UnitDataComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.UnitDataComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.UnitDataComp data) GetUnitDataCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveUnitDataComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.UnitDataComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.UnitDataComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetUnitDataComp(this EffEntity effEntity,out GamePlay.Runtime.UnitDataComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.UnitDataComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.UnitDataComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveUnitDataComp(this EffEntity effEntity)
     {

@@ -14,19 +14,26 @@ public unsafe static partial class AutoCapabilityComponent
         data->Init(param);
     }
           
-    public static GameFrame.Runtime.CapabilityComponent GetCapabilityComponent(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.CapabilityComponent GetCapabilityComponent(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.CapabilityComponent>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.CapabilityComponent>();
     }
     
-    public static (bool have, GameFrame.Runtime.CapabilityComponent data) GetCapabilityComponentWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveCapabilityComponent(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.CapabilityComponent>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.CapabilityComponent>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetCapabilityComponent(this EffEntity effEntity,out GameFrame.Runtime.CapabilityComponent data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.CapabilityComponent>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.CapabilityComponent>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveCapabilityComponent(this EffEntity effEntity)
     {

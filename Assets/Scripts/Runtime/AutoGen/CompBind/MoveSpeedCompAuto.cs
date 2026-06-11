@@ -29,19 +29,26 @@ public unsafe static partial class AutoMoveSpeedComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.MoveSpeedComp GetMoveSpeedComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.MoveSpeedComp GetMoveSpeedComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.MoveSpeedComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.MoveSpeedComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.MoveSpeedComp data) GetMoveSpeedCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveMoveSpeedComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.MoveSpeedComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.MoveSpeedComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetMoveSpeedComp(this EffEntity effEntity,out GamePlay.Runtime.MoveSpeedComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.MoveSpeedComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.MoveSpeedComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveMoveSpeedComp(this EffEntity effEntity)
     {

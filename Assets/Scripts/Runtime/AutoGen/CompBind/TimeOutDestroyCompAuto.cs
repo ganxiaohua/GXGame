@@ -29,19 +29,26 @@ public unsafe static partial class AutoTimeOutDestroyComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.TimeOutDestroyComp GetTimeOutDestroyComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.TimeOutDestroyComp GetTimeOutDestroyComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.TimeOutDestroyComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.TimeOutDestroyComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.TimeOutDestroyComp data) GetTimeOutDestroyCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveTimeOutDestroyComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.TimeOutDestroyComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.TimeOutDestroyComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetTimeOutDestroyComp(this EffEntity effEntity,out GamePlay.Runtime.TimeOutDestroyComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.TimeOutDestroyComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.TimeOutDestroyComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveTimeOutDestroyComp(this EffEntity effEntity)
     {

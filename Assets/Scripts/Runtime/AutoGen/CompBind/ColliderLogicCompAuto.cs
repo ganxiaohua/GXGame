@@ -14,19 +14,26 @@ public unsafe static partial class AutoColliderLogicComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.ColliderLogicComp GetColliderLogicComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.ColliderLogicComp GetColliderLogicComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.ColliderLogicComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.ColliderLogicComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.ColliderLogicComp data) GetColliderLogicCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveColliderLogicComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.ColliderLogicComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.ColliderLogicComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetColliderLogicComp(this EffEntity effEntity,out GamePlay.Runtime.ColliderLogicComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.ColliderLogicComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.ColliderLogicComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveColliderLogicComp(this EffEntity effEntity)
     {

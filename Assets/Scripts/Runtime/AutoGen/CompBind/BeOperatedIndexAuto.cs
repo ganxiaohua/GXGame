@@ -29,19 +29,26 @@ public unsafe static partial class AutoBeOperatedIndex
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.BeOperatedIndex GetBeOperatedIndex(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.BeOperatedIndex GetBeOperatedIndex(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.BeOperatedIndex>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.BeOperatedIndex>();
     }
     
-    public static (bool have, GamePlay.Runtime.BeOperatedIndex data) GetBeOperatedIndexWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBeOperatedIndex(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.BeOperatedIndex>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.BeOperatedIndex>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBeOperatedIndex(this EffEntity effEntity,out GamePlay.Runtime.BeOperatedIndex data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.BeOperatedIndex>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.BeOperatedIndex>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBeOperatedIndex(this EffEntity effEntity)
     {

@@ -33,8 +33,8 @@ namespace GamePlay.Runtime
         public override bool ShouldActivate()
         {
             bool ac = false;
-            var comp = Owner.GetEnterOparatedCompWithHave();
-            if (comp.have && comp.data.Value.IsLongTouch)
+            var comp = Owner.TryGetEnterOparatedComp(out var data);
+            if (comp &&data.Value.IsLongTouch)
             {
                 var itemInfo = BagData.Instance.GetCurPocketInfo();
                 ac = itemInfo != null && itemInfo.Item.AccumulatePower.Length != 0;

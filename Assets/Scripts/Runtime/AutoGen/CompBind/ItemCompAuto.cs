@@ -14,19 +14,26 @@ public unsafe static partial class AutoItemComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.ItemComp GetItemComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.ItemComp GetItemComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.ItemComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.ItemComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.ItemComp data) GetItemCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveItemComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.ItemComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.ItemComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetItemComp(this EffEntity effEntity,out GamePlay.Runtime.ItemComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.ItemComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.ItemComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveItemComp(this EffEntity effEntity)
     {

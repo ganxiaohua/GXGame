@@ -14,19 +14,26 @@ public unsafe static partial class AutoBeUseFuncComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.BeUseFuncComp GetBeUseFuncComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.BeUseFuncComp GetBeUseFuncComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.BeUseFuncComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.BeUseFuncComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.BeUseFuncComp data) GetBeUseFuncCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBeUseFuncComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.BeUseFuncComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.BeUseFuncComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBeUseFuncComp(this EffEntity effEntity,out GamePlay.Runtime.BeUseFuncComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.BeUseFuncComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.BeUseFuncComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBeUseFuncComp(this EffEntity effEntity)
     {

@@ -29,19 +29,26 @@ public unsafe static partial class AutoHPComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.HPComp GetHPComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.HPComp GetHPComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.HPComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.HPComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.HPComp data) GetHPCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveHPComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.HPComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.HPComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetHPComp(this EffEntity effEntity,out GamePlay.Runtime.HPComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.HPComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.HPComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveHPComp(this EffEntity effEntity)
     {

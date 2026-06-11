@@ -15,13 +15,11 @@ public static partial class AllComponents
             return;
         ComponentDisposeAction.ComponentDisposeActions =  new Action<World,int>[TotalComponents];
         
+        ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.BindingTargetOverComp>.TID] = DisBindingTargetOverComp;
+
         ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.CapabilityComponent>.TID] = DisCapabilityComponent;
 
         ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.DestroyComp>.TID] = DisDestroyComp;
-
-        ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.BindingTargetOverComp>.TID] = DisBindingTargetOverComp;
-
-        ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GameFrame.Runtime.GoapActionComponent>.TID] = DisGoapActionComponent;
 
         ComponentDisposeAction.ComponentDisposeActions[ComponentsID<GamePlay.Runtime.CameraLensZoomAngleComp>.TID] = DisCameraLensZoomAngleComp;
 
@@ -132,289 +130,284 @@ public static partial class AllComponents
         initDisEffEntityAction = true;
     }
         
+    private static void DisBindingTargetOverComp(World world,int effEntityId)
+    {
+       ref var v = ref world.GetComp<GameFrame.Runtime.BindingTargetOverComp>(effEntityId, ComponentsID<GameFrame.Runtime.BindingTargetOverComp>.TID);
+        v.Dispose();
+    }
     private static void DisCapabilityComponent(World world,int effEntityId)
     {
-        var v = world.GetComp<GameFrame.Runtime.CapabilityComponent>(effEntityId, ComponentsID<GameFrame.Runtime.CapabilityComponent>.TID);
+       ref var v = ref world.GetComp<GameFrame.Runtime.CapabilityComponent>(effEntityId, ComponentsID<GameFrame.Runtime.CapabilityComponent>.TID);
         v.Dispose();
     }
     private static void DisDestroyComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GameFrame.Runtime.DestroyComp>(effEntityId, ComponentsID<GameFrame.Runtime.DestroyComp>.TID);
-        v.Dispose();
-    }
-    private static void DisBindingTargetOverComp(World world,int effEntityId)
-    {
-        var v = world.GetComp<GameFrame.Runtime.BindingTargetOverComp>(effEntityId, ComponentsID<GameFrame.Runtime.BindingTargetOverComp>.TID);
-        v.Dispose();
-    }
-    private static void DisGoapActionComponent(World world,int effEntityId)
-    {
-        var v = world.GetComp<GameFrame.Runtime.GoapActionComponent>(effEntityId, ComponentsID<GameFrame.Runtime.GoapActionComponent>.TID);
+       ref var v = ref world.GetComp<GameFrame.Runtime.DestroyComp>(effEntityId, ComponentsID<GameFrame.Runtime.DestroyComp>.TID);
         v.Dispose();
     }
     private static void DisCameraLensZoomAngleComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.CameraLensZoomAngleComp>(effEntityId, ComponentsID<GamePlay.Runtime.CameraLensZoomAngleComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.CameraLensZoomAngleComp>(effEntityId, ComponentsID<GamePlay.Runtime.CameraLensZoomAngleComp>.TID);
         v.Dispose();
     }
     private static void DisBeAttackBuffComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BeAttackBuffComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeAttackBuffComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BeAttackBuffComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeAttackBuffComp>.TID);
         v.Dispose();
     }
     private static void DisBeAttackTypeComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BeAttackTypeComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeAttackTypeComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BeAttackTypeComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeAttackTypeComp>.TID);
         v.Dispose();
     }
     private static void DisBehaviorTreeComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GameFrame.Runtime.BehaviorTreeComp>(effEntityId, ComponentsID<GameFrame.Runtime.BehaviorTreeComp>.TID);
+       ref var v = ref world.GetComp<GameFrame.Runtime.BehaviorTreeComp>(effEntityId, ComponentsID<GameFrame.Runtime.BehaviorTreeComp>.TID);
         v.Dispose();
     }
     private static void DisBeUseBuffComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BeUseBuffComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeUseBuffComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BeUseBuffComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeUseBuffComp>.TID);
         v.Dispose();
     }
     private static void DisCameraWatcherComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.CameraWatcherComp>(effEntityId, ComponentsID<GamePlay.Runtime.CameraWatcherComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.CameraWatcherComp>(effEntityId, ComponentsID<GamePlay.Runtime.CameraWatcherComp>.TID);
         v.Dispose();
     }
     private static void DisColliderLogicComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.ColliderLogicComp>(effEntityId, ComponentsID<GamePlay.Runtime.ColliderLogicComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.ColliderLogicComp>(effEntityId, ComponentsID<GamePlay.Runtime.ColliderLogicComp>.TID);
         v.Dispose();
     }
     private static void DisOperatedDetectionComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedDetectionComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedDetectionComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedDetectionComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedDetectionComp>.TID);
         v.Dispose();
     }
     private static void DisCollisionDetectionDataComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.CollisionDetectionDataComp>(effEntityId, ComponentsID<GamePlay.Runtime.CollisionDetectionDataComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.CollisionDetectionDataComp>(effEntityId, ComponentsID<GamePlay.Runtime.CollisionDetectionDataComp>.TID);
         v.Dispose();
     }
     private static void DisCollisionMsgComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.CollisionMsgComp>(effEntityId, ComponentsID<GamePlay.Runtime.CollisionMsgComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.CollisionMsgComp>(effEntityId, ComponentsID<GamePlay.Runtime.CollisionMsgComp>.TID);
         v.Dispose();
     }
     private static void DisAssetPathComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.AssetPathComp>(effEntityId, ComponentsID<GamePlay.Runtime.AssetPathComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.AssetPathComp>(effEntityId, ComponentsID<GamePlay.Runtime.AssetPathComp>.TID);
         v.Dispose();
     }
     private static void DisDieComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GameFrame.Runtime.DieComp>(effEntityId, ComponentsID<GameFrame.Runtime.DieComp>.TID);
+       ref var v = ref world.GetComp<GameFrame.Runtime.DieComp>(effEntityId, ComponentsID<GameFrame.Runtime.DieComp>.TID);
         v.Dispose();
     }
     private static void DisStopMoveDirection(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.StopMoveDirection>(effEntityId, ComponentsID<GamePlay.Runtime.StopMoveDirection>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.StopMoveDirection>(effEntityId, ComponentsID<GamePlay.Runtime.StopMoveDirection>.TID);
         v.Dispose();
     }
     private static void DisMoveDirectionComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.MoveDirectionComp>(effEntityId, ComponentsID<GamePlay.Runtime.MoveDirectionComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.MoveDirectionComp>(effEntityId, ComponentsID<GamePlay.Runtime.MoveDirectionComp>.TID);
         v.Dispose();
     }
     private static void DisMoveDirectionExPowerComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.MoveDirectionExPowerComp>(effEntityId, ComponentsID<GamePlay.Runtime.MoveDirectionExPowerComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.MoveDirectionExPowerComp>(effEntityId, ComponentsID<GamePlay.Runtime.MoveDirectionExPowerComp>.TID);
         v.Dispose();
     }
     private static void DisEnterOparatedComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.EnterOparatedComp>(effEntityId, ComponentsID<GamePlay.Runtime.EnterOparatedComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.EnterOparatedComp>(effEntityId, ComponentsID<GamePlay.Runtime.EnterOparatedComp>.TID);
         v.Dispose();
     }
     private static void DisThrowComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.ThrowComp>(effEntityId, ComponentsID<GamePlay.Runtime.ThrowComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.ThrowComp>(effEntityId, ComponentsID<GamePlay.Runtime.ThrowComp>.TID);
         v.Dispose();
     }
     private static void DisFlyComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.FlyComp>(effEntityId, ComponentsID<GamePlay.Runtime.FlyComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.FlyComp>(effEntityId, ComponentsID<GamePlay.Runtime.FlyComp>.TID);
         v.Dispose();
     }
     private static void DisForceAnimationComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.ForceAnimationComp>(effEntityId, ComponentsID<GamePlay.Runtime.ForceAnimationComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.ForceAnimationComp>(effEntityId, ComponentsID<GamePlay.Runtime.ForceAnimationComp>.TID);
         v.Dispose();
     }
     private static void DisGravityAccelerationComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.GravityAccelerationComp>(effEntityId, ComponentsID<GamePlay.Runtime.GravityAccelerationComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.GravityAccelerationComp>(effEntityId, ComponentsID<GamePlay.Runtime.GravityAccelerationComp>.TID);
         v.Dispose();
     }
     private static void DisGravityDirVectorComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.GravityDirVectorComp>(effEntityId, ComponentsID<GamePlay.Runtime.GravityDirVectorComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.GravityDirVectorComp>(effEntityId, ComponentsID<GamePlay.Runtime.GravityDirVectorComp>.TID);
         v.Dispose();
     }
     private static void DisGroundCollisionComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.GroundCollisionComp>(effEntityId, ComponentsID<GamePlay.Runtime.GroundCollisionComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.GroundCollisionComp>(effEntityId, ComponentsID<GamePlay.Runtime.GroundCollisionComp>.TID);
         v.Dispose();
     }
     private static void DisPreviousGroundComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.PreviousGroundComp>(effEntityId, ComponentsID<GamePlay.Runtime.PreviousGroundComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.PreviousGroundComp>(effEntityId, ComponentsID<GamePlay.Runtime.PreviousGroundComp>.TID);
         v.Dispose();
     }
     private static void DisHPComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.HPComp>(effEntityId, ComponentsID<GamePlay.Runtime.HPComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.HPComp>(effEntityId, ComponentsID<GamePlay.Runtime.HPComp>.TID);
         v.Dispose();
     }
     private static void DisItemComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.ItemComp>(effEntityId, ComponentsID<GamePlay.Runtime.ItemComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.ItemComp>(effEntityId, ComponentsID<GamePlay.Runtime.ItemComp>.TID);
         v.Dispose();
     }
     private static void DisItemCountComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.ItemCountComp>(effEntityId, ComponentsID<GamePlay.Runtime.ItemCountComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.ItemCountComp>(effEntityId, ComponentsID<GamePlay.Runtime.ItemCountComp>.TID);
         v.Dispose();
     }
     private static void DisJumpSpeedComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.JumpSpeedComp>(effEntityId, ComponentsID<GamePlay.Runtime.JumpSpeedComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.JumpSpeedComp>(effEntityId, ComponentsID<GamePlay.Runtime.JumpSpeedComp>.TID);
         v.Dispose();
     }
     private static void DisBodyCollisionLayerComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BodyCollisionLayerComp>(effEntityId, ComponentsID<GamePlay.Runtime.BodyCollisionLayerComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BodyCollisionLayerComp>(effEntityId, ComponentsID<GamePlay.Runtime.BodyCollisionLayerComp>.TID);
         v.Dispose();
     }
     private static void DisMoveSpeedComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.MoveSpeedComp>(effEntityId, ComponentsID<GamePlay.Runtime.MoveSpeedComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.MoveSpeedComp>(effEntityId, ComponentsID<GamePlay.Runtime.MoveSpeedComp>.TID);
         v.Dispose();
     }
     private static void DisObjectComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.ObjectComp>(effEntityId, ComponentsID<GamePlay.Runtime.ObjectComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.ObjectComp>(effEntityId, ComponentsID<GamePlay.Runtime.ObjectComp>.TID);
         v.Dispose();
     }
     private static void DisDependEntityComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.DependEntityComp>(effEntityId, ComponentsID<GamePlay.Runtime.DependEntityComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.DependEntityComp>(effEntityId, ComponentsID<GamePlay.Runtime.DependEntityComp>.TID);
         v.Dispose();
     }
     private static void DisOperatedDetectionFilterComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedDetectionFilterComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedDetectionFilterComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedDetectionFilterComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedDetectionFilterComp>.TID);
         v.Dispose();
     }
     private static void DisOperatedEffectFuncComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedEffectFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedEffectFuncComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedEffectFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedEffectFuncComp>.TID);
         v.Dispose();
     }
     private static void DisOperatedFuncComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedFuncComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedFuncComp>.TID);
         v.Dispose();
     }
     private static void DisBeAttackFuncComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BeAttackFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeAttackFuncComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BeAttackFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeAttackFuncComp>.TID);
         v.Dispose();
     }
     private static void DisBeUseFuncComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BeUseFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeUseFuncComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BeUseFuncComp>(effEntityId, ComponentsID<GamePlay.Runtime.BeUseFuncComp>.TID);
         v.Dispose();
     }
     private static void DisBeOperatedIndex(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.BeOperatedIndex>(effEntityId, ComponentsID<GamePlay.Runtime.BeOperatedIndex>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.BeOperatedIndex>(effEntityId, ComponentsID<GamePlay.Runtime.BeOperatedIndex>.TID);
         v.Dispose();
     }
     private static void DisOperatedObjectComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedObjectComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedObjectComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedObjectComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedObjectComp>.TID);
         v.Dispose();
     }
     private static void DisPortalDataComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.PortalDataComp>(effEntityId, ComponentsID<GamePlay.Runtime.PortalDataComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.PortalDataComp>(effEntityId, ComponentsID<GamePlay.Runtime.PortalDataComp>.TID);
         v.Dispose();
     }
     private static void DisRunSpeedUpComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.RunSpeedUpComp>(effEntityId, ComponentsID<GamePlay.Runtime.RunSpeedUpComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.RunSpeedUpComp>(effEntityId, ComponentsID<GamePlay.Runtime.RunSpeedUpComp>.TID);
         v.Dispose();
     }
     private static void DisSeekerComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GameFrame.Runtime.SeekerComp>(effEntityId, ComponentsID<GameFrame.Runtime.SeekerComp>.TID);
+       ref var v = ref world.GetComp<GameFrame.Runtime.SeekerComp>(effEntityId, ComponentsID<GameFrame.Runtime.SeekerComp>.TID);
         v.Dispose();
     }
     private static void DisTimeOutDestroyComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.TimeOutDestroyComp>(effEntityId, ComponentsID<GamePlay.Runtime.TimeOutDestroyComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.TimeOutDestroyComp>(effEntityId, ComponentsID<GamePlay.Runtime.TimeOutDestroyComp>.TID);
         v.Dispose();
     }
     private static void DisTurnDirectionComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.TurnDirectionComp>(effEntityId, ComponentsID<GamePlay.Runtime.TurnDirectionComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.TurnDirectionComp>(effEntityId, ComponentsID<GamePlay.Runtime.TurnDirectionComp>.TID);
         v.Dispose();
     }
     private static void DisTurnDirectionSpeedComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.TurnDirectionSpeedComp>(effEntityId, ComponentsID<GamePlay.Runtime.TurnDirectionSpeedComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.TurnDirectionSpeedComp>(effEntityId, ComponentsID<GamePlay.Runtime.TurnDirectionSpeedComp>.TID);
         v.Dispose();
     }
     private static void DisUnitDataComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.UnitDataComp>(effEntityId, ComponentsID<GamePlay.Runtime.UnitDataComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.UnitDataComp>(effEntityId, ComponentsID<GamePlay.Runtime.UnitDataComp>.TID);
         v.Dispose();
     }
     private static void DisView(World world,int effEntityId)
     {
-        var v = world.GetComp<GameFrame.Runtime.View>(effEntityId, ComponentsID<GameFrame.Runtime.View>.TID);
+       ref var v = ref world.GetComp<GameFrame.Runtime.View>(effEntityId, ComponentsID<GameFrame.Runtime.View>.TID);
         v.Dispose();
     }
     private static void DisAccumulateCropIndex(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.AccumulateCropIndex>(effEntityId, ComponentsID<GamePlay.Runtime.AccumulateCropIndex>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.AccumulateCropIndex>(effEntityId, ComponentsID<GamePlay.Runtime.AccumulateCropIndex>.TID);
         v.Dispose();
     }
     private static void DisHarvestStateComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.HarvestStateComp>(effEntityId, ComponentsID<GamePlay.Runtime.HarvestStateComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.HarvestStateComp>(effEntityId, ComponentsID<GamePlay.Runtime.HarvestStateComp>.TID);
         v.Dispose();
     }
     private static void DisOperatedCountdownComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedCountdownComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedCountdownComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedCountdownComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedCountdownComp>.TID);
         v.Dispose();
     }
     private static void DisOperatedAccumulateComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.OperatedAccumulateComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedAccumulateComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.OperatedAccumulateComp>(effEntityId, ComponentsID<GamePlay.Runtime.OperatedAccumulateComp>.TID);
         v.Dispose();
     }
     private static void DisPlayerComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.PlayerComp>(effEntityId, ComponentsID<GamePlay.Runtime.PlayerComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.PlayerComp>(effEntityId, ComponentsID<GamePlay.Runtime.PlayerComp>.TID);
         v.Dispose();
     }
     private static void DisSeekerEndPointComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.SeekerEndPointComp>(effEntityId, ComponentsID<GamePlay.Runtime.SeekerEndPointComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.SeekerEndPointComp>(effEntityId, ComponentsID<GamePlay.Runtime.SeekerEndPointComp>.TID);
         v.Dispose();
     }
     private static void DisAttrComp(World world,int effEntityId)
     {
-        var v = world.GetComp<GamePlay.Runtime.AttrComp>(effEntityId, ComponentsID<GamePlay.Runtime.AttrComp>.TID);
+       ref var v = ref world.GetComp<GamePlay.Runtime.AttrComp>(effEntityId, ComponentsID<GamePlay.Runtime.AttrComp>.TID);
         v.Dispose();
     }
 }

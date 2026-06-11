@@ -8,9 +8,9 @@ namespace GamePlay.Runtime
         {
             if (!effEntity.IsAction)
                 return false;
-            var unitData = effEntity.GetUnitDataCompWithHave();
-            if (!unitData.have) return false;
-            return unitData.data.GetData().Camp == CampType.CropLand;
+            var haveUnitData = effEntity.TryGetUnitDataComp(out var unit);
+            if (!haveUnitData) return false;
+            return unit.GetData().Camp == CampType.CropLand;
         }
     }
 }

@@ -16,19 +16,26 @@ public unsafe static partial class AutoStopMoveDirection
     {
         effEntity.AddComponent<GamePlay.Runtime.StopMoveDirection>();
     }      
-    public static GamePlay.Runtime.StopMoveDirection GetStopMoveDirection(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.StopMoveDirection GetStopMoveDirection(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.StopMoveDirection>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.StopMoveDirection>();
     }
     
-    public static (bool have, GamePlay.Runtime.StopMoveDirection data) GetStopMoveDirectionWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveStopMoveDirection(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.StopMoveDirection>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.StopMoveDirection>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetStopMoveDirection(this EffEntity effEntity,out GamePlay.Runtime.StopMoveDirection data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.StopMoveDirection>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.StopMoveDirection>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveStopMoveDirection(this EffEntity effEntity)
     {

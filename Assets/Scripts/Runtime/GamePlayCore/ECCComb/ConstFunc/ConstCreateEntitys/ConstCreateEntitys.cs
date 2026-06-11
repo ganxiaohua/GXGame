@@ -184,8 +184,8 @@ namespace GamePlay.Runtime
 
         private static void AddUseFunc(EffEntity effEntity, int index, Action<EffEntity, ECCWorld> action, int count)
         {
-            var ben = effEntity.GetBeUseFuncCompWithHave();
-            if (!ben.have)
+            var ben = effEntity.TryGetBeUseFuncComp(out var data);
+            if (!ben)
             {
                 var actionFun = new Action<EffEntity, ECCWorld>[count];
                 actionFun[index] = action;
@@ -193,7 +193,7 @@ namespace GamePlay.Runtime
             }
             else
             {
-                ben.data.GetData()[index] = action;
+                data.GetData()[index] = action;
             }
         }
     }

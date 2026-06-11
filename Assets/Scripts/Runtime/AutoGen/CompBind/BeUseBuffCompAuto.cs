@@ -16,19 +16,26 @@ public unsafe static partial class AutoBeUseBuffComp
     {
         effEntity.AddComponent<GamePlay.Runtime.BeUseBuffComp>();
     }      
-    public static GamePlay.Runtime.BeUseBuffComp GetBeUseBuffComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.BeUseBuffComp GetBeUseBuffComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.BeUseBuffComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.BeUseBuffComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.BeUseBuffComp data) GetBeUseBuffCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBeUseBuffComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.BeUseBuffComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.BeUseBuffComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBeUseBuffComp(this EffEntity effEntity,out GamePlay.Runtime.BeUseBuffComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.BeUseBuffComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.BeUseBuffComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBeUseBuffComp(this EffEntity effEntity)
     {

@@ -29,19 +29,26 @@ public unsafe static partial class AutoEnterOparatedComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.EnterOparatedComp GetEnterOparatedComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.EnterOparatedComp GetEnterOparatedComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.EnterOparatedComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.EnterOparatedComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.EnterOparatedComp data) GetEnterOparatedCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveEnterOparatedComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.EnterOparatedComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.EnterOparatedComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetEnterOparatedComp(this EffEntity effEntity,out GamePlay.Runtime.EnterOparatedComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.EnterOparatedComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.EnterOparatedComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveEnterOparatedComp(this EffEntity effEntity)
     {

@@ -29,19 +29,26 @@ public unsafe static partial class AutoOperatedCountdownComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.OperatedCountdownComp GetOperatedCountdownComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.OperatedCountdownComp GetOperatedCountdownComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.OperatedCountdownComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.OperatedCountdownComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.OperatedCountdownComp data) GetOperatedCountdownCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveOperatedCountdownComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.OperatedCountdownComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.OperatedCountdownComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetOperatedCountdownComp(this EffEntity effEntity,out GamePlay.Runtime.OperatedCountdownComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.OperatedCountdownComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.OperatedCountdownComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveOperatedCountdownComp(this EffEntity effEntity)
     {

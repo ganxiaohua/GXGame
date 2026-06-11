@@ -29,19 +29,26 @@ public unsafe static partial class AutoCameraWatcherComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.CameraWatcherComp GetCameraWatcherComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.CameraWatcherComp GetCameraWatcherComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.CameraWatcherComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.CameraWatcherComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.CameraWatcherComp data) GetCameraWatcherCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveCameraWatcherComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.CameraWatcherComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.CameraWatcherComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetCameraWatcherComp(this EffEntity effEntity,out GamePlay.Runtime.CameraWatcherComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.CameraWatcherComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.CameraWatcherComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveCameraWatcherComp(this EffEntity effEntity)
     {

@@ -29,19 +29,26 @@ public unsafe static partial class AutoForceAnimationComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.ForceAnimationComp GetForceAnimationComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.ForceAnimationComp GetForceAnimationComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.ForceAnimationComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.ForceAnimationComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.ForceAnimationComp data) GetForceAnimationCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveForceAnimationComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.ForceAnimationComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.ForceAnimationComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetForceAnimationComp(this EffEntity effEntity,out GamePlay.Runtime.ForceAnimationComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.ForceAnimationComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.ForceAnimationComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveForceAnimationComp(this EffEntity effEntity)
     {

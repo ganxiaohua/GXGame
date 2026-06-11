@@ -14,19 +14,26 @@ public unsafe static partial class AutoSeekerComp
         data->Init(param);
     }
           
-    public static GameFrame.Runtime.SeekerComp GetSeekerComp(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.SeekerComp GetSeekerComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.SeekerComp>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.SeekerComp>();
     }
     
-    public static (bool have, GameFrame.Runtime.SeekerComp data) GetSeekerCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveSeekerComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.SeekerComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.SeekerComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetSeekerComp(this EffEntity effEntity,out GameFrame.Runtime.SeekerComp data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.SeekerComp>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.SeekerComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveSeekerComp(this EffEntity effEntity)
     {

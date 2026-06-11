@@ -29,19 +29,26 @@ public unsafe static partial class AutoMoveDirectionComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.MoveDirectionComp GetMoveDirectionComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.MoveDirectionComp GetMoveDirectionComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.MoveDirectionComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.MoveDirectionComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.MoveDirectionComp data) GetMoveDirectionCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveMoveDirectionComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.MoveDirectionComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.MoveDirectionComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetMoveDirectionComp(this EffEntity effEntity,out GamePlay.Runtime.MoveDirectionComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.MoveDirectionComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.MoveDirectionComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveMoveDirectionComp(this EffEntity effEntity)
     {

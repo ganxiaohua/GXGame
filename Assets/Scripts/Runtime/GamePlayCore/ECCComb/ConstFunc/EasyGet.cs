@@ -6,10 +6,10 @@ namespace GamePlay.Runtime
     {
         public static UnitItem GetUnit(this EffEntity entity)
         {
-            var idComp = entity.GetUnitDataCompWithHave();
-            if (!idComp.have)
+            var idComp = entity.TryGetUnitDataComp(out var data);
+            if (!idComp)
                 return null;
-            return idComp.data.GetData().UnitItem;
+            return data.GetData().UnitItem;
         }
 
         public static ItemCount[] GetUnitAward(this EffEntity entity)

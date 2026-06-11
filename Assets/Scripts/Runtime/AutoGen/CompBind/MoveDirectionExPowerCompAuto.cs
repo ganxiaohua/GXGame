@@ -29,19 +29,26 @@ public unsafe static partial class AutoMoveDirectionExPowerComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.MoveDirectionExPowerComp GetMoveDirectionExPowerComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.MoveDirectionExPowerComp GetMoveDirectionExPowerComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.MoveDirectionExPowerComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.MoveDirectionExPowerComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.MoveDirectionExPowerComp data) GetMoveDirectionExPowerCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveMoveDirectionExPowerComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.MoveDirectionExPowerComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.MoveDirectionExPowerComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetMoveDirectionExPowerComp(this EffEntity effEntity,out GamePlay.Runtime.MoveDirectionExPowerComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.MoveDirectionExPowerComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.MoveDirectionExPowerComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveMoveDirectionExPowerComp(this EffEntity effEntity)
     {

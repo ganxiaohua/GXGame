@@ -29,19 +29,26 @@ public unsafe static partial class AutoGroundCollisionComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.GroundCollisionComp GetGroundCollisionComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.GroundCollisionComp GetGroundCollisionComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.GroundCollisionComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.GroundCollisionComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.GroundCollisionComp data) GetGroundCollisionCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveGroundCollisionComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.GroundCollisionComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.GroundCollisionComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetGroundCollisionComp(this EffEntity effEntity,out GamePlay.Runtime.GroundCollisionComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.GroundCollisionComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.GroundCollisionComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveGroundCollisionComp(this EffEntity effEntity)
     {

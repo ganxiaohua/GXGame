@@ -14,19 +14,26 @@ public unsafe static partial class AutoView
         data->Init(param);
     }
           
-    public static GameFrame.Runtime.View GetView(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.View GetView(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.View>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.View>();
     }
     
-    public static (bool have, GameFrame.Runtime.View data) GetViewWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveView(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.View>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.View>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetView(this EffEntity effEntity,out GameFrame.Runtime.View data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.View>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.View>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveView(this EffEntity effEntity)
     {

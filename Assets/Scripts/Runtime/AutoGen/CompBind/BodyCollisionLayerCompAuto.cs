@@ -29,19 +29,26 @@ public unsafe static partial class AutoBodyCollisionLayerComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.BodyCollisionLayerComp GetBodyCollisionLayerComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.BodyCollisionLayerComp GetBodyCollisionLayerComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.BodyCollisionLayerComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.BodyCollisionLayerComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.BodyCollisionLayerComp data) GetBodyCollisionLayerCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBodyCollisionLayerComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.BodyCollisionLayerComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.BodyCollisionLayerComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBodyCollisionLayerComp(this EffEntity effEntity,out GamePlay.Runtime.BodyCollisionLayerComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.BodyCollisionLayerComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.BodyCollisionLayerComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBodyCollisionLayerComp(this EffEntity effEntity)
     {

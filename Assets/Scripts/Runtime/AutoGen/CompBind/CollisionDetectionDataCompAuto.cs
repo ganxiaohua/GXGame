@@ -29,19 +29,26 @@ public unsafe static partial class AutoCollisionDetectionDataComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.CollisionDetectionDataComp GetCollisionDetectionDataComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.CollisionDetectionDataComp GetCollisionDetectionDataComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.CollisionDetectionDataComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.CollisionDetectionDataComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.CollisionDetectionDataComp data) GetCollisionDetectionDataCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveCollisionDetectionDataComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.CollisionDetectionDataComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.CollisionDetectionDataComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetCollisionDetectionDataComp(this EffEntity effEntity,out GamePlay.Runtime.CollisionDetectionDataComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.CollisionDetectionDataComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.CollisionDetectionDataComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveCollisionDetectionDataComp(this EffEntity effEntity)
     {

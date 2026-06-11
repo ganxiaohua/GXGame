@@ -14,19 +14,26 @@ public unsafe static partial class AutoBeAttackBuffComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.BeAttackBuffComp GetBeAttackBuffComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.BeAttackBuffComp GetBeAttackBuffComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.BeAttackBuffComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.BeAttackBuffComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.BeAttackBuffComp data) GetBeAttackBuffCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBeAttackBuffComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.BeAttackBuffComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.BeAttackBuffComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBeAttackBuffComp(this EffEntity effEntity,out GamePlay.Runtime.BeAttackBuffComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.BeAttackBuffComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.BeAttackBuffComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBeAttackBuffComp(this EffEntity effEntity)
     {

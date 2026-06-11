@@ -14,19 +14,26 @@ public unsafe static partial class AutoPreviousGroundComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.PreviousGroundComp GetPreviousGroundComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.PreviousGroundComp GetPreviousGroundComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.PreviousGroundComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.PreviousGroundComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.PreviousGroundComp data) GetPreviousGroundCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HavePreviousGroundComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.PreviousGroundComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.PreviousGroundComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetPreviousGroundComp(this EffEntity effEntity,out GamePlay.Runtime.PreviousGroundComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.PreviousGroundComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.PreviousGroundComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactivePreviousGroundComp(this EffEntity effEntity)
     {

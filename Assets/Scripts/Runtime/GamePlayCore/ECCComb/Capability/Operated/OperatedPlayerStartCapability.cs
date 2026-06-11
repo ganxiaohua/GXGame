@@ -11,9 +11,9 @@ namespace GamePlay.Runtime
 
         public override bool ShouldActivate()
         {
-            var throwComp = Owner.GetThrowCompWithHave();
-            var oparated = Owner.GetEnterOparatedCompWithHave();
-            return (oparated.have && oparated.data.Value.Oparated) || (throwComp.have && throwComp.data.Value);
+            var throwComp = Owner.TryGetThrowComp(out var throwData);
+            var oparated = Owner.TryGetEnterOparatedComp(out var oparetedData);
+            return (oparated && oparetedData.Value.Oparated) || (throwComp && throwData.Value);
         }
 
         public override bool ShouldDeactivate()
@@ -29,8 +29,8 @@ namespace GamePlay.Runtime
                 return;
             }
 
-            var enter = Owner.GetEnterOparatedCompWithHave();
-            if (enter.have && enter.data.Value.Oparated)
+            var enter = Owner.TryGetEnterOparatedComp(out var data);
+            if (enter && data.Value.Oparated)
             {
                 Owner.AddOrSetOperatedCountdownComp(BagData.Instance.GetCurAnimation());
                 Owner.AddOrSetOperatedFuncCompExternal(ConstOperateFunc.PlayerUserItem);

@@ -29,19 +29,26 @@ public unsafe static partial class AutoOperatedAccumulateComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.OperatedAccumulateComp GetOperatedAccumulateComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.OperatedAccumulateComp GetOperatedAccumulateComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.OperatedAccumulateComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.OperatedAccumulateComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.OperatedAccumulateComp data) GetOperatedAccumulateCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveOperatedAccumulateComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.OperatedAccumulateComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.OperatedAccumulateComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetOperatedAccumulateComp(this EffEntity effEntity,out GamePlay.Runtime.OperatedAccumulateComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.OperatedAccumulateComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.OperatedAccumulateComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveOperatedAccumulateComp(this EffEntity effEntity)
     {

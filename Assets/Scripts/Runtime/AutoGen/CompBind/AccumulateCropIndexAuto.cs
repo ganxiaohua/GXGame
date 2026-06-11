@@ -14,19 +14,26 @@ public unsafe static partial class AutoAccumulateCropIndex
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.AccumulateCropIndex GetAccumulateCropIndex(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.AccumulateCropIndex GetAccumulateCropIndex(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.AccumulateCropIndex>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.AccumulateCropIndex>();
     }
     
-    public static (bool have, GamePlay.Runtime.AccumulateCropIndex data) GetAccumulateCropIndexWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveAccumulateCropIndex(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.AccumulateCropIndex>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.AccumulateCropIndex>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetAccumulateCropIndex(this EffEntity effEntity,out GamePlay.Runtime.AccumulateCropIndex data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.AccumulateCropIndex>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.AccumulateCropIndex>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveAccumulateCropIndex(this EffEntity effEntity)
     {

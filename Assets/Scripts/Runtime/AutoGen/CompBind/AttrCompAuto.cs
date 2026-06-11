@@ -14,19 +14,26 @@ public unsafe static partial class AutoAttrComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.AttrComp GetAttrComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.AttrComp GetAttrComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.AttrComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.AttrComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.AttrComp data) GetAttrCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveAttrComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.AttrComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.AttrComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetAttrComp(this EffEntity effEntity,out GamePlay.Runtime.AttrComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.AttrComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.AttrComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveAttrComp(this EffEntity effEntity)
     {

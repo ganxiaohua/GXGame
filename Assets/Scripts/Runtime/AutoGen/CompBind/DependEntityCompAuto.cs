@@ -14,19 +14,26 @@ public unsafe static partial class AutoDependEntityComp
         data->Init(param);
     }
           
-    public static GamePlay.Runtime.DependEntityComp GetDependEntityComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.DependEntityComp GetDependEntityComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.DependEntityComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.DependEntityComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.DependEntityComp data) GetDependEntityCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveDependEntityComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.DependEntityComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.DependEntityComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetDependEntityComp(this EffEntity effEntity,out GamePlay.Runtime.DependEntityComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.DependEntityComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.DependEntityComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveDependEntityComp(this EffEntity effEntity)
     {

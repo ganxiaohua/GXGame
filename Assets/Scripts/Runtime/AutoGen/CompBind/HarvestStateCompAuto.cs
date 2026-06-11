@@ -29,19 +29,26 @@ public unsafe static partial class AutoHarvestStateComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.HarvestStateComp GetHarvestStateComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.HarvestStateComp GetHarvestStateComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.HarvestStateComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.HarvestStateComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.HarvestStateComp data) GetHarvestStateCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveHarvestStateComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.HarvestStateComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.HarvestStateComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetHarvestStateComp(this EffEntity effEntity,out GamePlay.Runtime.HarvestStateComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.HarvestStateComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.HarvestStateComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveHarvestStateComp(this EffEntity effEntity)
     {

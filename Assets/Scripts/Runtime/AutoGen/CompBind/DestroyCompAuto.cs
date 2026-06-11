@@ -16,19 +16,26 @@ public unsafe static partial class AutoDestroyComp
     {
         effEntity.AddComponent<GameFrame.Runtime.DestroyComp>();
     }      
-    public static GameFrame.Runtime.DestroyComp GetDestroyComp(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.DestroyComp GetDestroyComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.DestroyComp>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.DestroyComp>();
     }
     
-    public static (bool have, GameFrame.Runtime.DestroyComp data) GetDestroyCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveDestroyComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.DestroyComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.DestroyComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetDestroyComp(this EffEntity effEntity,out GameFrame.Runtime.DestroyComp data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.DestroyComp>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.DestroyComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveDestroyComp(this EffEntity effEntity)
     {

@@ -51,7 +51,7 @@ namespace GamePlay.Runtime
             if (!ConstCamp.IsCropLand(target))
                 return succ;
             var operatedDetection = owner.GetOperatedDetectionComp().Value;
-            var accumulateCropIndex = owner.GetAccumulateCropIndexWithHave();
+            var hvaeAccumulateCropIndex = owner.TryGetAccumulateCropIndex(out var cropData);
             var collisionDetection = owner.GetCollisionDetectionDataComp().Value;
             switch (operatedDetection.OperatedType)
             {
@@ -64,19 +64,19 @@ namespace GamePlay.Runtime
                 case OperatedType.锄:
                 {
                     var cropLandView = (CropLandView) target.GetView().GetData();
-                    succ = !accumulateCropIndex.have ? cropLandView.areaCropLand.Reclamation(collisionDetection.Pos) : cropLandView.areaCropLand.Reclamation(accumulateCropIndex.data.GetData());
+                    succ = !hvaeAccumulateCropIndex ? cropLandView.areaCropLand.Reclamation(collisionDetection.Pos) : cropLandView.areaCropLand.Reclamation(cropData.GetData());
 
                     break;
                 }
                 case OperatedType.洒水:
                 {
                     var cropLandView = (CropLandView) target.GetView().GetData();
-                    succ = !accumulateCropIndex.have ? cropLandView.areaCropLand.Watering(collisionDetection.Pos) : cropLandView.areaCropLand.Watering(accumulateCropIndex.data.GetData());
+                    succ = !hvaeAccumulateCropIndex ? cropLandView.areaCropLand.Watering(collisionDetection.Pos) : cropLandView.areaCropLand.Watering(cropData.GetData());
                     break;
                 }
             }
 
-            if (accumulateCropIndex.have)
+            if (hvaeAccumulateCropIndex)
             {
                 owner.RemoveComponent(ComponentsID<AccumulateCropIndex>.TID);
             }
@@ -92,8 +92,8 @@ namespace GamePlay.Runtime
         /// <param name="operateTypedComp"></param>
         private static void Attack(EffEntity Owner, EffEntity target)
         {
-            var beAttackType = target.GetBeAttackTypeCompWithHave();
-            if (!beAttackType.have || beAttackType.data.Value == BeAttackType.Invincible)
+            var beAttackType = target.TryGetBeAttackTypeComp(out var data);
+            if (!beAttackType || data.Value == BeAttackType.Invincible)
                 return;
             // BeAttackBuffComp beAttackBuffComp = default;
             if (!target.HasComponent<BeAttackBuffComp>())

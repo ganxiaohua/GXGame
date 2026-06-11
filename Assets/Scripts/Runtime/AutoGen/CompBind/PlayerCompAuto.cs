@@ -16,19 +16,26 @@ public unsafe static partial class AutoPlayerComp
     {
         effEntity.AddComponent<GamePlay.Runtime.PlayerComp>();
     }      
-    public static GamePlay.Runtime.PlayerComp GetPlayerComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.PlayerComp GetPlayerComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.PlayerComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.PlayerComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.PlayerComp data) GetPlayerCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HavePlayerComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.PlayerComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.PlayerComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetPlayerComp(this EffEntity effEntity,out GamePlay.Runtime.PlayerComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.PlayerComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.PlayerComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactivePlayerComp(this EffEntity effEntity)
     {

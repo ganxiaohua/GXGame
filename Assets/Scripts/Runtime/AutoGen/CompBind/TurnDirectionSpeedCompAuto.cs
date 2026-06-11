@@ -29,19 +29,26 @@ public unsafe static partial class AutoTurnDirectionSpeedComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.TurnDirectionSpeedComp GetTurnDirectionSpeedComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.TurnDirectionSpeedComp GetTurnDirectionSpeedComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.TurnDirectionSpeedComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.TurnDirectionSpeedComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.TurnDirectionSpeedComp data) GetTurnDirectionSpeedCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveTurnDirectionSpeedComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.TurnDirectionSpeedComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.TurnDirectionSpeedComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetTurnDirectionSpeedComp(this EffEntity effEntity,out GamePlay.Runtime.TurnDirectionSpeedComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.TurnDirectionSpeedComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.TurnDirectionSpeedComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveTurnDirectionSpeedComp(this EffEntity effEntity)
     {

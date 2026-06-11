@@ -29,19 +29,26 @@ public unsafe static partial class AutoCameraLensZoomAngleComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.CameraLensZoomAngleComp GetCameraLensZoomAngleComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.CameraLensZoomAngleComp GetCameraLensZoomAngleComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.CameraLensZoomAngleComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.CameraLensZoomAngleComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.CameraLensZoomAngleComp data) GetCameraLensZoomAngleCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveCameraLensZoomAngleComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.CameraLensZoomAngleComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.CameraLensZoomAngleComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetCameraLensZoomAngleComp(this EffEntity effEntity,out GamePlay.Runtime.CameraLensZoomAngleComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.CameraLensZoomAngleComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.CameraLensZoomAngleComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveCameraLensZoomAngleComp(this EffEntity effEntity)
     {

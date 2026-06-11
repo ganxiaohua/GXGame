@@ -29,19 +29,26 @@ public unsafe static partial class AutoGravityAccelerationComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.GravityAccelerationComp GetGravityAccelerationComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.GravityAccelerationComp GetGravityAccelerationComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.GravityAccelerationComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.GravityAccelerationComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.GravityAccelerationComp data) GetGravityAccelerationCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveGravityAccelerationComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.GravityAccelerationComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.GravityAccelerationComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetGravityAccelerationComp(this EffEntity effEntity,out GamePlay.Runtime.GravityAccelerationComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.GravityAccelerationComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.GravityAccelerationComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveGravityAccelerationComp(this EffEntity effEntity)
     {

@@ -29,19 +29,26 @@ public unsafe static partial class AutoCollisionMsgComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.CollisionMsgComp GetCollisionMsgComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.CollisionMsgComp GetCollisionMsgComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.CollisionMsgComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.CollisionMsgComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.CollisionMsgComp data) GetCollisionMsgCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveCollisionMsgComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.CollisionMsgComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.CollisionMsgComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetCollisionMsgComp(this EffEntity effEntity,out GamePlay.Runtime.CollisionMsgComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.CollisionMsgComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.CollisionMsgComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveCollisionMsgComp(this EffEntity effEntity)
     {

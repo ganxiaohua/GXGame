@@ -29,19 +29,26 @@ public unsafe static partial class AutoSeekerEndPointComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.SeekerEndPointComp GetSeekerEndPointComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.SeekerEndPointComp GetSeekerEndPointComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.SeekerEndPointComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.SeekerEndPointComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.SeekerEndPointComp data) GetSeekerEndPointCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveSeekerEndPointComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.SeekerEndPointComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.SeekerEndPointComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetSeekerEndPointComp(this EffEntity effEntity,out GamePlay.Runtime.SeekerEndPointComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.SeekerEndPointComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.SeekerEndPointComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveSeekerEndPointComp(this EffEntity effEntity)
     {

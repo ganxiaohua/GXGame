@@ -29,19 +29,26 @@ public unsafe static partial class AutoJumpSpeedComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.JumpSpeedComp GetJumpSpeedComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.JumpSpeedComp GetJumpSpeedComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.JumpSpeedComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.JumpSpeedComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.JumpSpeedComp data) GetJumpSpeedCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveJumpSpeedComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.JumpSpeedComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.JumpSpeedComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetJumpSpeedComp(this EffEntity effEntity,out GamePlay.Runtime.JumpSpeedComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.JumpSpeedComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.JumpSpeedComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveJumpSpeedComp(this EffEntity effEntity)
     {

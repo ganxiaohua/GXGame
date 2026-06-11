@@ -29,19 +29,26 @@ public unsafe static partial class AutoOperatedDetectionComp
         p->Value = param;
     }
           
-    public static GamePlay.Runtime.OperatedDetectionComp GetOperatedDetectionComp(this EffEntity effEntity)
+    public static ref GamePlay.Runtime.OperatedDetectionComp GetOperatedDetectionComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GamePlay.Runtime.OperatedDetectionComp>();
+        return ref effEntity.GetComponent<GamePlay.Runtime.OperatedDetectionComp>();
     }
     
-    public static (bool have, GamePlay.Runtime.OperatedDetectionComp data) GetOperatedDetectionCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveOperatedDetectionComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GamePlay.Runtime.OperatedDetectionComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GamePlay.Runtime.OperatedDetectionComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetOperatedDetectionComp(this EffEntity effEntity,out GamePlay.Runtime.OperatedDetectionComp data)
+      {
+         var have = effEntity.HasComponent<GamePlay.Runtime.OperatedDetectionComp>();
+         if(have)
+              data =  effEntity.GetComponent<GamePlay.Runtime.OperatedDetectionComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveOperatedDetectionComp(this EffEntity effEntity)
     {

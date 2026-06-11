@@ -29,19 +29,26 @@ public unsafe static partial class AutoDieComp
         p->Value = param;
     }
           
-    public static GameFrame.Runtime.DieComp GetDieComp(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.DieComp GetDieComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.DieComp>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.DieComp>();
     }
     
-    public static (bool have, GameFrame.Runtime.DieComp data) GetDieCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveDieComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.DieComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.DieComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetDieComp(this EffEntity effEntity,out GameFrame.Runtime.DieComp data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.DieComp>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.DieComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveDieComp(this EffEntity effEntity)
     {

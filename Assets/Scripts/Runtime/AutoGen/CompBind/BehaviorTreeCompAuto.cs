@@ -14,19 +14,26 @@ public unsafe static partial class AutoBehaviorTreeComp
         data->Init(param);
     }
           
-    public static GameFrame.Runtime.BehaviorTreeComp GetBehaviorTreeComp(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.BehaviorTreeComp GetBehaviorTreeComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.BehaviorTreeComp>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.BehaviorTreeComp>();
     }
     
-    public static (bool have, GameFrame.Runtime.BehaviorTreeComp data) GetBehaviorTreeCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBehaviorTreeComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.BehaviorTreeComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.BehaviorTreeComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBehaviorTreeComp(this EffEntity effEntity,out GameFrame.Runtime.BehaviorTreeComp data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.BehaviorTreeComp>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.BehaviorTreeComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBehaviorTreeComp(this EffEntity effEntity)
     {

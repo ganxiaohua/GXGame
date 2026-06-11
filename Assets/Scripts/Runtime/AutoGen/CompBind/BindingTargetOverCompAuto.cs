@@ -16,19 +16,26 @@ public unsafe static partial class AutoBindingTargetOverComp
     {
         effEntity.AddComponent<GameFrame.Runtime.BindingTargetOverComp>();
     }      
-    public static GameFrame.Runtime.BindingTargetOverComp GetBindingTargetOverComp(this EffEntity effEntity)
+    public static ref GameFrame.Runtime.BindingTargetOverComp GetBindingTargetOverComp(this EffEntity effEntity)
     {
-        return effEntity.GetComponent<GameFrame.Runtime.BindingTargetOverComp>();
+        return ref effEntity.GetComponent<GameFrame.Runtime.BindingTargetOverComp>();
     }
     
-    public static (bool have, GameFrame.Runtime.BindingTargetOverComp data) GetBindingTargetOverCompWithHave(this EffEntity effEntity)
-    {
+     public static bool HaveBindingTargetOverComp(this EffEntity effEntity)
+     {
        var have = effEntity.HasComponent<GameFrame.Runtime.BindingTargetOverComp>();
-       if(have)
-           return (have,effEntity.GetComponent<GameFrame.Runtime.BindingTargetOverComp>());
-       else
-           return(have,default);
-    }
+       return have;
+     }  
+     
+      public static bool TryGetBindingTargetOverComp(this EffEntity effEntity,out GameFrame.Runtime.BindingTargetOverComp data)
+      {
+         var have = effEntity.HasComponent<GameFrame.Runtime.BindingTargetOverComp>();
+         if(have)
+              data =  effEntity.GetComponent<GameFrame.Runtime.BindingTargetOverComp>();
+         else
+              data = default;
+         return have;
+      }   
     
     public static void ReactiveBindingTargetOverComp(this EffEntity effEntity)
     {
